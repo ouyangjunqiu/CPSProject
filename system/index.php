@@ -7,5 +7,6 @@ use cloud\Cloud;
 
 include dirname(dirname(__FILE__))."/library/cloud/bootstrap.php";
 
-Cloud::createApplication( 'cloud\core\cli\Application', $config )->run();
+$app = Cloud::createConsoleApplication();
+$app->run();
 exit;

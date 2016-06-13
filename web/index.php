@@ -17,7 +17,7 @@ if( $_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit();
 }
 
-$app = Cloud::createApplication( 'cloud\core\components\Application', $config );
+$app = Cloud::createWebApplication();
 $app->run();
 
 exit;

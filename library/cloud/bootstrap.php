@@ -15,7 +15,6 @@ require_once ( $toplinker );
 
 $defines = PATH_ROOT . '/library/cloud/defines.php';
 $yii = PATH_ROOT . '/library/yii/yii.php';
-$config = PATH_ROOT . '/library/cloud/config/common.php';
 require_once ( $defines );
 require_once ( $yii );
 

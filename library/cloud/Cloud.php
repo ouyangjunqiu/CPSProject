@@ -118,4 +118,23 @@ class Cloud extends \Yii
             throw new CException( self::lang( 'YJCloud engine can only be created once.', 'error' ) );
         }
     }
+
+
+    public static function createWebApplication($config=null)
+    {
+        if($config == null){
+            $config = PATH_ROOT . '/library/cloud/config/common.php';
+        }
+        return self::createApplication('cloud\core\components\Application',$config);
+    }
+
+
+    public static function createConsoleApplication($config=null)
+    {
+        if($config == null){
+            $config = PATH_ROOT . '/library/cloud/config/common.php';
+        }
+        return self::createApplication('cloud\core\cli\Application',$config);
+    }
+
 }
