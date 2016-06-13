@@ -1,3 +1,6 @@
 [submodule "library"]
 	path = library
 	url = https://github.com/ouyangjunqiu/cloudframework.git
+[submodule "sso"]
+	path = sso
+	url = https://github.com/ouyangjunqiu/phpsso.git
