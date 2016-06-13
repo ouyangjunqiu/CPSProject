@@ -1,0 +1,638 @@
+/*-----------公用样式----------------*/
+/*公用容器类开始*/
+body {
+    font-size: 14px;
+    color: #434343;
+    font-family: "微软雅黑", "宋体", "幼圆";
+    position: relative;
+    min-width: 1200px;
+    background: #fbfbfb;
+}
+
+body, blockquote, script, div, ul, li, dl, dt, dd, span, p, h1, h2, h3, h4, h5, h6, img, a, form, label, iframe {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+button, input, textarea {
+    margin: 0;
+    padding: 0;
+    font-family: "微软雅黑";
+    font-size: 14px;
+}
+
+button, input[type="submit"], input[type="button"] {
+    cursor: pointer;
+}
+
+select, input, img, select {
+    vertical-align: middle;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a img {
+    border: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    border-spaceing: 0
+}
+
+ul, ol, li {
+    list-style-type: none;
+}
+
+.td-right {
+    text-align: right;
+}
+
+:focus {
+    outline: none;
+}
+
+.container {
+    min-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding-left: 50px;
+}
+
+.tip-star {
+    color: #CC0000;
+}
+
+.com-checkbox {
+    margin-bottom: 3px;
+    margin-right: 3px;
+}
+/*新增按钮*/
+.shop_list-table-p{ text-align: right;}
+.add-shoplist-a{ font-size: 18px; padding-left: 25px;background: url('../image/milestone/adviser/icon.png') no-repeat -473px -425px;}
+/*公用容器类结束*/
+
+/*公用color类开始*/
+.font-color {
+    color: #434343;
+}
+
+/*公用color类结束*/
+
+/*公用INPUT类开始*/
+.input-text {
+    padding: 3px;
+    border: 1px solid #cacaca;
+    width: 200px;
+}
+
+/*公用INPUT类结束*/
+
+/*公用select类开始*/
+.select-com {
+    width: 200px;
+
+    color: #9f9f9f;
+}
+
+/*公用select类结束*/
+
+/*公用按钮类开始*/
+.btn-orange {
+    width: 120px;
+    height: 40px;
+    background-color: #fa6d51;
+    border: none;
+    color: #FFFFFF;
+}
+
+.btn-blue {
+    width: 120px;
+    height: 40px;
+    background-color: #3398dc;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+/*公用按钮类结束*/
+/*-----------公用样式---------------*/
+/*框架*/
+.frame-box {
+    overflow: hidden;
+    border: 1px solid #e6e6e6;
+}
+
+.frame-box .frame-tit {
+    background-color: #f3f3f3;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 0px 5px;
+    color: #333;
+    height: 32px;
+    line-height: 32px;
+}
+
+.frame-box h3 {
+    font-family: "微软雅黑";
+    font-size: 14px;
+    float: left;
+}
+
+.frame-box .frame-more {
+    float: right;
+}
+
+.frame-box .frame-more a {
+    font-size: 12px;
+    color: #990000;
+}
+
+.frame-box .frame-cont {
+    width: 98%;
+    margin: 0px auto;
+    padding: 10px 0;
+}
+
+.frame-cont ul {
+    width: 100%;
+    overflow: hidden;
+}
+
+/*框架*/
+
+/*设置部分框架*/
+.tab-frame {
+    overflow: hidden;
+    margin: 20px 0 0px 0;
+}
+
+.tab-frame-tit li {
+    float: left;
+    display: inline;
+    padding: 0 0px;
+    height: 50px;
+    line-height: 50px;
+    background: #f6f6f6;
+    border-bottom: none;
+    margin-right: 5px;
+    font-size: 14px;
+    width: 115px;
+    text-align: center;cursor: pointer;
+}
+
+
+.tab-frame-tit .tab-frame-hover span{ color: #fff; cursor: pointer;}
+.tab-frame-tit {
+    width: 100%;
+    overflow: hidden;
+    border-bottom: 3px solid #2f88c3;
+}
+
+.tab-frame-tit .tab-frame-hover {
+    background: #2f88c3;
+    color: #fff;
+}
+
+.tab-frame-tit .tab-frame-hover a {
+    color: #fff;
+    font-size: 14px;
+}
+
+.tab-frame .breadcrumbs {
+    float: left;
+    clear: both;
+    margin: 10px 20px 0 0;
+}
+
+/*设置部分框架*/
+
+/*-----------头部---------------*/
+.header {
+    width: 100%;
+    background: #f8f8f8;
+}
+
+.top-usersinfor {
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+}
+
+.top-usersinfor .top-usersinfor-ul {
+    overflow: hidden;
+    float: right;
+    padding: 5px 0;
+}
+
+.top-usersinfor li {
+    border-right: 1px solid #ccc;
+    float: left;
+    padding: 0 10px;
+    display: inline;
+    height: 20px;
+    line-height: 20px;
+}
+
+.top-nav {
+    background: none repeat scroll 0 0 #3499dc;
+    min-width: 1200px;
+    height: 140px;
+}
+
+.logo, .top-ul {
+    float: left;
+}
+
+.logo {
+    display: inline;
+    padding: 30px 20px 0 0;
+}
+
+.top-img {
+    float: right;
+}
+
+.top-ul {
+    float: left;
+    overflow: hidden;
+}
+
+.top-ul li {
+    cursor: pointer;
+    float: left;
+    height: 140px;
+    text-align: center;
+    width: 145px;
+    /*background: url("../image/milestone/adviser/line.gif") no-repeat;*/
+}
+
+.top-ul li a {
+    color: #fff;
+    padding: 2px 0;
+    font-size: 16px;
+}
+
+.top-ul li a:hover {
+    opacity: 0.7;
+    zoom: 1.05;
+}
+
+.top-li-hover .top-speline {
+    background: none repeat scroll 0 0 #1bbc9d;
+}
+
+.top-ul .top-li-hover a {
+    color: #fff;
+}
+
+.top-ul .top-li-hover p:hover {
+    color: #fff;
+}
+
+.top-ul .top-li-hover {
+    background: none repeat scroll 0 0 #2c80b8;
+}
+
+.top-ul li .top-icon-p {
+    padding: 35px 0 5px;
+}
+
+.top-ul li p i {
+    background: url("../image/milestone/adviser/icon.png") no-repeat scroll -19px -10px;
+    display: block;
+    height: 39px;
+    margin: 0 auto;
+    width: 50px;
+}
+
+.top-ul li p .index-icon {
+    background-position: -19px -52px;
+}
+
+.top-ul li p .shopset-icon {
+    background-position: -76px -53px;
+}
+
+.top-ul li p .assist-icon {
+    background-position: -140px -53px;
+}
+
+.top-ul li p .mode-icon {
+    background-position: -201px -53px;
+}
+
+.top-ul li p .rpt-icon {
+    background-position: -73px -497px;
+}
+
+.top-ul li p .creatives-icon {
+    background-position: -5px -543px;
+}
+
+.top-ul .top-li-hover .index-icon {
+    background-position: -19px -52px;
+}
+
+.top-ul .top-li-hover .shopset-icon {
+    background-position: -80px -53px;
+}
+
+.top-ul .top-li-hover .assist-icon {
+    background-position: -140px -52px;
+}
+
+.top-ul .top-li-hover .mode-icon {
+    background-position: -201px -55px;
+}
+
+.top-ul li p .ztc-icon {
+    background-position: -129px -542px;
+}
+
+.top-ul li p .zuanshi-icon {
+    background-position: -129px -498px;
+}
+
+/*-----------中间---------------*/
+.middle {
+    padding: 10px 0;
+    min-height: 577px;
+}
+
+/*-----------尾部---------------*/
+.footer {
+    background: #2f88c3;
+}
+
+.footer-link {
+    background: url("../image/milestone/adviser/footerbg.jpg") no-repeat;
+    height: 118px;
+    text-align: center;
+}
+
+.link-cont {
+    height: 30px;
+    line-height: 30px;
+    padding-top: 40px;
+}
+
+.link-cont a {
+    padding: 0px 30px;
+    color: #fff;
+    border-right: 1px solid #fff;
+}
+
+.footer-infor {
+    background: #256b9a;
+    padding: 20px 0;
+    text-align: center;
+    color: #fff;
+}
+
+.one-display-message {
+    text-align: center;
+    font-size: 17px;
+    background: #D02719;
+    box-shadow: 1px 1px 7px #676767;
+    color: #ffffff;
+    margin: 2px;
+}
+/*-----------公用table---------*/
+
+.table-frame {
+    width: 100%;
+    font-size: 14px;
+}
+
+.table-frame thead th {
+    background: #f8f8f8;
+    padding: 8px 3px;
+    white-space:nowrap;
+}
+
+.table-frame tbody td {
+    padding: 3px 3px;
+}
+.table-frame tr.odd{
+    background: #f1f1f1;
+}
+
+
+/*-----------分页---------------*/
+.pager {
+    clear: both;
+    display: block;
+    height: 40px;
+    margin: 13px auto;
+}
+
+.pager li {
+    border: 1px solid #CCCCCC;
+    display: block;
+    float: left;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    width: 36px;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 0 5px 0 0;
+    background: #fff;
+}
+
+.pager li:hover {
+    background-color: #178BE5;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.pagerol .p-click {
+    background-color: #178BE5;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.pager .pager-pre, .pager .pager-next {
+    width: 75px;
+}
+
+.pagerol {
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.pages-pre, .pages-next, .pagerol {
+    float: left;
+    cursor: pointer;
+}
+
+.pages-pre, .pages-next {
+    text-align: center;
+    font-size: 14px;
+    margin: 0 0px 0 0px;
+    width: 161px;
+}
+
+.pages-pre span, .pages-next span {
+    border: 1px solid #CCCCCC;
+    text-align: center;
+    width: 30px;
+    height: 36px;
+    line-height: 36px;
+    border: 1px solid #CCCCCC;
+    display: block;
+    margin-left: -1px;
+    text-align: center;
+    font-size: 14px;
+    margin: 0 5px 0 0;
+    float: left
+}
+
+.pages-pre .pages-pre-span, .pages-next .jPag-snext-span {
+    width: 55px;
+}
+
+.pagerol-div {
+    overflow: hidden;
+    max-width: 425px;
+    float: left;
+    width: 200px;
+    height: 38px;
+}
+
+.pagerol-div .pagerol {
+    width: 10000px;
+}
+.pager-label { float:left; height:36px;line-height:36px; color:#8a8a8a;}
+.pager-label span { padding:0 2px;color:#cc0000;}
+
+/*弹框*/
+
+
+/*t弹窗信息*/
+.follow-infor-div{  display: none; }
+.follow-infor-h3{ border-bottom:1px solid #ccc; padding: 5px 0;}
+.follow-infor-table{ width: 100%;}
+.follow-infor-table .td-right{ width: 150px;}
+.follow-infor-table td{ padding: 8px 3px;}
+.com-bold{ font-weight: bold;}
+.follow-infor-table .t1{ width: 400px; height: 150px;}
+.follow-infor-table .t2{ width: 400px; height: 30px;}
+.sub-btn{  width: 100px ;height: 30px ; line-height: 30px; background: #2f88c3; color: #fff;  display: block; text-align: center;}
+.add-gj{background: url("../image/milestone/adviser/dicon.png") no-repeat scroll -54px -8px ;  padding: 6px 15px; }
+.follow-p{ padding: 5px 0;}
+.del-gj{  background-position:-94px -8px ; }
+.red-label{ color: #cc0000; padding: 0 5px;}
+
+/*-----------搜索框---------*/
+.search-right select{ height: 31px;line-height: 31px; border:1px solid #cacaca;}
+.shop-list-txt{  font-size: 16px;}
+.search-left{ float: left; height: 36px;line-height: 36px;}
+.search-right{  float: right; display: inline;}
+.search-right .input-text{ padding:5px 3px;}
+.search-right .btn-orange{ height: 30px;line-height: 27px; width:70px; background-color:#fa6d51; }
+/*-----------滚动到头部---------*/
+.scroll-top-box{ z-index:100000; position:fixed; _position:absolute; bottom:50%; right:10px;
+    background:url("../image/milestone/adviser/icon.png") -160px -250px ;width:95px; height:87px; display:none;  cursor:pointer;}
+
+
+
+.tab-frame-tit .selected span {
+    color: #fff;
+    cursor: pointer;
+}
+.tab-frame-tit li a {
+    display: block;
+}
+.tab-frame-tit .selected {
+    background: none repeat scroll 0 0 #2f88c3;
+    color: #fff;
+}
+.tab-frame-tit .selected a {
+    color: #fff;
+    font-size: 14px;
+}
+.breadcrumbs {
+    padding: 5px 0;
+}
+
+
+/*消息框*/
+.message-tit-p{ background: url("../image/milestone/adviser/icon.png") -468px -453px no-repeat; height: 24px; line-height: 24px; border-bottom: 1px solid #e3e3e3; padding: 5px 0 5px 33px;}
+.message-h3{   position: absolute;  right: 11px;  top: 13px;  width: 70%; color: #757575;}
+.message-notread{position: absolute;  left: 90px;  top: 12px;  color: #757575;}
+.message-red-span{ color: #cc0000;}
+.message-clear{position: absolute;  right: 11px;  top: 13px;  color: #757575;}
+.message-ul li a{ float: left; display: block;font-size: 14px; width: 67%;  height: 24px; line-height: 24px;  overflow: hidden;  text-overflow: ellipsis;  white-space: nowrap;}
+.message-ul li span{  float: right; display: block;font-size: 12px; color: #757575;}
+.message-more{ position: absolute;  right: 10px;  bottom: 12px;  color: #017bc9;}
+/*切换框*/
+.tabBox{ padding-top: 10px;}
+.tabTit{ border:1px solid #e6e6e6;  height:30px;background-color:#f3f3f3;}
+.tabTit ul { width:100%;  }
+.tabTit li{ float:left; display:block;text-align:center; cursor:pointer;  border-right:1px solid #ccc;  width:100px; line-height:30px;height:30px; }
+.tabTit .tabHover{ background-color:#2f88c3; height:30px; }
+.tabTit .tabHover a{  color: #fff;}
+.tabCont .fore{ display:none;}
+.tabCont .foreShow{ display:block;}
+.tabCont{  margin:0 auto; padding:10px;}
+.tabCont .ac-cont{ display: block;}
+
+
+/*-----------报表弹框---------*/
+.rpt-tab-box table th{ width: 12%; text-align: center;}
+.rpt-tab-box .table-frame tbody td{ width: auto; text-align: center;}
+.tem-tit{ padding: 5px 0; border-bottom: 1px solid #ccc; margin: 10px 0;}
+.rpt-tab-box{ width: 1100px; }
+.rpt-tab-box .tabCont{ padding: 10px 0;}
+
+.tab-content{
+    min-height: 220px;
+    padding: 15px 0px;
+}
+
+
+table .header-fixed {
+    position: fixed;
+    top: 0px;
+    /* 10 less than .navbar-fixed to prevent any overlap */
+
+    z-index: 1020;
+    border-bottom: 1px solid #d5d5d5;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0, 0, 0, 0.1);
+    /* IE6-9 */
+
+    filter: progid: DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+p.w2 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 250px;
+}
+
+p.w4 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 450px;
+}

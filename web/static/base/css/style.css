@@ -1,0 +1,337 @@
+@CHARSET "UTF-8";
+.filter-header{
+    position: relative;
+    display: block;
+    height: 36px;
+    background: url("../image/gradient_effect.png") repeat;
+    padding-top: 6px;
+}
+
+.filter-header .title {
+    cursor: pointer;
+    background: url("../image/damai_iconbg.png") no-repeat -147px -172px;
+    display: block;
+    width: 133px;
+    height: 30px;
+    margin: auto;
+}
+
+.filter-header .title.off{
+    background: url("../image/damai_iconbg.png") no-repeat -9px -172px;
+}
+
+
+.filter-content,.filter-buttons {
+    position: relative;
+    margin-left: 20px;
+}
+
+.filter-buttons{
+    margin-bottom: 20px;
+}
+
+.filter-content .filter-left {
+    width: 480px;
+}
+
+.filter-content .filter-right {
+    position: absolute;
+    /* min-height: 314px; */
+    left: 550px;
+    top: 0px;
+    width: 1000px;
+}
+
+.filter-content .filter-right ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.filter-content .filter-right .commonSearch .commonSearch-header h2 {
+    font-size: 14px;
+    color: #6C6C6C;
+    font-weight: normal;
+}
+
+.filter-content .filter-right li {
+    float: left;
+    position: relative;
+    border: 1px solid #d5d5d5;
+    border-radius: 2px;
+    padding: 6px;
+    color: #6C6C6C;
+    background: #F7F7F7;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+.filter-content .filter-right li:hover,.filter-content .filter-right li.selected {
+
+    background: #fff9e8;
+}
+
+.filter-content .filter-right li span.commonSearch-text{
+    cursor: pointer;
+    padding: 6px;
+}
+
+.filter-content .filter-right li i.commonSearch-delete-btn {
+
+    cursor: pointer;
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    margin: 0px 5px;
+    font-size: 12px;
+}
+
+
+.filter-content .filter-right li i.commonSearch-delete-btn:hover {
+    color: #000;
+    font-weight: 200;
+}
+
+/*gridview样式开始*/
+.grid-view {
+    margin-top: 15px;
+}
+
+.grid-view  .gridview-header {
+    height: 42px;
+    display: block;
+    position: relative;
+    background: url("../image/gradient_effect.png") repeat;
+    border: 1px solid #d5d5d5;
+    border-bottom: none;
+    line-height: 19px;
+}
+
+.grid-view  .gridview-header .left {
+    float: left;
+    display: inline-block;
+    position: relative;
+}
+
+.grid-view  .gridview-header .right {
+    float: right;
+    display: inline-block;
+    color: #7f7f7f;
+    line-height: 42px;
+}
+
+.grid-view  .gridview-header h2 {
+    font-size: 14px;
+    color: #0068aa;
+    padding-left:30px ;
+}
+
+.grid-view .gridview-body {
+    overflow: hidden;
+    overflow-x: auto;
+    width: 100%;
+}
+
+.grid-view .gridview-footer {
+    background: url("../image/gradient_effect.png") repeat;
+    position: relative;
+    height: 48px;
+    display: block;
+}
+
+.grid-view .gridview-footer .buttons {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.grid-view-loading
+{
+    background:url("../image/loading.gif") no-repeat;
+    opacity: 0.5;
+}
+
+.grid-view table.items
+{
+    text-align: center;
+    background: white;
+    border-collapse: collapse;
+    width: 100%;
+    border-bottom: 1px solid #D9D9D9;
+    font-size: 12px;
+}
+
+.grid-view table.items th{
+    text-align: center;
+    background: none repeat scroll 0 0 #F1F1F1;
+    border: 1px solid #D5D5D5;
+    height: 36px;
+    line-height: 36px;
+    padding: 12px;
+}
+
+.grid-view table.items td{
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #CFE4CF;
+    border-style: solid;
+    border-width: 1px;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    border-color: #D9D9D9;
+    color: #000000;
+    padding: 5px 7px;
+}
+.grid-view table.items td.checkbox-column {
+    text-align: center;
+}
+.grid-view table.items td a{
+    color:rgb(153, 51, 0);
+    text-decoration: none;
+}
+
+.grid-view table.items td a:hover{
+    color:rgb(153, 51, 0);
+    text-decoration: underline;
+}
+
+.grid-view table.items th, .grid-view table.items th a
+{
+    color: #7f7f7f;
+    text-decoration: none;
+    font-weight:normal;
+    white-space: nowrap;
+}
+
+.grid-view table.items th a:hover
+{
+    color: #7f7f7f;
+}
+
+.grid-view table.items th a.asc
+{
+    background:url("../image/up.gif") right center no-repeat;
+    padding-right: 10px;
+}
+
+.grid-view table.items th a.desc
+{
+    background:url("../image/down.gif") right center no-repeat;
+    padding-right: 10px;
+}
+
+.grid-view table.items tr.even
+{
+    background: #F7F7F7;
+}
+
+.grid-view table.items tr.odd
+{
+    background: #FDFDFD;
+}
+
+.grid-view table.items tr.selected
+{
+    background: #BCE774;
+}
+
+.grid-view table.items tr:hover
+{
+    background: #ECFBD4;
+}
+
+.grid-view .link-column img
+{
+    border: 0;
+}
+
+.grid-view .button-column
+{
+    text-align: center;
+    width: 60px;
+}
+
+.grid-view .button-column img
+{
+    border: 0;
+}
+
+.grid-view .checkbox-column
+{
+    width: 15px;
+}
+
+.grid-view .summary
+{
+    height: 48px;
+    line-height: 48px;
+    text-align: left;
+    color: #686868;
+}
+
+.grid-view .pager
+{
+    position: absolute;
+    right: 25px;
+    line-height: 48px;
+    height: 48px;
+    text-align: right;
+    color: #686868;
+}
+
+/**
+ * Hide first and last buttons by default.
+ */
+ul.yiiPager .first,
+ul.yiiPager .last
+{
+    display:inline;
+}
+
+.grid-view .empty
+{
+    font-style: italic;
+}
+
+.grid-view .filters input,
+.grid-view .filters select
+{
+    width: 100%;
+    border: 1px solid #ccc;
+}
+
+ul.yiiPager .page a {
+    padding: 4px 8px;
+}
+
+ul.yiiPager a:link,
+ul.yiiPager a:visited {
+    padding: 4px 8px;
+    border: 1px solid #c3c3c3;
+    color: #686868;
+}
+
+ul.yiiPager .selected a {
+    color: #ffffff;
+    background: #1286cc;
+    border: 1px solid #0072bd;
+}
+
+ul.yiiPager li.hidden {
+    display: none;
+}
+
+/*gridview样式结束*/
+
+.star {position:relative;width:140px;height:24px;margin: auto;}
+.star span {float:left;height:19px;line-height:19px;}
+.star ul{margin:0 10px;}
+.star li{float:left;width:24px;height:22px;text-indent:-9999px;background:url('../image/star.png') no-repeat;cursor:pointer;}
+.star li.on{background-position:0 -28px;}
+.star p {padding:10px 10px 0;position:absolute;top:20px;width:159px;height:60px;z-index:100;}
+.star p em {color: #FF6600;display: block;font-style: normal;}
+.star strong {color:#ff6600;padding-left:10px;}
+.star .desc {font-size: 12px;color: #828282}
+.hidden{display:none;}
