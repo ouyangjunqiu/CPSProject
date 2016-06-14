@@ -66,6 +66,10 @@
 
                             </div>
 
+                            <div class="row padding" data-load="overlay" data-tmpl="shop-campaign-budget-warning-tmpl" data-url="<?php echo $this->createUrl("/zuanshi/dashboard/getcampaignbudgetwarning",array("nick"=>$row["nick"]));?>">
+
+                            </div>
+
                         </div>
                     </div>
                 </td>
@@ -344,7 +348,28 @@
 {{/if}}
 </script>
 
+<script type="text/x-jquery-tmpl" id="shop-campaign-budget-warning-tmpl">
+{{if isSuccess}}
+    <div>
+    <small class="glyphicon glyphicon-info-sign"></small>
+    <small>截止${data.loghour}h内,</small>
+    <small>计划预算消耗占比</small>
 
+    {{if data.low.count>0}}
+        <small>小于50%（
+        <b style="color:red;padding-right:2px">${data.low.count}个</b>
+        ）</small>
+    {{/if}}
+
+    {{if data.max.count>0}}
+        <small>大于80%(
+        <b style="color:red;padding-right:2px">${data.max.count}个</b>
+        )</small>
+    {{/if}}
+    </div>
+
+{{/if}}
+</script>
 <script type="application/javascript">
 
     $(document).ready(function(){
@@ -353,38 +378,8 @@
         $(".top-ul>li").eq(1).addClass("top-li-hover");
 
         $(".c-pager").jPager({currentPage: <?php echo $pager["page"]-1;?>, total: <?php echo $pager["count"];?>, pageSize: <?php echo $pager["page_size"];?>,events: function(dp){
-            var nick = $("input[data-ename=nick]").val();
-            var pic = $("input[data-ename=pic]").val();
-            location.href = app.url("<?php echo $this->createUrl('/zuanshi/dashboard/index');?>",{nick:nick,pic:pic,page:dp.index+1})
+            location.href = app.url("<?php echo $this->createUrl('/zuanshi/dashboard/index');?>",{page:dp.index+1})
         }});
-
-        $("div[data-role=list]").delegate("span.editor","click",function(event){
-            $(event.delegateTarget).find(".pic_read").hide();
-            $(event.delegateTarget).find(".pic_input").show();
-            $(event.delegateTarget).find(".pic_input input[name=plan_budget]").focus();
-        });
-
-        $("p[data-role=budget]").bind("keydown",function(event){
-            if(event.which == 13) {
-                var nick = $(this).attr("data-nick");
-                var ztc_budget = $(this).find("input[name=plan_ztc_budget]").val();
-                var zuanshi_budget = $(this).find("input[name=plan_zuanshi_budget]").val();
-                var budget = parseInt(ztc_budget) + parseInt(zuanshi_budget);
-                $.ajax({
-                    url: "<?php echo $this->createUrl('/main/plan/budgetset');?>",
-                    type: "post",
-                    data: {nick: nick, budget: budget, ztc_budget: ztc_budget, zuanshi_budget: zuanshi_budget},
-                    dataType: "json",
-                    success: function (resp) {
-                        if (resp.isSuccess) {
-                            location.reload();
-                        }
-                    }
-                });
-                return false;
-            }
-
-        });
 
         $("[data-toggle=popover]").popover({html : true});
 

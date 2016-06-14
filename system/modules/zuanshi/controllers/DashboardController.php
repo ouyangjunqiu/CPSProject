@@ -9,6 +9,7 @@
 namespace application\modules\zuanshi\controllers;
 
 
+use application\modules\zuanshi\model\CampaignHourRptSource;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
 use application\modules\main\model\Shop;
@@ -82,6 +83,20 @@ class DashboardController extends Controller
         $this->renderJson(array("isSuccess"=>true,"data"=>$rpt));
         return;
 
+    }
+
+    public function actionGetcampaignbudgetwarning(){
+        $nick = Env::getRequest("nick");
+        $nick = addslashes($nick);
+        $rpt = CampaignHourRptSource::fetchBudgetWarningCount($nick);
+
+        if(empty($rpt)){
+            $this->renderJson(array("isSuccess"=>false,"data"=>array("list"=>array())));
+            return;
+        }
+
+        $this->renderJson(array("isSuccess"=>true,"data"=>$rpt));
+        return;
     }
 
 }
