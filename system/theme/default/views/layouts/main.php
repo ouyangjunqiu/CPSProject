@@ -41,6 +41,7 @@
 
     <link rel="stylesheet" href="<?php echo STATICURL.'/base/js/plugins/jquery-artDialog/artDialog-simple.css'; ?>">
     <link rel="stylesheet" href="<?php echo STATICURL.'/base/js/plugins/jquery-showLoading/showLoading.css'; ?>">
+    <link rel="stylesheet" href="<?php echo STATICURL.'/base/js/plugins/dropify/css/dropify.min.css'; ?>">
 
     <?php if(!\cloud\core\utils\Env::isLogin()):?>
         <script src='<?php echo STATICURL.'/main/js/login.js'; ?>'></script>
@@ -197,7 +198,10 @@
     <script src='<?php echo STATICURL."/base/js/plugins/jquery-shiftcheckbox/jquery.shiftcheckbox.js"; ?>'></script>
 
 <script src='<?php echo STATICURL."/base/js/plugins/freezeheader/jquery.freezeheader.js"; ?>'></script>
-<script src='<?php echo STATICURL."/base/js/layout.js"; ?>'></script>
+
+    <script src='<?php echo STATICURL."/base/js/plugins/dropify/js/dropify.min.js"; ?>'></script>
+
+    <script src='<?php echo STATICURL."/base/js/layout.js"; ?>'></script>
 <script src='<?php echo STATICURL."/base/js/app.js"; ?>'></script>
     <script src='<?php echo STATICURL."/base/js/score.js"; ?>'></script>
     <script type="text/javascript">
