@@ -36,27 +36,38 @@
                 </td>
                 <td class="check-infor-td">
                     <div class="baby-box" data-role="shop-plan-case-list">
-                        <div class="baby-trusteeship baby-frame-box">
+                        <div class="baby-frame-box">
+                            <ul class="nav nav-tabs shop-nav" role="tablist">
+                                <li role="presentation" class="active"><a href="#todo_<?php echo $row["id"];?>" title="待办事项" aria-controls="todo_<?php echo $row["id"];?>" role="tab" data-toggle="tab" aria-expanded="true">
+                                        <i class="fa fa-th-list"></i><span>待办事项</span></a>
+                                </li>
+                            </ul>
 
-                            <div class="row">
-                                    <div class="col-md-2">
-                                        <h3 class="baby-frame-h3">
-                                            <i class="tit-frame-icon"></i>
-                                            待办事项
-                                        </h3>
-                                    </div>
-                                    <div class="col-md-9">
+                            <div class="tab-content">
+
+                                <div role="tabpanel" class="tab-pane active" id="todo_<?php echo $row["id"];?>">
+
+                                <div class="row">
+
+                                    <div class="col-md-12">
 
                                         <?php $this->widget("application\\modules\\main\\widgets\\ShopPlanWidget",array("nick"=>$row["nick"]));?>
+                                    </div>
+
+                                </div>
+                                <div class="overlay-wrapper" data-load="overlay" data-tmpl="shop-todo-list-tmpl" data-role="shop-todo-list" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo $this->createUrl("/main/todo/getbynick",array("nick"=>$row["nick"]));?>">
+
+                            </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-11">
                                     </div>
                                     <div class="col-md-1">
                                         <a href="<?php echo $this->createUrl("/main/todo/more",array("nick"=>$row["nick"]));?>"><small>更多..</small></a>
                                     </div>
                                 </div>
-                            <div class="overlay-wrapper" data-load="overlay" data-tmpl="shop-todo-list-tmpl" data-role="shop-todo-list" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo $this->createUrl("/main/todo/getbynick",array("nick"=>$row["nick"]));?>">
-
                             </div>
-
                         </div>
                     </div>
                 </td>
