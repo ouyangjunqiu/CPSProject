@@ -1,5 +1,7 @@
-<input type="file" class="dropify" data-height="300" data-max-file-size="2M"/>
-
+<form action="<?php echo $this->createUrl("/file/default/upload");?>" method="post">
+    <input type="file" name="file" class="dropify" data-height="300" data-max-file-size="2M"/>
+    <input type="submit" class="btn btn-warning" value="确定">
+</form>
 
 
 <script type="application/javascript">
@@ -9,12 +11,6 @@
         $(".top-ul>li").eq(2).addClass("top-li-hover");
 
         $('.dropify').dropify();
-
-        $(".c-pager").jPager({currentPage: <?php echo $pager["page"]-1;?>, total: <?php echo $pager["count"];?>, pageSize: <?php echo $pager["page_size"];?>,events: function(dp){
-            var nick = $("input[data-ename=nick]").val();
-            var pic = $("input[data-ename=pic]").val();
-            location.href = app.url("<?php echo $this->createUrl('/ztc/default/index');?>",{nick:nick,pic:pic,page:dp.index+1})
-        }});
 
     });
 

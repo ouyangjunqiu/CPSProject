@@ -2,6 +2,7 @@
 namespace application\modules\file\controllers;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
+use cloud\core\utils\File;
 
 /**
  * @file DefaultController.php
@@ -12,6 +13,11 @@ class DefaultController extends Controller
 {
     public function actionIndex(){
         $this->render("index");
+    }
+
+    public function actionUpload(){
+        $upload = File::getUpload("file","file");
+        $upload->save();
     }
 
 }
