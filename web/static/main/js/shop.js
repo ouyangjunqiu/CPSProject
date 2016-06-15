@@ -71,6 +71,26 @@ $("div[data-role=shop-base-info] form [data-click=pic-save]").click(function(eve
         return false;
     });
 
+
+    $("div[data-role=shop-budget] form [data-click=budget-save]").click(function(event){
+
+        var self = $(this).parents("form");
+        var url = self.attr("action");
+
+        $.ajax({
+            url:url,
+            type:"post",
+            data:self.serialize(),
+            dataType:"json",
+            success:function(resp){
+                if(resp.isSuccess) {
+                    location.reload();
+                }
+            }
+        });
+        return false;
+    });
+
 $("div[data-role=shop-base-info] form").keydown(function(event){
     var self = $(this);
     if(event.which == 13){

@@ -46,15 +46,7 @@
                             <div class="tab-content">
 
                                 <div role="tabpanel" class="tab-pane active" id="todo_<?php echo $row["id"];?>">
-
-                                    <div class="row">
-
-                                        <div class="col-md-12">
-
-                                            <?php $this->widget("application\\modules\\main\\widgets\\ShopPlanWidget",array("nick"=>$row["nick"]));?>
-                                        </div>
-
-                                    </div>
+                                    
                                     <div class="overlay-wrapper" data-load="overlay" data-tmpl="shop-todo-list-tmpl" data-role="shop-todo-list" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo $this->createUrl("/main/todo/getbynick",array("nick"=>$row["nick"]));?>">
                                     </div>
                                     <div class="row">

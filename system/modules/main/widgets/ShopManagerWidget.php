@@ -1,6 +1,7 @@
 <?php
 namespace application\modules\main\widgets;
 use application\modules\main\model\ShopContact;
+use application\modules\main\model\ShopPlan;
 use CWidget;
 
 /**
@@ -16,6 +17,8 @@ class ShopManagerWidget extends CWidget
     public function run(){
         $contact = ShopContact::fetchByNick($this->shop["nick"]);
         $row = array_merge($this->shop,$contact);
+        $budget = ShopPlan::model()->fetch("nick=?",array($this->shop["nick"]));
+        $row = array_merge($row,$budget);
         return $this->render("application.modules.main.widgets.views.shop",array("row"=>$row));
     }
 
