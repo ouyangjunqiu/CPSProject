@@ -47,24 +47,23 @@
 
                                 <div role="tabpanel" class="tab-pane active" id="todo_<?php echo $row["id"];?>">
 
-                                <div class="row">
+                                    <div class="row">
 
-                                    <div class="col-md-12">
+                                        <div class="col-md-12">
 
-                                        <?php $this->widget("application\\modules\\main\\widgets\\ShopPlanWidget",array("nick"=>$row["nick"]));?>
+                                            <?php $this->widget("application\\modules\\main\\widgets\\ShopPlanWidget",array("nick"=>$row["nick"]));?>
+                                        </div>
+
                                     </div>
-
-                                </div>
-                                <div class="overlay-wrapper" data-load="overlay" data-tmpl="shop-todo-list-tmpl" data-role="shop-todo-list" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo $this->createUrl("/main/todo/getbynick",array("nick"=>$row["nick"]));?>">
-
-                            </div>
-                                </div>
-                                <div class="row">
-
-                                    <div class="col-md-11">
+                                    <div class="overlay-wrapper" data-load="overlay" data-tmpl="shop-todo-list-tmpl" data-role="shop-todo-list" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo $this->createUrl("/main/todo/getbynick",array("nick"=>$row["nick"]));?>">
                                     </div>
-                                    <div class="col-md-1">
-                                        <a href="<?php echo $this->createUrl("/main/todo/more",array("nick"=>$row["nick"]));?>"><small>更多..</small></a>
+                                    <div class="row">
+
+                                        <div class="col-md-11">
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="<?php echo $this->createUrl("/main/todo/more",array("nick"=>$row["nick"]));?>"><small>更多..</small></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
