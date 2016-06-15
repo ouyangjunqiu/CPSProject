@@ -17,7 +17,11 @@ class DefaultController extends Controller
 
     public function actionUpload(){
         $upload = File::getUpload("file","file");
-        $upload->save();
+        if($upload->save()){
+            $this->renderJson(array("isSuccess"=>true,"data"=>$upload->getAttach()));
+        }else{
+            $this->renderJson(array("isSuccess"=>false,"data"=>$upload->getError()));
+        }
     }
 
 }
