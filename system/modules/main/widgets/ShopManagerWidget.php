@@ -18,6 +18,12 @@ class ShopManagerWidget extends CWidget
         $contact = ShopContact::fetchByNick($this->shop["nick"]);
         $row = array_merge($this->shop,$contact);
         $budget = ShopPlan::model()->fetch("nick=?",array($this->shop["nick"]));
+        if(empty($budget)){
+            $budget = array(
+                "ztc_budget"=>0,
+                "zuanshi_budget"=>0
+            );
+        }
         $row = array_merge($row,$budget);
         return $this->render("application.modules.main.widgets.views.shop",array("row"=>$row));
     }
