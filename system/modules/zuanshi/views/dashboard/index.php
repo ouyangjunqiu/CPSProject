@@ -494,7 +494,7 @@
             var url = target.data("url");
             $.get(url,{},function(resp){
                 var config = app.charts.default(resp.data.list,"");
-                config.chart.width = self.width();
+                config.chart.width = target.width();
                 target.highcharts(config);
                 self.tab('show');
             });
