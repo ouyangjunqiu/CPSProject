@@ -53,7 +53,7 @@
                                 </a>
                             </li>
                             <li role="presentation">
-                                <a data-type="rpt" href="#rpt_chart_<?php echo $row["id"];?>" title="近期趋势" aria-controls="rpt_chart_<?php echo $row["id"];?>" role="tab" data-toggle="tab" aria-expanded="true">
+                                <a data-type="rpt_chart" href="#rpt_chart_<?php echo $row["id"];?>" title="近期趋势" aria-controls="rpt_chart_<?php echo $row["id"];?>" role="tab" data-toggle="tab" aria-expanded="true">
                                     <i class="fa fa-line-chart"></i><span>近期趋势</span>
                                 </a>
                             </li>
@@ -93,6 +93,12 @@
                                             <a class="label label-primary" href="<?php echo $this->createUrl("/zuanshi/rpt/more",array("nick"=>$row["nick"]));?>">详情</a>
                                         </small>
                                     </div>
+                                </div>
+
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="rpt_chart_<?php echo $row["id"];?>">
+                                <div data-role="rpt_chart" data-url="<?php echo $this->createUrl("/zuanshi/rpt/getbynick",array("nick"=>$row["nick"],"shopname"=>$row["shopname"]));?>">
                                 </div>
 
                             </div>
@@ -481,6 +487,19 @@
         }});
 
         //$("[data-toggle=popover]").popover({html : true});
+        $("a[data-type=rpt_chart]").click(function(e){
+            e.preventDefault();
+            var self = $(this);
+            var target = $(self.attr("href")).find("[data-role=rpt_chart]");
+            var url = target.data("url");
+            $.get(url,{},function(resp){
+                var config = app.charts.default(resp.data.list,"");
+                config.chart.width = self.width();
+                target.highcharts(config);
+                self.tab('show');
+            });
+
+        })
 
 
     });
