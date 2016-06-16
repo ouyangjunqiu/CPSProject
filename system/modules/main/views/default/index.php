@@ -90,7 +90,7 @@ $username = empty($user)?"游客":$user["username"];
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">新建待办事项</h4>
+                <h4 class="modal-title" id="exampleModalLabel">云共享</h4>
             </div>
             <div class="modal-body">
                 <form>
@@ -150,6 +150,7 @@ $username = empty($user)?"游客":$user["username"];
             var nick = $("#ShopFileUploadModal").find("input[name=nick]").val();
             var creator = $("#ShopFileUploadModal").find("input[name=creator]").val();
             var target = $($(this).data("trigger-target")).find("[data-load=overlay]");
+            console.log(target);
             $.ajaxFileUpload({
                 url: '<?php echo $this->createUrl("/file/default/upload");?>',
                 type: 'post',
