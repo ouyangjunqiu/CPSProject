@@ -69,7 +69,7 @@ $username = empty($user)?"游客":$user["username"];
                                 <div class="overlay-wrapper" data-load="overlay" data-tmpl="shop-file-list-tmpl" data-role="shop-file-list" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo $this->createUrl("/main/file/getbynick",array("nick"=>$row["nick"]));?>">
                                 </div>
 
-                                <a data-toggle="modal" data-target="#ShopFileUploadModal" data-backdrop="false" data-logdate-index="1" data-nick="<?php echo $row["nick"];?>" data-creator="<?php echo $username;?>" data-trigger-target="#todo_<?php echo $row["id"];?>">
+                                <a data-toggle="modal" data-target="#ShopFileUploadModal" data-backdrop="false" data-logdate-index="1" data-nick="<?php echo $row["nick"];?>" data-creator="<?php echo $username;?>" data-trigger-target="#file_<?php echo $row["id"];?>">
                                     <i class="fa fa-cloud-upload"></i> 上传文件...
                                 </a>
                             </div>
