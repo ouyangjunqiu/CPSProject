@@ -117,7 +117,7 @@ $username = empty($user)?"游客":$user["username"];
        {{each(i,v) data.list}}
 
          <a class="list-group-item" href="<?php echo $this->createUrl("/file/default/down");?>&md5=${v.file_md5}" target="_blank">
-              <strong>${v.file_name}</strong><<span class="badge">${v.logdate}</span>
+              <strong>${v.file_name}</strong><span class="badge">${v.logdate}</span>
          </a>
 
        {{/each}}
