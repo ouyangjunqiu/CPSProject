@@ -24,44 +24,13 @@
             </div>
         </div>
     </div>
-    <table class="table-frame">
-        <tbody id="babyInforTb">
+    <ul>
         <?php foreach($list as $row):?>
-            <tr>
-                <td class="babyInforTb-td-left">
+           <li>
                     <?php $this->widget("application\\modules\\main\\widgets\\ShopStopManagerWidget",array("shop"=>$row));?>
-                </td>
-                <td class="check-infor-td">
-                    <div class="baby-box" data-role="shop-plan-case-list">
-                        <div class="baby-trusteeship baby-frame-box"  >
-
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <h3 class="baby-frame-h3">
-                                        <i class="tit-frame-icon"></i>
-                                        待办事项
-                                    </h3>
-                                </div>
-                                <div class="col-md-9">
-                                    <?php $this->widget("application\\modules\\main\\widgets\\ShopPlanWidget",array("nick"=>$row["nick"]));?>
-
-                                </div>
-                                <div class="col-md-1">
-
-                                </div>
-                            </div>
-                            <div class="overlay-wrapper" data-load="overlay" data-role="shop-todo-list" data-nick="<?php echo $row["nick"];?>" data-tmpl="shop-todo-list-tmpl" data-url="<?php echo $this->createUrl("/main/todo/getbynick",array("nick"=>$row["nick"]));?>">
-
-
-                            </div>
-
-                        </div>
-                    </div>
-                </td>
-            </tr>
+           </li>
         <?php endforeach;?>
-        </tbody>
-    </table>
+    </ul>
     <div class="c-pager">
     </div>
 </div>
@@ -77,70 +46,7 @@
         $(".c-pager").jPager({currentPage: <?php echo $pager["page"]-1;?>, total: <?php echo $pager["count"];?>, pageSize: <?php echo $pager["page_size"];?>,events: function(dp){
             location.href = app.url("<?php echo $this->createUrl('/main/default/index');?>",{page:dp.index+1})
         }});
-
-
-        $("tr.case-editor").delegate(".case-editor-btn","click",function(event){
-            $(event.delegateTarget).find("[data-reader=case]").hide();
-            $(event.delegateTarget).find("[data-editor=case]").show();
-        });
-
-        $("tr.case-editor").delegate(".case-cancel-btn","click",function(event){
-            location.reload();
-        });
-
-        $("tr.case-editor").delegate(".case-save-btn","click",function(event){
-            var caseid = $(this).attr("data-case-id");
-            var budget = $(event.delegateTarget).find("input[name=budget]").val();
-            var casetype = $(event.delegateTarget).find("select[name=casetype]").val();
-
-            $.ajax({
-                url:"<?php echo $this->createUrl('/main/case/modify');?>",
-                type:"post",
-                data:{id:caseid,budget:budget,casetype:casetype},
-                dataType:"json",
-                success:function(resp){
-                    $("body").hideLoading();
-                    if(resp.isSuccess) {
-                        location.reload();
-                    }
-                },
-                beforeSend:function(){
-                    $("body").showLoading();
-                },
-                error:function(){
-                    app.alert("操作失败，请确认网络连接是否正常后请重试!");
-                    $("body").hideLoading();
-                }
-            });
-        });
-
-        $("tr.case-editor").delegate(".case-del-btn","click",function(event){
-            var caseid = $(this).attr("data-case-id");
-            app.confirm('是否确定要删除!',function() {
-                $.ajax({
-                    url: "<?php echo $this->createUrl('/main/case/delete');?>",
-                    type: "post",
-                    data: {id: caseid},
-                    dataType: "json",
-                    success: function (resp) {
-                        $("body").hideLoading();
-                        if (resp.isSuccess) {
-                            location.reload();
-                        }
-                    },
-                    beforeSend: function () {
-                        $("body").showLoading();
-                    },
-                    error: function () {
-                        app.error("操作失败，请确认网络连接是否正常后请重试!");
-                        $("body").hideLoading();
-                    }
-                });
-            });
-        });
-
-
-
+        
     });
 
 
