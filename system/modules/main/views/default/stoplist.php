@@ -26,9 +26,11 @@
     </div>
     <ul>
         <?php foreach($list as $row):?>
-           <li>
+            <tr>
+                <td class="babyInforTb-td-left">
                     <?php $this->widget("application\\modules\\main\\widgets\\ShopStopManagerWidget",array("shop"=>$row));?>
-           </li>
+                </td>
+            </tr>
         <?php endforeach;?>
     </ul>
     <div class="c-pager">
@@ -46,7 +48,7 @@
         $(".c-pager").jPager({currentPage: <?php echo $pager["page"]-1;?>, total: <?php echo $pager["count"];?>, pageSize: <?php echo $pager["page_size"];?>,events: function(dp){
             location.href = app.url("<?php echo $this->createUrl('/main/default/index');?>",{page:dp.index+1})
         }});
-        
+
     });
 
 

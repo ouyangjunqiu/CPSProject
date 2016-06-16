@@ -238,8 +238,8 @@
                         </div>
                         <div class="row">
 
-                            <div class="col-md-3"><small>直通车预算:</small></div>
-                            <div class="col-md-7">
+                            <div class="col-md-4"><small>直通车预算:</small></div>
+                            <div class="col-md-6">
                                 <p class="pic_read">
                                     <strong><?php echo $row["ztc_budget"];?></strong>
                                 </p>
@@ -255,8 +255,8 @@
 
                         </div>
                         <div class="row">
-                            <div class="col-md-3"><small>钻展预算:</small></div>
-                            <div class="col-md-7">
+                            <div class="col-md-4"><small>钻展预算:</small></div>
+                            <div class="col-md-6">
                                 <p class="pic_read"><strong><?php echo $row["zuanshi_budget"];?></strong></p>
                                 <p class="pic_input form_writer" style="display: none">
                                     <input type="text" value="<?php echo $row["zuanshi_budget"];?>"  name="zuanshi_budget"/>

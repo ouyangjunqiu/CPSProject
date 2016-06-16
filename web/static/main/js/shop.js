@@ -18,6 +18,12 @@ $("div[data-role=shop-base-info]").delegate("span.editor","click",function(event
         $(event.delegateTarget).find(".pic_input input[name=qq]").focus();
     });
 
+    $("div[data-role=shop-budget]").delegate("span.editor","click",function(event){
+        $(event.delegateTarget).find(".pic_read").hide();
+        $(event.delegateTarget).find(".pic_input").show();
+        $(event.delegateTarget).find(".pic_input input[name=ztc_budget]").focus();
+    });
+
 $("div[data-role=shop-base-info] form [data-click=pic-save]").click(function(event){
     var url = $(this).attr("data-url");
     var self = $(this).parents("form");
