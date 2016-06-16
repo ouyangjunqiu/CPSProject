@@ -238,6 +238,19 @@
                         </div>
                         <div class="row">
 
+                            <div class="col-md-4"><small>总预算:</small></div>
+                            <div class="col-md-6">
+                                <strong><?php echo @($row["ztc_budget"]+$row["zuanshi_budget"]);?></strong>
+                            </div>
+                            <div class="col-md-2">
+                                <p class="pic_read">
+                                    <span class="editor"><i class="glyphicon glyphicon-pencil"></i></span>
+                                </p>
+                            </div>
+
+                        </div>
+                        <div class="row">
+
                             <div class="col-md-4"><small>直通车预算:</small></div>
                             <div class="col-md-6">
                                 <p class="pic_read">
@@ -248,9 +261,6 @@
                                 </p>
                             </div>
                             <div class="col-md-2">
-                                <p class="pic_read">
-                                    <span class="editor"><i class="glyphicon glyphicon-pencil"></i></span>
-                                </p>
                             </div>
 
                         </div>
