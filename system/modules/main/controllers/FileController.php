@@ -45,7 +45,9 @@ class FileController extends Controller
     }
 
     public function actionGetbynick(){
-        $this->renderJson(array("isSuccess"=>false));
+        $nick = Env::getRequest("nick");
+        $list = ShopFile::model()->fetchAll("nick=? ORDER BY id DESC",array($nick));
+        $this->renderJson(array("isSuccess"=>true,"data"=>array("list"=>$list)));
     }
 
 

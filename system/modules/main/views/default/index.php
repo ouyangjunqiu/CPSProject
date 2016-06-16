@@ -1,3 +1,8 @@
+<?php
+$user = \cloud\core\utils\Env::getUser();
+$username = empty($user)?"游客":$user["username"];
+?>
+<
 <script src='<?php echo STATICURL."/main/js/shop.js"; ?>'></script>
 
 <link rel="stylesheet" href="<?php echo STATICURL.'/base/css/index.css'; ?>">
@@ -62,10 +67,10 @@
                             </div>
 
                             <div role="tabpanel" class="tab-pane" id="file_<?php echo $row["id"];?>">
-                                <div class="overlay-wrapper" data-load="overlay" data-tmpl="shop-file-list-tmpl" data-role="shop-todo-list" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo $this->createUrl("/main/file/getbynick",array("nick"=>$row["nick"]));?>">
+                                <div class="overlay-wrapper" data-load="overlay" data-tmpl="shop-file-list-tmpl" data-role="shop-file-list" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo $this->createUrl("/main/file/getbynick",array("nick"=>$row["nick"]));?>">
                                 </div>
 
-                                <a data-toggle="modal" data-target="#ShopFileUploadModal" data-backdrop="false" data-logdate-index="1" class="list-group-item">
+                                <a data-toggle="modal" data-target="#ShopFileUploadModal" data-backdrop="false" data-logdate-index="1" data-nick="<?php echo $row["nick"];?>" data-creator="<?php echo $username;?>" data-trigger-target="#todo_<?php echo $row["id"];?>">
                                     <i class="fa fa-cloud-upload"></i> 上传文件...
                                 </a>
                             </div>
@@ -107,6 +112,19 @@
 
 <script src='<?php echo STATICURL."/base/js/plugins/ajaxfileupload/ajaxfileupload.js"; ?>'></script>
 
+<script type="text/x-jquery-tmpl" id="shop-file-list-tmpl">
+    <div class="list-group">
+
+       {{each(i,v) data.list}}
+
+         <a class="list-group-item" href="<?php echo $this->createUrl("/file/default/down");?>&md5=${v.file_md5}" target="_blank">
+              <strong>${v.file_name}</strong>
+         </a>
+
+       {{/each}}
+   </div>
+</script>
+
 <script type="application/javascript">
 
     $(document).ready(function(){
@@ -125,12 +143,14 @@
             var self = $(this);
             var button = $(event.relatedTarget); // Button that triggered the modal
             self.find("input[name=nick]").val(button.data("nick"));
+            self.find("input[name=creator]").val(button.data("creator"));
             self.find("[data-click=fileupload]").attr("data-trigger-target",button.data("trigger-target"));
         });
 
         $("[data-click=fileupload]").click(function(){
             var nick = $("#ShopFileUploadModal").find("input[name=nick]").val();
             var creator = $("#ShopFileUploadModal").find("input[name=creator]").val();
+            var target = $($(this).data("trigger-target")).find("[data-load=overlay]");
             $.ajaxFileUpload({
                 url: '<?php echo $this->createUrl("/file/default/upload");?>',
                 type: 'post',
@@ -139,7 +159,6 @@
                 dataType: 'json', //返回值类型，一般设置为json、application/json
                 elementIds: {}, //传递参数到服务器
                 success: function(resp, status){
-                    console.log(data);
                     $.ajax({
                         url:"<?php echo $this->createUrl("/main/file/add");?>",
                         type:"post",
@@ -148,6 +167,7 @@
                         success:function(){
 
                             $("#ShopFileUploadModal").modal('hide');
+                            target.DataLoad();
 
                         }
                     })
