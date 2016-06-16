@@ -24,7 +24,8 @@
             </div>
         </div>
     </div>
-    <ul>
+    <table>
+        <tbody>
         <?php foreach($list as $row):?>
             <tr>
                 <td class="babyInforTb-td-left">
@@ -32,7 +33,8 @@
                 </td>
             </tr>
         <?php endforeach;?>
-    </ul>
+        </tbody>
+    </table>
     <div class="c-pager">
     </div>
 </div>
