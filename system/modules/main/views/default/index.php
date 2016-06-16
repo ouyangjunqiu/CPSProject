@@ -2,7 +2,6 @@
 $user = \cloud\core\utils\Env::getUser();
 $username = empty($user)?"游客":$user["username"];
 ?>
-<
 <script src='<?php echo STATICURL."/main/js/shop.js"; ?>'></script>
 
 <link rel="stylesheet" href="<?php echo STATICURL.'/base/css/index.css'; ?>">
@@ -118,7 +117,7 @@ $username = empty($user)?"游客":$user["username"];
        {{each(i,v) data.list}}
 
          <a class="list-group-item" href="<?php echo $this->createUrl("/file/default/down");?>&md5=${v.file_md5}" target="_blank">
-              <strong>${v.file_name}</strong>
+              <strong>${v.file_name}</strong><small>${v.logdate}</small>
          </a>
 
        {{/each}}
