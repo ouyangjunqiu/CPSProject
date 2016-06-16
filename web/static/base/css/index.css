@@ -7,31 +7,6 @@
     background: #fff; opacity: 0.9;z-index: 3;
 }
 
-.shop-data-box{    position: fixed; left: 70px; top: 200px;width: 155px;  z-index: 1;}
-.shop-data-box .bold{  font-size: 30px;}
-.shop-data-ul { overflow: hidden;width:100%;}
-.shop-data-ul li{ float: left;height: 120px; width: 100%;  position: relative;   color: #fff;  background: #2f88c3; margin-bottom: 1px; }
-.shop-data-ul li p{ text-align: center; padding-top: 5px;}
-.shop-data-box .fl{ padding-top: 22px; width: 80%; margin:0 auto;}
-.shop-data-ul li a{color: #ffffff}
-.shop-data-ul  li .up-icon{ background-position:  -15px -7px;   }
-.shop-data-ul  li .down-icon{ background-position:  -35px -7px;  }
-.shop-data-ul  li .uniformity{ font-size: 16px;font-weight: bold;color: #04A3B4;text-decoration: none;width: 14px;top: 24px;}
-.s-man-dl{ width: 80%; margin: 0 auto;}
-.s-man-dl dd{  height: 55px;  ; border: 1px solid #ccc; margin-bottom: 10px;}
-.s-man-dl dd p{ font-size: 12px; color: #efefef;}
-.s-man-dl dd .s-man-m,.s-man-dl dd .s-man-a{ font-size: 18px;}
-#shop-data-ul .c2{ height: 190px;}
-.shop-data-ul .car-li{  background:none; height: 97px; text-align: center; position: relative;}
-.shop-data-ul .c2{  background:#3499dc;}
-.shop-data-ul .c6{  background:#fa6e50;}
-.shop-data-ul .c8{  background:#84bc66;}
-.shop-data-ul .c12{  background:#c064bf;}
-.shop-data-ul li  .car-del-a{ position: absolute;  right: 0px; top: 0px; width: 23px; height: 23px; display: block;
-    background: url('../image/milestone/adviser/icon.png') no-repeat -2px -422px ; opacity: 0.7;}
-.shop-data-hbox{ display: none;  position: fixed;  left: 176px;  top: 200px;   z-index: 1; width: 58px; height: 73px;}
-.shop-data-hbox a{ width: 58px; height: 73px;background: url('../image/milestone/adviser/icon.png') no-repeat -57px -388px ;position: absolute; display: block; }
-
 .scroll-search{  position: fixed;  width: 100%;  left: 0;  top: 0;
     box-shadow: 0 1px 5px #ddd;
     border-bottom: 1px solid #e6e6e6; background: #fff;
@@ -44,19 +19,15 @@
 .shop-list-icon{ padding: 10px 20px ;background: url('../image/milestone/adviser/icon.png') no-repeat -6px -314px;}
 .stopShop-a{ color: #017bc9; padding:0 5px; }
 
-.index-tabBox .tabCont{ padding: 5px 0;}
-.index-tabBox .tabTit{ background: none; border: none;}
-.index-tabBox .tabTit li{ background: #f3f3f3; border: 1px solid #e6e6e6;}
-.index-tabBox .tabTit .tabHover{background: #2f88c3;}
 .table-frame tbody .babyInforTb-td-left{ width: 350px;}
-.rob-status-a{ display: none;}
-.aShow{ display: block;}
-.rob-del-a{}
-.beizhu-textarea{ font-size: 12px;}
-.beizhu-editro-a{ padding: 0 0 0 10px; color: #2c82bb;}
-.beizhu-textarea-p{ display: none;}
-.beizhu-textarea-p .save-btn{ margin-bottom: 12px; border: none; background: #3499dc; padding: 1px 5px; border-radius: 2px; color: #fff; font-size: 12px;}
-.beizhu-textarea-lp{ width: 76%;}
+
+.shop-info-wrap{
+    display: block;
+    width: 350px;
+    min-height: 300px;
+}
+
+
 .baby-frame-box{padding: 0px 0px 0px 25px; }
 .tit-frame-icon{padding: 0px 6px;background: url('../image/milestone/adviser/icon.png') no-repeat -9px -396px ;}
 .baby-frame-h3{font-weight: normal;padding: 5px 0; color: #434343;font-size: 1.17em;}

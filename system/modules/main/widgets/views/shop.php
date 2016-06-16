@@ -1,5 +1,5 @@
-<a name="<?php echo $row["nick"];?>" class="_anchor"></a>
-<div class="index-tabBox">
+<div class="shop-info-wrap">
+    <a name="<?php echo $row["nick"];?>" class="_anchor"></a>
     <div class="tab">
         <ul class="nav nav-tabs shop-nav" role="tablist">
             <li role="presentation" class="active"><a href="#home_<?php echo $row["id"];?>" title="基本信息" aria-controls="home_<?php echo $row["id"];?>" role="tab" data-toggle="tab"><i class="fa fa-home"></i><span>基本信息</span></a></li>
