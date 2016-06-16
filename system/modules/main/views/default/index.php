@@ -36,27 +36,33 @@
                 </td>
                 <td class="check-infor-td">
                     <div class="baby-box" data-role="shop-plan-case-list">
-                        <div class="baby-frame-box">
-                            <ul class="nav nav-tabs shop-nav" role="tablist">
-                                <li role="presentation" class="active"><a href="#todo_<?php echo $row["id"];?>" title="待办事项" aria-controls="todo_<?php echo $row["id"];?>" role="tab" data-toggle="tab" aria-expanded="true">
-                                        <i class="fa fa-th-list"></i><span>待办事项</span></a>
-                                </li>
-                            </ul>
+                        <ul class="nav nav-tabs shop-nav" role="tablist">
+                            <li role="presentation" class="active"><a href="#todo_<?php echo $row["id"];?>" title="待办事项" aria-controls="todo_<?php echo $row["id"];?>" role="tab" data-toggle="tab" aria-expanded="true">
+                                    <i class="fa fa-th-list"></i><span>待办事项</span></a>
+                            </li>
+                            <li role="presentation"><a href="#file_<?php echo $row["id"];?>" title="云共享" aria-controls="file_<?php echo $row["id"];?>" role="tab" data-toggle="tab" aria-expanded="true">
+                                    <i class="fa fa-cloud"></i><span>云共享</span></a>
+                            </li>
+                        </ul>
 
-                            <div class="tab-content">
+                        <div class="tab-content">
 
-                                <div role="tabpanel" class="tab-pane active" id="todo_<?php echo $row["id"];?>">
+                            <div role="tabpanel" class="tab-pane active" id="todo_<?php echo $row["id"];?>">
 
-                                    <div class="overlay-wrapper" data-load="overlay" data-tmpl="shop-todo-list-tmpl" data-role="shop-todo-list" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo $this->createUrl("/main/todo/getbynick",array("nick"=>$row["nick"]));?>">
+                                <div class="overlay-wrapper" data-load="overlay" data-tmpl="shop-todo-list-tmpl" data-role="shop-todo-list" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo $this->createUrl("/main/todo/getbynick",array("nick"=>$row["nick"]));?>">
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-11">
                                     </div>
-                                    <div class="row">
-
-                                        <div class="col-md-11">
-                                        </div>
-                                        <div class="col-md-1">
-                                            <a href="<?php echo $this->createUrl("/main/todo/more",array("nick"=>$row["nick"]));?>"><small>更多..</small></a>
-                                        </div>
+                                    <div class="col-md-1">
+                                        <a href="<?php echo $this->createUrl("/main/todo/more",array("nick"=>$row["nick"]));?>"><small>更多..</small></a>
                                     </div>
+                                </div>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="file_<?php echo $row["id"];?>">
+                                <div class="overlay-wrapper" data-load="overlay" data-tmpl="shop-file-list-tmpl" data-role="shop-todo-list" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo $this->createUrl("/main/file/getbynick",array("nick"=>$row["nick"]));?>">
                                 </div>
                             </div>
                         </div>
@@ -69,6 +75,8 @@
     <div class="c-pager">
     </div>
 </div>
+
+
 
 <?php $this->widget("application\\modules\\main\\widgets\\ShopTodoWidget");?>
 

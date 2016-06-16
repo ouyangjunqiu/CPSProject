@@ -31,45 +31,6 @@ class DefaultController extends Controller
 	 * 店铺列表
 	 * @return void
 	 */
-	public function actionIndex2()
-	{
-		$page = Env::getRequestWithSessionDefault("page",1,"main.default.index.page");
-		$pageSize = Env::getRequestWithSessionDefault("page_size",PAGE_SIZE,"main.default.index.pagesize");
-		$q = Env::getRequestWithSessionDefault("q","","main.default.index.q");
-		$q = addslashes($q);
-		$page = (int)$page;
-		$pageSize = (int)$pageSize;
-
-		$criteria = new \CDbCriteria();
-		$criteria->addCondition("status='0'");
-		if(!empty($nick)) {
-			$criteria->addSearchCondition("nick",$nick);
-		}
-		if(!empty($q)) {
-			$criteria->addCondition("(nick LIKE '%{$q}%' OR pic LIKE '%{$q}%' OR zuanshi_pic LIKE '%{$q}%' OR bigdata_pic LIKE '%{$q}%' OR ztc_pic  LIKE '%{$q}%')");
-		}
-		if(!empty($shoptype)) {
-			$criteria->addCondition("shoptype = '{$shoptype}'");
-		}
-
-		$count = Shop::model()->count($criteria);
-
-		$criteria->offset = ($page-1)*$pageSize;
-		$criteria->limit = $pageSize;
-
-		$list = Shop::model()->fetchAll($criteria);
-
-		foreach($list as &$row){
-			$row["plan"] = ShopPlan::fetchRunPlanByNick($row["nick"]);
-			$row["isSure"] = ShopSure::model()->exists("year=? AND week=? AND nick=?",array(date("Y"),date("W"),$row["nick"]));
-
-		}
-
-		$casetypes = ShopCaseType::makeSelect2Json();
-
-		$this->render("index",array("list"=>$list,"case_types"=>$casetypes,"pager"=>array("count"=>$count,"page"=>$page,"page_size"=>$pageSize),"query"=>array("q"=>$q)));
-	}
-
 	public function actionIndex()
 	{
 		$page = Env::getRequestWithSessionDefault("page",1,"main.default.index.page");
@@ -101,7 +62,7 @@ class DefaultController extends Controller
 
 		$list = Shop::model()->fetchAll($criteria);
 
-		$this->render("index2",array("list"=>$list,"pager"=>array("count"=>$count,"page"=>$page,"page_size"=>$pageSize),"query"=>array("q"=>$q,"pic"=>$pic)));
+		$this->render("index",array("list"=>$list,"pager"=>array("count"=>$count,"page"=>$page,"page_size"=>$pageSize),"query"=>array("q"=>$q,"pic"=>$pic)));
 	}
 
 	/**

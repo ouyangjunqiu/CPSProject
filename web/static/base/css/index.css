@@ -28,49 +28,8 @@
 }
 
 
-.baby-frame-box{padding: 0px 0px 0px 25px; }
-.tit-frame-icon{padding: 0px 6px;background: url('../image/milestone/adviser/icon.png') no-repeat -9px -396px ;}
-.baby-frame-h3{font-weight: normal;padding: 5px 0; color: #434343;font-size: 1.17em;}
-.baby-frame-r{display: inline-block;position: absolute;right: 10px;top: 10px;}
-.baby-frame-cont{ padding: 20px 0px; overflow: hidden;}
-.baby-frame-i{width: 290px; float: left; margin-right: 15px; display: inline;}
-.baby-frame-ul { width: 100%; overflow: hidden;}
-.baby-frame-ul li{ float: left;}
-.baby-img-li{ width: 80px;}
-.baby-img-li p{ font-size: 12px; text-align: center; padding-bottom: 3px;}
-.baby-cont-li p{ font-size: 12px; padding: 0 0px 3px 3px; color: #434343;}
-.baby-cont-li { width: 190px;  margin-left: 5px; padding: 0px 0 5px 0;}
-.baby-cont-li .baby-tit-p{  height: 20px;  overflow: hidden;  text-overflow: ellipsis;  white-space: nowrap; font-weight: bold;}
-.baby-img-li img{ }
-.baby-operation{ padding: 10px 0; overflow: hidden;}
-.baby-operation a{ display: inline;  border-radius: 5px;  font-size: 12px; float: left; padding: 2px 5px 2px 0;
-    text-align: center ; margin-right: 2px; color: #2c82bb; }
-.baby-trusteeship .baby-frame-i{ padding-bottom: 20px;  position: relative; height: 115px; z-index: 2;}
-.baby-img-li .baby-img-p{ position: relative; width: 80px; line-height: 85px; z-index: -1; }
-.status-span{ display: block; width: 100%;height: 20px; line-height: 20px; background: #f1f1f1; text-align: center; position: absolute; opacity: 0.9; right: 0; bottom: 4px;}
-.baby-plan .baby-plan-p{ color: #434343; font-size: 12px;padding: 0px 5px 0px 15px; overflow: hidden;  text-overflow: ellipsis;  white-space: nowrap; height: 20px; line-height: 20px;}
-.baby-plan .baby-plan-p:first-child{ padding-top: 10px;}
-.baby-plan .baby-frame-i{ width: 140px; height: 100px; border: 1px solid #ccc;border-radius: 10px; margin-right: 10px; margin-bottom: 5px; position: relative;}
-.plan-execl{ color: #fff;border-radius: 5px; background: #3499dc; padding: 1px 5px; }
-.baby-cost-p span{ font-size: 14px;}
-.baby-tgjh{   height: 20px;  overflow: hidden;  text-overflow: ellipsis;  white-space: nowrap;}
-.dby-p{padding: 3px 0;}
-.hide-infor{ display: none;}
-.infor-more-p a{ color: #017bc9;}
-.babyinfor-frame-div .dayBudget-p{ position: absolute; right: 130px; font-size: 12px; background: #fa6e50; color: #fff;
-    text-align: center; padding: 0 10px; height: 30px;line-height: 30px; border-radius: 0 15px 15px 0}
-.babyinfor-frame-div .dayBudget-p span{font-size: 16px; padding: 0 5px}
+.baby-box{padding-left: 15px;}
 
-.top-baby-ul{ width: 100%; overflow: hidden;}
-.top-baby-ul li{ float: left;}
-.top-babyimg-li{width: 80px;}
-.top-babyimg-li img{ }
-.top-babycont-li{ width: 170px; text-align: left; font-size: 12px;}
-.top-babycont-li p{ padding: 1px  2px 0 5px;}
-.top-babycont-li .top-baby-tit{ width: 170px; text-align: left;  height: 20px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap; font-weight: bold;  }
 .t01{ color: #CC0000;}
 
 .index-keyword-cont{ display: none;}
