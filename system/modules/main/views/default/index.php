@@ -155,12 +155,6 @@ $username = empty($user)?"游客":$user["username"];
             var nick = $("#ShopFileUploadModal").find("input[name=nick]").val();
             var creator = $("#ShopFileUploadModal").find("input[name=creator]").val();
             var target = $($(this).data("trigger-target")).find("[data-load=overlay]");
-            $("body").ajaxStart(function(){
-                console.log("ajax start");
-                $(this).showLoading();
-            }).ajaxComplete(function(){
-                $(this).hideLoading();
-            });
 
             $.ajaxFileUpload({
                 url: '<?php echo $this->createUrl("/file/default/upload");?>',
