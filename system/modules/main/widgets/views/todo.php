@@ -338,7 +338,6 @@
 
         $('#ShopTodoOpModal').find(".btn-primary").click(function(){
             var id = $('#ShopTodoOpModal').data("id");
-            console.log(id);
             var target = $($(this).data("trigger-target")).find("[data-load=overlay]");
             $.ajax({
                 url:"<?php echo $urls["todo_done_url"];?>",
@@ -384,7 +383,7 @@
             var self = $(this);
             var button = $(event.relatedTarget); // Button that triggered the modal
             self.find(".modal-body").html("<pre>"+button.data("content")+"</pre>");
-            self.attr("data-id",button.data("id"));
+            $('#ShopTodoOpModal').attr("data-id",button.data("id"));
             $('#ShopTodoOpModal').find(".btn").attr("data-trigger-target",button.data("trigger-target"));
 
         });
