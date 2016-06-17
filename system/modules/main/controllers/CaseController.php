@@ -8,8 +8,6 @@ use cloud\core\utils\ExtRangeDate;
 use application\modules\main\model\ShopCase;
 use application\modules\main\model\ShopCaseLog;
 use application\modules\main\model\ShopCaseRun;
-use application\modules\main\model\ShopCaseType;
-use application\modules\main\model\ShopSure;
 
 /**
  * Class CaseController
@@ -213,26 +211,6 @@ class CaseController extends Controller
         }
 
         $this->render("log",array("logs"=>$logs,"query"=>array("nick"=>$nick)));
-    }
-
-    /**
-     * 确认推广case
-     */
-    public function actionSure(){
-        $data["nick"] = Env::getRequest("nick");
-        $data["year"] = date("Y");
-        $data["week"] = date("W");
-        $data["log_date"] = date("Y-m-d");
-        $user = \Yii::app()->session->get("user");
-        $data["username"] = empty($user)?"system":$user["username"];
-
-        $model = new ShopSure();
-        $model->setAttributes($data);
-        if($model->save()){
-            $this->renderJson(array("isSuccess"=>true,"data"=>$model));
-        }else{
-            $this->renderJson(array("isSuccess"=>false,"msg"=>$model->getErrors()));
-        }
     }
 
 

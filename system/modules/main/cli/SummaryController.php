@@ -9,13 +9,6 @@ use application\modules\main\model\SummaryDetailForZuanshi;
 
 class SummaryController extends Controller
 {
-    public function actionIndex(){
-        Summary::cal();
-    }
 
-    public function actionDetail(){
-        SummaryDetailForZtc::cal();
-        SummaryDetailForZuanshi::cal();
-    }
 
 }

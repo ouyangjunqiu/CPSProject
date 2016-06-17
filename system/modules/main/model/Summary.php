@@ -41,17 +41,4 @@ class Summary extends Model
         );
     }
 
-    public static function cal(){
-        $data["log_date"]  = date("Y-m-d");
-        $data["shoptotal"] = Shop::model()->count("status=?",array(0));
-        $data["casetotal"] = ShopCase::summary();
-        $data["caseruntotal"] = ShopCaseRun::summaryAll();
-        $data["caseruntotal_ztc"] = ShopCaseRun::summaryZtc();
-        $data["caseruntotal_zuanshi"] = ShopCaseRun::summaryZuanshi();
-
-        self::model()->deleteAll("log_date=?",array( $data["log_date"]));
-        $model = new self();
-        $model->setAttributes($data);
-        return $model->save();
-    }
 }

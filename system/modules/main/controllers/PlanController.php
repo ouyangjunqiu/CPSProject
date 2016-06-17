@@ -10,11 +10,8 @@ namespace application\modules\main\controllers;
 
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Cache;
-use cloud\core\utils\Curl;
 use cloud\core\utils\Env;
 use application\modules\main\model\ShopPlan;
-use application\modules\main\model\ShopSure;
-use cloud\core\utils\Url;
 
 class PlanController extends Controller
 {
@@ -103,13 +100,6 @@ class PlanController extends Controller
 
     }
 
-    public function actionGet(){
-        $nick = Env::getRequest("nick");
-        $row["plan"] = ShopPlan::fetchRunPlanByNick($nick);
-        $row["isSure"] = ShopSure::model()->exists("year=? AND week=? AND nick=?",array(date("Y"),date("W"),$nick));
-        $row["nick"] = $nick;
-        $this->renderJson($row);
-    }
 
     public function actionGetbynick(){
         $nick = Env::getRequest("nick");

@@ -8,46 +8,10 @@ namespace application\modules\main\controllers;
 
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
-use application\modules\main\model\ShopCase;
 use application\modules\main\model\ShopCaseRun;
-use application\modules\main\model\ShopCaseRunRptWeek;
-use application\modules\main\model\ShopPlan;
 
 class CaserunController extends Controller
 {
-    /**
-     * 布局类型
-     * @var string
-     */
-    public $layout = 'application.theme.default.views.layouts.main';
-
-    /**
-     * 实施方案首页
-     */
-    public function actionIndex2(){
-        $nick = Env::getRequestWithSessionDefault("nick","","main.caserun.index2.nick");
-        if(empty($nick)){
-            $this->showMessage("请选择一个店铺进入",$this->createUrl("/main/default/index"));
-        }
-
-        $nick = addslashes($nick);
-
-        $criteria = new \CDbCriteria();
-        $criteria->addCondition("nick='{$nick}'");
-        $plan = ShopPlan::model()->fetch($criteria);
-        if(empty($plan)){
-            $this->error("未找到该店铺的信息",$this->createUrl("/main/default/index"));
-            return;
-        }
-        $cases = ShopCase::model()->fetchAll("nick=? AND isstop=?",array($nick,0));
-        foreach($cases as &$case){
-            $case["run"] = ShopCaseRun::model()->fetchAllByOrder("caseid='{$case["caseid"]}'");
-            $case["rpt"] = ShopCaseRunRptWeek::fetchLastWeekByCaseId($case["id"]);
-        }
-
-        $this->render("index2",array("plan"=>$plan,"cases"=>$cases,"query"=>array("nick"=>$plan["nick"],"planid"=>$plan["planid"])));
-
-    }
 
     /**
      * 添加推广方案

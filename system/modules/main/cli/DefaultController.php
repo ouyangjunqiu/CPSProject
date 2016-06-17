@@ -8,7 +8,4 @@ class DefaultController extends Controller
 
     }
 
-    public function actionTest(){
-        Test::test();
-    }
 }
