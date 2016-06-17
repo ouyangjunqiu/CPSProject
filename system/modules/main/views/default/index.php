@@ -155,7 +155,13 @@ $username = empty($user)?"游客":$user["username"];
             var nick = $("#ShopFileUploadModal").find("input[name=nick]").val();
             var creator = $("#ShopFileUploadModal").find("input[name=creator]").val();
             var target = $($(this).data("trigger-target")).find("[data-load=overlay]");
-            console.log(target);
+            $("body").ajaxStart(function(){
+                $("#ShopFileUploadModal").modal('hide');
+                $(this).showLoading();
+            }).ajaxComplete(function(){
+                $(this).hideLoading();
+            });
+
             $.ajaxFileUpload({
                 url: '<?php echo $this->createUrl("/file/default/upload");?>',
                 type: 'post',
@@ -170,15 +176,12 @@ $username = empty($user)?"游客":$user["username"];
                         dataType:"json",
                         data:{nick:nick,creator:creator,file_md5:resp.data.md5,file_name:resp.data.name},
                         success:function(){
-
-                            $("#ShopFileUploadModal").modal('hide');
                             target.DataLoad();
-
                         }
                     })
                 },
                 error: function(data, status, e){
-                    console.log(e);
+                    app.error("上传失败，请确认网络连接是否正常后请重试!");
                 }
             });
         });
