@@ -108,7 +108,7 @@
                     <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}]</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
                     </a>
                 {{else}}
-                   <a data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" class="list-group-item list-group-item-danger" data-content="${v.content}">
+                   <a data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" class="list-group-item list-group-item-danger" data-content="${v.content}" data-trigger-target="#todo_${v.md5}">
                     <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}]</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
                    </a>
                 {{/if}}
@@ -127,7 +127,7 @@
                     <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}]</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
                     </a>
                 {{else}}
-                   <a data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" class="list-group-item list-group-item-danger" data-content="${v.content}">
+                   <a data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" class="list-group-item list-group-item-danger" data-content="${v.content}"  data-trigger-target="#todo_${v.md5}">
                     <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}]</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
                    </a>
                 {{/if}}
@@ -145,7 +145,7 @@
                     <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}]</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
                     </a>
                 {{else}}
-                   <a data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" class="list-group-item" data-content="${v.content}">
+                   <a data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" class="list-group-item" data-content="${v.content}"  data-trigger-target="#todo_${v.md5}">
                     <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}]</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
                    </a>
                 {{/if}}
@@ -163,7 +163,7 @@
                     <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}]</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
                     </a>
                 {{else}}
-                   <a data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" class="list-group-item" data-content="${v.content}">
+                   <a data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" class="list-group-item" data-content="${v.content}"  data-trigger-target="#todo_${v.md5}">
                     <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}]</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
                     <small class="label label-success"><i class="fa fa-clock-o"></i> ${v.days} days</small>
                    </a>
@@ -266,7 +266,7 @@
                     <small class="text-muted pull-right label label-success"><i class="fa fa-clock-o"></i> {{if v.days==0}}今天{{else}}${v.days}天前{{/if}}</small>
                     ${v.nick}
                 </a>
-                <a data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" data-content="${v.content}">
+                <a data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" data-content="${v.content}" data-trigger-target="#todo_${v.md5}">
 
                     <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}]</small>{{html v.title}}
                </a>
@@ -312,6 +312,7 @@
 
         $('#ShopTodoOpModal').find(".btn-default").click(function(){
             var id = $('#ShopTodoOpModal').data("id");
+            var target = $($(this).data("trigger-target")).find("[data-load=overlay]");
             $.ajax({
                 url:"<?php echo $urls["todo_del_url"];?>",
                 type:"post",
@@ -320,7 +321,7 @@
                 success:function(resp){
                     $("body").hideLoading();
                     if(resp.isSuccess) {
-                       location.reload();
+                        target && target.DataLoad();
                     }
                 },
                 beforeSend:function(){
@@ -337,6 +338,7 @@
 
         $('#ShopTodoOpModal').find(".btn-primary").click(function(){
             var id = $('#ShopTodoOpModal').data("id");
+            var target = $($(this).data("trigger-target")).find("[data-load=overlay]");
             $.ajax({
                 url:"<?php echo $urls["todo_done_url"];?>",
                 type:"post",
@@ -345,7 +347,7 @@
                 success:function(resp){
                     $("body").hideLoading();
                     if(resp.isSuccess) {
-                        location.reload();
+                        target && target.DataLoad();
                     }
                 },
                 beforeSend:function(){

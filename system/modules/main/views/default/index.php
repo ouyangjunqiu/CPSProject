@@ -41,24 +41,24 @@ $username = empty($user)?"游客":$user["username"];
                 <td class="check-infor-td">
                     <div class="baby-box" data-role="shop-plan-case-list">
                         <ul class="nav nav-tabs shop-nav" role="tablist">
-                            <li role="presentation" class="active"><a href="#todo_<?php echo $row["id"];?>" title="待办事项" aria-controls="todo_<?php echo $row["id"];?>" role="tab" data-toggle="tab" aria-expanded="true">
+                            <li role="presentation" class="active"><a href="#todo_<?php echo md5($row["nick"]);?>" title="待办事项" aria-controls="todo_<?php echo md5($row["nick"]);?>" role="tab" data-toggle="tab" aria-expanded="true">
                                     <i class="fa fa-th-list"></i><span>待办事项</span></a>
                             </li>
-                            <li role="presentation"><a href="#file_<?php echo $row["id"];?>" title="云共享" aria-controls="file_<?php echo $row["id"];?>" role="tab" data-toggle="tab" aria-expanded="true">
+                            <li role="presentation"><a href="#file_<?php echo md5($row["nick"]);?>" title="云共享" aria-controls="file_<?php echo md5($row["nick"]);?>" role="tab" data-toggle="tab" aria-expanded="true">
                                     <i class="fa fa-cloud"></i><span>云共享</span></a>
                             </li>
                         </ul>
 
                         <div class="tab-content">
 
-                            <div role="tabpanel" class="tab-pane active" id="todo_<?php echo $row["id"];?>">
+                            <div role="tabpanel" class="tab-pane active" id="todo_<?php echo md5($row["nick"]);?>">
 
                                 <div class="overlay-wrapper" data-load="overlay" data-tmpl="shop-todo-list-tmpl" data-role="shop-todo-list" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo $this->createUrl("/main/todo/getbynick",array("nick"=>$row["nick"]));?>">
                                 </div>
                                 <div class="row">
 
                                     <div class="col-md-4">
-                                        <a data-toggle="modal" data-target="#ShopTodoAddModal" data-backdrop="false" data-trigger-target="#todo_<?php echo $row["id"];?>" data-nick="<?php echo $row["nick"];?>"><i class="fa fa-plus"></i>新建待办事项...</a>
+                                        <a data-toggle="modal" data-target="#ShopTodoAddModal" data-backdrop="false" data-trigger-target="#todo_<?php echo md5($row["nick"]);?>" data-nick="<?php echo $row["nick"];?>"><i class="fa fa-plus"></i>新建待办事项...</a>
 
                                     </div>
                                     <div class="col-md-7">
@@ -70,11 +70,11 @@ $username = empty($user)?"游客":$user["username"];
                                 </div>
                             </div>
 
-                            <div role="tabpanel" class="tab-pane" id="file_<?php echo $row["id"];?>">
+                            <div role="tabpanel" class="tab-pane" id="file_<?php echo md5($row["nick"]);?>">
                                 <div class="overlay-wrapper" data-load="overlay" data-tmpl="shop-file-list-tmpl" data-role="shop-file-list" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo $this->createUrl("/main/file/getbynick",array("nick"=>$row["nick"]));?>">
                                 </div>
 
-                                <a data-toggle="modal" data-target="#ShopFileUploadModal" data-backdrop="false" data-logdate-index="1" data-nick="<?php echo $row["nick"];?>" data-creator="<?php echo $username;?>" data-trigger-target="#file_<?php echo $row["id"];?>">
+                                <a data-toggle="modal" data-target="#ShopFileUploadModal" data-backdrop="false" data-logdate-index="1" data-nick="<?php echo $row["nick"];?>" data-creator="<?php echo $username;?>" data-trigger-target="#file_<?php echo md5($row["nick"]);?>">
                                     <i class="fa fa-cloud-upload"></i> 上传文件...
                                 </a>
                             </div>

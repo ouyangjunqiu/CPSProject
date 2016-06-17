@@ -96,23 +96,29 @@ class TodoController extends Controller
         $history = ShopTodoList::fetchHistoryListByNick($nick);
         $list = ShopTodoList::fetchCurrentListByNick($nick);
 
-        $this->renderJson(array("isSuccess"=>true,"data"=>array(
-            "history"=>$history,
-
-            "list"=>$list
-
-        )));
+        $this->renderJson(array(
+            "isSuccess"=>true,
+            "data"=>array(
+                "history"=>$history,
+                "list"=>$list
+            ),
+            "query"=>array(
+                "nick"=>$nick,
+                "md5"=>md5($nick)
+            )
+        ));
 
     }
 
     public function actionMy(){
         $pic = Env::getRequest("pic");
         $list = ShopTodoList::fetchListByPic($pic);
-        $this->renderJson(array("isSuccess"=>true,"data"=>array(
-
-            "list"=>$list
-
-        )));
+        $this->renderJson(array(
+            "isSuccess"=>true,
+            "data"=>array(
+                "list"=>$list
+            ),
+        ));
     }
 
     public function actionMytips(){

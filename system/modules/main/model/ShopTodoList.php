@@ -54,6 +54,7 @@ class ShopTodoList extends Model
         $history = self::model()->fetchAll("logdate>=? AND logdate<=? AND nick=? AND status=?",array($startDate,$endDate,$nick,0));
         foreach($history as &$row){
             $row["title"] = String::ireplaceUrl($row["content"],"<small>[链接]</small>");
+            $row["md5"] = md5($row["nick"]);
         }
         return $history;
     }
@@ -75,6 +76,7 @@ class ShopTodoList extends Model
                 $row,
                 array(
                     "title"=>String::ireplaceUrl($row["content"],"<small>[链接]</small>"),
+                    "md5" => md5($row["nick"]),
                     "days"=>ceil((strtotime($row["logdate"])-strtotime(date("Y-m-d")))/3600/24)
                 )
             );
@@ -108,6 +110,7 @@ class ShopTodoList extends Model
                 $row,
                 array(
                     "title"=>String::ireplaceUrl($row["content"],"<small>[链接]</small>"),
+                    "md5" => md5($row["nick"]),
                     "days"=>ceil((strtotime($row["logdate"])-strtotime(date("Y-m-d")))/3600/24)
                 )
             );
@@ -135,6 +138,7 @@ class ShopTodoList extends Model
         foreach($result as &$row){
             $row["title"] = String::ireplaceUrl($row["content"],"<small>[链接]</small>");
             $row["days"] = ceil((strtotime(date("Y-m-d"))-strtotime($row["logdate"]))/3600/24);
+            $row["md5"] = md5($row["nick"]);
         }
         return $result;
 
