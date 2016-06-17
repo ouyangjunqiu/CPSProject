@@ -156,7 +156,7 @@ $username = empty($user)?"游客":$user["username"];
             var creator = $("#ShopFileUploadModal").find("input[name=creator]").val();
             var target = $($(this).data("trigger-target")).find("[data-load=overlay]");
             $("body").ajaxStart(function(){
-                $("#ShopFileUploadModal").modal('hide');
+                console.log("ajax start");
                 $(this).showLoading();
             }).ajaxComplete(function(){
                 $(this).hideLoading();
@@ -170,6 +170,7 @@ $username = empty($user)?"游客":$user["username"];
                 dataType: 'json', //返回值类型，一般设置为json、application/json
                 elementIds: {}, //传递参数到服务器
                 success: function(resp, status){
+                    $("#ShopFileUploadModal").modal('hide');
                     $.ajax({
                         url:"<?php echo $this->createUrl("/main/file/add");?>",
                         type:"post",
