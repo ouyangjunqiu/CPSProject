@@ -310,7 +310,7 @@
 
         });
 
-        $('#ShopTodoOpModal').find(".btn-default").click(function(){
+        $('#ShopTodoOpModal').delegate('.btn-default','click',function(){
             var id = $('#ShopTodoOpModal').data("id");
             var target = $($(this).data("trigger-target")).find("[data-load=overlay]");
             $.ajax({
@@ -336,7 +336,7 @@
 
         });
 
-        $('#ShopTodoOpModal').find(".btn-primary").click(function(){
+        $('#ShopTodoOpModal').delegate('.btn-primary','click',function(){
             var id = $('#ShopTodoOpModal').data("id");
             var target = $($(this).data("trigger-target")).find("[data-load=overlay]");
             $.ajax({
