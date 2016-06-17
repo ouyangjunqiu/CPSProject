@@ -321,6 +321,7 @@
                 success:function(resp){
                     $("body").hideLoading();
                     if(resp.isSuccess) {
+                        $("#my-todo-wrap [data-role=my-todo]").DataLoad();
                         target && target.DataLoad();
                     }
                 },
@@ -347,6 +348,7 @@
                 success:function(resp){
                     $("body").hideLoading();
                     if(resp.isSuccess) {
+                        $("#my-todo-wrap [data-role=my-todo]").DataLoad();
                         target && target.DataLoad();
                     }
                 },
