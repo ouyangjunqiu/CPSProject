@@ -324,7 +324,7 @@
                     }
                 },
                 beforeSend:function(){
-                    self.modal('hide');
+                    $('#ShopTodoOpModal').modal('hide');
                     $("body").showLoading();
                 },
                 error:function(){
