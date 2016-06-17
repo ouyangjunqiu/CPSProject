@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">新建待办事项</h4>
+                <h4 class="modal-title" id="exampleModalLabel">待办事项</h4>
             </div>
             <div class="modal-body">
                 <form>
@@ -56,8 +56,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="shopcase-add-btn">保存</button>
+                <button type="button" class="btn btn-primary" id="shopcase-add-btn">确定</button>
             </div>
         </div>
     </div>
@@ -151,7 +150,6 @@
                    </a>
                 {{/if}}
               {{/each}}
-              <a data-toggle="modal" data-target="#ShopTodoAddModal" data-backdrop="false" data-logdate-index="0" class="list-group-item">新建待办事项...</a>
             </div>
         </div>
         <div class="col-md-3">
@@ -171,8 +169,7 @@
                    </a>
                 {{/if}}
               {{/each}}
-                <a data-toggle="modal" data-target="#ShopTodoAddModal" data-backdrop="false" data-logdate-index="1" class="list-group-item">新建待办事项...</a>
-            </div>
+          </div>
         </div>
     </div>
  </div>
@@ -285,46 +282,92 @@
 
     $(document).ready(function(){
 
-        //$('#ShopTodoAddModal [name=pic]').selectpicker();
+        $("#shopcase-add-btn").click(function(){
+            var shopcase = $('#ShopTodoAddModal').find("form").serialize();
+            var target = $($(this).data("trigger-target")).find("[data-load=overlay]");
+            $.ajax({
+                url:"<?php echo $urls["todo_add_url"];?>",
+                type:"post",
+                data:shopcase,
+                dataType:"json",
+                success:function(resp){
+                    $("body").hideLoading();
+                    if(resp.isSuccess) {
+                        $('#ShopTodoAddModal').find("textarea[name=content]").val("");
+                        $("#my-todo-wrap [data-role=my-todo]").DataLoad();
+                        target && target.DataLoad();
+                    }
+                },
+                beforeSend:function(){
+                    $("body").showLoading();
+                    $('#ShopTodoAddModal').modal('hide');
+                },
+                error:function(){
+                    app.error("操作失败，请确认网络连接是否正常后请重试!");
+                    $("body").hideLoading();
+                }
+            });
+
+        });
+
+        $('#ShopTodoOpModal').find(".btn-default").click(function(){
+            var id = $('#ShopTodoOpModal').data("id");
+            $.ajax({
+                url:"<?php echo $urls["todo_del_url"];?>",
+                type:"post",
+                data:{id:id,updator:'<?php echo empty($user["username"])?"游客":$user["username"];?>'},
+                dataType:"json",
+                success:function(resp){
+                    $("body").hideLoading();
+                    if(resp.isSuccess) {
+                       location.reload();
+                    }
+                },
+                beforeSend:function(){
+                    self.modal('hide');
+                    $("body").showLoading();
+                },
+                error:function(){
+                    app.error("操作失败，请确认网络连接是否正常后请重试!");
+                    $("body").hideLoading();
+                }
+            });
+
+        });
+
+        $('#ShopTodoOpModal').find(".btn-primary").click(function(){
+            var id = $('#ShopTodoOpModal').data("id");
+            $.ajax({
+                url:"<?php echo $urls["todo_done_url"];?>",
+                type:"post",
+                data:{id:id,updator:'<?php echo empty($user["username"])?"游客":$user["username"];?>'},
+                dataType:"json",
+                success:function(resp){
+                    $("body").hideLoading();
+                    if(resp.isSuccess) {
+                        location.reload();
+                    }
+                },
+                beforeSend:function(){
+                    $('#ShopTodoOpModal').modal('hide');
+                    $("body").showLoading();
+                },
+                error:function(){
+                    app.error("操作失败，请确认网络连接是否正常后请重试!");
+                    $("body").hideLoading();
+                }
+            });
+
+        });
+
 
         $('#ShopTodoAddModal').on('show.bs.modal', function (event) {
             var self = $(this);
             var button = $(event.relatedTarget); // Button that triggered the modal
             var nick = button.parents("div[data-role=shop-todo-list]").eq(0).data("nick");
-            var index = button.data('logdate-index'); // Extract info from data-* attributes
             self.find("input[name=nick]").val(nick);
-            if(index>=0) {
-                self.find("input[name=logdate]").eq(index).attr("checked", "checked");
-            }
 
-            var overlay = button.parents("div[data-load=overlay]").eq(0);
-
-            self.find("#shopcase-add-btn").unbind("click");
-            self.find("#shopcase-add-btn").click(function(){
-                var shopcase = self.find("form").serialize();
-                $.ajax({
-                    url:"<?php echo $urls["todo_add_url"];?>",
-                    type:"post",
-                    data:shopcase,
-                    dataType:"json",
-                    success:function(resp){
-                        $("body").hideLoading();
-                        if(resp.isSuccess) {
-                            self.find("textarea[name=content]").val("");
-                            self.modal('hide');
-                            overlay.DataLoad();
-                        }
-                    },
-                    beforeSend:function(){
-                        $("body").showLoading();
-                    },
-                    error:function(){
-                        app.error("操作失败，请确认网络连接是否正常后请重试!");
-                        $("body").hideLoading();
-                    }
-                });
-
-            })
+            $("#shopcase-add-btn").attr("data-trigger-target",button.data("trigger-target"));
         });
 
         $('#ShopTodoViewModal').on('show.bs.modal', function (event) {
@@ -338,63 +381,8 @@
             var self = $(this);
             var button = $(event.relatedTarget); // Button that triggered the modal
             self.find(".modal-body").html("<pre>"+button.data("content")+"</pre>");
-
-            var id = button.data("id");
-
-            var overlay = button.parents("div[data-load=overlay]").eq(0);
-
-            self.find(".btn-default").unbind("click");
-            self.find(".btn-default").click(function(){
-                $.ajax({
-                    url:"<?php echo $urls["todo_del_url"];?>",
-                    type:"post",
-                    data:{id:id,updator:'<?php echo empty($user["username"])?"游客":$user["username"];?>'},
-                    dataType:"json",
-                    success:function(resp){
-                        $("body").hideLoading();
-                        if(resp.isSuccess) {
-                            self.modal('hide');
-                            overlay.DataLoad();
-                            $("#my-todo-wrap [data-role=my-todo]").DataLoad();
-                        }
-                    },
-                    beforeSend:function(){
-                        $("body").showLoading();
-                    },
-                    error:function(){
-                        app.error("操作失败，请确认网络连接是否正常后请重试!");
-                        $("body").hideLoading();
-                    }
-                });
-
-            });
-
-            self.find(".btn-primary").unbind("click");
-            self.find(".btn-primary").click(function(){
-                $.ajax({
-                    url:"<?php echo $urls["todo_done_url"];?>",
-                    type:"post",
-                    data:{id:id,updator:'<?php echo empty($user["username"])?"游客":$user["username"];?>'},
-                    dataType:"json",
-                    success:function(resp){
-                        $("body").hideLoading();
-                        if(resp.isSuccess) {
-                            self.modal('hide');
-                            overlay.DataLoad();
-                            $("#my-todo-wrap [data-role=my-todo]").DataLoad();
-                        }
-                    },
-                    beforeSend:function(){
-                        $("body").showLoading();
-                    },
-                    error:function(){
-                        app.error("操作失败，请确认网络连接是否正常后请重试!");
-                        $("body").hideLoading();
-                    }
-                });
-
-            })
-
+            self.attr("data-id",button.data("id"));
+            $('#ShopTodoOpModal').find(".btn").attr("data-trigger-target",button.data("trigger-target"));
 
         });
 

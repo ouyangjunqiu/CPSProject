@@ -57,7 +57,12 @@ $username = empty($user)?"游客":$user["username"];
                                 </div>
                                 <div class="row">
 
-                                    <div class="col-md-11">
+                                    <div class="col-md-4">
+                                        <a data-toggle="modal" data-target="#ShopTodoAddModal" data-backdrop="false" data-trigger-target="#todo_<?php echo $row["id"];?>"><i class="fa fa-plus"></i>新建待办事项...</a>
+
+                                    </div>
+                                    <div class="col-md-7">
+
                                     </div>
                                     <div class="col-md-1">
                                         <a href="<?php echo $this->createUrl("/main/todo/more",array("nick"=>$row["nick"]));?>"><small>更多..</small></a>
