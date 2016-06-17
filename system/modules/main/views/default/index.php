@@ -58,7 +58,7 @@ $username = empty($user)?"游客":$user["username"];
                                 <div class="row">
 
                                     <div class="col-md-4">
-                                        <a data-toggle="modal" data-target="#ShopTodoAddModal" data-backdrop="false" data-trigger-target="#todo_<?php echo $row["id"];?>"><i class="fa fa-plus"></i>新建待办事项...</a>
+                                        <a data-toggle="modal" data-target="#ShopTodoAddModal" data-backdrop="false" data-trigger-target="#todo_<?php echo $row["id"];?>" data-nick="<?php echo $row["nick"];?>"><i class="fa fa-plus"></i>新建待办事项...</a>
 
                                     </div>
                                     <div class="col-md-7">

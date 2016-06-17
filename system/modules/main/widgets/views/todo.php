@@ -364,7 +364,7 @@
         $('#ShopTodoAddModal').on('show.bs.modal', function (event) {
             var self = $(this);
             var button = $(event.relatedTarget); // Button that triggered the modal
-            var nick = button.parents("div[data-role=shop-todo-list]").eq(0).data("nick");
+            var nick = button.data("nick");
             self.find("input[name=nick]").val(nick);
 
             $("#shopcase-add-btn").attr("data-trigger-target",button.data("trigger-target"));
