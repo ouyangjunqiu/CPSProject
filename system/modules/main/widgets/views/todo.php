@@ -284,7 +284,7 @@
 
         $("#shopcase-add-btn").click(function(){
             var shopcase = $('#ShopTodoAddModal').find("form").serialize();
-            var target = $($(this).data("trigger-target")).find("[data-load=overlay]");
+            var target = $($(this).attr("data-trigger-target")).find("[data-load=overlay]");
             $.ajax({
                 url:"<?php echo $urls["todo_add_url"];?>",
                 type:"post",
@@ -311,8 +311,8 @@
         });
 
         $('#ShopTodoOpModal').delegate('.btn-default','click',function(){
-            var id = $('#ShopTodoOpModal').data("id");
-            var target = $($(this).data("trigger-target")).find("[data-load=overlay]");
+            var id = $(this).attr("data-id");
+            var target = $($(this).attr("data-trigger-target")).find("[data-load=overlay]");
             $.ajax({
                 url:"<?php echo $urls["todo_del_url"];?>",
                 type:"post",
@@ -337,8 +337,8 @@
         });
 
         $('#ShopTodoOpModal').delegate('.btn-primary','click',function(){
-            var id = $('#ShopTodoOpModal').data("id");
-            var target = $($(this).data("trigger-target")).find("[data-load=overlay]");
+            var id = $(this).attr("data-id");
+            var target = $($(this).attr("data-trigger-target")).find("[data-load=overlay]");
             $.ajax({
                 url:"<?php echo $urls["todo_done_url"];?>",
                 type:"post",
@@ -366,25 +366,25 @@
         $('#ShopTodoAddModal').on('show.bs.modal', function (event) {
             var self = $(this);
             var button = $(event.relatedTarget); // Button that triggered the modal
-            var nick = button.data("nick");
+            var nick = button.attr("data-nick");
             self.find("input[name=nick]").val(nick);
 
-            $("#shopcase-add-btn").attr("data-trigger-target",button.data("trigger-target"));
+            $("#shopcase-add-btn").attr("data-trigger-target",button.attr("data-trigger-target"));
         });
 
         $('#ShopTodoViewModal').on('show.bs.modal', function (event) {
             var self = $(this);
             var button = $(event.relatedTarget); // Button that triggered the modal
-            self.find(".modal-body").html("<pre>"+button.data("content")+"</pre>");
+            self.find(".modal-body").html("<pre>"+button.attr("data-content")+"</pre>");
 
         });
 
         $('#ShopTodoOpModal').on('show.bs.modal', function (event) {
             var self = $(this);
             var button = $(event.relatedTarget); // Button that triggered the modal
-            self.find(".modal-body").html("<pre>"+button.data("content")+"</pre>");
-            $('#ShopTodoOpModal').attr("data-id",button.data("id"));
-            $('#ShopTodoOpModal').find(".btn").attr("data-trigger-target",button.data("trigger-target"));
+            self.find(".modal-body").html("<pre>"+button.attr("data-content")+"</pre>");
+            $('#ShopTodoOpModal').find(".btn").attr("data-id",button.attr("data-id"));
+            $('#ShopTodoOpModal').find(".btn").attr("data-trigger-target",button.attr("data-trigger-target"));
 
         });
 
