@@ -338,6 +338,7 @@
 
         $('#ShopTodoOpModal').find(".btn-primary").click(function(){
             var id = $('#ShopTodoOpModal').data("id");
+            console.log(id);
             var target = $($(this).data("trigger-target")).find("[data-load=overlay]");
             $.ajax({
                 url:"<?php echo $urls["todo_done_url"];?>",
