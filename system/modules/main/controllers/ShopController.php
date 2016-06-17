@@ -155,40 +155,6 @@ class ShopController extends Controller
         $arr = array();
         $nick = trim($nick);
         $arr["nick"] = $nick;
-        /*
-        $shopname = Env::getRequest("shopname");
-        if(!String::isEmpty($shopname)) {
-            $arr["shopname"] = trim($shopname);
-        }
-
-        $loginnick = Env::getRequest("login_nick");
-        if(!String::isEmpty($loginnick)){
-            $arr["login_nick"] = trim($loginnick);
-        }
-        $loginpassword = Env::getRequest("login_password");
-        if(!String::isEmpty($loginpassword)){
-            $arr["login_password"] = trim($loginpassword);
-        }
-        $pic = Env::getRequest("pic");
-        if(!String::isEmpty($pic)){
-            $arr["pic"] = trim($pic);
-        }
-
-        $zuanshipic = Env::getRequest("zuanshi_pic");
-        $bigdatapic = Env::getRequest("bigdata_pic");
-        $ztcpic = Env::getRequest("ztc_pic");
-        if(!String::isEmpty($zuanshipic)){
-            $arr["zuanshi_pic"] = trim($zuanshipic);
-        }
-
-        if(!String::isEmpty($bigdatapic)){
-            $arr["bigdata_pic"] = trim($bigdatapic);
-        }
-
-        if(!String::isEmpty($ztcpic)){
-            $arr["ztc_pic"] = trim($ztcpic);
-        }
-        */
         $shoptype = Env::getRequest("shoptype");
         if(!String::isEmpty($shoptype)){
             $arr["shoptype"] = trim($shoptype);
@@ -232,6 +198,36 @@ class ShopController extends Controller
             if(empty($arr["shoptype"])){
                 $arr["shoptype"] = "其它业务";
             }
+
+
+            $loginnick = Env::getRequest("login_nick");
+            if(!String::isEmpty($loginnick)){
+                $arr["login_nick"] = trim($loginnick);
+            }
+            $loginpassword = Env::getRequest("login_password");
+            if(!String::isEmpty($loginpassword)){
+                $arr["login_password"] = trim($loginpassword);
+            }
+            $pic = Env::getRequest("pic");
+            if(!String::isEmpty($pic)){
+                $arr["pic"] = trim($pic);
+            }
+
+            $zuanshipic = Env::getRequest("zuanshi_pic");
+            $bigdatapic = Env::getRequest("bigdata_pic");
+            $ztcpic = Env::getRequest("ztc_pic");
+            if(!String::isEmpty($zuanshipic)){
+                $arr["zuanshi_pic"] = trim($zuanshipic);
+            }
+
+            if(!String::isEmpty($bigdatapic)){
+                $arr["bigdata_pic"] = trim($bigdatapic);
+            }
+
+            if(!String::isEmpty($ztcpic)){
+                $arr["ztc_pic"] = trim($ztcpic);
+            }
+
             $arr["create_date"] = date("Y-m-d");
             $model->setAttributes($arr);
             if($model->save()){
