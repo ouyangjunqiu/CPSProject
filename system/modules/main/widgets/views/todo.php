@@ -41,7 +41,7 @@
                     <div class="form-group">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="priority">紧急
+                                <input type="checkbox" name="priority" value="紧急">紧急
                             </label>
                         </div>
                     </div>
