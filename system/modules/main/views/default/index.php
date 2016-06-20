@@ -227,15 +227,15 @@ $username = empty($user)?"游客":$user["username"];
         $('#ShopFileUploadModal').on('show.bs.modal', function (event) {
             var self = $(this);
             var button = $(event.relatedTarget); // Button that triggered the modal
-            self.find("input[name=nick]").val(button.data("nick"));
-            self.find("input[name=creator]").val(button.data("creator"));
-            self.find("[data-click=fileupload]").attr("data-trigger-target",button.data("trigger-target"));
+            self.find("input[name=nick]").val(button.attr("data-nick"));
+            self.find("input[name=creator]").val(button.attr("data-creator"));
+            self.find("[data-click=fileupload]").attr("data-trigger-target",button.attr("data-trigger-target"));
         });
 
         $("[data-click=fileupload]").click(function(){
             var nick = $("#ShopFileUploadModal").find("input[name=nick]").val();
             var creator = $("#ShopFileUploadModal").find("input[name=creator]").val();
-            var target = $($(this).data("trigger-target")).find("[data-load=overlay]");
+            var target = $($(this).attr("data-trigger-target")).find("[data-load=overlay]");
 
             $.ajaxFileUpload({
                 url: '<?php echo $this->createUrl("/file/default/upload");?>',
@@ -272,13 +272,14 @@ $username = empty($user)?"游客":$user["username"];
         $('#ShopPloyAddModal').on('show.bs.modal', function (event) {
             var self = $(this);
             var button = $(event.relatedTarget); // Button that triggered the modal
-            self.find("input[name=nick]").val(button.data("nick"));
-            self.find("[data-click=save]").attr("data-trigger-target",button.data("trigger-target"));
+            self.find("input[name=nick]").val(button.attr("data-nick"));
+            self.find("[data-click=save]").attr("data-trigger-target",button.attr("data-trigger-target"));
         });
 
-        $('#ShopPloyAddModal').find("[data-click=save]").click(function(){
+        $('#ShopTodoOpModal').delegate('[data-click=save]','click',function(){
+
             var form = $('#ShopPloyAddModal').find("form");
-            var target = $($(this).data("trigger-target")).find("[data-load=overlay]");
+            var target = $($(this).attr("data-trigger-target")).find("[data-load=overlay]");
 
             $.ajax({
                 url:"<?php echo $this->createUrl('/main/ploy/add');?>",
