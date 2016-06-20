@@ -264,7 +264,8 @@ $username = empty($user)?"游客":$user["username"];
 
 
         tinymce.init({
-            selector: '#ploy-content-editor'
+            selector: '#ploy-content-editor',
+            menubar: false
         });
 
         $('#ShopPloyAddModal').on('show.bs.modal', function (event) {
@@ -288,6 +289,8 @@ $username = empty($user)?"游客":$user["username"];
 
             })
         });
+
+        $("[data-provide=datepicker-inline]").datepicker();
 
     });
 
