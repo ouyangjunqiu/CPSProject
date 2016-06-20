@@ -155,10 +155,10 @@ $username = empty($user)?"游客":$user["username"];
                         <label>推广预算:</label>
                         <input class="form-control" type="text" name="budget"/>
                     </div>
-
-                    <textarea class="form-control" name="content" rows="5" id="ploy-content-editor">
-
-                    </textarea>
+                    <div class="form-group">
+                        <label>规划:</label>
+                        <textarea class="form-control" name="content" rows="5" id="ploy-content-editor"></textarea>
+                    </div>
 
                 </form>
             </div>
@@ -287,7 +287,6 @@ $username = empty($user)?"游客":$user["username"];
                 dataType:"json",
                 data:form.serialize(),
                 success:function(){
-
                     target.DataLoad();
                 },
                 beforeSend:function(){

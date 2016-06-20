@@ -56,7 +56,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="shopcase-add-btn">确定</button>
+                <button type="button" class="btn btn-primary" data-click="save">确定</button>
             </div>
         </div>
     </div>
@@ -282,8 +282,9 @@
 
     $(document).ready(function(){
 
-        $("#shopcase-add-btn").click(function(){
+        $('#ShopTodoAddModal').delegate("[data-click=save]","click",function(){
             var shopcase = $('#ShopTodoAddModal').find("form").serialize();
+            console.log($(this).attr("data-trigger-target"));
             var target = $($(this).attr("data-trigger-target")).find("[data-load=overlay]");
             $.ajax({
                 url:"<?php echo $urls["todo_add_url"];?>",
@@ -371,7 +372,7 @@
             var nick = button.attr("data-nick");
             self.find("input[name=nick]").val(nick);
 
-            $("#shopcase-add-btn").attr("data-trigger-target",button.attr("data-trigger-target"));
+            $('#ShopTodoAddModal').find(".btn").attr("data-trigger-target",button.attr("data-trigger-target"));
         });
 
         $('#ShopTodoViewModal').on('show.bs.modal', function (event) {
