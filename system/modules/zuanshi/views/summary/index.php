@@ -26,12 +26,7 @@
 
             </div>
             <div class="search-right">
-                <form class="form-inline">
-                    <input placeholder="店铺名称" type="text" class="form-control" data-name="店铺名称" name="nick" value="<?php echo $query['nick'];?>">
-                    <input placeholder="钻展、大数据、直通车负责人" type="text" class="form-control" data-name="钻展、大数据、直通车负责人" name="pic" style="width: 180px;" value="<?php echo $query['pic'];?>">
-                    <?php echo CHtml::dropDownList("shoptype",$query['shoptype'],array(""=>"请选择合作业务","直钻业务"=>"直钻业务","直通车业务"=>"直通车业务","钻展业务"=>"钻展业务"),array("class"=>"form-control"));?>
-                    <input type="button" class="btn btn-warning" value="搜索" id="searchBtn">
-                </form>
+                <?php $this->widget("application\\modules\\main\\widgets\\ShopSearchWidget",array("url"=>$this->createUrl("/zuanshi/summary/index",array("page"=>1)),"query"=>$query));?>
             </div>
         </div>
     </div>
@@ -62,6 +57,7 @@
         <thead class="header">
         <tr>
             <th>店铺名</th>
+            <th>主营行业</th>
             <th>运营对接人</th>
             <th>直通车负责人</th>
             <th>钻展负责人</th>
@@ -81,6 +77,7 @@
         <?php foreach($list as $row):?>
             <tr>
                 <td><?php echo $row["nick"];?></td>
+                <td><?php echo $row["shopcatname"];?></td>
                 <td><?php echo $row["pic"];?></td>
                 <td><?php echo $row["ztc_pic"];?></td>
                 <td><?php echo $row["zuanshi_pic"];?></td>
@@ -111,24 +108,6 @@
         var self = $(this);
 
         $(".top-ul>li").eq(1).addClass("top-li-hover");
-
-        $("#shop-search").keydown(function(event){
-            if(event.which == 13){
-                $("#searchBtn").trigger("click");
-            }
-        });
-
-        $("#searchBtn").click(function(){
-            var form = $(this).parent();
-            var data = {};
-            data.nick = form.find("input[name=nick]").val();
-            data.pic = form.find("input[name=pic]").val();
-            data.shoptype = form.find("select[name=shoptype]").val();
-            data.page = 1;
-            location.href = app.url("<?php echo $this->createUrl('/zuanshi/summary/index');?>",data)
-        });
-
-
 
         $("#dateSetting").daterangepicker({
             "startDate": "<?php echo $query['startdate'];?>",

@@ -99,27 +99,17 @@ class DownController extends Controller
 
     public function actionSummary(){
 
-        $nick = Env::getRequestWithSessionDefault("nick","","main.default.index.nick");
-        $pic = Env::getRequestWithSessionDefault("pic","","main.default.index.pic");
-        $shoptype = Env::getRequestWithSessionDefault("shoptype","","main.default.index.shoptype");
-
+        $q = Env::getRequestWithSessionDefault("q","","main.default.index.q");
+        $q = addslashes($q);
         $defaultDate = ExtRangeDate::range(7);
 
         $startdate = Env::getRequestWithSessionDefault("startdate",$defaultDate->startDate,"zuanshi.rpt.summary.startdate");
         $enddate = Env::getRequestWithSessionDefault("enddate",$defaultDate->endDate,"zuanshi.rpt.summary.enddate");
 
-        $pic = addslashes($pic);
-
         $criteria = new \CDbCriteria();
         $criteria->addCondition("status='0'");
-        if(!empty($nick)) {
-            $criteria->addSearchCondition("nick",$nick);
-        }
-        if(!empty($pic)) {
-            $criteria->addCondition("(zuanshi_pic LIKE '%{$pic}%' OR bigdata_pic LIKE '%{$pic}%' OR ztc_pic  LIKE '%{$pic}%')");
-        }
-        if(!empty($shoptype)) {
-            $criteria->addCondition("shoptype = '{$shoptype}'");
+        if(!empty($q)) {
+            $criteria->addCondition("(shopcatname LIKE '%{$q}%' OR shoptype LIKE '%{$q}%' OR nick LIKE '%{$q}%' OR pic LIKE '%{$q}%' OR zuanshi_pic LIKE '%{$q}%' OR bigdata_pic LIKE '%{$q}%' OR ztc_pic  LIKE '%{$q}%')");
         }
 
         $list = Shop::model()->fetchAll($criteria);
@@ -134,6 +124,7 @@ class DownController extends Controller
         $data = array(
             array(
                 "店铺名",
+                "主营行业",
                 "运营对接人",
                 "直通车负责人",
                 "钻展负责人",
@@ -152,6 +143,7 @@ class DownController extends Controller
         foreach($list as $row){
             $data[] = array(
                 $row["nick"],
+                $row["shopcatname"],
                 $row["pic"],
                 $row["ztc_pic"],
                 $row["zuanshi_pic"],

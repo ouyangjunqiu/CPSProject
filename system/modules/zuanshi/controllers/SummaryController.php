@@ -14,27 +14,18 @@ class SummaryController extends Controller
     public function actionIndex(){
         $page = Env::getRequestWithSessionDefault("page",1,"main.default.index.page");
         $pageSize = Env::getRequestWithSessionDefault("page_size",PAGE_SIZE,"main.default.index.pagesize");
-        $nick = Env::getRequestWithSessionDefault("nick","","main.default.index.nick");
-        $pic = Env::getRequestWithSessionDefault("pic","","main.default.index.pic");
-        $shoptype = Env::getRequestWithSessionDefault("shoptype","","main.default.index.shoptype");
-
+        $q = Env::getRequestWithSessionDefault("q","","main.default.index.q");
+        $q = addslashes($q);
         $defaultDate = ExtRangeDate::range(7);
 
         $startdate = Env::getRequestWithSessionDefault("startdate",$defaultDate->startDate,"zuanshi.rpt.summary.startdate");
         $enddate = Env::getRequestWithSessionDefault("enddate",$defaultDate->endDate,"zuanshi.rpt.summary.enddate");
 
-        $pic = addslashes($pic);
-
         $criteria = new \CDbCriteria();
         $criteria->addCondition("status='0'");
-        if(!empty($nick)) {
-            $criteria->addSearchCondition("nick",$nick);
-        }
-        if(!empty($pic)) {
-            $criteria->addCondition("(zuanshi_pic LIKE '%{$pic}%' OR pic LIKE '%{$pic}%' OR bigdata_pic LIKE '%{$pic}%' OR ztc_pic  LIKE '%{$pic}%')");
-        }
-        if(!empty($shoptype)) {
-            $criteria->addCondition("shoptype = '{$shoptype}'");
+
+        if(!empty($q)) {
+            $criteria->addCondition("(shopcatname LIKE '%{$q}%' OR shoptype LIKE '%{$q}%' OR nick LIKE '%{$q}%' OR pic LIKE '%{$q}%' OR zuanshi_pic LIKE '%{$q}%' OR bigdata_pic LIKE '%{$q}%' OR ztc_pic  LIKE '%{$q}%')");
         }
 
         $count = Shop::model()->count($criteria);
@@ -51,7 +42,7 @@ class SummaryController extends Controller
             $row["tradeRpt"] = ShopTradeRpt::summaryByNick($startdate,$enddate,$row["shopname"]);
         }
 
-        $this->render("index", array("list" => $list, "pager" => array("count" => $count, "page" => $page, "page_size" => $pageSize), "query" => array("nick" => $nick, "pic" => $pic, "shoptype" => $shoptype,"startdate"=>$startdate,"enddate"=>$enddate)));
+        $this->render("index", array("list" => $list, "pager" => array("count" => $count, "page" => $page, "page_size" => $pageSize), "query" => array("q" => $q,"startdate"=>$startdate,"enddate"=>$enddate)));
 
     }
 

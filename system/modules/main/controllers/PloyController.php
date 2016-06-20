@@ -21,7 +21,7 @@ class PloyController extends Controller
         $enddate = Env::getRequest("enddate");
         $sale_goal = Env::getRequest("sale_goal");
         $budget = Env::getRequest("budget");
-        $context = Env::getRequest("context");
+        $content = Env::getRequest("content");
         $logdate = date("Y-m-d");
 
         $attr = array(
@@ -31,7 +31,7 @@ class PloyController extends Controller
             "enddate" => $enddate,
             "sale_goal"=>$sale_goal,
             "budget"=>$budget,
-            "context"=>$context,
+            "content"=>$content,
             "logdate"=>$logdate
         );
 

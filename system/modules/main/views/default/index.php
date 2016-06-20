@@ -199,7 +199,7 @@ $username = empty($user)?"游客":$user["username"];
         </tr>
       </thead>
       {{each(i,v) data.list}}
-        <tr>
+        <tr class="small">
             <td>${v.name}</td>
             <td>${v.begindate}~${v.enddate}</td>
             <td>${v.sale_goal}</td>
