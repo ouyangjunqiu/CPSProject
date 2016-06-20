@@ -9,7 +9,7 @@
 namespace application\modules\zuanshi\model;
 
 
-use application\modules\main\model\ShopPlan;
+use application\modules\main\model\ShopBudget;
 use cloud\core\model\Model;
 use cloud\core\utils\Math;
 
@@ -62,7 +62,7 @@ class AdvertiserHourRptSource extends Model
             return array();
         }
 
-        $plan = ShopPlan::model()->fetch("nick=?", array($nick));
+        $plan = ShopBudget::model()->fetch("nick=?", array($nick));
         $accountData = json_decode($rpt["accountdata"],true);
         $accountData["zuanshi_budget"] = empty($plan)?0:@$plan["zuanshi_budget"];
         $yesterdayData = json_decode($rpt["yesterdaydata"],true);
