@@ -237,23 +237,25 @@
 
     $.fn.extend({
         DataLoad:function(){
+            this.each(function() {
 
-            var self = $(this);
-            var tmpl = $("#"+self.data("tmpl"));
-            $.ajax({
-                url:self.data("url"),
-                dataType:"json",
-                type:"get",
-                success:function(resp){
-                    self.html(tmpl.tmpl(resp));
-                    self.removeClass("overlay-wrapper");
-                    self.attr("load","loaded");
-                },
-                beforeSend:function(){
-                    self.html("<div class='loading-img'></div>");
-                    self.addClass("overlay-wrapper");
-                    self.attr("load","loading");
-                }
+                var self = $(this);
+                var tmpl = $("#" + self.data("tmpl"));
+                $.ajax({
+                    url: self.data("url"),
+                    dataType: "json",
+                    type: "get",
+                    success: function (resp) {
+                        self.html(tmpl.tmpl(resp));
+                        self.removeClass("overlay-wrapper");
+                        self.attr("load", "loaded");
+                    },
+                    beforeSend: function () {
+                        self.html("<div class='loading-img'></div>");
+                        self.addClass("overlay-wrapper");
+                        self.attr("load", "loading");
+                    }
+                })
             })
 
         }
