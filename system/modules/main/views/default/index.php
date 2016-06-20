@@ -139,11 +139,11 @@ $username = empty($user)?"游客":$user["username"];
                     </div>
                     <div class="form-group">
                         <label>起:</label>
-                        <input class="form-control" type="text" name="begindate" data-provide="datepicker" data-date-format="yyyy-mm-dd"/>
+                        <input class="form-control" type="text" name="begindate" data-provide="datepicker-inline" data-date-format="yyyy-mm-dd"/>
                     </div>
                     <div class="form-group">
                         <label>止:</label>
-                        <input class="form-control" type="text" name="enddate" data-provide="datepicker" data-date-format="yyyy-mm-dd"/>
+                        <input class="form-control" type="text" name="enddate" data-provide="datepicker-inline" data-date-format="yyyy-mm-dd"/>
                     </div>
 
                     <div class="form-group">
@@ -264,8 +264,7 @@ $username = empty($user)?"游客":$user["username"];
 
 
         tinymce.init({
-            selector: '#ploy-content-editor',
-            inline: true
+            selector: '#ploy-content-editor'
         });
 
         $('#ShopPloyAddModal').on('show.bs.modal', function (event) {
