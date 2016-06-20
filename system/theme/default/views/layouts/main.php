@@ -35,7 +35,7 @@
     <script src='<?php echo STATICURL.'/base/js/plugins/jQuery/jquery.cookie.js'; ?>'></script>
     <script src='<?php echo STATICURL."/base/js/layout.js"; ?>'></script>
     <script src='<?php echo STATICURL."/base/js/app.js"; ?>'></script>
-    
+
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="<?php echo STATICURL.'/base/js/plugins/bootstrap-select/css/bootstrap-select.min.css'; ?>">
     <link rel="stylesheet" href="<?php echo STATICURL.'/base/js/plugins/datepicker/datepicker3.css'; ?>">
