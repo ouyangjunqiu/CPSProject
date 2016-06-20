@@ -54,7 +54,7 @@
     </div>
 
     <table class="baby-frame-table" id="table-fixed" style="table-layout: fixed;">
-        <thead class="header">
+        <thead class="small">
         <tr>
             <th>店铺名</th>
             <th>主营行业</th>
@@ -75,7 +75,7 @@
         <tbody>
 
         <?php foreach($list as $row):?>
-            <tr>
+            <tr class="small">
                 <td><?php echo $row["nick"];?></td>
                 <td><?php echo $row["shopcatname"];?></td>
                 <td><?php echo $row["pic"];?></td>

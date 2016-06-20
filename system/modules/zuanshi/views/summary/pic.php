@@ -47,7 +47,7 @@
     </div>
 
     <table class="baby-frame-table" id="table-fixed" style="table-layout: fixed;">
-        <thead class="header">
+        <thead class="small">
         <tr>
             <th>钻展负责人</th>
             <th>负责店铺数</th>
@@ -64,7 +64,7 @@
         <tbody>
 
         <?php foreach($list as $k=>$row):?>
-            <tr>
+            <tr class="small">
                 <td><?php echo $k;?></td>
                 <td><?php echo $row["shopcount"];?></td>
 
