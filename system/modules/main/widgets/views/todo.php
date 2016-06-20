@@ -295,8 +295,8 @@
                     $("body").hideLoading();
                     if(resp.isSuccess) {
                         $('#ShopTodoAddModal').find("textarea[name=content]").val("");
-                        $("#my-todo-wrap [data-role=my-todo]").DataLoad();
-                        target.DataLoad();
+                        $("#my-todo-wrap [data-role=my-todo]").iLoad();
+                        target.iLoad();
                     }
                 },
                 beforeSend:function(){
@@ -323,8 +323,8 @@
                 success:function(resp){
                     $("body").hideLoading();
                     if(resp.isSuccess) {
-                        $("#my-todo-wrap [data-role=my-todo]").DataLoad();
-                        target.DataLoad();
+                        $("#my-todo-wrap [data-role=my-todo]").iLoad();
+                        target.iLoad();
                     }
                 },
                 beforeSend:function(){
@@ -351,8 +351,8 @@
                 success:function(resp){
                     $("body").hideLoading();
                     if(resp.isSuccess) {
-                        $("#my-todo-wrap [data-role=my-todo]").DataLoad();
-                        target.DataLoad();
+                        $("#my-todo-wrap [data-role=my-todo]").iLoad();
+                        target.iLoad();
                     }
                 },
                 beforeSend:function(){
@@ -427,7 +427,7 @@
 
             $("#my-todo-list-helper").hide();
             $("#my-todo-wrap [data-role=my-todo]").css("height",$(window).height()+"px");
-            $("#my-todo-wrap [data-role=my-todo]").DataLoad();
+            $("#my-todo-wrap [data-role=my-todo]").iLoad();
 
         });
         $("#my-todo-wrap .btn[data-click=close]").click(function(){

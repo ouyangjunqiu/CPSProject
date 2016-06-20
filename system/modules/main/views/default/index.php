@@ -252,7 +252,7 @@ $username = empty($user)?"游客":$user["username"];
                         dataType:"json",
                         data:{nick:nick,creator:creator,file_md5:resp.data.md5,file_name:resp.data.name},
                         success:function(){
-                            target.DataLoad();
+                            target.iLoad();
                         }
                     })
                 },
@@ -287,7 +287,7 @@ $username = empty($user)?"游客":$user["username"];
                 dataType:"json",
                 data:form.serialize(),
                 success:function(){
-                    target.DataLoad();
+                    target.iLoad();
                 },
                 beforeSend:function(){
                     $("#ShopPloyAddModal").modal('hide');
