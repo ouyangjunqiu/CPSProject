@@ -101,6 +101,9 @@ class DownController extends Controller
 
         $q = Env::getRequestWithSessionDefault("q","","main.default.index.q");
         $q = addslashes($q);
+        $pic = Env::getRequestWithSessionDefault("pic","","main.default.index.pic");
+        $pic = addslashes($pic);
+
         $defaultDate = ExtRangeDate::range(7);
 
         $startdate = Env::getRequestWithSessionDefault("startdate",$defaultDate->startDate,"zuanshi.rpt.summary.startdate");
@@ -110,6 +113,10 @@ class DownController extends Controller
         $criteria->addCondition("status='0'");
         if(!empty($q)) {
             $criteria->addCondition("(shopcatname LIKE '%{$q}%' OR shoptype LIKE '%{$q}%' OR nick LIKE '%{$q}%' OR pic LIKE '%{$q}%' OR zuanshi_pic LIKE '%{$q}%' OR bigdata_pic LIKE '%{$q}%' OR ztc_pic  LIKE '%{$q}%')");
+        }
+
+        if(!empty($pic)) {
+            $criteria->addCondition("(pic LIKE '%{$pic}%' OR zuanshi_pic LIKE '%{$pic}%' OR bigdata_pic LIKE '%{$pic}%' OR ztc_pic  LIKE '%{$pic}%')");
         }
 
         $list = Shop::model()->fetchAll($criteria);

@@ -16,6 +16,10 @@ class SummaryController extends Controller
         $pageSize = Env::getRequestWithSessionDefault("page_size",PAGE_SIZE,"main.default.index.pagesize");
         $q = Env::getRequestWithSessionDefault("q","","main.default.index.q");
         $q = addslashes($q);
+
+        $pic = Env::getRequestWithSessionDefault("pic","","main.default.index.pic");
+        $pic = addslashes($pic);
+
         $defaultDate = ExtRangeDate::range(7);
 
         $startdate = Env::getRequestWithSessionDefault("startdate",$defaultDate->startDate,"zuanshi.rpt.summary.startdate");
@@ -26,6 +30,10 @@ class SummaryController extends Controller
 
         if(!empty($q)) {
             $criteria->addCondition("(shopcatname LIKE '%{$q}%' OR shoptype LIKE '%{$q}%' OR nick LIKE '%{$q}%' OR pic LIKE '%{$q}%' OR zuanshi_pic LIKE '%{$q}%' OR bigdata_pic LIKE '%{$q}%' OR ztc_pic  LIKE '%{$q}%')");
+        }
+
+        if(!empty($pic)) {
+            $criteria->addCondition("(pic LIKE '%{$pic}%' OR zuanshi_pic LIKE '%{$pic}%' OR bigdata_pic LIKE '%{$pic}%' OR ztc_pic  LIKE '%{$pic}%')");
         }
 
         $count = Shop::model()->count($criteria);
@@ -42,7 +50,7 @@ class SummaryController extends Controller
             $row["tradeRpt"] = ShopTradeRpt::summaryByNick($startdate,$enddate,$row["shopname"]);
         }
 
-        $this->render("index", array("list" => $list, "pager" => array("count" => $count, "page" => $page, "page_size" => $pageSize), "query" => array("q" => $q,"startdate"=>$startdate,"enddate"=>$enddate)));
+        $this->render("index", array("list" => $list, "pager" => array("count" => $count, "page" => $page, "page_size" => $pageSize), "query" => array("q" => $q,"startdate"=>$startdate,"enddate"=>$enddate,"pic"=>$pic)));
 
     }
 
