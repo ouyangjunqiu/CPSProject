@@ -131,7 +131,7 @@ $username = empty($user)?"游客":$user["username"];
                 <h4 class="modal-title" id="exampleModalLabel">营销推广规划</h4>
             </div>
             <div class="modal-body">
-                <form>
+                <form method="post" action="<?php echo $this->createUrl('/main/ploy/add');?>">
                     <input type="hidden" name="nick"/>
                     <div class="form-group">
                         <label>营销类型:</label>
@@ -263,10 +263,11 @@ $username = empty($user)?"游客":$user["username"];
         });
 
 
-        tinymce.init({
-            selector: '#ploy-content-editor',
-            menubar: false
-        });
+//        tinymce.init({
+//            selector: '#ploy-content-editor',
+//            menubar: false
+//        });
+//        $("[data-provide=datepicker-inline]").datepicker();
 
         $('#ShopPloyAddModal').on('show.bs.modal', function (event) {
             var self = $(this);
@@ -278,19 +279,24 @@ $username = empty($user)?"游客":$user["username"];
         $('#ShopPloyAddModal').find("[data-click=save]").click(function(){
             var form = $('#ShopPloyAddModal').find("form");
             var target = $($(this).data("trigger-target")).find("[data-load=overlay]");
+
             $.ajax({
                 url:"<?php echo $this->createUrl('/main/ploy/add');?>",
                 type:"post",
                 dataType:"json",
                 data:form.serialize(),
                 success:function(){
+
                     target.DataLoad();
+                },
+                beforeSend:function(){
+                    $("#ShopPloyAddModal").modal('hide');
                 }
 
             })
         });
 
-        $("[data-provide=datepicker-inline]").datepicker();
+
 
     });
 
