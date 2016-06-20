@@ -10,12 +10,12 @@ namespace application\modules\main\model;
 
 use cloud\core\model\Model;
 
-class ShopPlan extends Model {
+class ShopBudget extends Model {
 
     /**
      * Returns the static model of the specified AR class.
      * @param string $className active record class name.
-     * @return ShopPlan the static model class
+     * @return ShopBudget the static model class
      */
     public static function model($className=__CLASS__)
     {
@@ -27,7 +27,7 @@ class ShopPlan extends Model {
      */
     public function tableName()
     {
-        return '{{shop_plan}}';
+        return '{{shop_budget}}';
     }
 
     /**

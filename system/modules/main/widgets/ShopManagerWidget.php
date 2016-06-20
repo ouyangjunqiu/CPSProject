@@ -1,7 +1,7 @@
 <?php
 namespace application\modules\main\widgets;
+use application\modules\main\model\ShopBudget;
 use application\modules\main\model\ShopContact;
-use application\modules\main\model\ShopPlan;
 use CWidget;
 
 /**
@@ -17,7 +17,7 @@ class ShopManagerWidget extends CWidget
     public function run(){
         $contact = ShopContact::fetchByNick($this->shop["nick"]);
         $row = array_merge($this->shop,$contact);
-        $budget = ShopPlan::model()->fetch("nick=?",array($this->shop["nick"]));
+        $budget = ShopBudget::model()->fetch("nick=?",array($this->shop["nick"]));
         if(empty($budget)){
             $budget = array(
                 "ztc_budget"=>0,

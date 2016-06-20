@@ -226,7 +226,7 @@
                 </form>
             </div>
             <div role="tabpanel" class="tab-pane" id="budget_<?php echo $row["id"];?>" data-role="shop-budget">
-                <form action="<?php echo Yii::app()->urlManager->createUrl('/main/plan/budgetset');?>" method="post">
+                <form action="<?php echo Yii::app()->urlManager->createUrl('/main/budget/set');?>" method="post">
                     <input type="hidden" value="<?php echo $row["nick"];?>"  name="nick"/>
                     <div class="container-fluid">
                         <div class="row">
