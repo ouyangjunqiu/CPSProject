@@ -296,7 +296,7 @@
                     if(resp.isSuccess) {
                         $('#ShopTodoAddModal').find("textarea[name=content]").val("");
                         $("#my-todo-wrap [data-role=my-todo]").DataLoad();
-                        target && target.DataLoad();
+                        target.DataLoad();
                     }
                 },
                 beforeSend:function(){
@@ -324,7 +324,7 @@
                     $("body").hideLoading();
                     if(resp.isSuccess) {
                         $("#my-todo-wrap [data-role=my-todo]").DataLoad();
-                        target && target.DataLoad();
+                        target.DataLoad();
                     }
                 },
                 beforeSend:function(){
@@ -352,7 +352,7 @@
                     $("body").hideLoading();
                     if(resp.isSuccess) {
                         $("#my-todo-wrap [data-role=my-todo]").DataLoad();
-                        target && target.DataLoad();
+                        target.DataLoad();
                     }
                 },
                 beforeSend:function(){
@@ -409,7 +409,7 @@
                         var t = $.cookie("todo.alert.time");
                         if(!t || Date.now()>t){
                             var date = new Date();
-                            date.setTime(date.getTime() +  60 * 1000);
+                            date.setTime(date.getTime() +  30* 60 * 1000);
                             $.cookie("todo.alert.time",date.getTime());
                             window.postMessage({type:'alertMessage',title:"待办提醒",message:"你有"+resp.data.count+"件待办事项未完成!"},'*');
                         }
