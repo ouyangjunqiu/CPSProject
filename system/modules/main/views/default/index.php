@@ -139,11 +139,11 @@ $username = empty($user)?"游客":$user["username"];
                     </div>
                     <div class="form-group">
                         <label>起:</label>
-                        <input class="form-control" type="text" name="begindate" data-provide="datepicker-inline" data-date-format="yyyy-mm-dd"/>
+                        <input class="form-control" type="text" name="begindate"  data-date-format="yyyy-mm-dd" value="<?php echo date("Y-m-d");?>"/>
                     </div>
                     <div class="form-group">
                         <label>止:</label>
-                        <input class="form-control" type="text" name="enddate" data-provide="datepicker-inline" data-date-format="yyyy-mm-dd"/>
+                        <input class="form-control" type="text" name="enddate" data-date-format="yyyy-mm-dd" value="<?php echo date("Y-m-d");?>"/>
                     </div>
 
                     <div class="form-group">
@@ -276,7 +276,7 @@ $username = empty($user)?"游客":$user["username"];
             self.find("[data-click=save]").attr("data-trigger-target",button.attr("data-trigger-target"));
         });
 
-        $('#ShopTodoOpModal').delegate('[data-click=save]','click',function(){
+        $('#ShopPloyAddModal').delegate('[data-click=save]','click',function(){
 
             var form = $('#ShopPloyAddModal').find("form");
             var target = $($(this).attr("data-trigger-target")).find("[data-load=overlay]");

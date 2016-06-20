@@ -84,6 +84,9 @@ class PloyController extends Controller
     public function actionGetbynick(){
         $nick = Env::getRequest("nick");
         $list = ShopPloy::model()->fetchAll("nick=? AND enddate>=?",array($nick,date("Y-m-d")));
+        foreach($list as &$row){
+            $row["budget_rate"] = round(@( $row["budget"]/$row["sale_goal"] )*100)."%";
+        }
         $this->renderJson(array("isSuccess"=>true,"data"=>array("list"=>$list)));
     }
 
