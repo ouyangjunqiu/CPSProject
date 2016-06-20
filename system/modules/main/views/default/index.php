@@ -47,6 +47,9 @@ $username = empty($user)?"游客":$user["username"];
                             <li role="presentation"><a href="#file_<?php echo md5($row["nick"]);?>" title="云共享" aria-controls="file_<?php echo md5($row["nick"]);?>" role="tab" data-toggle="tab" aria-expanded="true">
                                     <i class="fa fa-cloud"></i><span>云共享</span></a>
                             </li>
+                            <li role="presentation"><a href="#ploy_<?php echo md5($row["nick"]);?>" title="营销推广规划" aria-controls="ploy_<?php echo md5($row["nick"]);?>" role="tab" data-toggle="tab" aria-expanded="true">
+                                    <i class="glyphicon glyphicon-record"></i><span>营销推广规划</span></a>
+                            </li>
                         </ul>
 
                         <div class="tab-content">
@@ -76,6 +79,15 @@ $username = empty($user)?"游客":$user["username"];
 
                                 <a data-toggle="modal" data-target="#ShopFileUploadModal" data-backdrop="false" data-logdate-index="1" data-nick="<?php echo $row["nick"];?>" data-creator="<?php echo $username;?>" data-trigger-target="#file_<?php echo md5($row["nick"]);?>">
                                     <i class="fa fa-cloud-upload"></i> 上传文件...
+                                </a>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="ploy_<?php echo md5($row["nick"]);?>">
+                                <div class="overlay-wrapper" data-load="overlay" data-tmpl="shop-ploy-list-tmpl" data-role="shop-ploy-list" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo $this->createUrl("/main/ploy/getbynick",array("nick"=>$row["nick"]));?>">
+                                </div>
+
+                                <a data-toggle="modal" data-target="#ShopPloyAddModal" data-backdrop="false" data-logdate-index="1" data-nick="<?php echo $row["nick"];?>" data-trigger-target="#ploy_<?php echo md5($row["nick"]);?>">
+                                    <i class="fa fa-plus"></i> 新建营销推广规划...
                                 </a>
                             </div>
                         </div>
@@ -111,6 +123,52 @@ $username = empty($user)?"游客":$user["username"];
     </div>
 </div>
 
+<div class="modal fade" id="ShopPloyAddModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">营销推广规划</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" name="nick"/>
+                    <div class="form-group">
+                        <label>营销类型:</label>
+                        <input class="form-control" type="text" name="name"/>
+                    </div>
+                    <div class="form-group">
+                        <label>起:</label>
+                        <input class="form-control" type="text" name="begindate" data-provide="datepicker" data-date-format="yyyy-mm-dd"/>
+                    </div>
+                    <div class="form-group">
+                        <label>止:</label>
+                        <input class="form-control" type="text" name="enddate" data-provide="datepicker" data-date-format="yyyy-mm-dd"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>预期营业额:</label>
+                        <input class="form-control" type="text" name="sale_goal"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>推广预算:</label>
+                        <input class="form-control" type="text" name="budget"/>
+                    </div>
+
+                    <textarea class="form-control" name="content" rows="5" id="ploy-content-editor">
+
+                    </textarea>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-click="save">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <?php $this->widget("application\\modules\\main\\widgets\\ShopTodoWidget");?>
 
@@ -127,6 +185,29 @@ $username = empty($user)?"游客":$user["username"];
 
        {{/each}}
    </div>
+</script>
+
+<script type="text/x-jquery-tmpl" id="shop-ploy-list-tmpl">
+    <table data-role="list" class="baby-frame-table" style="table-layout: fixed;">
+      <thead>
+        <tr class="small">
+         <th>营销类型</th>
+         <th>营销期限</th>
+         <th>预期营业额<small>(元)</small></th>
+         <th>推广预算<small>(占比)</small></th>
+         <th>规划</th>
+        </tr>
+      </thead>
+      {{each(i,v) data.list}}
+        <tr>
+            <td>${v.name}</td>
+            <td>${v.begindate}~${v.enddate}</td>
+            <td>${v.sale_goal}</td>
+            <td>${v.budget}<small>(${v.budget_rate})</small></td>
+            <td>{{html v.context}}</td>
+        </tr>
+      {{/each}}
+    </table>
 </script>
 
 <script type="application/javascript">
@@ -179,6 +260,34 @@ $username = empty($user)?"游客":$user["username"];
                     app.error("上传失败，请确认网络连接是否正常后请重试!");
                 }
             });
+        });
+
+
+        tinymce.init({
+            selector: '#ploy-content-editor',
+            inline: true
+        });
+
+        $('#ShopPloyAddModal').on('show.bs.modal', function (event) {
+            var self = $(this);
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            self.find("input[name=nick]").val(button.data("nick"));
+            self.find("[data-click=save]").attr("data-trigger-target",button.data("trigger-target"));
+        });
+
+        $('#ShopPloyAddModal').find("[data-click=save]").click(function(){
+            var form = $('#ShopPloyAddModal').find("form");
+            var target = $($(this).data("trigger-target")).find("[data-load=overlay]");
+            $.ajax({
+                url:"<?php echo $this->createUrl('/main/ploy/add');?>",
+                type:"post",
+                dataType:"json",
+                data:form.serialize(),
+                success:function(){
+                    target.DataLoad();
+                }
+
+            })
         });
 
     });

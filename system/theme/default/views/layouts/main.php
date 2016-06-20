@@ -201,6 +201,8 @@
 
     <script src='<?php echo STATICURL."/base/js/plugins/dropify/js/dropify.min.js"; ?>'></script>
 
+    <script src='<?php echo STATICURL."/base/js/plugins/tinymce/tinymce.min.js"; ?>'></script>
+
     <script src='<?php echo STATICURL."/base/js/layout.js"; ?>'></script>
 <script src='<?php echo STATICURL."/base/js/app.js"; ?>'></script>
     <script src='<?php echo STATICURL."/base/js/score.js"; ?>'></script>

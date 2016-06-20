@@ -53,7 +53,7 @@ class PloyController extends Controller
         $enddate = Env::getRequest("enddate");
         $sale_goal = Env::getRequest("sale_goal");
         $budget = Env::getRequest("budget");
-        $context = Env::getRequest("context");
+        $content = Env::getRequest("content");
         $logdate = date("Y-m-d");
 
         $attr = array(
@@ -63,7 +63,7 @@ class PloyController extends Controller
             "enddate" => $enddate,
             "sale_goal"=>$sale_goal,
             "budget"=>$budget,
-            "context"=>$context,
+            "content"=>$content,
             "logdate"=>$logdate
         );
 
@@ -79,6 +79,12 @@ class PloyController extends Controller
             $this->renderJson(array("isSuccess"=>false,"msg"=>$model->getErrors()));
         }
 
+    }
+
+    public function actionGetbynick(){
+        $nick = Env::getRequest("nick");
+        $list = ShopPloy::model()->fetchAll("nick=? AND enddate>=?",array($nick,date("Y-m-d")));
+        $this->renderJson(array("isSuccess"=>true,"data"=>array("list"=>$list)));
     }
 
 }
