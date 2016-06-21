@@ -28,25 +28,8 @@ body {
 }
 
 
-body, blockquote, script, div, ul, li, dl, dt, dd, span, p, h1, h2, h3, h4, h5, h6, img, a, form, label, iframe {
-    margin: 0;
-    padding: 0;
-    border: 0;
-}
-
-button, input, textarea {
-    margin: 0;
-    padding: 0;
-    font-family: "微软雅黑";
-    font-size: 14px;
-}
-
 button, input[type="submit"], input[type="button"] {
     cursor: pointer;
-}
-
-select, input, img, select {
-    vertical-align: middle;
 }
 
 a {
@@ -57,23 +40,6 @@ a {
 
 a:hover {
     text-decoration: underline;
-}
-
-a img {
-    border: none;
-}
-
-img {
-    max-width: 100%;
-}
-
-table {
-    border-collapse: collapse;
-    border-spaceing: 0
-}
-
-ul, ol, li {
-    list-style-type: none;
 }
 
 
