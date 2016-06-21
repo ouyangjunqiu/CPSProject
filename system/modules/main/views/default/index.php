@@ -131,28 +131,28 @@ $username = empty($user)?"游客":$user["username"];
                 <h4 class="modal-title" id="exampleModalLabel">营销推广规划</h4>
             </div>
             <div class="modal-body">
-                <form method="post" action="<?php echo $this->createUrl('/main/ploy/add');?>">
+                <form method="post" action="<?php echo $this->createUrl('/main/ploy/add');?>" class="form-horizontal">
                     <input type="hidden" name="nick"/>
                     <div class="form-group">
-                        <label class="col-sm-1 control-label">起:</label>
-                        <div class="col-sm-5">
+                        <label class="col-sm-2 control-label">起:</label>
+                        <div class="col-sm-3">
                             <input class="form-control" type="text" name="begindate"  data-date-format="yyyy-mm-dd" value="<?php echo date("Y-m-d");?>"/>
                         </div>
-                        <label class="col-sm-1 control-label">止:</label>
-                        <div class="col-sm-5">
+                        <label class="col-sm-3 control-label">止:</label>
+                        <div class="col-sm-3">
                             <input class="form-control" type="text" name="enddate" data-date-format="yyyy-mm-dd" value="<?php echo date("Y-m-d");?>"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">营销类型:</label>
+                        <label class="col-sm-2 control-label">营销类型:</label>
                         <div class="col-sm-9">
                             <input class="form-control" type="text" name="name"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">预期营业额:</label>
+                        <label class="col-sm-2 control-label">预期营业额:</label>
                         <div class="col-sm-3">
                             <input class="form-control" type="text" name="sale_goal" value="0"/>
                         </div>
@@ -164,7 +164,8 @@ $username = empty($user)?"游客":$user["username"];
 
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <textarea class="form-control" name="content" rows="5" id="ploy-content-editor"></textarea>
+                            <textarea class="form-control" rows="5" id="ploy-content-editor"></textarea>
+                            <input type="hidden" name="content">
                         </div>
                     </div>
 
@@ -273,7 +274,8 @@ $username = empty($user)?"游客":$user["username"];
 
         tinymce.init({
             selector: '#ploy-content-editor',
-            menubar: false
+            menubar: false,
+            language :"zh"
         });
 //        $("[data-provide=datepicker-inline]").datepicker();
 
@@ -286,9 +288,10 @@ $username = empty($user)?"游客":$user["username"];
 
         $('#ShopPloyAddModal').delegate('[data-click=save]','click',function(){
 
-            var form = $('#ShopPloyAddModal').find("form");
+            var content = tinymce.get('#ploy-content-editor').getContent({format: 'raw'});
             var target = $($(this).attr("data-trigger-target")).find("[data-load=overlay]");
-
+            var form = $('#ShopPloyAddModal').find("form");
+            form.find("[name=content]").val(content);
             $.ajax({
                 url:"<?php echo $this->createUrl('/main/ploy/add');?>",
                 type:"post",
