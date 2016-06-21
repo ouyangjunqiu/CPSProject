@@ -134,30 +134,38 @@ $username = empty($user)?"游客":$user["username"];
                 <form method="post" action="<?php echo $this->createUrl('/main/ploy/add');?>">
                     <input type="hidden" name="nick"/>
                     <div class="form-group">
-                        <label>营销类型:</label>
-                        <input class="form-control" type="text" name="name"/>
-                    </div>
-                    <div class="form-group">
-                        <label>起:</label>
-                        <input class="form-control" type="text" name="begindate"  data-date-format="yyyy-mm-dd" value="<?php echo date("Y-m-d");?>"/>
-                    </div>
-                    <div class="form-group">
-                        <label>止:</label>
-                        <input class="form-control" type="text" name="enddate" data-date-format="yyyy-mm-dd" value="<?php echo date("Y-m-d");?>"/>
+                        <label class="col-sm-1 control-label">起:</label>
+                        <div class="col-sm-5">
+                            <input class="form-control" type="text" name="begindate"  data-date-format="yyyy-mm-dd" value="<?php echo date("Y-m-d");?>"/>
+                        </div>
+                        <label class="col-sm-1 control-label">止:</label>
+                        <div class="col-sm-5">
+                            <input class="form-control" type="text" name="enddate" data-date-format="yyyy-mm-dd" value="<?php echo date("Y-m-d");?>"/>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <label>预期营业额:</label>
-                        <input class="form-control" type="text" name="sale_goal"/>
+                        <label class="col-sm-3 control-label">营销类型:</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" name="name"/>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <label>推广预算:</label>
-                        <input class="form-control" type="text" name="budget"/>
+                        <label class="col-sm-3 control-label">预期营业额:</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" type="text" name="sale_goal" value="0"/>
+                        </div>
+                        <label class="col-sm-3 control-label">推广预算:</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" type="text" name="budget" value="0"/>
+                        </div>
                     </div>
+
                     <div class="form-group">
-                        <label>规划:</label>
-                        <textarea class="form-control" name="content" rows="5" id="ploy-content-editor"></textarea>
+                        <div class="col-sm-12">
+                            <textarea class="form-control" name="content" rows="5" id="ploy-content-editor"></textarea>
+                        </div>
                     </div>
 
                 </form>
@@ -263,10 +271,10 @@ $username = empty($user)?"游客":$user["username"];
         });
 
 
-//        tinymce.init({
-//            selector: '#ploy-content-editor',
-//            menubar: false
-//        });
+        tinymce.init({
+            selector: '#ploy-content-editor',
+            menubar: false
+        });
 //        $("[data-provide=datepicker-inline]").datepicker();
 
         $('#ShopPloyAddModal').on('show.bs.modal', function (event) {
