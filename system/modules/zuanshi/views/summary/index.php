@@ -54,8 +54,8 @@
     </div>
 
     <table class="baby-frame-table" id="table-fixed" style="table-layout: fixed;">
-        <thead class="small">
-        <tr>
+        <thead>
+        <tr class="small">
             <th>店铺名</th>
             <th>主营行业</th>
             <th>运营对接人</th>
