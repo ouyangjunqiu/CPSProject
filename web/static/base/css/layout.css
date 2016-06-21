@@ -228,6 +228,7 @@ button, input[type="submit"], input[type="button"] {
 
 .top-ul li {
     cursor: pointer;
+    list-style: none;
     float: left;
     height: 140px;
     text-align: center;

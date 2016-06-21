@@ -35,57 +35,57 @@
                         <div class="row">
                             <div class="col-md-4"><small>运营对接人:</small></div>
                             <div class="col-md-6">
-                                <p class="pic_read">
+                                <span class="pic_read">
                                     <strong><?php echo $row["pic"];?></strong>
-                                </p>
-                                <p class="pic_input form_writer" style="display: none">
+                                </span>
+                                <span class="pic_input form_writer" style="display: none">
                                     <input type="text" value="<?php echo $row["pic"];?>" name="pic"/>
-                                </p>
+                                </span>
                             </div>
                             <div class="col-md-2">
-                                <p class="pic_read">
+                                <span class="pic_read">
                                     <span class="editor"><i class="glyphicon glyphicon-pencil"></i></span>
-                                </p>
+                                </span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4"><small>钻展负责人:</small></div>
                             <div class="col-md-6">
-                                <p class="pic_read">
+                                <span class="pic_read">
                                     <strong><?php echo $row["zuanshi_pic"];?></strong>
-                                </p>
-                                <p class="pic_input form_writer" style="display: none">
+                                </span>
+                                <span class="pic_input form_writer" style="display: none">
                                     <input type="text" value="<?php echo $row["zuanshi_pic"];?>" name="zuanshi_pic"/>
-                                </p>
+                                </span>
                             </div>
                             <div class="col-md-2"></div>
                         </div>
                         <div class="row">
                             <div class="col-md-4"><small>直通车负责人:</small></div>
                             <div class="col-md-6">
-                                <p class="pic_read">
+                                <span class="pic_read">
                                     <strong><?php echo $row["ztc_pic"];?></strong>
-                                </p>
-                                <p class="pic_input form_writer" style="display: none">
+                                </span>
+                                <span class="pic_input form_writer" style="display: none">
                                     <input type="text" value="<?php echo $row["ztc_pic"];?>" name="ztc_pic"/>
-                                </p>
+                                </span>
                             </div>
                             <div class="col-md-2"></div>
                         </div>
                         <div class="row">
                             <div class="col-md-4"><small>大数据负责人:</small></div>
                             <div class="col-md-6">
-                                <p class="pic_read">
+                                <span class="pic_read">
                                     <strong><?php echo $row["bigdata_pic"];?></strong>
-                                </p>
-                                <p class="pic_input form_writer" style="display: none">
+                                </span>
+                                <span class="pic_input form_writer" style="display: none">
                                     <input type="text" value="<?php echo $row["bigdata_pic"];?>" name="bigdata_pic"/>
-                                </p>
+                                </span>
                             </div>
                             <div class="col-md-2">
-                                <p class="pic_input" style="display: none">
+                                <span class="pic_input" style="display: none">
                                     <button type="button" class="btn btn-primary" data-click="pic-save" data-url="<?php echo Yii::app()->urlManager->createUrl('/main/shop/pic');?>">保存</button>
-                                </p>
+                                </span>
                             </div>
                         </div>
                         <div class="row">
@@ -126,28 +126,28 @@
                         <div class="row">
                             <div class="col-md-3"><small>店铺名称:</small></div>
                             <div class="col-md-7">
-                                <p class="pic_read">
+                                <span class="pic_read">
                                     <strong><?php echo $row["shopname"];?></strong>
-                                </p>
-                                <p class="pic_input form_writer" style="display: none">
+                                </span>
+                                <span class="pic_input form_writer" style="display: none">
                                     <input type="text" value="<?php echo $row["shopname"];?>"  name="shopname"/>
-                                </p>
+                                </span>
                             </div>
                             <div class="col-md-2">
-                                <p class="pic_read">
+                                <span class="pic_read">
                                     <span class="editor"><i class="glyphicon glyphicon-pencil"></i></span>
-                                </p>
+                                </span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-3"><small>主营行业:</small></div>
                             <div class="col-md-7">
-                                <p class="pic_read">
+                                <span class="pic_read">
                                     <strong><?php echo $row["shopcatname"];?></strong>
-                                </p>
-                                <p class="pic_input form_writer" style="display: none">
+                                </span>
+                                <span class="pic_input form_writer" style="display: none">
                                     <input type="text" value="<?php echo $row["shopcatname"];?>"  name="shopcatname"/>
-                                </p>
+                                </span>
                             </div>
                             <div class="col-md-2">
                             </div>
@@ -155,12 +155,12 @@
                         <div class="row">
                             <div class="col-md-3"><small>淘宝账号:</small></div>
                             <div class="col-md-7">
-                                <p class="pic_read">
+                                <span class="pic_read">
                                     <strong><?php echo $row["login_nick"];?></strong>
-                                </p>
-                                <p class="pic_input form_writer" style="display: none">
+                                </span>
+                                <span class="pic_input form_writer" style="display: none">
                                     <input type="text" value="<?php echo $row["login_nick"];?>"  name="login_nick"/>
-                                </p>
+                                </span>
                             </div>
                             <div class="col-md-2">
 
@@ -169,12 +169,12 @@
                         <div class="row">
                             <div class="col-md-3"><small>淘宝密码:</small></div>
                             <div class="col-md-7">
-                                <p class="pic_read">
+                                <span class="pic_read">
                                     <strong><?php echo $row["login_password"];?></strong>
-                                </p>
-                                <p class="pic_input form_writer" style="display: none">
+                                </span>
+                                <span class="pic_input form_writer" style="display: none">
                                     <input type="text" value="<?php echo $row["login_password"];?>" name="login_password"/>
-                                </p>
+                                </span>
                             </div>
                             <div class="col-md-2">
 
@@ -183,12 +183,12 @@
                         <div class="row">
                             <div class="col-md-3"><small>合作业务:</small></div>
                             <div class="col-md-7">
-                                <p class="pic_read">
+                                <span class="pic_read">
                                     <strong><?php echo $row["shoptype"];?></strong>
-                                </p>
-                                <p class="pic_input" style="display: none">
+                                </span>
+                                <span class="pic_input" style="display: none">
                                     <?php echo CHtml::dropDownList("shoptype", $row["shoptype"],\application\modules\main\model\Shop::$saleTypes);?>
-                                </p>
+                                </span>
                             </div>
                             <div class="col-md-2">
 
@@ -197,17 +197,17 @@
                         <div class="row">
                             <div class="col-md-3"><small>店铺地址:</small></div>
                             <div class="col-md-7">
-                                <p class="pic_read w2">
+                                <span class="pic_read w2">
                                    <a href="<?php echo $row["shopurl"];?>" target="_blank" title="<?php echo $row["shopurl"];?>"><?php echo $row["shopurl"];?></a>
-                                </p>
-                                <p class="pic_input form_writer" style="display: none">
+                                </span>
+                                <span class="pic_input form_writer" style="display: none">
                                     <input type="text" value="<?php echo $row["shopurl"];?>" name="shopurl"/>
-                                </p>
+                                </span>
                             </div>
                             <div class="col-md-2">
-                                <p class="pic_input" style="display: none">
+                                <span class="pic_input" style="display: none">
                                     <button type="button" class="btn btn-primary" data-click="pic-save" data-url="<?php echo Yii::app()->urlManager->createUrl('/main/shop/modify');?>">保存</button>
-                                </p>
+                                </span>
                             </div>
 
                         </div>
@@ -243,9 +243,9 @@
                                 <strong><?php echo @($row["ztc_budget"]+$row["zuanshi_budget"]);?></strong>
                             </div>
                             <div class="col-md-2">
-                                <p class="pic_read">
+                                <span class="pic_read">
                                     <span class="editor"><i class="glyphicon glyphicon-pencil"></i></span>
-                                </p>
+                                </span>
                             </div>
 
                         </div>
@@ -253,12 +253,12 @@
 
                             <div class="col-md-4"><small>直通车预算:</small></div>
                             <div class="col-md-6">
-                                <p class="pic_read">
+                                <span class="pic_read">
                                     <strong><?php echo $row["ztc_budget"];?></strong>
-                                </p>
-                                <p class="pic_input form_writer" style="display: none">
+                                </span>
+                                <span class="pic_input form_writer" style="display: none">
                                     <input type="text" value="<?php echo $row["ztc_budget"];?>"  name="ztc_budget"/>
-                                </p>
+                                </span>
                             </div>
                             <div class="col-md-2">
                             </div>
@@ -267,15 +267,15 @@
                         <div class="row">
                             <div class="col-md-4"><small>钻展预算:</small></div>
                             <div class="col-md-6">
-                                <p class="pic_read"><strong><?php echo $row["zuanshi_budget"];?></strong></p>
-                                <p class="pic_input form_writer" style="display: none">
+                                <span class="pic_read"><strong><?php echo $row["zuanshi_budget"];?></strong></span>
+                                <span class="pic_input form_writer" style="display: none">
                                     <input type="text" value="<?php echo $row["zuanshi_budget"];?>"  name="zuanshi_budget"/>
-                                </p>
+                                </span>
                             </div>
                             <div class="col-md-2">
-                                <p class="pic_input" style="display: none">
+                                <span class="pic_input" style="display: none">
                                     <button type="button" class="btn btn-primary" data-click="budget-save">保存</button>
-                                </p>
+                                </span>
                             </div>
                         </div>
 
@@ -305,27 +305,27 @@
 
                             <div class="col-md-3"><small>QQ:</small></div>
                             <div class="col-md-7">
-                                <p class="pic_read">
+                                <span class="pic_read">
                                     <strong><?php echo $row["qq"];?></strong>
-                                </p>
-                                <p class="pic_input form_writer" style="display: none">
+                                </span>
+                                <span class="pic_input form_writer" style="display: none">
                                     <input type="text" value="<?php echo $row["qq"];?>"  name="qq"/>
-                                </p>
+                                </span>
                             </div>
                             <div class="col-md-2">
-                                <p class="pic_read">
+                                <span class="pic_read">
                                     <span class="editor"><i class="glyphicon glyphicon-pencil"></i></span>
-                                </p>
+                                </span>
                             </div>
 
                     </div>
                     <div class="row">
                         <div class="col-md-3"><small>Email:</small></div>
                         <div class="col-md-7">
-                            <p class="pic_read"><strong><?php echo $row["email"];?></strong></p>
-                            <p class="pic_input form_writer" style="display: none">
+                            <span class="pic_read"><strong><?php echo $row["email"];?></strong></span>
+                            <span class="pic_input form_writer" style="display: none">
                                 <input type="text" value="<?php echo $row["email"];?>"  name="email"/>
-                            </p>
+                            </span>
                         </div>
                         <div class="col-md-2">
 
@@ -334,10 +334,10 @@
                         <div class="row">
                             <div class="col-md-3"><small>联系电话:</small></div>
                             <div class="col-md-7">
-                                <p class="pic_read"><strong><?php echo $row["phone"];?></strong></p>
-                                <p class="pic_input form_writer" style="display: none">
+                                <span class="pic_read"><strong><?php echo $row["phone"];?></strong></span>
+                                <span class="pic_input form_writer" style="display: none">
                                     <input type="text" value="<?php echo $row["phone"];?>"  name="phone"/>
-                                </p>
+                                </span>
                             </div>
                             <div class="col-md-2">
 
@@ -347,15 +347,15 @@
                         <div class="row">
                             <div class="col-md-3"><small>微信:</small></div>
                             <div class="col-md-7">
-                                <p class="pic_read"><strong><?php echo $row["weixin"];?></strong></p>
-                                <p class="pic_input form_writer" style="display: none">
+                                <span class="pic_read"><strong><?php echo $row["weixin"];?></strong></span>
+                                <span class="pic_input form_writer" style="display: none">
                                     <input type="text" value="<?php echo $row["weixin"];?>"  name="weixin"/>
-                                </p>
+                                </span>
                             </div>
                             <div class="col-md-2">
-                                <p class="pic_input" style="display: none">
+                                <span class="pic_input" style="display: none">
                                     <button type="button" class="btn btn-primary" data-click="contact-save">保存</button>
-                                </p>
+                                </span>
                             </div>
                         </div>
 
