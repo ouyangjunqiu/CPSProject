@@ -274,8 +274,7 @@ $username = empty($user)?"游客":$user["username"];
 
         tinymce.init({
             selector: '#ploy-content-editor',
-            menubar: false,
-            language :"zh"
+            menubar: false
         });
 //        $("[data-provide=datepicker-inline]").datepicker();
 
@@ -288,7 +287,7 @@ $username = empty($user)?"游客":$user["username"];
 
         $('#ShopPloyAddModal').delegate('[data-click=save]','click',function(){
 
-            var content = tinymce.get('#ploy-content-editor').getContent({format: 'raw'});
+            var content = tinymce.get('ploy-content-editor').getContent({format: 'raw'});
             var target = $($(this).attr("data-trigger-target")).find("[data-load=overlay]");
             var form = $('#ShopPloyAddModal').find("form");
             form.find("[name=content]").val(content);
