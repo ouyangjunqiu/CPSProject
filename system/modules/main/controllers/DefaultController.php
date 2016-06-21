@@ -12,8 +12,6 @@ namespace application\modules\main\controllers;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
 use application\modules\main\model\Shop;
-use application\modules\main\utils\CaseBudgetEditor;
-use application\modules\main\utils\CaseBudgetView;
 
 class DefaultController extends Controller
 {
@@ -98,34 +96,5 @@ class DefaultController extends Controller
 		$this->render("stoplist",array("list"=>$list,"pager"=>array("count"=>$count,"page"=>$page,"page_size"=>$pageSize),"query"=>array("q"=>$q,"pic"=>$pic)));
 	}
 
-
-	/**
-	 * case上周报表的录入
-	 */
-	public function actionBudget(){
-		$nick = Env::getRequest("nick");
-
-		$week = date("W");
-		$year = date("Y");
-		$view = new CaseBudgetEditor($year,$week-1, $nick);
-		$viewText=$view->render();
-		$historyText = "";
-
-		for($i=1;$i<=7;$i++){
-			$w = $week-$i-1;
-			if($w<=0){
-				$w = 53-abs($w);
-				$view = new CaseBudgetView($year-1, $w, $nick);
-				$historyText.=$view->render();
-			}else{
-				$view = new CaseBudgetView($year, $w, $nick);
-				$historyText.=$view->render();
-			}
-
-		}
-
-		$this->render("budget",array("editor_view"=>$viewText,"history_view"=>$historyText,"query"=>array("nick"=>$nick)));
-
-	}
 
 }
