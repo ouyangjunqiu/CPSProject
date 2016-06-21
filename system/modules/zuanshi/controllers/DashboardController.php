@@ -32,7 +32,7 @@ class DashboardController extends Controller
             $criteria->addCondition("(pic LIKE '%{$pic}%' OR zuanshi_pic LIKE '%{$pic}%' OR bigdata_pic LIKE '%{$pic}%' OR ztc_pic  LIKE '%{$pic}%')");
         }
         if(!empty($q)) {
-            $criteria->addCondition("(nick LIKE '%{$q}%' OR pic LIKE '%{$q}%' OR zuanshi_pic LIKE '%{$q}%' OR bigdata_pic LIKE '%{$q}%' OR ztc_pic  LIKE '%{$q}%')");
+            $criteria->addCondition("(shopcatname LIKE '%{$q}%' OR shoptype LIKE '%{$q}%' OR nick LIKE '%{$q}%' OR pic LIKE '%{$q}%' OR zuanshi_pic LIKE '%{$q}%' OR bigdata_pic LIKE '%{$q}%' OR ztc_pic  LIKE '%{$q}%')");
         }
 
         $count = Shop::model()->count($criteria);
@@ -41,22 +41,6 @@ class DashboardController extends Controller
         $criteria->limit = $pageSize;
 
         $list = Shop::model()->fetchAll($criteria);
-//        $hour = date("H");
-//        $hour = (int)$hour;
-//        if($hour >14) {
-//
-//            foreach ($list as &$row) {
-//                $row["rpt"] = AdvertiserHourRptSource::fetchSummaryByNick($row["nick"]);
-//                $row["campaign"] = CampaignHourRptSource::fetchBudgetWarningCount($row["nick"]);
-//                $row["plan"] = ShopPlan::model()->fetch("nick=?", array($row["nick"]));
-//            }
-//        }else{
-//            foreach ($list as &$row) {
-//                $row["rpt"] = AdvertiserHourRptSource::fetchSummaryByNick($row["nick"]);
-//                $row["campaign"] = CampaignHourRptSource::fetchExpiredWarningCount($row["nick"]);
-//                $row["plan"] = ShopPlan::model()->fetch("nick=?", array($row["nick"]));
-//            }
-//        }
 
         $this->render("index",array(
             "list"=>$list,
