@@ -9,8 +9,6 @@
 	<meta name="generator" content="" />
 	<meta name="author" content="" />
 	<meta name="copyright" content="" />
-    <meta http-equiv="cache-control" content="max-age=300,must-revalidate"/>
-    <meta http-equiv="Expires" content="<?php echo CACHE_EXPIRES;?>" />
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
     <?php
