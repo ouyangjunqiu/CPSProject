@@ -213,7 +213,7 @@ $username = empty($user)?"游客":$user["username"];
             <td>${v.begindate}~${v.enddate}</td>
             <td>${v.sale_goal}</td>
             <td>${v.budget}<small>(${v.budget_rate})</small></td>
-            <td>{{html v.context}}</td>
+            <td>{{html v.content}}</td>
         </tr>
       {{/each}}
     </table>
