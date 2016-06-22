@@ -14,7 +14,6 @@
                     <a href="<?php echo $this->createUrl("/main/shop/index");?>"><span class="label label-default">新增店铺</span></a>
                     <a href="<?php echo $this->createUrl("/main/default/index");?>"><span class="label label-default">我的店铺</span></a>
                     <a href="<?php echo $this->createUrl("/main/default/stoplist");?>"><span class="label label-info">流失店铺</span></a>
-<!--                    <a href="--><?php //echo $this->createUrl("/main/case/index");?><!--"><span class="label label-default">CASE列表</span></a>-->
                     <a href="<?php echo $this->createUrl("/main/dashboard/index");?>"><span class="label label-default">总览</span></a>
 
                 </small>
@@ -48,7 +47,7 @@
 
 
         $(".c-pager").jPager({currentPage: <?php echo $pager["page"]-1;?>, total: <?php echo $pager["count"];?>, pageSize: <?php echo $pager["page_size"];?>,events: function(dp){
-            location.href = app.url("<?php echo $this->createUrl('/main/default/index');?>",{page:dp.index+1})
+            location.href = app.url("<?php echo $this->createUrl('/main/default/stoplist');?>",{page:dp.index+1})
         }});
 
     });
