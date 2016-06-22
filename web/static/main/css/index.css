@@ -137,7 +137,7 @@ textarea.s {
 
 .padding{ padding-top: 5px; padding-bottom: 5px; }
 .d-ul{ overflow: hidden; margin:0 auto;}
-.d-ul li{ float: left;font-size: 0.8em; }
+.d-ul li{ list-style:none; float: left;font-size: 0.8em; }
 .shop-all{ background: #f0f2f1; margin: 10px 0; padding: 20px 0;}
 .shop-all div{ padding: 10px 0;}
 .color-black{font-size: 14px;}
