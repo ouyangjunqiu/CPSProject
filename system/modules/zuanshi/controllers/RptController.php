@@ -107,20 +107,16 @@ class RptController extends Controller
         $q = Env::getRequestWithSessionDefault("q","","main.default.index.q");
         $q = addslashes($q);
 
-        $page = (int)$page;
-        $pageSize = (int)$pageSize;
-
         $pic = Env::getRequestWithSessionDefault("pic","","main.default.index.pic");
         $pic = addslashes($pic);
 
         $criteria = new \CDbCriteria();
         $criteria->addCondition("status='0'");
-        if(!empty($q)) {
-            $criteria->addCondition("(nick LIKE '%{$q}%' OR pic LIKE '%{$q}%' OR zuanshi_pic LIKE '%{$q}%' OR bigdata_pic LIKE '%{$q}%' OR ztc_pic  LIKE '%{$q}%')");
-        }
-
         if(!empty($pic)) {
             $criteria->addCondition("(pic LIKE '%{$pic}%' OR zuanshi_pic LIKE '%{$pic}%' OR bigdata_pic LIKE '%{$pic}%' OR ztc_pic  LIKE '%{$pic}%')");
+        }
+        if(!empty($q)) {
+            $criteria->addCondition("(shopcatname LIKE '%{$q}%' OR shoptype LIKE '%{$q}%' OR nick LIKE '%{$q}%' OR pic LIKE '%{$q}%' OR zuanshi_pic LIKE '%{$q}%' OR bigdata_pic LIKE '%{$q}%' OR ztc_pic  LIKE '%{$q}%')");
         }
 
         $count = Shop::model()->count($criteria);
@@ -130,8 +126,15 @@ class RptController extends Controller
 
         $list = Shop::model()->fetchAll($criteria);
 
-        $this->render("index", array("list" => $list, "pager" => array("count" => $count, "page" => $page, "page_size" => $pageSize), "query" => array("q" => $q,"pic"=>$pic)));
-
+        $this->render("index",array(
+            "list"=>$list,
+            "pager"=>array(
+                "count"=>$count,
+                "page"=>$page,
+                "page_size"=>$pageSize
+            ),
+            "query"=>array("q"=>$q,"pic"=>$pic)
+        ));
     }
 
 
@@ -165,7 +168,6 @@ class RptController extends Controller
         $date = date("Y-m-d");
         foreach($list as &$row){
             $row["rpt"] = AccountRptSource2::model()->fetch("nick='{$row["nick"]}' AND date='{$date}'");
-//			$row["cases"] = ShopCase::model()->fetchAll("nick='{$row["nick"]}'");
 
         }
 
