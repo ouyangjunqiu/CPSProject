@@ -4,6 +4,8 @@
     CPS.board = {};
     CPS.campaign = {};
     CPS.utils = {};
+    CPS.layout = {};
+    CPS.time = {};
     CPS.app.start = function () {
         CPS.app.init();
     };
@@ -43,6 +45,8 @@
                     CPS.app.loginUser = data.data.loginUser;
                     CPS.app.shopId = data.data.loginUser.shopId;
                     CPS.app.postUser();
+
+                    CPS.layout.window();
 
                     var dateFormat = new DateFormat();
                     var hour = dateFormat.formatCurrentDate("HH");
@@ -141,7 +145,7 @@
                 type: 'post',
                 success: function (resp) {
                     if (resp.data && !resp.data.hasget) {
-                        CPS.app.rptnAdboardAll($("#CPS_rptn_adboard"));
+                        CPS.app.rptnAdboardAll();
                     }
                 }
             });
@@ -168,7 +172,7 @@
                 type: 'post',
                 success: function (resp) {
                     if (resp.data && !resp.data.hasget) {
-                        CPS.app.rptnDestAll($("#CPS_rptn_dest"));
+                        CPS.app.rptnDestAll();
                     }
                 }
             });
@@ -210,7 +214,7 @@
                 type: 'post',
                 success: function (resp) {
                     if (resp.data && !resp.data.hasget) {
-                        CPS.app.rptnAdzoneAll($("#CPS_rptn_adzone"));
+                        CPS.app.rptnAdzoneAll();
                     }
                 }
             });
@@ -312,25 +316,6 @@
     };
 
     /**
-     * 获取店铺的余额
-     * @version 2.9.6
-     */
-    CPS.app.getBalance = function(){
-        setTimeout(function () {
-            $.ajax({
-                url: 'http://zuanshi.taobao.com/index/account.json',
-                dataType: 'json',
-                data: {csrfID: CPS.app.csrfID},
-                type: 'get',
-                success: function (data) {
-                    console.log(data);
-
-                }
-            })
-        },1000)
-    };
-
-    /**
      * 获取实时数据
      * @version 2.9.6
      */
@@ -358,7 +343,6 @@
                     type: 'get'
                 })
             ).then(function(a,b,c){
-                console.log(a,b,c);
                 if(a && b && c && a[0] && b[0] && c[0]){
                     if(a[0].data && b[0].data && c[0].data){
                         $.ajax({
@@ -409,7 +393,6 @@
                     if (resp && resp.data) {
                         fn(resp.data, offset);
                     }
-                    // console.log(resp.data.count);
 
                 }
             })
@@ -422,33 +405,19 @@
      * @version 3.0.5
      *
      */
-    CPS.app.rptnAdboardAll = function(obj){
-        CPS.app.interRptnTemp = {count:0,offset:0};
+    CPS.app.rptnAdboardAll = function(){
         var dateFormat = new DateFormat();
         var endDateStr = dateFormat.addDays(new Date(), -1, "yyyy-MM-dd");
         var beginDateStr = dateFormat.addDays(new Date(), -7, "yyyy-MM-dd");
-        $(obj).html("正在下载报表,请稍等...");
+
         CPS.app.rptnAdboardDayList(beginDateStr,endDateStr,0,function(data){
-            CPS.app.interRptnTemp.count = data.count;
+
             CPS.app.postRptnAboard(data,0);
-
-            var profn = function(){
-                var i = CPS.app.interRptnTemp;
-                $(obj).html("正在下载报表("+ i.offset+"/"+i.count+")");
-                if(i.count<= i.offset+200){
-                    $(obj).html("下载报表完成");
-                }else{
-                    setTimeout(profn,1000);
-                }
-            };
-
-            profn();
-            CPS.app.interRptnTemp.offset+=200;
 
             for(var offset = 200;offset < data.count;offset+=200){
 
                     CPS.app.rptnAdboardDayList(beginDateStr,endDateStr,offset,function(rpt,i){
-                        CPS.app.interRptnTemp.offset+=200;
+
                         CPS.app.postRptnAboard(rpt,i);
 
                     });
@@ -486,7 +455,7 @@
         CPS.app.rptnAdboardDayList(beginDateStr,endDateStr,0,function(data){
 
             CPS.app.postRptnAboard2(data,beginDateStr,0);
-            CPS.app.interRptnTemp2.offset+=200;
+
             for(var offset = 200;offset < data.count;offset+=200){
 
                 CPS.app.rptnAdboardDayList(beginDateStr,endDateStr,offset,function(rpt,i){
@@ -544,8 +513,6 @@
                     if (resp && resp.data) {
                         fn(resp.data, offset);
                     }
-                    // console.log(resp.data.count);
-
                 }
             })
         };
@@ -557,34 +524,18 @@
      * @version 2.9.7
      *
      */
-    CPS.app.rptnDestAll = function(obj){
-        CPS.app.interRptnTemp2 = {count:0,offset:0};
+    CPS.app.rptnDestAll = function(){
         var dateFormat = new DateFormat();
         var endDateStr = dateFormat.addDays(new Date(), -1, "yyyy-MM-dd");
         var beginDateStr = dateFormat.addDays(new Date(), -7, "yyyy-MM-dd");
-        $(obj).html("正在下载报表,请稍等...");
+
         CPS.app.rptnDestDayList(beginDateStr,endDateStr,0,function(data){
-            CPS.app.interRptnTemp2.count = data.count;
 
-            var profn = function(){
-                var i = CPS.app.interRptnTemp2;
-                $(obj).html("正在下载报表("+ i.offset+"/"+i.count+")");
-                if(i.count<= i.offset+20){
-                    $(obj).html("下载报表完成");
-                }else{
-                    setTimeout(profn,1000);
-                }
-            };
-
-            profn();
             CPS.app.postRptnDest(data,0);
-            CPS.app.interRptnTemp2.offset+=200;
 
             for(var offset = 200;offset < data.count;offset+=200){
 
-
                 CPS.app.rptnDestDayList(beginDateStr,endDateStr,offset,function(rpt,i){
-                    CPS.app.interRptnTemp2.offset+=200;
                     CPS.app.postRptnDest(rpt,i);
                 });
 
@@ -679,7 +630,6 @@
                     if (resp && resp.data) {
                         fn(resp.data, offset);
                     }
-                    // console.log(resp.data.count);
 
                 }
             })
@@ -757,7 +707,6 @@
                     if (resp && resp.data) {
                         fn(resp.data, offset);
                     }
-                    // console.log(resp.data.count);
 
                 }
             })
@@ -765,34 +714,18 @@
         setTimeout(r,t);
     };
 
-    CPS.app.rptnAdzoneAll = function(obj){
-        CPS.app.interRptnTemp3 = {count:0,offset:0};
+    CPS.app.rptnAdzoneAll = function(){
         var dateFormat = new DateFormat();
         var endDateStr = dateFormat.addDays(new Date(), -1, "yyyy-MM-dd");
         var beginDateStr = dateFormat.addDays(new Date(), -7, "yyyy-MM-dd");
-        $(obj).html("正在下载报表,请稍等...");
+
         CPS.app.rptnAdzoneDayList(beginDateStr,endDateStr,0,function(data){
-            CPS.app.interRptnTemp3.count = data.count;
 
-            var profn = function(){
-                var i = CPS.app.interRptnTemp3;
-                $(obj).html("正在下载报表("+ i.offset+"/"+i.count+")");
-                if(i.count<= i.offset+20){
-                    $(obj).html("下载报表完成");
-                }else{
-                    setTimeout(profn,1000);
-                }
-            };
-
-            profn();
             CPS.app.postRptnAdzone(data,0);
-            CPS.app.interRptnTemp3.offset+=200;
 
             for(var offset = 200;offset < data.count;offset+=200){
 
-
                 CPS.app.rptnAdzoneDayList(beginDateStr,endDateStr,offset,function(rpt,i){
-                    CPS.app.interRptnTemp3.offset+=200;
                     CPS.app.postRptnAdzone(rpt,i);
                 });
 
@@ -1000,9 +933,8 @@
                     data: {csrfID: CPS.app.csrfID,trans:JSON.stringify(trans)},
                     type: 'post',
                     success: function (data) {
-                        console.log(data);
                         if(data.data && data.data.transId)
-                            CPS.app.bindAdboard(data.data.transId,CPS.app.creatives,function(){   CPS.app.aExecCount++;},function(){})
+                            CPS.app.bindAdboard(data.data.transId,CPS.app.creatives,function(){CPS.time.incre()},function(){})
 
                     }
             })
@@ -1017,57 +949,56 @@
      * @param fn
      * @param err
      */
-    CPS.app.modifyTrans = function(trans,adzones,fn,err){
-        var newTrans = {};
-        newTrans.campaignId = trans.campaignId;
-        newTrans.transId = trans.transId;
-        newTrans.transName = trans.transName;
-        newTrans.shopGroupTargets =trans.shopGroupTargets;
-        var matrixPrices = {};
-        for(var i in  trans.shopGroupTargets[0].matrixPrices){
-            var a =  trans.shopGroupTargets[0].matrixPrices[i];
-            matrixPrices[a.adzoneId] = a.bidPrice;
-        }
-
-        for(var j in adzones){
-            var b = adzones[j];
-            matrixPrices[b.adzoneId] = b.bidPrice;
-        }
-
-        newTrans.shopGroupTargets[0].matrixPrices = [];
-        for(var c in matrixPrices){
-            newTrans.shopGroupTargets[0].matrixPrices.push({"adzoneId":c,"bidPrice":matrixPrices[c]});
-        }
-
-        var transAdzoneBinds = {};
-        for(var e in  trans.transAdzoneBinds){
-            var g = trans.transAdzoneBinds[e];
-            transAdzoneBinds[g.adzoneId] = g.type;
-        }
-
-        for(var f in adzones){
-            var k = adzones[f];
-            transAdzoneBinds[k.adzoneId] = k.type;
-        }
-
-        newTrans.transAdzoneBinds = [];
-
-        for(var d in transAdzoneBinds){
-            newTrans.transAdzoneBinds.push({"adzoneId":d,"type":transAdzoneBinds[d]});
-        }
-
-        $.ajax({
-            url: 'http://zuanshi.taobao.com/trans/modifyTrans.json',
-            dataType: 'json',
-            data: {csrfID: CPS.app.csrfID,trans:JSON.stringify(newTrans)},
-            type: 'post',
-            success: function (data) {
-                console.log(data);
-                CPS.app.adzoneCount++;
-
-            }
-        });
-    };
+    //CPS.app.modifyTrans = function(trans,adzones,fn,err){
+    //    var newTrans = {};
+    //    newTrans.campaignId = trans.campaignId;
+    //    newTrans.transId = trans.transId;
+    //    newTrans.transName = trans.transName;
+    //    newTrans.shopGroupTargets =trans.shopGroupTargets;
+    //    var matrixPrices = {};
+    //    for(var i in  trans.shopGroupTargets[0].matrixPrices){
+    //        var a =  trans.shopGroupTargets[0].matrixPrices[i];
+    //        matrixPrices[a.adzoneId] = a.bidPrice;
+    //    }
+    //
+    //    for(var j in adzones){
+    //        var b = adzones[j];
+    //        matrixPrices[b.adzoneId] = b.bidPrice;
+    //    }
+    //
+    //    newTrans.shopGroupTargets[0].matrixPrices = [];
+    //    for(var c in matrixPrices){
+    //        newTrans.shopGroupTargets[0].matrixPrices.push({"adzoneId":c,"bidPrice":matrixPrices[c]});
+    //    }
+    //
+    //    var transAdzoneBinds = {};
+    //    for(var e in  trans.transAdzoneBinds){
+    //        var g = trans.transAdzoneBinds[e];
+    //        transAdzoneBinds[g.adzoneId] = g.type;
+    //    }
+    //
+    //    for(var f in adzones){
+    //        var k = adzones[f];
+    //        transAdzoneBinds[k.adzoneId] = k.type;
+    //    }
+    //
+    //    newTrans.transAdzoneBinds = [];
+    //
+    //    for(var d in transAdzoneBinds){
+    //        newTrans.transAdzoneBinds.push({"adzoneId":d,"type":transAdzoneBinds[d]});
+    //    }
+    //
+    //    $.ajax({
+    //        url: 'http://zuanshi.taobao.com/trans/modifyTrans.json',
+    //        dataType: 'json',
+    //        data: {csrfID: CPS.app.csrfID,trans:JSON.stringify(newTrans)},
+    //        type: 'post',
+    //        success: function (data) {
+    //            CPS.app.adzoneCount++;
+    //
+    //        }
+    //    });
+    //};
 
     /**
      * 批量增加资源位
@@ -1220,7 +1151,7 @@
                 },
                 type: 'post',
                 success: function (data) {
-                    CPS.app.mAdjust++;
+                    CPS.time.incre();
                 }
             });
         },1000);
@@ -1262,7 +1193,6 @@
                 type: 'post',
                 success: function (data) {
                     if(data.isSuccess && data.data){
-                        console.log(data.data);
                         fn(data.data);
                     }
                 },error:function(){
@@ -1429,10 +1359,9 @@
                     adboards.push(replaceId);
                 }
 
-                console.log(adboards);
                CPS.app.bindAdboard(transId, $.unique(adboards).join(","),function(){},function(){});
             }
-            CPS.app.repCount++;
+            CPS.time.incre();
 
         },function(){
 
@@ -1448,10 +1377,9 @@
      */
     CPS.app.addAdboard2 = function(campaignId,transId,needAddAdboardId){
         CPS.app.findAdboardList(campaignId,transId,function(adboardList){
-            console.log(adboardList);
             adboardList.push(needAddAdboardId);
             var adboardIds = $.unique(adboardList).join(",");
-            CPS.app.bindAdboard(transId,adboardIds,function(){CPS.app.repCount++;},function(){});
+            CPS.app.bindAdboard(transId,adboardIds,function(){CPS.time.incre()},function(){});
         },function(){
 
         });
@@ -1494,7 +1422,7 @@
 
                 CPS.app.unbindAdboard(transId,needDelAdboardId);
             }
-            CPS.app.repCount++;
+            CPS.time.incre();
 
         },function(){
 
@@ -1537,15 +1465,6 @@
         });
     };
 
-    CPS.app.addTransAdzone = function(transId,adzones){
-        CPS.app.getTranDetail(transId,function(trans){
-          CPS.app.modifyTrans(trans,adzones);
-
-        },function(){
-
-        });
-    };
-
     /**
      * 构建小工具的资源位选择器
      * @version 2.9.5
@@ -1568,6 +1487,7 @@
                 $("#CPS_tools_container .adzone_input select").select2({data:s});
 
                 $("#adzone_data_json").html(JSON.stringify(t));
+                $("#CPS_tools_container").show();
             }
         });
 
@@ -1577,42 +1497,6 @@
         var t = $("#adzone_data_json").html();
         var data = eval("("+t+")");
         return data[o];
-    };
-
-
-    CPS.app.layout = function(){
-        var header = "<div class='hd'><p>精准投放平台小助手</p><a href='javascript:void(0)' id='cls-btn'>关闭</a></div>";
-        var panel1 = "<div id='panel1' class='panel'>"+
-            "<div id='auto_adjust_div' class='row'>"+
-            "<table class='table'><tr><td>计划编号：</td><td><input type='text' name='campaignid' value=''/></td><td></td></tr>"+
-            "<tr><td>资源位：</td><td colspan='2'><p class='adzone_input'>" +
-            "<select name='adzoneId'><option value='34502344,2'>PC_流量包_网上购物_淘宝首页焦点图(34502344)</option></select>"+
-            "</p></td></tr>"+
-            "<tr><td>出价：</td><td><input type='text' name='bidPrice' value='10'/></td><td></td></tr>"+
-            "<tr><td><a class='CPS_bt' id='CPS_auto_adjust'>批量调价</a></td><td><a class='CPS_bt' id='CPS_adzone_btn'>增加资源位</a></td><td><a class='CPS_bt' id='CPS_adzone_del_btn'>删除资源位</a></td></tr>" +
-            "</table></div>"+
-            "<div id='batch_adjust_adboard' class='row'>"+
-            "<table class='table'><tr><td>计划编号：</td><td><input type='text' name='campaignid' value=''/></td></tr>"+
-            "<tr><td>移除创意：</td><td><input type='text' name='searchid' value=''/></td></tr>"+
-            "<tr><td>添加创意：</td><td><input type='text' name='replaceid' value=''/></td></tr>"+
-            "<tr><td><a class='CPS_bt' id='CPS_adboard_btn'>替换创意</a></td><td></td></tr></table></div>"+
-            "<div class='tools'><a href='javascript:void(0)' id='btn-more-tool'>更多&#62;&#62;</a></div>"+
-            "</div>";
-
-        var panel2 = "<div id='panel2' class='panel' style='display: none'>"+
-
-            "<div><table class='table'><tr><td><a class='CPS_bt'  id='CPS_auto_create'>批量推广</a></td><td><a class='CPS_bt'  id='CPS_auto_adzone'>更新资源位</a></td></tr>"+
-            "<tr><td><a class='CPS_bt'  id='CPS_rptn_adboard'>下载创意报表</a></td><td><a class='CPS_bt'  id='CPS_rptn_dest'>下载定向报表</a></td></tr></table></div>"+
-            "<div class='tools'><a href='javascript:void(0)' id='btn-base-tool'>&#60;&#60;返回</a></div>"+
-            "</div>";
-        var other = "<textarea id='adzone_data_json'></textarea>";
-
-
-        var mainLayout =  "<div id='CPS_tools_container'>" + header + "<div class='content'>"+ panel1+panel2+other+ "</div>"+ "</div>";
-        var menuLayout = "<div id='CPS_tools_menu'>精准投放平台小助手</div>";
-
-        return mainLayout+menuLayout;
-
     };
 
 
@@ -1757,41 +1641,67 @@
         }
     };
 
-
-
-    CPS.app.start();
-
-
-    setTimeout(function(){
-
-        var html = CPS.app.layout();
-
-        $("body").append(html);
-
-        $("#btn-more-tool").click(function(){
-            $("#panel1").hide();
-            $("#panel2").show();
-        });
-
-        $("#btn-base-tool").click(function(){
-
-            $("#panel2").hide();
-            $("#panel1").show();
-        });
-
-
-        $("#CPS_auto_adjust").click(function(){
-
-            var self = $(this);
-            if(self.attr("exec")){
-                return false;
+    CPS.time.start = function(c){
+        $("#CPS_exector_msg").html("正在处理...");
+        CPS.time.i = 0;
+        CPS.time.c = c;
+        var fn = function(){
+            $("#CPS_exector_msg").html("正在处理("+ CPS.time.i+"/"+ CPS.time.c+")，请稍等...");
+            if(CPS.time.i>=CPS.time.c){
+                $("#CPS_exector_msg").html("处理完成,1秒后窗口关闭");
+                setTimeout(function(){
+                    $("#CPS_tools_container").hide();
+                },1000);
+            }else{
+                setTimeout(fn,1000);
             }
+        };
+        fn();
+    };
+    CPS.time.incre = function(){
+        CPS.time.i++;
+    };
+
+    CPS.layout.window = function(){
+        var header = "<div class='hd'><p>精准投放平台小助手</p><a href='javascript:void(0)' id='cls-btn'>关闭</a></div>";
+        var footer = "<p id='CPS_exector_msg'></p>";
+
+        var other = "<textarea id='adzone_data_json'></textarea>";
+
+        var mainLayout =  "<div id='CPS_tools_container'>" + header + "<div class='content'><div class='panel'></div>"+other+footer+"</div></div>";
+        $("body").append(mainLayout);
+
+        $("#cls-btn").click(function(){
+            $("#CPS_tools_container").hide();
+        });
+
+        CPS.layout.menu();
+    };
+
+    CPS.layout.adjust = function(){
+
+        var panel = "<div id='auto_adjust_div' class='row'>"+
+        "<table class='table'><tr><td>计划编号：</td><td><input type='text' name='campaignid' value=''/></td><td></td></tr>"+
+        "<tr><td>资源位：</td><td colspan='2'><p class='adzone_input'>" +
+        "<select name='adzoneId'><option value='34502344,2'>PC_流量包_网上购物_淘宝首页焦点图(34502344)</option></select>"+
+        "</p></td></tr>"+
+        "<tr><td>出价：</td><td><input type='text' name='bidPrice' value='10'/></td><td></td></tr>"+
+        "<tr><td><a class='CPS_bt' id='CPS_auto_adjust'>批量调价</a></td><td></td><td></td></tr>" +
+        "</table></div>";
+
+        $("#CPS_tools_container .content .panel").html(panel);
+        $("#CPS_tools_container").hide();
+        CPS.app.adzoneSelectHtml();
+
+        $("#CPS_auto_adjust").unbind();
+        $("#CPS_auto_adjust").one("click",function(){
+            var self = $(this);
+            self.html("正在处理,请稍候..");
 
             var campaignid = $("#auto_adjust_div").find("input[name=campaignid]").val();
             var bidPrice =  $("#auto_adjust_div").find("input[name=bidPrice]").val();
             var ad = $("#auto_adjust_div").find("select[name=adzoneId]").val();
             var adzoneId = ad.split(",")[0];
-            $(self).html("获取推广单元,请稍等..");
 
             $.when(CPS.app.findCrowdList(campaignid,1),CPS.app.findCrowdList(campaignid,2),CPS.app.findCrowdList(campaignid,3)).then(function(a,b,c){
                 var targets = [];
@@ -1804,21 +1714,8 @@
                 if(c[0].data && c[0].data.list){
                     targets = targets.concat(c[0].data.list);
                 }
-                console.log(targets);
-                self.html("正在调价，请稍等...");
-                self.attr("exec",true);
-                CPS.app.mCount = targets.length;
-                CPS.app.mAdjust = 0;
-                var profn = function(){
-                    self.html("正在调价("+ CPS.app.mAdjust+"/"+ CPS.app.mCount+")，请稍等...");
-                    self.removeAttr("exec");
-                    if(CPS.app.mAdjust>=CPS.app.mCount){
-                        self.html("调价完成");
-                    }else{
-                        setTimeout(profn,1000);
-                    }
-                };
-                profn();
+
+                CPS.time.start(targets.length);
 
                 var list = targets;
 
@@ -1831,7 +1728,24 @@
 
         });
 
-        $("#CPS_adzone_btn").click(function(){
+    };
+
+    CPS.layout.addadzone = function(){
+        var panel = "<div id='auto_adjust_div' class='row'>"+
+            "<table class='table'><tr><td>计划编号：</td><td><input type='text' name='campaignid' value=''/></td><td></td></tr>"+
+            "<tr><td>资源位：</td><td colspan='2'><p class='adzone_input'>" +
+            "<select name='adzoneId'><option value='34502344,2'>PC_流量包_网上购物_淘宝首页焦点图(34502344)</option></select>"+
+            "</p></td></tr>"+
+            "<tr><td>出价：</td><td><input type='text' name='bidPrice' value='10'/></td><td></td></tr>"+
+            "<tr><td><a class='CPS_bt' id='CPS_adzone_btn' href='javascript:void(0)'>增加资源位</a></td><td></td><td></td></tr>" +
+            "</table></div>";
+
+        $("#CPS_tools_container .content .panel").html(panel);
+        $("#CPS_tools_container").hide();
+        CPS.app.adzoneSelectHtml();
+
+        $("#CPS_adzone_btn").unbind();
+        $("#CPS_adzone_btn").one("click",function(){
             var self = $(this);
             var campaignid = $("#auto_adjust_div").find("input[name=campaignid]").val();
             var bidPrice =  $("#auto_adjust_div").find("input[name=bidPrice]").val();
@@ -1839,9 +1753,9 @@
 
             var a = ad.split(",");
             var adzoneId = a[0],type = a[1];
-         //   var adzones = [{"adzoneId":a[0],"bidPrice":bidPrice,"type":a[1]}];
+            //   var adzones = [{"adzoneId":a[0],"bidPrice":bidPrice,"type":a[1]}];
 
-            $(self).html("获取推广单元,请稍等..");
+            self.html("正在处理,请稍候..");
             $.when(CPS.app.findCrowdList(campaignid,1),CPS.app.findCrowdList(campaignid,2),CPS.app.findCrowdList(campaignid,3)).then(function(a,b,c){
                 var transList = [];
                 if(a[0].data && a[0].data.list){
@@ -1854,28 +1768,34 @@
                     transList = transList.concat(c[0].data.list);
                 }
 
-                CPS.app.transCount = transList.length;
-                CPS.app.adzoneCount = 0;
-                var profn = function(){
-                    self.html("正在增加展位("+ CPS.app.adzoneCount+"/"+ CPS.app.transCount+")，请稍等...");
-                    if(CPS.app.adzoneCount>=CPS.app.transCount){
-                        self.html("增加展位完成");
-                    }else{
-                        setTimeout(profn,1000);
-                    }
-                };
-                profn();
+                CPS.time.start(transList.length);
+
                 for(var i in transList) {
                     var trans = transList[i];
-                    CPS.app.targetAddAdzones(trans,adzoneId,type,bidPrice,function(){  CPS.app.adzoneCount++;},function(){});
-                  //  CPS.app.addTransAdzone(trans.transId,adzones);
+                    CPS.app.targetAddAdzones(trans,adzoneId,type,bidPrice,function(){CPS.time.incre()},function(){});
                 }
 
             });
         });
+    };
 
-        $("#CPS_adzone_del_btn").click(function(){
+    CPS.layout.deladzone = function(){
+        var panel = "<div id='auto_adjust_div' class='row'>"+
+            "<table class='table'><tr><td>计划编号：</td><td><input type='text' name='campaignid' value=''/></td><td></td></tr>"+
+            "<tr><td>资源位：</td><td colspan='2'><p class='adzone_input'>" +
+            "<select name='adzoneId'><option value='34502344,2'>PC_流量包_网上购物_淘宝首页焦点图(34502344)</option></select>"+
+            "</p></td></tr>"+
+            "<tr><td><a class='CPS_bt' id='CPS_adzone_del_btn'>删除资源位</a></td><td></td><td></td></tr>" +
+            "</table></div>";
+
+        $("#CPS_tools_container .content .panel").html(panel);
+        $("#CPS_tools_container").hide();
+        CPS.app.adzoneSelectHtml();
+
+        $("#CPS_adzone_del_btn").unbind();
+        $("#CPS_adzone_del_btn").one("click",function(){
             var self = $(this);
+            self.html("正在处理,请稍候..");
             var campaignid = $("#auto_adjust_div").find("input[name=campaignid]").val();
             var ad = $("#auto_adjust_div").find("select[name=adzoneId]").val();
             var a = ad.split(",");
@@ -1892,37 +1812,40 @@
                     transList = transList.concat(c[0].data.list);
                 }
 
-                CPS.app.transCount = transList.length;
-                CPS.app.delAdzoneCount = 0;
-                var profn = function(){
-                    self.html("正在删除展位("+ CPS.app.delAdzoneCount+"/"+ CPS.app.transCount+")，请稍等...");
-                    if(CPS.app.delAdzoneCount>=CPS.app.transCount){
-                        self.html("删除展位完成");
-                    }else{
-                        setTimeout(profn,1000);
-                    }
-                };
-                profn();
+                CPS.time.start(transList.length);
 
                 for(var i in transList) {
                     var batchUnbindAdzones = [];
                     var trans = transList[i];
                     batchUnbindAdzones.push({"campaignId":trans.campaignId,"adzoneId":adzoneId,"transId":trans.transId});
                     CPS.app.unbindAdzones(batchUnbindAdzones,function(){
-                        CPS.app.delAdzoneCount++
+                        CPS.time.incre()
                     },function(){});
-                   // CPS.app.unbindTransAdzone(trans.transId,adzoneId);
                 }
 
             });
         });
 
-        $("#CPS_adboard_btn").click(function(){
+    };
+
+    CPS.layout.adboard = function(){
+        var panel = "<div id='batch_adjust_adboard' class='row'>"+
+            "<table class='table'><tr><td>计划编号：</td><td><input type='text' name='campaignid' value=''/></td></tr>"+
+            "<tr><td>移除创意：</td><td><input type='text' name='searchid' value=''/></td></tr>"+
+            "<tr><td>添加创意：</td><td><input type='text' name='replaceid' value=''/></td></tr>"+
+            "<tr><td><a class='CPS_bt' id='CPS_adboard_btn'>替换创意</a></td><td></td></tr></table></div>";
+
+        $("#CPS_tools_container .content .panel").html(panel);
+        $("#CPS_tools_container").hide();
+        CPS.app.adzoneSelectHtml();
+
+        $("#CPS_adboard_btn").unbind();
+        $("#CPS_adboard_btn").one("click",function(){
             var self = $(this);
             var campaignid = $("#batch_adjust_adboard").find("input[name=campaignid]").val();
             var searchid =  $("#batch_adjust_adboard").find("input[name=searchid]").val();
             var replaceid = $("#batch_adjust_adboard").find("input[name=replaceid]").val();
-            self.html("正在查找,请稍候..");
+            self.html("正在处理,请稍候..");
             searchid = parseInt(searchid);
 
             replaceid = parseInt(replaceid);
@@ -1937,18 +1860,8 @@
                 if(c[0].data && c[0].data.list){
                     transList = transList.concat(c[0].data.list);
                 }
-                CPS.app.transCount = transList.length;
-                CPS.app.repCount = 0;
-                var profn = function(){
-                    self.html("正在替换创意("+ CPS.app.repCount+"/"+ CPS.app.transCount+")，请稍等...");
-                    self.removeAttr("exec");
-                    if(CPS.app.repCount>=CPS.app.transCount){
-                        self.html("创意替换完成");
-                    }else{
-                        setTimeout(profn,1000);
-                    }
-                };
-                profn();
+
+                CPS.time.start(transList.length);
 
                 for(var i in transList){
                     var trans = transList[i];
@@ -1962,80 +1875,101 @@
             });
 
         });
+    };
 
-        $("#CPS_auto_create").click(function(){
-            var self = $(this);
-            self.html("正在获取低价推广设置，请稍后...");
+    CPS.layout.create = function(){
+        $("#CPS_tools_container").hide();
+        CPS.app.getSetting(function(data){
+            var panel = "";
+            if(data.campaignid && data.campaignid>0){
+                 panel = "<div id='batch_create' class='row'>"+
+                    "<table class='table'><tr><td>计划编号：</td><td>"+data.campaignid+"</td></tr>"+
+                    "<tr><td><a class='CPS_bt'  id='CPS_auto_create'>批量推广</a></td><td></td></tr></table></div>";
+            }else{
+                 panel = "<p>未获取到批量推广设置,请到精准平台进行设置.</p>";
+            }
+            $("#CPS_tools_container .content .panel").html(panel);
+            $("#CPS_tools_container").show();
 
-            CPS.app.getSetting(function(data2){
+            $("#CPS_auto_create").unbind();
+            $("#CPS_auto_create").one("click",function(){
+                var self = $(this);
+                self.html("正在处理,请稍候..");
 
-                CPS.app.campaignid = data2.campaignid;
-                CPS.app.shopNames = data2.shops;
-                CPS.app.shopLabels = [];
-                for(var i in CPS.app.shopNames){
-                    CPS.app.shopLabels.push(i);
-                }
-                CPS.app.creatives =  data2.creatives;
-                CPS.app.adzone =  data2.adzone;
+                CPS.app.getSetting(function(data2){
 
-                CPS.app.shopInfo2(CPS.app.shopLabels.join(","),function(data){
-
-                    CPS.app.aCount = data.length;
-                    CPS.app.aExecCount = 0;
-
-                    var profncreate = function(){
-                        self.html("正在低价推广("+ CPS.app.aExecCount+"/"+ CPS.app.aCount+")，请稍等...");
-                        if(CPS.app.aExecCount>=CPS.app.aCount){
-                            self.html("低价推广完成");
-                        }else{
-                            setTimeout(profncreate,1000);
-                        }
-                    };
-                    profncreate();
-
-                    for(var i in data){
-                        var shop = {shopId:data[i].shopId,nickname:data[i].nickname,cnt:CPS.app.shopNames[data[i].nickname]};
-                        CPS.app.createTrans(shop);
+                    CPS.app.campaignid = data2.campaignid;
+                    CPS.app.shopNames = data2.shops;
+                    CPS.app.shopLabels = [];
+                    for(var i in CPS.app.shopNames){
+                        CPS.app.shopLabels.push(i);
                     }
+                    CPS.app.creatives =  data2.creatives;
+                    CPS.app.adzone =  data2.adzone;
 
+                    CPS.app.shopInfo2(CPS.app.shopLabels.join(","),function(data){
+
+                        CPS.time.start(data.length);
+
+                        for(var i in data){
+                            var shop = {shopId:data[i].shopId,nickname:data[i].nickname,cnt:CPS.app.shopNames[data[i].nickname]};
+                            CPS.app.createTrans(shop);
+                        }
+
+                    });
+
+                },function(){
+                    self.html("低价批量推广失败，请刷新界面重试！");
                 });
 
-            },function(){
-                self.html("低价批量推广失败，请刷新界面重试！");
             });
+        })
+    };
 
+    CPS.layout.menu = function(){
+        var menuHtml = "<div id='CPS_layout_menu'><ul style='display: none'>"+
+            "<li><a href='javascript:void(0)' data-target='CPS_layout_create'>批量推广</a></li>"+
+            "<li><a href='javascript:void(0)' data-target='CPS_layout_adjust'>批量调价</a></li>"+
+            "<li><a href='javascript:void(0)' data-target='CPS_layout_add_ad'>批量添加资源位</a></li>"+
+            "<li><a href='javascript:void(0)' data-target='CPS_layout_del_ad'>批量删除资源位</a></li>"+
+            "<li><a href='javascript:void(0)' data-target='CPS_layout_adboard'>批量替换创意</a></li>"+
+            //"<li><a href='javascript:void(0)' data-target='CPS_layout_update'>更新资源位</a></li>"+
+            "</ul><div id='CPS_layout_icon'><div class='img_box'><i class='icon'></i></div></div></div>";
+        $("body").append(menuHtml);
+        $("#CPS_layout_icon").click(function(){
+            $("#CPS_layout_menu ul").toggle();
         });
 
-        $("#CPS_rptn_adboard").click(function(){
-          CPS.app.rptnAdboardAll($(this));
+        $("#CPS_layout_menu a[data-target='CPS_layout_create']").click(function(){
+            CPS.layout.create();
         });
 
-        $("#CPS_rptn_dest").click(function(){
-          CPS.app.rptnDestAll($(this));
+        $("#CPS_layout_menu a[data-target='CPS_layout_adjust']").click(function(){
+            CPS.layout.adjust();
         });
 
-        $("#CPS_auto_adzone").click(function(){
-            for(var page=1;page<=7;page++){
-                CPS.app.getAdzoneList(page)
-            }
+        $("#CPS_layout_menu a[data-target='CPS_layout_add_ad']").click(function(){
+            CPS.layout.addadzone();
         });
 
-        $("#cls-btn").click(function(){
-            $("#CPS_tools_container").hide();
-            $("#CPS_tools_menu").show();
-
-        });
-        $("#CPS_tools_menu").click(function(){
-            $("#CPS_tools_container").show();
-            $("#CPS_tools_menu").hide();
+        $("#CPS_layout_menu a[data-target='CPS_layout_del_ad']").click(function(){
+            CPS.layout.deladzone();
         });
 
-        CPS.app.adzoneSelectHtml();
+        $("#CPS_layout_menu a[data-target='CPS_layout_adboard']").click(function(){
+            CPS.layout.adboard();
+        });
 
+    };
 
+    CPS.app.start();
 
-    },8000)
-
+    //
+    //    $("#CPS_auto_adzone").click(function(){
+    //        for(var page=1;page<=7;page++){
+    //            CPS.app.getAdzoneList(page)
+    //        }
+    //    });
 
 
 })($);

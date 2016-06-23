@@ -1,6 +1,6 @@
 {
     "manifest_version": 2,
-    "version": "3.0.8",
+    "version": "3.0.9",
     "name": "精准投放平台操作助手",
     "description": "直通车、钻石展位浏览器快捷操作助手",
     "background": {
@@ -122,5 +122,8 @@
             "js":["jquery-2.0.0.min.js", "oa_script.js"],
             "all_frames":true
         }
+    ],
+    "web_accessible_resources":[
+        "icon.png"
     ]
 }

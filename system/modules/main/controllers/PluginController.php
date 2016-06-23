@@ -16,7 +16,7 @@ class PluginController extends Controller
 
     public function actionDownload(){
         $path = PATH_ROOT.'/CPSTools/target';
-        $filename = "CPSTools3.0.8.crx";
+        $filename = "CPSTools3.0.9.crx";
 
         File::downloadCrxFile($path."/".$filename,$filename);
     }
