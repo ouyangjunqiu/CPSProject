@@ -88,7 +88,7 @@
 <!--                <li class="dropdown"><a href="--><?php //echo Yii::app()->baseUrl;?><!--/upload/CPSTools.crx"><i class="fa fa-download"></i> 下载2.8.3</a></li>-->
                 <li class="dropdown"><a href="<?php echo $this->createUrl("/main/plugin/download");?>">
                         <i class="fa fa-download"></i> 下载插件
-                        <span class="label label-warning">3.0.9</span>
+                        <span class="label label-warning">3.1.0</span>
                     </a></li>
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="user user-menu">

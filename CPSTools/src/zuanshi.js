@@ -964,7 +964,7 @@
                 type: 'post',
                 success: function (resp) {
                     if(resp.info && resp.info.ok && resp.data && resp.data.transId) {
-                        CPS.app.bindAdboard(data.data.transId, CPS.app.creatives, function () {
+                        CPS.app.bindAdboard(resp.data.transId, CPS.app.creatives, function () {
                                 CPS.time.success()
                         }, function () {
                             CPS.time.fail();
@@ -1015,7 +1015,7 @@
                 type: 'post',
                 success: function (resp) {
                     if(resp.info && resp.info.ok && resp.data && resp.data.transId) {
-                        CPS.app.bindAdboard(data.data.transId, CPS.app.creatives, function () {
+                        CPS.app.bindAdboard(resp.data.transId, CPS.app.creatives, function () {
                             CPS.time.success()
                         }, function () {
                             CPS.time.fail();
@@ -1831,6 +1831,8 @@
         "<tr><td><a class='CPS_bt' id='CPS_auto_adjust'>批量调价</a></td><td></td><td></td></tr>" +
         "</table></div>";
 
+        $("#CPS_exector_msg").html("");
+
         $("#CPS_tools_container .content .panel").html(panel);
         $("#CPS_tools_container").hide();
         CPS.app.adzoneSelectHtml();
@@ -1884,6 +1886,7 @@
 
         $("#CPS_tools_container .content .panel").html(panel);
         $("#CPS_tools_container").hide();
+        $("#CPS_exector_msg").html("");
         CPS.app.adzoneSelectHtml();
 
         $("#CPS_adzone_btn").unbind();
@@ -1932,6 +1935,7 @@
 
         $("#CPS_tools_container .content .panel").html(panel);
         $("#CPS_tools_container").hide();
+        $("#CPS_exector_msg").html("");
         CPS.app.adzoneSelectHtml();
 
         $("#CPS_adzone_del_btn").unbind();
@@ -1981,6 +1985,7 @@
 
         $("#CPS_tools_container .content .panel").html(panel);
         $("#CPS_tools_container").hide();
+        $("#CPS_exector_msg").html("");
         CPS.app.adzoneSelectHtml();
 
         $("#CPS_adboard_btn").unbind();
@@ -2023,6 +2028,7 @@
 
     CPS.layout.create = function(){
         $("#CPS_tools_container").hide();
+        $("#CPS_exector_msg").html("");
         CPS.app.getSetting(function(data){
             var panel = "";
             if(data.campaignid && data.campaignid>0){
@@ -2047,11 +2053,10 @@
                     CPS.app.adzone =  data2.adzone;
 
                     if(data2.type==1) {
-                        console.log(data2.dmps);
-                        //CPS.time.start(data2.dmps.length);
-                        //for(var i in data2.dmps){
-                        //    CPS.adgroup.createByDmp(data2.dmps[i]);
-                        //}
+                        CPS.time.start(data2.dmps.length);
+                        for(var i in data2.dmps){
+                            CPS.adgroup.createByDmp(data2.dmps[i]);
+                        }
 
                     }else{
                         CPS.app.shopNames = data2.shops;
