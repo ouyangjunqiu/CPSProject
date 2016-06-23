@@ -98,7 +98,7 @@
                     </a>
                 </li>
                 <li class="dropdown browser-plugin">
-                    <a class="plugin-version" data-version="3.0.9">
+                    <a class="plugin-version" data-version="3.1.0">
                         <i class="fa fa-windows"></i>
                         <span class="label label-danger">0</span>
                     </a>
