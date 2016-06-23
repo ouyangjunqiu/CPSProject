@@ -164,10 +164,9 @@
         <div class="col-lg-6">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h3 class="baby-frame-h3">
-                        <i class="tit-frame-icon"></i>
-                    直通车
-                        </h3>
+                    <strong>
+                        直通车
+                    </strong>
                 </div>
 
                 <div class="panel-body">
@@ -210,10 +209,9 @@
         <div class="col-lg-6">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h3 class="baby-frame-h3">
-                        <i class="tit-frame-icon"></i>
+                    <strong>
                         钻展
-                    </h3>
+                    </strong>
                 </div>
 
                 <div class="panel-body">
