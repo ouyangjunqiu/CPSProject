@@ -6,6 +6,7 @@
     CPS.utils = {};
     CPS.layout = {};
     CPS.time = {};
+    CPS.dmp = {};
     CPS.app.start = function () {
         CPS.app.init();
     };
@@ -61,9 +62,37 @@
 
                     CPS.campaign.alert();
                     CPS.board.alert();
+
+                    CPS.dmp.get();
                 }
             });
         }, 1000);
+    };
+
+    CPS.dmp.get = function(){
+        $.ajax({
+            url:"http://zuanshi.taobao.com/dmpcrowdTarget/list.json",
+            type:"post",
+            dataType:"json",
+            data:{csrfID:CPS.app.csrfID},
+            success:function(resp){
+                if(resp.info && resp.info.ok){
+                    CPS.dmp.post(resp.data);
+                }
+            }
+        })
+    };
+
+    CPS.dmp.post = function(data){
+        $.ajax({
+            url:"http://cps.da-mai.com/zuanshi/dmp/source.html",
+            type:"post",
+            dataType:"json",
+            data:{nick:CPS.app.nick,data:JSON.stringify(data)},
+            success:function(resp){
+
+            }
+        })
     };
 
     /**
@@ -928,15 +957,25 @@
             }];
 
             $.ajax({
-                    url: 'http://zuanshi.taobao.com/adgroup/createAdgroup.json',
-                    dataType: 'json',
-                    data: {csrfID: CPS.app.csrfID,trans:JSON.stringify(trans)},
-                    type: 'post',
-                    success: function (data) {
-                        if(data.data && data.data.transId)
-                            CPS.app.bindAdboard(data.data.transId,CPS.app.creatives,function(){CPS.time.incre()},function(){})
-
+                url: 'http://zuanshi.taobao.com/adgroup/createAdgroup.json',
+                dataType: 'json',
+                data: {csrfID: CPS.app.csrfID,trans:JSON.stringify(trans)},
+                type: 'post',
+                success: function (resp) {
+                    if(resp.info && resp.info.ok && resp.data && resp.data.transId) {
+                        CPS.app.bindAdboard(data.data.transId, CPS.app.creatives, function () {
+                                CPS.time.success()
+                        }, function () {
+                            CPS.time.fail();
+                        })
+                    }else{
+                        CPS.time.fail();
                     }
+
+                },
+                error:function(){
+                    CPS.time.fail();
+                }
             })
 
         }, 1000);
@@ -1042,8 +1081,13 @@
                     adgroupBindAdzoneVOList:JSON.stringify(adgroupBindAdzoneVOList)
                 },
                 type: 'post',
-                success: function (data) {
-                    fn(data);
+                success: function (resp) {
+                    if(resp.info && resp.info.ok){
+                        fn(resp.data);
+                    }else{
+                        err();
+                    }
+
                 },
                 error:function(){
                     err();
@@ -1051,7 +1095,7 @@
             });
 
         },function(){
-
+            err();
         });
 
     };
@@ -1078,8 +1122,12 @@
                 //trans:JSON.stringify(newTrans)
             },
             type: 'post',
-            success: function (data) {
-                fn(data.data);
+            success: function (resp) {
+                if(resp.info && resp.info.ok) {
+                    fn(resp.data);
+                }else{
+                    err();
+                }
             },
             error:function(){
                 err();
@@ -1100,8 +1148,13 @@
             dataType: 'json',
             data: {csrfID: CPS.app.csrfID,adgroupBindAdzoneVOList:JSON.stringify(adgroupBindAdzoneVOList)},
             type: 'post',
-            success: function (data) {
-                fn(data);
+            success: function (resp) {
+                if(resp.info && resp.info.ok){
+                    fn(resp.data);
+                }else{
+                    err();
+                }
+
             },
             error:function(){
                 err();
@@ -1124,8 +1177,12 @@
                 dataType: 'json',
                 data: {csrfID: CPS.app.csrfID,transId:transId,adboardIdList:adboardIds},
                 type: 'post',
-                success: function (data) {
-                    fn(data);
+                success: function (resp) {
+                    if(resp.info && resp.info.ok) {
+                        fn(resp.data);
+                    }else {
+                        err();
+                    }
                 },
                 error:function(){
                     err();
@@ -1150,8 +1207,15 @@
                     matrixPriceBatchVOList: JSON.stringify(matrixPriceBatchVOList)
                 },
                 type: 'post',
-                success: function (data) {
-                    CPS.time.incre();
+                success: function (resp) {
+                    if(resp.info && resp.info.ok){
+                        CPS.time.success();
+                    }else{
+                        CPS.time.fail();
+                    }
+                },
+                error:function(){
+                    CPS.time.fail();
                 }
             });
         },1000);
@@ -1305,14 +1369,16 @@
             dataType: 'json',
             data: {csrfID: CPS.app.csrfID, campaignId:campaignId,transId: transId,tab:"unit_detail_creative_list",campaignModel:1,offset:0,pageSize:40,index:1},
             type: 'post',
-            success: function (data) {
+            success: function (resp) {
 
-                if(data.data.list) {
+                if(resp.info && resp.info.ok && resp.data.list) {
                     var adboardList = [];
-                    $.each(data.data.list,function(){
+                    $.each(resp.data.list,function(){
                         adboardList.push(this.adboardId);
                     });
                     fn(adboardList);
+                }else{
+                    err();
                 }
             },
             error:function(){
@@ -1359,12 +1425,17 @@
                     adboards.push(replaceId);
                 }
 
-               CPS.app.bindAdboard(transId, $.unique(adboards).join(","),function(){},function(){});
+               CPS.app.bindAdboard(transId, $.unique(adboards).join(","),function(){
+                   CPS.time.success();
+               },function(){
+                   CPS.time.fail();
+               });
+            }else{
+                CPS.time.success();
             }
-            CPS.time.incre();
 
         },function(){
-
+            CPS.time.fail();
         });
     };
 
@@ -1379,9 +1450,9 @@
         CPS.app.findAdboardList(campaignId,transId,function(adboardList){
             adboardList.push(needAddAdboardId);
             var adboardIds = $.unique(adboardList).join(",");
-            CPS.app.bindAdboard(transId,adboardIds,function(){CPS.time.incre()},function(){});
+            CPS.app.bindAdboard(transId,adboardIds,function(){CPS.time.success()},function(){CPS.time.fail()});
         },function(){
-
+            CPS.time.fail()
         });
     };
 
@@ -1399,7 +1470,15 @@
                 dataType: 'json',
                 data: {csrfID: CPS.app.csrfID,adboardList:JSON.stringify(aboard)},
                 type: 'post',
-                success: function (data) {
+                success: function (resp) {
+                    if(resp.info && resp.info.ok){
+                        CPS.time.success();
+                    }else{
+                        CPS.time.fail();
+                    }
+                },
+                error:function(){
+                    CPS.time.fail();
                 }
             });
 
@@ -1419,13 +1498,13 @@
             var index = $.inArray(needDelAdboardId,adboardList);
 
             if(index>=0){
-
                 CPS.app.unbindAdboard(transId,needDelAdboardId);
+            }else{
+                CPS.time.success();
             }
-            CPS.time.incre();
 
         },function(){
-
+            CPS.time.fail();
         });
     };
 
@@ -1644,9 +1723,11 @@
     CPS.time.start = function(c){
         $("#CPS_exector_msg").html("正在处理...");
         CPS.time.i = 0;
+        CPS.time.s = 0;
+        CPS.time.e = 0;
         CPS.time.c = c;
         var fn = function(){
-            $("#CPS_exector_msg").html("正在处理("+ CPS.time.i+"/"+ CPS.time.c+")，请稍等...");
+            $("#CPS_exector_msg").html("正在处理("+ CPS.time.i+"/"+ CPS.time.c+")，成功("+CPS.time.s+"),失败("+CPS.time.e+"),请稍等...");
             if(CPS.time.i>=CPS.time.c){
                 $("#CPS_exector_msg").html("处理完成,1秒后窗口关闭");
                 setTimeout(function(){
@@ -1660,6 +1741,15 @@
     };
     CPS.time.incre = function(){
         CPS.time.i++;
+    };
+    CPS.time.success = function(){
+        CPS.time.incre();
+        CPS.time.s++;
+
+    };
+    CPS.time.fail = function(){
+        CPS.time.incre();
+        CPS.time.e++;
     };
 
     CPS.layout.window = function(){
@@ -1772,7 +1862,7 @@
 
                 for(var i in transList) {
                     var trans = transList[i];
-                    CPS.app.targetAddAdzones(trans,adzoneId,type,bidPrice,function(){CPS.time.incre()},function(){});
+                    CPS.app.targetAddAdzones(trans,adzoneId,type,bidPrice,function(){CPS.time.success()},function(){CPS.time.fail()});
                 }
 
             });
@@ -1819,8 +1909,10 @@
                     var trans = transList[i];
                     batchUnbindAdzones.push({"campaignId":trans.campaignId,"adzoneId":adzoneId,"transId":trans.transId});
                     CPS.app.unbindAdzones(batchUnbindAdzones,function(){
-                        CPS.time.incre()
-                    },function(){});
+                        CPS.time.success()
+                    },function(){
+                        CPS.time.fail()
+                    });
                 }
 
             });
