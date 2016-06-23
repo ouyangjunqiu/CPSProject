@@ -40,4 +40,10 @@ class Dmp extends Model
         );
     }
 
+    public static function fetchByNick($nick){
+        $dmp = self::model()->fetch("logdate>=? AND nick=? ORDER BY id DESC",array(date("Y-m-d",strtotime("-7 days")),$nick));
+        $data = json_decode($dmp["data"]);
+        return empty($data["dmpCrowds"])?array():$data["dmpCrowds"];
+    }
+
 }

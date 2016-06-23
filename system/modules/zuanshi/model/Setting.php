@@ -33,11 +33,27 @@ class Setting extends Model
         // will receive user inputs.
         return array(
 
-            array('nick,campaignid,adzone,shops,select_shops,creatives', 'safe'),
+            array('nick,campaignid,type,adzone,shops,select_shops,creatives,dmps', 'safe'),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('nick,campaignid,adzone,shops,select_shops,creatives', 'safe', 'on'=>'search'),
+            array('nick,campaignid,type,adzone,shops,select_shops,creatives,dmps', 'safe', 'on'=>'search'),
         );
+    }
+
+
+    public static function fetchDmpSettingByNick($nick){
+        $setting = Setting::model()->fetch("nick=?",array($nick));
+        if(empty($setting))
+            return array();
+        $dmps = json_decode($setting["dmps"]);
+        if(empty($dmps))
+            return array();
+
+        $ret = array();
+        foreach($dmps as $dmp){
+            $ret[] = $dmp["targetValue"];
+        }
+        return $ret;
     }
 
 }

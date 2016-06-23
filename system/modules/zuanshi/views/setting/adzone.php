@@ -119,12 +119,16 @@
                             <small><a class="select-all" href="javascript:void(0)">全选</a>/<a class="not-select-all" href="javascript:void(0)">全不选</a>/<a class="re-select-all" href="javascript:void(0)">反选</a></small>
                         </div>
                         <div class="col-md-2">
-                            <small>出价：</small><input type="text" class="p_in" name="price" value="<?php echo $setting["price"];?>">
-                        </div>
-                        <div class="col-md-5">
-                            <button type="button" class="btn btn-primary" data-click="shopbtn">下一步，设置竞品</button>
+                            <small>已选择(<strong id="select_count">0</strong>)</small>
+                            <small>,出价：</small><input type="text" class="p_in" name="price" value="<?php echo $setting["price"];?>"/>
                         </div>
                         <div class="col-md-3">
+                            <button type="button" class="btn btn-primary" data-click="shopbtn"  data-target-url="<?php echo $this->createUrl("/zuanshi/setting/vie",array("nick"=>$query["nick"]));?>">下一步，设置竞品</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-primary" data-click="shopbtn" data-target-url="<?php echo $this->createUrl("/zuanshi/setting/dmp",array("nick"=>$query["nick"]));?>">下一步，设置人群</button>
+                        </div>
+                        <div class="col-md-2">
                             <input type="button" class="btn btn-default" value="上一步" id="backBtn">
                         </div>
 
@@ -159,12 +163,13 @@
 
             });
 
-            $("button[data-click=shopbtn]").html("已选择资源位("+selectCount+")，下一步，设置竞品");
+            $("#select_count").html(selectCount);
         };
 
         selectFn();
 
         $("button[data-click=shopbtn]").click(function(){
+            var target = $(this).attr("data-target-url");
             var form = $(this).parents("form");
             $.ajax({
                 url:"<?php echo $this->createUrl('/zuanshi/setting/bindadzone');?>",
@@ -174,8 +179,8 @@
                 success:function(resp){
                     $("body").hideLoading();
                     if(resp.isSuccess) {
-                        app.confirm("设置成功,下一步,设置竞品",function(){
-                            window.location.href = '<?php echo $this->createUrl("/zuanshi/setting/vie",array("nick"=>$query["nick"]));?>';
+                        app.confirm("保存成功,确定进入下一步?",function(){
+                            window.location.href = target;
                         });
                     }else{
                         app.error('添加失败');

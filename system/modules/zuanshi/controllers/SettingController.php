@@ -1,6 +1,7 @@
 <?php
 namespace application\modules\zuanshi\controllers;
 
+use application\modules\zuanshi\model\Dmp;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
 use cloud\core\utils\ExtRangeDate;
@@ -274,6 +275,7 @@ class SettingController extends Controller
             $model->setAttributes(array(
                 "shops" => json_encode($shops),
                 "select_shops" => json_encode($select_shops),
+                "type"=>0
             ));
             if($model->save()){
                 $this->renderJson(array("isSuccess"=>true,"data"=>$model));
@@ -361,6 +363,56 @@ class SettingController extends Controller
             "tags"=>$tags,
             "sizes"=>$sizes
         )));
+    }
+
+    public function actionDmp(){
+        $nick = Env::getRequest("nick");
+        $setting = Setting::fetchDmpSettingByNick($nick);
+        $list = Dmp::fetchByNick($nick);
+        foreach($list as &$row){
+            if(in_array($row["dmpCrowdId"],$setting)){
+                $row["isSelect"] = true;
+            }else{
+                $row["isSelect"] = false;
+            }
+        }
+
+        $this->render("dmp", array("list" => $list, "setting"=>$setting, "query" => array(
+            "nick" => $nick,
+        )));
+
+    }
+
+    public function actionBinddmp(){
+        $nick = Env::getRequest("nick");
+        $dmps = Env::getRequest("dmps");
+
+        $select_dmps = array();
+        $model = Setting::model()->find("nick=?",array($nick));
+        if($model === null){
+            $this->renderJson(array("isSuccess"=>false));
+        }else{
+
+            foreach($dmps as $row){
+                $p = explode(",",$row);
+                if(count($p)>=2) {
+
+                    $select_dmps[] = array("targetValue"=>$p[0],"targetName"=>$p[1]);
+                }
+            }
+
+
+            $model->setAttributes(array(
+                "dmps" => json_encode($select_dmps),
+                "type"=>1
+            ));
+            if($model->save()){
+                $this->renderJson(array("isSuccess"=>true,"data"=>$model));
+            }else{
+                $this->renderJson(array("isSuccess"=>false,"msg"=>$model->getErrors()));
+            }
+        }
+
     }
 
 

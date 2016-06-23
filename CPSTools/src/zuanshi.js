@@ -7,6 +7,7 @@
     CPS.layout = {};
     CPS.time = {};
     CPS.dmp = {};
+    CPS.adgroup = {};
     CPS.app.start = function () {
         CPS.app.init();
     };
@@ -965,6 +966,57 @@
                     if(resp.info && resp.info.ok && resp.data && resp.data.transId) {
                         CPS.app.bindAdboard(data.data.transId, CPS.app.creatives, function () {
                                 CPS.time.success()
+                        }, function () {
+                            CPS.time.fail();
+                        })
+                    }else{
+                        CPS.time.fail();
+                    }
+
+                },
+                error:function(){
+                    CPS.time.fail();
+                }
+            })
+
+        }, 1000);
+    };
+
+    CPS.adgroup.createByDmp = function(dmp){
+        setTimeout(function () {
+            var format = new DateFormat();
+            var dateStr = format.formatCurrentDate("yyyyMMdd");
+            var trans = {};
+            trans.campaignId = CPS.app.campaignid;
+            trans.transName = dmp.targetName+"_"+dateStr;
+            trans.transAdzoneBinds = [];
+            for(var i in CPS.app.adzone){
+                var a = CPS.app.adzone[i];
+                trans.transAdzoneBinds.push({"adzoneId":a.adzoneId,"adzoneType":a.type});
+            }
+
+            var matrixPrices = [];
+            for(var j in CPS.app.adzone){
+                var b = CPS.app.adzone[j];
+                matrixPrices.push({"adzoneId":b.adzoneId,"bidPrice":b.bidPrice});
+            }
+            trans.crowdVOList = [{
+                "targetValue":dmp.targetValue,
+                "targetType":128,
+                "targetName":dmp.targetName,
+                "matrixPriceBatchVOList":matrixPrices,
+                "subCrowdVOList":[{"subCrowdName":dmp.targetName,"subCrowdValue":dmp.targetValue}]
+            }];
+
+            $.ajax({
+                url: 'http://zuanshi.taobao.com/adgroup/createAdgroup.json',
+                dataType: 'json',
+                data: {csrfID: CPS.app.csrfID,trans:JSON.stringify(trans)},
+                type: 'post',
+                success: function (resp) {
+                    if(resp.info && resp.info.ok && resp.data && resp.data.transId) {
+                        CPS.app.bindAdboard(data.data.transId, CPS.app.creatives, function () {
+                            CPS.time.success()
                         }, function () {
                             CPS.time.fail();
                         })
@@ -1991,24 +2043,36 @@
                 CPS.app.getSetting(function(data2){
 
                     CPS.app.campaignid = data2.campaignid;
-                    CPS.app.shopNames = data2.shops;
-                    CPS.app.shopLabels = [];
-                    for(var i in CPS.app.shopNames){
-                        CPS.app.shopLabels.push(i);
-                    }
                     CPS.app.creatives =  data2.creatives;
                     CPS.app.adzone =  data2.adzone;
 
-                    CPS.app.shopInfo2(CPS.app.shopLabels.join(","),function(data){
-
-                        CPS.time.start(data.length);
-
-                        for(var i in data){
-                            var shop = {shopId:data[i].shopId,nickname:data[i].nickname,cnt:CPS.app.shopNames[data[i].nickname]};
-                            CPS.app.createTrans(shop);
+                    if(data2.type==1) {
+                        CPS.time.start(data2.dmps.length);
+                        for(var i in data2.dmps){
+                            CPS.adgroup.createByDmp(data2.dmps[i]);
                         }
 
-                    });
+                    }else{
+                        CPS.app.shopNames = data2.shops;
+                        CPS.app.shopLabels = [];
+                        for (var i in CPS.app.shopNames) {
+                            CPS.app.shopLabels.push(i);
+                        }
+                        CPS.app.shopInfo2(CPS.app.shopLabels.join(","), function (data) {
+
+                            CPS.time.start(data.length);
+
+                            for (var i in data) {
+                                var shop = {
+                                    shopId: data[i].shopId,
+                                    nickname: data[i].nickname,
+                                    cnt: CPS.app.shopNames[data[i].nickname]
+                                };
+                                CPS.app.createTrans(shop);
+                            }
+
+                        });
+                    }
 
                 },function(){
                     self.html("低价批量推广失败，请刷新界面重试！");
