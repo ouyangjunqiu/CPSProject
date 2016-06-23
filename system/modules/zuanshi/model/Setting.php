@@ -45,7 +45,7 @@ class Setting extends Model
         $setting = Setting::model()->fetch("nick=?",array($nick));
         if(empty($setting))
             return array();
-        $dmps = json_decode($setting["dmps"]);
+        $dmps = json_decode($setting["dmps"],true);
         if(empty($dmps))
             return array();
 

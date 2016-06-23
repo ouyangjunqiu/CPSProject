@@ -98,7 +98,7 @@
         $("#backBtn").click(function(){
             window.location.href='<?php echo $this->createUrl("/zuanshi/setting/adzone",array("nick"=>$query["nick"]));?>';
         });
-        
+
 
         var selectFn  = function(){
             var selectCount = 0;
