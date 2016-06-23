@@ -39,7 +39,7 @@ class SettingController extends Controller
         }else {
             $data["adzone"] = json_decode($data["adzone"], true);
             $data["shops"] = json_decode($data["shops"], true);
-
+            $data["dmps"] = json_decode($data["dmps"], true);
             $this->renderJson(array("isSuccess" => true, "data" => $data));
         }
     }

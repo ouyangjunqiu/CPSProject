@@ -2047,10 +2047,11 @@
                     CPS.app.adzone =  data2.adzone;
 
                     if(data2.type==1) {
-                        CPS.time.start(data2.dmps.length);
-                        for(var i in data2.dmps){
-                            CPS.adgroup.createByDmp(data2.dmps[i]);
-                        }
+                        console.log(data2.dmps);
+                        //CPS.time.start(data2.dmps.length);
+                        //for(var i in data2.dmps){
+                        //    CPS.adgroup.createByDmp(data2.dmps[i]);
+                        //}
 
                     }else{
                         CPS.app.shopNames = data2.shops;
