@@ -20,7 +20,8 @@ class PluginController extends Controller
         $model = new Plugin();
         $model->setAttributes(array(
             "version"=>$version,
-            "file_md5"=>$file_md5
+            "file_md5"=>$file_md5,
+            "isvalid"=>1
         ));
 
         if($model->save()){

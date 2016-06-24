@@ -33,15 +33,15 @@ class Plugin extends Model {
         // will receive user inputs.
         return array(
 
-            array('version,file_md5', 'safe'),
+            array('version,file_md5,isvalid', 'safe'),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('version,file_md5', 'safe', 'on'=>'search'),
+            array('version,file_md5,isvalid', 'safe', 'on'=>'search'),
         );
     }
 
     public static function fetchVersion(){
-        $tool = self::model()->fetch("ORDER BY id DESC");
+        $tool = self::model()->fetch("isvalid=? ORDER BY id DESC",array(1));
         if(empty($tool)){
             return array(
                 "version"=>"1.0.0",
