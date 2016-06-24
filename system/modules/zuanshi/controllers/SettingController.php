@@ -368,7 +368,21 @@ class SettingController extends Controller
     public function actionDmp(){
         $nick = Env::getRequest("nick");
         $setting = Setting::fetchDmpSettingByNick($nick);
-        $list = Dmp::fetchByNick($nick);
+        $keyword = Env::getRequest("keyword");
+        $result = Dmp::fetchByNick($nick);
+        if(!empty($keyword)) {
+            $list = array();
+            foreach ($result as $r) {
+
+                if (preg_match("/$keyword/",$r["dmpCrowdName"])){
+                    $list[] = $r;
+                }
+
+            }
+        }else{
+            $list = $result;
+        }
+
         foreach($list as &$row){
             if(in_array($row["dmpCrowdId"],$setting)){
                 $row["isSelect"] = true;

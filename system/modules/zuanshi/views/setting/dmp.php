@@ -23,9 +23,20 @@
             </div>
         </div>
 
-        <div class="row" style="margin-top: 10px;margin-bottom: 10px">
+        <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
+            <div class="col-md-12">
+                <form action="<?php echo $this->createUrl("/zuanshi/setting/dmp");?>" method="post" class="form-inline">
+                    <input type="hidden" name="nick" value="<?php echo $query["nick"];?>"/>
+
+                    <div class="form-group">
+                        <input placeholder="人群搜索" type="text" class="form-control" name="keyword" value="<?php echo $query["keyword"];?>">
+                    </div>
+
+                    <input type="button" class="btn btn-warning" value="搜索" id="searchBtn">
+                </form>
 
 
+            </div>
         </div>
 
 
@@ -94,6 +105,9 @@
 
     $(document).ready(function(){
 
+        $("#searchBtn").click(function(){
+            $(this).parents("form").submit();
+        });
 
         $("#backBtn").click(function(){
             window.location.href='<?php echo $this->createUrl("/zuanshi/setting/adzone",array("nick"=>$query["nick"]));?>';
