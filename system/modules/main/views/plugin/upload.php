@@ -1,16 +1,25 @@
-<form id="plugin-setting-form">
-    <div class="form-group">
-        <label>版本:</label>
-        <input type="text" class="form-control" name="version"/>
-    </div>
-    <div class="form-group">
-        <label>文件:</label>
-        <input type="file" name="file" class="dropify" id="file" data-height="300" data-max-file-size="2M" />
-    </div>
-    <div class="form-group">
-        <input type="button" data-click="fileupload" class="btn btn-warning" value="确定">
-    </div>
-</form>
+
+<link rel="stylesheet" href="<?php echo STATICURL.'/base/css/index.css'; ?>">
+<link rel="stylesheet" href="<?php echo STATICURL.'/main/css/index.css'; ?>">
+<div class="index-table-div">
+    <form id="plugin-setting-form" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">版本:</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" name="version"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12">
+                <input type="file" name="file" class="dropify" id="file" data-height="300" data-max-file-size="2M" />
+
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="button" data-click="fileupload" class="btn btn-warning" value="确定">
+        </div>
+    </form>
+</div>
 <script src='<?php echo STATICURL."/base/js/plugins/ajaxfileupload/ajaxfileupload.js"; ?>'></script>
 
 <script type="text/javascript">
