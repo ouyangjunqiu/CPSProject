@@ -1,8 +1,17 @@
 <form id="plugin-setting-form">
-    <input type="text" class="form-control" name="version"/>
-    <input type="file" name="file" class="dropify" id="file" data-height="300" data-max-file-size="2M" />
-    <input type="button" data-click="fileupload" class="btn btn-warning" value="确定">
+    <div class="form-group">
+        <label>版本:</label>
+        <input type="text" class="form-control" name="version"/>
+    </div>
+    <div class="form-group">
+        <label>文件:</label>
+        <input type="file" name="file" class="dropify" id="file" data-height="300" data-max-file-size="2M" />
+    </div>
+    <div class="form-group">
+        <input type="button" data-click="fileupload" class="btn btn-warning" value="确定">
+    </div>
 </form>
+<script src='<?php echo STATICURL."/base/js/plugins/ajaxfileupload/ajaxfileupload.js"; ?>'></script>
 
 <script type="text/javascript">
     $(document).ready(function() {
