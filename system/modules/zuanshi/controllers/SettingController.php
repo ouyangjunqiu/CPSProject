@@ -393,6 +393,7 @@ class SettingController extends Controller
 
         $this->render("dmp", array("list" => $list, "setting"=>$setting, "query" => array(
             "nick" => $nick,
+            "keyword" => $keyword
         )));
 
     }
