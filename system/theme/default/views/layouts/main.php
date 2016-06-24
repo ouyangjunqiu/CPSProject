@@ -215,7 +215,7 @@
                             plugininstall = true;
                             if(event.data.upgrade)
                                 app.confirm("精准投放平台小助手有新的版本发布,是否立刻下载安装?",function(){
-                                    window.location.href="<?php echo $this->createUrl("/main/plugin/download");?>";
+                                    window.location.href="<?php echo $this->createUrl("/file/default/down",array("md5"=>$tool["file_md5"]));?>";
                                 },function(){});
                             break;
                     }
@@ -226,7 +226,7 @@
             setTimeout(function(){
                 if(!plugininstall){
                     app.confirm("精准投放平台小助手有新的版本发布,是否立刻下载安装?",function(){
-                        window.location.href="<?php echo $this->createUrl("/main/plugin/download");?>";
+                        window.location.href="<?php echo $this->createUrl("/file/default/down",array("md5"=>$tool["file_md5"]));?>";
                     },function(){});
                 }
             },15000);
