@@ -372,9 +372,13 @@ class SettingController extends Controller
         $result = Dmp::fetchByNick($nick);
         if(!empty($keyword)) {
             $list = array();
+            $keyword = str_replace(array("/","\\",".","|","*","(",")"),"",$keyword);
+            $k = explode(",",$keyword);
+
+            $math = "(".implode("|",$k).")";
             foreach ($result as $r) {
 
-                if (preg_match("/$keyword/",$r["dmpCrowdName"])){
+                if (preg_match("/$math/",$r["dmpCrowdName"])){
                     $list[] = $r;
                 }
 
