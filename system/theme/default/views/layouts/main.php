@@ -84,11 +84,11 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <li class="dropdown">  <a href="<?php echo $this->createUrl("/main/dashboard/index");?>"><i class="fa fa-dashboard"></i> 店铺总览</a></li>
-
+                <?php $tool = \application\modules\main\model\Plugin::fetchVersion();?>
 <!--                <li class="dropdown"><a href="--><?php //echo Yii::app()->baseUrl;?><!--/upload/CPSTools.crx"><i class="fa fa-download"></i> 下载2.8.3</a></li>-->
-                <li class="dropdown"><a href="<?php echo $this->createUrl("/main/plugin/download");?>">
+                <li class="dropdown"><a href="<?php echo $this->createUrl("/file/default/down",array("md5"=>$tool["file_md5"]));?>">
                         <i class="fa fa-download"></i> 下载插件
-                        <span class="label label-warning">3.1.0</span>
+                        <span class="label label-warning"><?php echo $tool["version"];?></span>
                     </a></li>
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="user user-menu">
@@ -98,7 +98,7 @@
                     </a>
                 </li>
                 <li class="dropdown browser-plugin">
-                    <a class="plugin-version" data-version="3.1.0">
+                    <a class="plugin-version" data-version="<?php echo $tool["version"];?>">
                         <i class="fa fa-windows"></i>
                         <span class="label label-danger">0</span>
                     </a>
