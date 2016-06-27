@@ -30,26 +30,24 @@
                     <?php $this->widget("application\\modules\\main\\widgets\\ShopManagerWidget",array("shop"=>$row));?>
                 </td>
                 <td class="check-infor-td">
-                    <div class="baby-box">
-                        <div class="baby-trusteeship baby-frame-box">
 
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h3 class="baby-frame-h3">
-                                        <i class="tit-frame-icon"></i>
-                                        总体报表<small>(近30天)</small>
+                    <div class="baby-box" data-nick="<?php echo $row["nick"];?>" data-role="list">
+                        <ul class="nav nav-tabs shop-nav" role="tablist">
+                            <li role="presentation"  class="active">
+                                <a data-type="rpt" href="#rpt_<?php echo md5($row["nick"]);?>" title="总体报表" aria-controls="rpt_<?php echo md5($row["nick"]);?>" role="tab" data-toggle="tab" aria-expanded="true">
+                                    <i class="fa fa-bar-chart-o"></i><span>总体报表<small>(近30天)</small></span>
+                                </a>
+                            </li>
+                        </ul>
 
-                                    </h3>
-                                </div>
-                                <div class="col-md-7">
-                                </div>
-                                <div class="col-md-1">
-                                    <small><a href="http://yj.da-mai.com/index.php?r=milestone/adviser/index&ishide=1&nick=<?php echo $row["nick"];?>" target="_blank">更多..</a></small>
-                                </div>
-                            </div>
+                        <div class="tab-content">
+
+                            <div role="tabpanel" class="tab-pane active" id="todo_<?php echo md5($row["nick"]);?>">
+
                             <div class="overlay-wrapper" data-tmpl="shop-ztcrpt-list-tmpl" data-load="overlay" data-url="http://yj.da-mai.com/index.php?r=milestone/adviser/custreport&nick=<?php echo $row["nick"];?>">
                             </div>
 
+                            </div>
                         </div>
                     </div>
                 </td>
@@ -113,9 +111,8 @@
 
 
         $(".c-pager").jPager({currentPage: <?php echo $pager["page"]-1;?>, total: <?php echo $pager["count"];?>, pageSize: <?php echo $pager["page_size"];?>,events: function(dp){
-            var nick = $("input[data-ename=nick]").val();
-            var pic = $("input[data-ename=pic]").val();
-            location.href = app.url("<?php echo $this->createUrl('/ztc/default/index');?>",{nick:nick,pic:pic,page:dp.index+1})
+
+            location.href = app.url("<?php echo $this->createUrl('/ztc/default/index');?>",{page:dp.index+1})
         }});
 
     });
