@@ -35,16 +35,16 @@
                         <div class="baby-box" data-nick="<?php echo $row["nick"];?>">
 
                             <ul class="nav nav-tabs shop-nav" role="tablist">
-                                <li role="presentation">
+                                <li role="presentation" class="active">
                                     <a data-type="rpt2" href="#rpt2_<?php echo $row["id"];?>" title="明星店铺报表" aria-controls="rpt2_<?php echo $row["id"];?>" role="tab" data-toggle="tab" aria-expanded="true">
-                                        <i class="fa fa-flash"></i><span>明星店铺<small>(近15天)</small></span>
+                                        <i class="fa fa-line-chart"></i><span>明星店铺<small>(近15天)</small></span>
                                     </a>
                                 </li>
                             </ul>
 
                             <div class="tab-content">
 
-                                <div role="tabpanel" class="tab-pane" id="rpt2_<?php echo $row["id"];?>">
+                                <div role="tabpanel" class="tab-pane active" id="rpt2_<?php echo $row["id"];?>">
                                     <div>
 
                                         <?php if(empty($row["rpt"])):?>
