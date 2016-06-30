@@ -99,6 +99,7 @@
         </tbody>
 
         </table>
+        <p><small>*注：数据服务由大麦优驾提供</small></p>
 {{/if}}
 </script>
 
