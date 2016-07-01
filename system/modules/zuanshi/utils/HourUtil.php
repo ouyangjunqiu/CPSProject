@@ -12,9 +12,9 @@ class HourUtil
     public static function format(){
         $hour = date("H",time());
         $hour = (int)$hour;
-        if($hour>=9 && $hour<=12){
+        if($hour>=8 && $hour<=14){
             return 1;
-        }else if($hour>=14 && $hour<=18){
+        }else if($hour>=14 && $hour<=23){
             return 2;
         }
         return 0;
