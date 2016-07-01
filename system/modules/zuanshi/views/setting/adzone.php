@@ -28,8 +28,6 @@
                 <div class="col-md-8">
 
 
-
-
                 </div>
                 <div class="col-md-1">
 
@@ -50,16 +48,6 @@
                     <div class="form-group">
                         <input placeholder="资源位搜索" type="text" class="form-control" name="keyword" value="<?php echo $query["keyword"];?>">
                     </div>
-<!--                    <div class="form-group">-->
-<!--                        <select placeholder="尺寸" type="text" class="form-control" data-role="size" name="size[]" multiple="multiple">-->
-<!--                        --><?php //if(!empty($query["sizes"])):?>
-<!--                            --><?php //foreach($query["sizes"] as $size):?>
-<!--                                <option value="--><?php //echo $size;?><!--" selected="selected">--><?php //echo $size;?><!--</option>-->
-<!--                            --><?php //endforeach;?>
-<!--                        --><?php //endif;?>
-<!---->
-<!--                        </select>-->
-<!--                    </div>-->
 
                     <input type="button" class="btn btn-warning" value="搜索" id="searchBtn">
                 </form>
@@ -79,7 +67,7 @@
                 <table class="baby-frame-table">
                     <thead>
                     <tr>
-                        <td><small><a class="select-all" href="javascript:void(0)">全选</a>/<a class="not-select-all" href="javascript:void(0)">全不选</a>/<a class="re-select-all" href="javascript:void(0)">反选</a></small></td>
+                        <td><small></small></td>
                         <td><small>资源信息</small></td>
                         <td><small>尺寸</small></td>
                         <td><small>标签</small></td>
@@ -91,7 +79,7 @@
                     <?php foreach($list as $row):?>
                         <tr data-list="adzones">
                             <td>
-                                <input class="shiftCheckbox"  type="checkbox" name="adzone[]" value="<?php echo $row["adzoneId"];?>,<?php echo $row["type"];?>" <?php if(isset($row["isSelect"]) && $row["isSelect"]):?>checked="checked"<?php endif;?> />
+                                <input class="shiftCheckbox" type="radio" name="adzone[]" value="<?php echo $row["adzoneId"];?>,<?php echo $row["type"];?>" <?php if(isset($row["isSelect"]) && $row["isSelect"]):?>checked="checked"<?php endif;?> />
                             </td>
                             <td><strong><?php echo $row["adzoneName"];?></strong></td>
                             <td>
@@ -116,10 +104,8 @@
                 <div style="position: fixed;bottom: 0px;width: 100%;background: white; height: 100px;line-height: 100px;">
                     <div class="row">
                         <div class="col-md-2">
-                            <small><a class="select-all" href="javascript:void(0)">全选</a>/<a class="not-select-all" href="javascript:void(0)">全不选</a>/<a class="re-select-all" href="javascript:void(0)">反选</a></small>
                         </div>
                         <div class="col-md-2">
-                            <small>已选择(<strong id="select_count">0</strong>)</small>
                             <small>,出价：</small><input type="text" class="p_in" name="price" value="<?php echo $setting["price"];?>"/>
                         </div>
                         <div class="col-md-3">
@@ -153,20 +139,20 @@
             $(this).parents("form").submit();
         });
 
-        var selectFn  = function(){
-            var selectCount = 0;
-
-            $("[data-list=adzones] .shiftCheckbox").each(function(){
-                if(this.checked){
-                    selectCount++;
-                }
-
-            });
-
-            $("#select_count").html(selectCount);
-        };
-
-        selectFn();
+//        var selectFn  = function(){
+//            var selectCount = 0;
+//
+//            $("[data-list=adzones] .shiftCheckbox").each(function(){
+//                if(this.checked){
+//                    selectCount++;
+//                }
+//
+//            });
+//
+//            $("#select_count").html(selectCount);
+//        };
+//
+//        selectFn();
 
         $("button[data-click=shopbtn]").click(function(){
             var target = $(this).attr("data-target-url");
@@ -195,56 +181,56 @@
             })
 
         });
-        $("#shop-selector-form").click(function(){
-            selectFn();
-        });
+//        $("#shop-selector-form").click(function(){
+//            selectFn();
+//        });
+//
+//        $(".select-all").click(function(){
+//            $("[data-list=adzones] .shiftCheckbox").each(function () {
+//                this.checked = true;
+//            });
+//            selectFn();
+//        });
+//
+//        $(".not-select-all").click(function(){
+//            $("[data-list=adzones] .shiftCheckbox").each(function () {
+//                this.checked = false;
+//            });
+//            selectFn();
+//        });
+//        $(".re-select-all").click(function(){
+//            $("[data-list=adzones] .shiftCheckbox").each(function () {
+//                if(this.checked)
+//                    this.checked = false;
+//                else
+//                    this.checked = true;
+//            });
+//            selectFn();
+//        });
+//
+//        $("#checker-all").click(function(){
+//            if (this.checked) {
+//
+//                $("[data-list=adzones] .shiftCheckbox").each(function () {
+//                    this.checked = true;
+//                });
+//            }
+//            else {
+//                $("[data-list=adzones] .shiftCheckbox").each(function () {
+//                    this.checked = false;
+//                });
+//            }
+//            selectFn();
+//        });
+//
+//        $('.shiftCheckbox').shiftcheckbox();
 
-        $(".select-all").click(function(){
-            $("[data-list=adzones] .shiftCheckbox").each(function () {
-                this.checked = true;
-            });
-            selectFn();
-        });
 
-        $(".not-select-all").click(function(){
-            $("[data-list=adzones] .shiftCheckbox").each(function () {
-                this.checked = false;
-            });
-            selectFn();
-        });
-        $(".re-select-all").click(function(){
-            $("[data-list=adzones] .shiftCheckbox").each(function () {
-                if(this.checked)
-                    this.checked = false;
-                else
-                    this.checked = true;
-            });
-            selectFn();
-        });
-
-        $("#checker-all").click(function(){
-            if (this.checked) {
-
-                $("[data-list=adzones] .shiftCheckbox").each(function () {
-                    this.checked = true;
-                });
-            }
-            else {
-                $("[data-list=adzones] .shiftCheckbox").each(function () {
-                    this.checked = false;
-                });
-            }
-            selectFn();
-        });
-
-        $('.shiftCheckbox').shiftcheckbox();
-
-
-        var data = ["1680x400","1620x90","1180x500","1000x90","990x95","990x90","960x90","950x90","940x180","940x107","920x300","900x600","800x450","800x90","760x100","760x90","750x90","740x230","730x300","728x90","720x450","720x410","720x290","700x90","700x60","642x250","640x480","640x400","640x320","640x300","640x290","640x200","640x110","640x100","640x90","610x100","600x500","600x220","600x150","600x80","590x180","586x325","520x280","480x580","480x70","400x300","375x130","360x242","336x280","320x285","320x200","300x600","300x400","300x350","300x300","300x250","300x150","300x125","300x110","300x100","300x50","280x406","280x370","280x230","270x440","260x200","260x90","256x213","250x250","250x200","250x155","240x355","240x200","210x220","205x332","200x500","200x300","200x250","200x240","200x200","190x90","190x43","186x275","170x200","168x175","168x76","160x310","160x200","150x250","145x165","130x280","120x240","110x300","0x1","0x0"];
-        var b = [];
-        for(var i in data){
-            b.push({id:data[i],text:data[i]});
-        }
+//        var data = ["1680x400","1620x90","1180x500","1000x90","990x95","990x90","960x90","950x90","940x180","940x107","920x300","900x600","800x450","800x90","760x100","760x90","750x90","740x230","730x300","728x90","720x450","720x410","720x290","700x90","700x60","642x250","640x480","640x400","640x320","640x300","640x290","640x200","640x110","640x100","640x90","610x100","600x500","600x220","600x150","600x80","590x180","586x325","520x280","480x580","480x70","400x300","375x130","360x242","336x280","320x285","320x200","300x600","300x400","300x350","300x300","300x250","300x150","300x125","300x110","300x100","300x50","280x406","280x370","280x230","270x440","260x200","260x90","256x213","250x250","250x200","250x155","240x355","240x200","210x220","205x332","200x500","200x300","200x250","200x240","200x200","190x90","190x43","186x275","170x200","168x175","168x76","160x310","160x200","150x250","145x165","130x280","120x240","110x300","0x1","0x0"];
+//        var b = [];
+//        for(var i in data){
+//            b.push({id:data[i],text:data[i]});
+//        }
 
         //$("select[data-role=size]").select2({data:b,width:400});
 

@@ -7,7 +7,7 @@
             <div class="col-md-4">
                 <div class="com-list-tit" style="display: block;">
                     <span class="shop-list-icon"></span>
-                    <span class="shop-list-txt">低价推广设置</span>
+                    <span class="shop-list-txt">批量推广设置</span>
                 </div>
             </div>
             <div class="col-md-2">

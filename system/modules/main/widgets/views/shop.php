@@ -406,7 +406,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <a href="<?php echo Yii::app()->urlManager->createUrl('/zuanshi/setting/index2',array("nick"=>$row["nick"]));?>" target="_blank"><small>2. 智·钻低价推广设置..</small></a>
+                            <a href="<?php echo Yii::app()->urlManager->createUrl('/zuanshi/setting/index2',array("nick"=>$row["nick"]));?>" target="_blank"><small>2. 智·钻批量推广设置..</small></a>
                         </div>
                     </div>
                     <div class="row">
