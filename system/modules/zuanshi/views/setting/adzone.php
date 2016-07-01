@@ -67,7 +67,7 @@
                 <table class="baby-frame-table">
                     <thead>
                     <tr>
-                        <td><small></small></td>
+                        <td><small>选择</small></td>
                         <td><small>资源信息</small></td>
                         <td><small>尺寸</small></td>
                         <td><small>标签</small></td>
@@ -103,15 +103,14 @@
                 <div style="height: 60px"></div>
                 <div style="position: fixed;bottom: 0px;width: 100%;background: white; height: 100px;line-height: 100px;">
                     <div class="row">
+
                         <div class="col-md-2">
+                            <small>出价：</small><input type="text" class="p_in" name="price" value="<?php echo $setting["price"];?>"/>
                         </div>
-                        <div class="col-md-2">
-                            <small>,出价：</small><input type="text" class="p_in" name="price" value="<?php echo $setting["price"];?>"/>
-                        </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <button type="button" class="btn btn-primary" data-click="shopbtn"  data-target-url="<?php echo $this->createUrl("/zuanshi/setting/vie",array("nick"=>$query["nick"]));?>">下一步，设置竞品</button>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <button type="button" class="btn btn-primary" data-click="shopbtn" data-target-url="<?php echo $this->createUrl("/zuanshi/setting/dmp",array("nick"=>$query["nick"]));?>">下一步，设置人群</button>
                         </div>
                         <div class="col-md-2">
