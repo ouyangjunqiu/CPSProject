@@ -44,6 +44,9 @@ form.case-run input {
 .baby-frame-table thead td ,.baby-frame-table thead th  , .baby-frame-table tbody td{  padding: 8px 0; text-align: center; border: 1px solid #e6e6e6;vertical-align: middle;}
 .baby-frame-table thead tr.small th{font-size: 10px;}
 .baby-frame-table thead tr.small td{font-size: 11px;}
+.baby-frame-table tbody tr:hover {
+    background:aliceblue;
+}
 
 .bud-span{ color: #fa6e50;}
 .status{ color: #fff; display: inline-block;   border-radius: 5px; background: #fa6e50; font-size: 12px; padding: 3px 5px; }
