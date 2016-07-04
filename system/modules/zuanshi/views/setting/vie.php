@@ -124,7 +124,7 @@
                 </div>
                 <div class="col-md-5">
                     <p>
-                        <o class="glyphicon glyphicon-hand-right"></o>下一步，请登录钻展后台，使用精准平台小助手的"批量低价推广"功能完成后续推广操作！
+                        <o class="glyphicon glyphicon-hand-right"></o>下一步，请登录钻展后台，使用精准平台小助手的"批量推广..."功能完成后续推广操作！
                     </p>
                 </div>
                 <div class="col-md-3">
@@ -196,7 +196,7 @@
                 success:function(resp){
                     $("body").hideLoading();
                     if(resp.isSuccess) {
-                        app.alert('设置成功,请登录钻石展位后台,请使用精准平台小助手的批量低价推广按钮!');
+                        app.alert('设置成功,请登录钻石展位后台,请使用精准平台小助手的批量推广按钮!');
                     }else{
                         app.error('添加失败');
                     }
