@@ -55,6 +55,7 @@ class ShopTodoList extends Model
         foreach($history as &$row){
             $row["title"] = String::ireplaceUrl($row["content"],"<small>[链接]</small>");
             $row["md5"] = md5($row["nick"]);
+            $row["days"] = ceil((strtotime($row["logdate"])-strtotime(date("Y-m-d")))/3600/24);
         }
         return $history;
     }

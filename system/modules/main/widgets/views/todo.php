@@ -110,6 +110,7 @@
                 {{else}}
                    <a data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" class="list-group-item list-group-item-danger" data-content="${v.content}" data-trigger-target="todo_${v.md5}">
                     <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}]</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
+                    <small class="label label-danger"><i class="fa fa-clock-o"></i> ${v.days} days</small>
                    </a>
                 {{/if}}
               {{/each}}
