@@ -34,7 +34,7 @@ class DefaultController extends Controller
 		$q = addslashes($q);
 		$pic = Env::getRequestWithSessionDefault("pic","","main.default.index.pic");
 		$pic = addslashes($pic);
-		$shoptype = Env::getRequest("shoptype");
+		$shoptype = Env::getQuery("shoptype");
 		$page = (int)$page;
 		$pageSize = (int)$pageSize;
 
