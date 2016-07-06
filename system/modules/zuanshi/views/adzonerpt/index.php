@@ -59,7 +59,7 @@
 
         <table class="baby-frame-table" id="table_fixed" style="table-layout: fixed;">
             <thead class="header">
-            <tr>
+            <tr class="small">
                 <th>资源位</th>
                 <th>展现</th>
                 <th>点击</th>
@@ -96,7 +96,7 @@
             <?php else:?>
 
             <?php foreach($list as $rpt):?>
-                <tr>
+                <tr class="small">
                     <td><strong><?php echo $rpt["adzoneName"];?></strong></td>
                     <td><?php echo $rpt["adPv"];?></td>
                     <td><?php echo $rpt["click"];?></td>

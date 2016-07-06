@@ -57,7 +57,7 @@
 
         <table class="baby-frame-table" id="table_fixed" style="table-layout: fixed;">
             <thead class="header">
-            <tr>
+            <tr class="small">
                 <th>人群名称</th>
                 <th>展现</th>
                 <th>点击</th>
@@ -94,7 +94,7 @@
             <?php else:?>
 
             <?php foreach($list as $rpt):?>
-                <tr>
+                <tr class="small">
                     <td><strong><?php echo $rpt["targetName"];?></strong></td>
                     <td><?php echo $rpt["adPv"];?></td>
                     <td><?php echo $rpt["click"];?></td>
