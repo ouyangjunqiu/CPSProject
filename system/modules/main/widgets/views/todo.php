@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="input-group">
-                        <select class="selectpicker" name="pic" data-placeholder="@">
+                        <select class="selectpicker" name="pic" data-placeholder="@" style="width: 100%">
                             <option value=""></option>
                             <?php foreach($users as $u):?>
                                 <option value="<?php echo $u["text"];?>">@<?php echo $u["text"];?></option>
@@ -283,7 +283,7 @@
 
     $(document).ready(function(){
 
-        $("select.selectpicker").select2({theme: "bootstrap"});
+        $("select.selectpicker").select2({theme: "bootstrap", allowClear: true});
 
         $('#ShopTodoAddModal').delegate("[data-click=save]","click",function(){
             var shopcase = $('#ShopTodoAddModal').find("form").serialize();
