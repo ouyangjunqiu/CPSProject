@@ -47,9 +47,9 @@ $username = empty($user)?"游客":$user["username"];
                             <li role="presentation"><a href="#file_<?php echo md5($row["nick"]);?>" title="云共享" aria-controls="file_<?php echo md5($row["nick"]);?>" role="tab" data-toggle="tab" aria-expanded="true">
                                     <i class="fa fa-cloud"></i><span>云共享</span></a>
                             </li>
-                            <li role="presentation"><a href="#ploy_<?php echo md5($row["nick"]);?>" title="营销推广规划" aria-controls="ploy_<?php echo md5($row["nick"]);?>" role="tab" data-toggle="tab" aria-expanded="true">
-                                    <i class="glyphicon glyphicon-record"></i><span>营销推广规划</span></a>
-                            </li>
+<!--                            <li role="presentation"><a href="#ploy_--><?php //echo md5($row["nick"]);?><!--" title="营销推广规划" aria-controls="ploy_--><?php //echo md5($row["nick"]);?><!--" role="tab" data-toggle="tab" aria-expanded="true">-->
+<!--                                    <i class="glyphicon glyphicon-record"></i><span>营销推广规划</span></a>-->
+<!--                            </li>-->
                         </ul>
 
                         <div class="tab-content">
@@ -82,14 +82,14 @@ $username = empty($user)?"游客":$user["username"];
                                 </a>
                             </div>
 
-                            <div role="tabpanel" class="tab-pane" id="ploy_<?php echo md5($row["nick"]);?>">
-                                <div class="overlay-wrapper" data-load="overlay" data-tmpl="shop-ploy-list-tmpl" data-role="shop-ploy-list" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo $this->createUrl("/main/ploy/getbynick",array("nick"=>$row["nick"]));?>">
-                                </div>
-
-                                <a data-toggle="modal" data-target="#ShopPloyAddModal" data-backdrop="false" data-logdate-index="1" data-nick="<?php echo $row["nick"];?>" data-trigger-target="#ploy_<?php echo md5($row["nick"]);?>">
-                                    <i class="fa fa-plus"></i> 新建营销推广规划...
-                                </a>
-                            </div>
+<!--                            <div role="tabpanel" class="tab-pane" id="ploy_--><?php //echo md5($row["nick"]);?><!--">-->
+<!--                                <div class="overlay-wrapper" data-load="overlay" data-tmpl="shop-ploy-list-tmpl" data-role="shop-ploy-list" data-nick="--><?php //echo $row["nick"];?><!--" data-url="--><?php //echo $this->createUrl("/main/ploy/getbynick",array("nick"=>$row["nick"]));?><!--">-->
+<!--                                </div>-->
+<!---->
+<!--                                <a data-toggle="modal" data-target="#ShopPloyAddModal" data-backdrop="false" data-logdate-index="1" data-nick="--><?php //echo $row["nick"];?><!--" data-trigger-target="#ploy_--><?php //echo md5($row["nick"]);?><!--">-->
+<!--                                    <i class="fa fa-plus"></i> 新建营销推广规划...-->
+<!--                                </a>-->
+<!--                            </div>-->
                         </div>
                     </div>
                 </td>
@@ -272,39 +272,39 @@ $username = empty($user)?"游客":$user["username"];
         });
 
 
-        tinymce.init({
-            selector: '#ploy-content-editor',
-            menubar: false
-        });
+//        tinymce.init({
+//            selector: '#ploy-content-editor',
+//            menubar: false
+//        });
 //        $("[data-provide=datepicker-inline]").datepicker();
 
-        $('#ShopPloyAddModal').on('show.bs.modal', function (event) {
-            var self = $(this);
-            var button = $(event.relatedTarget); // Button that triggered the modal
-            self.find("input[name=nick]").val(button.attr("data-nick"));
-            self.find("[data-click=save]").attr("data-trigger-target",button.attr("data-trigger-target"));
-        });
+//        $('#ShopPloyAddModal').on('show.bs.modal', function (event) {
+//            var self = $(this);
+//            var button = $(event.relatedTarget); // Button that triggered the modal
+//            self.find("input[name=nick]").val(button.attr("data-nick"));
+//            self.find("[data-click=save]").attr("data-trigger-target",button.attr("data-trigger-target"));
+//        });
 
-        $('#ShopPloyAddModal').delegate('[data-click=save]','click',function(){
-
-            var content = tinymce.get('ploy-content-editor').getContent({format: 'raw'});
-            var target = $($(this).attr("data-trigger-target")).find("[data-load=overlay]");
-            var form = $('#ShopPloyAddModal').find("form");
-            form.find("[name=content]").val(content);
-            $.ajax({
-                url:"<?php echo $this->createUrl('/main/ploy/add');?>",
-                type:"post",
-                dataType:"json",
-                data:form.serialize(),
-                success:function(){
-                    target.iLoad();
-                },
-                beforeSend:function(){
-                    $("#ShopPloyAddModal").modal('hide');
-                }
-
-            })
-        });
+//        $('#ShopPloyAddModal').delegate('[data-click=save]','click',function(){
+//
+//            var content = tinymce.get('ploy-content-editor').getContent({format: 'raw'});
+//            var target = $($(this).attr("data-trigger-target")).find("[data-load=overlay]");
+//            var form = $('#ShopPloyAddModal').find("form");
+//            form.find("[name=content]").val(content);
+//            $.ajax({
+//                url:"<?php //echo $this->createUrl('/main/ploy/add');?>//",
+//                type:"post",
+//                dataType:"json",
+//                data:form.serialize(),
+//                success:function(){
+//                    target.iLoad();
+//                },
+//                beforeSend:function(){
+//                    $("#ShopPloyAddModal").modal('hide');
+//                }
+//
+//            })
+//        });
 
 
 
