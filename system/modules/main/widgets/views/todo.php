@@ -283,7 +283,7 @@
 
     $(document).ready(function(){
 
-        $("select.selectpicker").select2();
+        $("select.selectpicker").select2({theme: "bootstrap"});
 
         $('#ShopTodoAddModal').delegate("[data-click=save]","click",function(){
             var shopcase = $('#ShopTodoAddModal').find("form").serialize();
