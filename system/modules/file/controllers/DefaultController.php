@@ -4,6 +4,7 @@ use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
 use cloud\core\utils\File;
 use application\modules\file\model\File AS FileModel;
+use cloud\core\utils\MimeType;
 
 /**
  * @file DefaultController.php
@@ -48,7 +49,8 @@ class DefaultController extends Controller
         $attach = FileModel::model()->fetch("md5=?",array($md5));
         if(!empty($attach)){
             $file = File::readFile($attach["target"]);
-            header('Content-Type: application/octet-stream');//告诉浏览器输出内容类型，必须
+            $mimeType = MimeType::get($attach["ext"]);
+            header("Content-Type: $mimeType");//告诉浏览器输出内容类型，必须
             header('Content-Encoding: none');//内容不加密，gzip等，可选
             header("Content-Transfer-Encoding: binary" );//文件传输方式是二进制，可选
             header("Content-Length: ".$attach["size"]);//告诉浏览器文件大小，可选
