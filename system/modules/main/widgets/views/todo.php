@@ -283,8 +283,6 @@
 
     $(document).ready(function(){
 
-        $("select.selectpicker").select2({theme: "bootstrap", allowClear: true});
-
         $('#ShopTodoAddModal').delegate("[data-click=save]","click",function(){
             var shopcase = $('#ShopTodoAddModal').find("form").serialize();
             var targetid = $(this).attr("data-trigger-target");
@@ -376,6 +374,8 @@
             var button = $(event.relatedTarget); // Button that triggered the modal
             var nick = button.attr("data-nick");
             self.find("input[name=nick]").val(nick);
+            $("select.selectpicker").select2({theme: "bootstrap", allowClear: true});
+
 
             $('#ShopTodoAddModal').find(".btn").attr("data-trigger-target",button.attr("data-trigger-target"));
         });
