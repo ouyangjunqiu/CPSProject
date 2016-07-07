@@ -46,10 +46,10 @@
                         </div>
                     </div>
                     <div class="input-group">
-                        <select class="selectpicker" data-live-search="true" name="pic" data-none-selected-text="@" data-live-search-normalize="true" data-live-search-placeholder="@">
+                        <select class="selectpicker" name="pic" data-placeholder="@">
                             <option value=""></option>
                             <?php foreach($users as $u):?>
-                                <option data-tokens="<?php echo $u["text"];?>" value="<?php echo $u["text"];?>">@<?php echo $u["text"];?></option>
+                                <option value="<?php echo $u["text"];?>">@<?php echo $u["text"];?></option>
                             <?php endforeach;?>
                         </select>
                     </div>
@@ -282,6 +282,8 @@
 <script type="application/javascript">
 
     $(document).ready(function(){
+
+        $("select.selectpicker").select2();
 
         $('#ShopTodoAddModal').delegate("[data-click=save]","click",function(){
             var shopcase = $('#ShopTodoAddModal').find("form").serialize();
