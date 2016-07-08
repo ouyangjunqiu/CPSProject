@@ -63,11 +63,11 @@
                         <div class="tab-content">
 
                             <div role="tabpanel" class="tab-pane" id="realtime_<?php echo $row["id"];?>">
-                                <div class="row" data-load="overlay" data-tmpl="shop-zuanshi-realtime-list-tmpl" data-role="shop-zuanshi-realtime-list" data-url="<?php echo $this->createUrl("/zuanshi/dashboard/getbynick",array("nick"=>$row["nick"]));?>" >
+                                <div class="row" data-tmpl="shop-zuanshi-realtime-list-tmpl" data-role="shop-zuanshi-realtime-list" data-url="<?php echo $this->createUrl("/zuanshi/dashboard/getbynick",array("nick"=>$row["nick"]));?>" >
 
                                 </div>
 
-                                <div class="row padding" data-load="overlay" data-tmpl="shop-campaign-budget-warning-tmpl" data-url="<?php echo $this->createUrl("/zuanshi/dashboard/getcampaignbudgetwarning",array("nick"=>$row["nick"]));?>">
+                                <div class="row padding" data-tmpl="shop-campaign-budget-warning-tmpl" data-role="shop-campaign-budget-warning" data-url="<?php echo $this->createUrl("/zuanshi/dashboard/getcampaignbudgetwarning",array("nick"=>$row["nick"]));?>">
 
                                 </div>
                                 <div class="row">
@@ -487,6 +487,18 @@
         $(".c-pager").jPager({currentPage: <?php echo $pager["page"]-1;?>, total: <?php echo $pager["count"];?>, pageSize: <?php echo $pager["page_size"];?>,events: function(dp){
             location.href = app.url("<?php echo $this->createUrl('/zuanshi/dashboard/index');?>",{page:dp.index+1})
         }});
+
+        $("a[data-type=realtime]").click(function(e) {
+            e.preventDefault();
+            var self = $(this);
+            self.tab("show");
+            var target = $(self.attr("href")).find("[data-role=shop-zuanshi-realtime-list]");
+            target.iLoad();
+
+            var t = $(self.attr("href")).find("[data-role=shop-campaign-budget-warning]");
+            t.iLoad();
+
+        });
 
         //$("[data-toggle=popover]").popover({html : true});
         $("a[data-type=rpt_chart]").click(function(e){

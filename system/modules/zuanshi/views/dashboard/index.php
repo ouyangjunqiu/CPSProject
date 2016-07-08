@@ -84,7 +84,7 @@
                             </div>
 
                             <div role="tabpanel" class="tab-pane" id="rpt_<?php echo $row["id"];?>">
-                                <div data-tmpl="shop-zuanshirpt-list-tmpl" data-load="overlay" data-url="<?php echo $this->createUrl("/zuanshi/rpt/getbynick",array("nick"=>$row["nick"],"shopname"=>$row["shopname"]));?>">
+                                <div data-tmpl="shop-zuanshirpt-list-tmpl" data-role="shop-zuanshirpt-list" data-url="<?php echo $this->createUrl("/zuanshi/rpt/getbynick",array("nick"=>$row["nick"],"shopname"=>$row["shopname"]));?>">
                                 </div>
 
                                 <div class="row">
@@ -488,6 +488,14 @@
         $(".c-pager").jPager({currentPage: <?php echo $pager["page"]-1;?>, total: <?php echo $pager["count"];?>, pageSize: <?php echo $pager["page_size"];?>,events: function(dp){
             location.href = app.url("<?php echo $this->createUrl('/zuanshi/dashboard/index');?>",{page:dp.index+1})
         }});
+
+        $("a[data-type=rpt]").click(function(e) {
+            e.preventDefault();
+            var self = $(this);
+            self.tab("show");
+            var target = $(self.attr("href")).find("[data-role=shop-zuanshirpt-list]");
+            target.iLoad();
+        });
 
         //$("[data-toggle=popover]").popover({html : true});
         $("a[data-type=rpt_chart]").click(function(e){

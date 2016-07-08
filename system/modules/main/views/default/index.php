@@ -237,7 +237,7 @@ $username = empty($user)?"游客":$user["username"];
             var self = $(this);
             self.tab("show");
             var target = $(self.attr("href")).find("[data-role=shop-file-list]");
-            target.DataLoad();
+            target.iLoad();
         });
 
 
