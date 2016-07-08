@@ -132,7 +132,7 @@
                 <div class="stop-icon"></div>
            {{/if}}
 
-           <div class="row padding"><div class="col-md-6 col-lg-4 col-sm-6">
+           <div class="padding"><div class="col-md-6 col-lg-4 col-sm-6">
             <p class=" text-center">
                 <small>余额(<span class="glyphicon glyphicon-yen"></span>)</small>
             </p>
@@ -163,7 +163,7 @@
            </div>
 
        </div>
-       <div class="row padding">
+       <div class="padding">
           <div class="col-md-6 col-lg-4 col-sm-6" style="background: aliceblue;">
              <div class="inner padding">
                 <p class=" text-center">
@@ -222,7 +222,7 @@
 
             </div>
           </div>
-          <div class="col-md-6 col-lg-4 col-sm-6" style="background: aliceblue">
+          <div class="col-md-6 col-lg-4 col-sm-6" style="background: aliceblue;border-left: 1px solid azure;border-right: 1px solid azure;">
           <div class="inner padding">
 
           <p class=" text-center">
