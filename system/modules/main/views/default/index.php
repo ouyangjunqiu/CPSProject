@@ -44,7 +44,7 @@ $username = empty($user)?"游客":$user["username"];
                             <li role="presentation" class="active"><a href="#todo_<?php echo md5($row["nick"]);?>" title="待办事项" aria-controls="todo_<?php echo md5($row["nick"]);?>" role="tab" data-toggle="tab" aria-expanded="true">
                                     <i class="fa fa-th-list"></i><span>待办事项</span></a>
                             </li>
-                            <li role="presentation"><a href="#file_<?php echo md5($row["nick"]);?>" title="云共享" aria-controls="file_<?php echo md5($row["nick"]);?>" role="tab" data-toggle="tab" aria-expanded="true">
+                            <li role="presentation"><a href="#file_<?php echo md5($row["nick"]);?>" data-type="file" title="云共享" aria-controls="file_<?php echo md5($row["nick"]);?>" role="tab" data-toggle="tab" aria-expanded="true">
                                     <i class="fa fa-cloud"></i><span>云共享</span></a>
                             </li>
 <!--                            <li role="presentation"><a href="#ploy_--><?php //echo md5($row["nick"]);?><!--" title="营销推广规划" aria-controls="ploy_--><?php //echo md5($row["nick"]);?><!--" role="tab" data-toggle="tab" aria-expanded="true">-->
@@ -74,7 +74,7 @@ $username = empty($user)?"游客":$user["username"];
                             </div>
 
                             <div role="tabpanel" class="tab-pane" id="file_<?php echo md5($row["nick"]);?>">
-                                <div class="overlay-wrapper" data-load="overlay" data-tmpl="shop-file-list-tmpl" data-role="shop-file-list" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo $this->createUrl("/main/file/getbynick",array("nick"=>$row["nick"]));?>">
+                                <div class="overlay-wrapper" data-tmpl="shop-file-list-tmpl" data-role="shop-file-list" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo $this->createUrl("/main/file/getbynick",array("nick"=>$row["nick"]));?>">
                                 </div>
 
                                 <a data-toggle="modal" data-target="#ShopFileUploadModal" data-backdrop="false" data-logdate-index="1" data-nick="<?php echo $row["nick"];?>" data-creator="<?php echo $username;?>" data-trigger-target="#file_<?php echo md5($row["nick"]);?>">
@@ -231,6 +231,14 @@ $username = empty($user)?"游客":$user["username"];
         }});
 
         $('.dropify').dropify();
+
+        $("a[data-type=file]").click(function(e) {
+            e.preventDefault();
+            var self = $(this);
+            self.tab("show");
+            var target = $(self.attr("href")).find("[data-role=shop-file-list]");
+            target.DataLoad();
+        });
 
 
         $('#ShopFileUploadModal').on('show.bs.modal', function (event) {
