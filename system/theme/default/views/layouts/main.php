@@ -142,14 +142,14 @@
                         <p>直通车</p>
                     </a>
                 </li>
-<!--                <li>-->
-<!--                    <a href="http://cps.da-mai.com/piwigo" target="_blank">-->
-<!---->
-<!--                        <p class="top-icon-p"><i class="creatives-icon"></i></p>-->
-<!---->
-<!--                        <p>创意库</p>-->
-<!--                    </a>-->
-<!--                </li>-->
+                <li>
+                    <a href="http://yunying.da-mai.com/" target="_blank">
+
+                        <p class="top-icon-p"><i class="yunying-icon"></i></p>
+
+                        <p>运营规划</p>
+                    </a>
+                </li>
 
             </ul>
         </div>
