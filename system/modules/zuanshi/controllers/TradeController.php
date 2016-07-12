@@ -19,6 +19,12 @@ class TradeController extends Controller
     public function actionSource(){
         $data = Env::getRequest("payAmt");
         $nick = Env::getRequest("nick");
+        $userid = Env::getRequest("userid");
+        $shopid = Env::getRequest("shopid");
+        $shopname = Env::getRequest("shopname");
+        if(empty($shopname)){
+            $shopname = $nick;
+        }
         $trades = json_decode($data,true);
         $i = 1;
         krsort($trades);
@@ -30,6 +36,9 @@ class TradeController extends Controller
             $model->setAttributes(array(
                 "log_date" => $logdate,
                 "nick" => $nick,
+                "shopname" => $shopname,
+                "userid" => $userid,
+                "shopid" => $shopid,
                 "payAmt" => $trade,
                 "create_date" => date("Y-m-d H:i:s")
             ));

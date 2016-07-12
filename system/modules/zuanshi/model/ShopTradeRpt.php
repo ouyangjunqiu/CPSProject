@@ -41,10 +41,10 @@ class ShopTradeRpt extends Model
         // will receive user inputs.
         return array(
 
-            array('log_date,nick,payAmt,create_date', 'safe'),
+            array('log_date,nick,userid,shopid,shopname,payAmt,create_date', 'safe'),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('log_date,nick,payAmt,create_date', 'safe', 'on'=>'search'),
+            array('log_date,nick,userid,shopid,shopname,payAmt,create_date', 'safe', 'on'=>'search'),
         );
     }
 
