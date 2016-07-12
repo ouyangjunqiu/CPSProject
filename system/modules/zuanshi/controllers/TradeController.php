@@ -32,7 +32,7 @@ class TradeController extends Controller
 
         foreach($trades as $trade){
             $logdate = date("Y-m-d",strtotime("-{$i} day"));
-            ShopTradeRpt::model()->deleteAll("log_date=? AND nick=?",array($logdate,$nick));
+            ShopTradeRpt::model()->deleteAll("log_date=? AND shopname=?",array($logdate,$shopname));
             $model = new ShopTradeRpt();
             $model->setAttributes(array(
                 "log_date" => $logdate,
@@ -53,7 +53,7 @@ class TradeController extends Controller
 
     public function actionHasget(){
         $nick = Env::getRequest("nick");
-        $hasget =  ShopTradeRpt::model()->exists("log_date=? AND nick=?",array(date("Y-m-d",strtotime("-1 day")),$nick));
+        $hasget =  ShopTradeRpt::model()->exists("log_date=? AND shopname=?",array(date("Y-m-d",strtotime("-1 day")),$nick));
         $this->renderJson(array("isSuccess" => true,"hasget"=>$hasget>0?true:false));
     }
 
