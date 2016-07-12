@@ -41,16 +41,16 @@ class ShopTradeRpt extends Model
         // will receive user inputs.
         return array(
 
-            array('log_date,nick,userid,shopid,shopname,payAmt,create_date', 'safe'),
+            array('log_date,nick,userid,usernumid,shopid,shopname,payAmt,create_date', 'safe'),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('log_date,nick,userid,shopid,shopname,payAmt,create_date', 'safe', 'on'=>'search'),
+            array('log_date,nick,userid,usernumid,shopid,shopname,payAmt,create_date', 'safe', 'on'=>'search'),
         );
     }
 
     public static function fetchAllByLast15Days($nick){
         $rangeDate = ExtRangeDate::range(16);
-        $list = self::model()->fetchAll("log_date>=? AND log_date<=? AND nick=?",array($rangeDate->startDate,$rangeDate->endDate,$nick));
+        $list = self::model()->fetchAll("log_date>=? AND log_date<=? AND shopname=?",array($rangeDate->startDate,$rangeDate->endDate,$nick));
         $result = array("total_pay_amt"=>0);
         foreach($list as $row){
             $result[$row["log_date"]] = $row;
@@ -61,7 +61,7 @@ class ShopTradeRpt extends Model
 
     public static function summaryLastWeekByNick($nick){
         $rangeDate = ExtRangeDate::lastWeek();
-        $list = self::model()->fetchAll("log_date>=? AND log_date<=? AND nick=?",array($rangeDate->startDate,$rangeDate->endDate,$nick));
+        $list = self::model()->fetchAll("log_date>=? AND log_date<=? AND shopname=?",array($rangeDate->startDate,$rangeDate->endDate,$nick));
         $result = array("total_pay_amt"=>0);
         foreach($list as $row){
             //$result[$row["log_date"]] = $row;
@@ -72,7 +72,7 @@ class ShopTradeRpt extends Model
 
     public static function summaryWeekByNick($nick){
         $rangeDate = ExtRangeDate::week();
-        $list = self::model()->fetchAll("log_date>=? AND log_date<=? AND nick=?",array($rangeDate->startDate,$rangeDate->endDate,$nick));
+        $list = self::model()->fetchAll("log_date>=? AND log_date<=? AND shopname=?",array($rangeDate->startDate,$rangeDate->endDate,$nick));
         $result = array("total_pay_amt"=>0);
         foreach($list as $row){
             //$result[$row["log_date"]] = $row;
@@ -82,7 +82,7 @@ class ShopTradeRpt extends Model
     }
 
     public static function summaryByNick($startdate,$enddate,$nick){
-        $list = self::model()->fetchAll("log_date>=? AND log_date<=? AND nick=?",array($startdate,$enddate,$nick));
+        $list = self::model()->fetchAll("log_date>=? AND log_date<=? AND shopname=?",array($startdate,$enddate,$nick));
         $result = array("total_pay_amt"=>0);
         foreach($list as $row){
             //$result[$row["log_date"]] = $row;

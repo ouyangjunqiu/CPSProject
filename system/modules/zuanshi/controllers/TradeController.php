@@ -21,6 +21,7 @@ class TradeController extends Controller
         $nick = Env::getRequest("nick");
         $userid = Env::getRequest("userid");
         $shopid = Env::getRequest("shopid");
+        $usernumid = Env::getRequest("usernumid");
         $shopname = Env::getRequest("shopname");
         if(empty($shopname)){
             $shopname = $nick;
@@ -39,6 +40,7 @@ class TradeController extends Controller
                 "shopname" => $shopname,
                 "userid" => $userid,
                 "shopid" => $shopid,
+                "usernumid" => $usernumid,
                 "payAmt" => $trade,
                 "create_date" => date("Y-m-d H:i:s")
             ));
