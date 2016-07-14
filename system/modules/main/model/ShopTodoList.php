@@ -100,7 +100,7 @@ class ShopTodoList extends Model
         $startDate = date("Y-m-d",strtotime("-2 days",strtotime($logdate)));
         $endDate =  date("Y-m-d",strtotime("+2 days",strtotime($logdate)));
 
-        $result = self::model()->fetchAll("logdate>? AND logdate<? AND nick=? AND status!=?",array($startDate,$endDate,$nick,2));
+        $result = self::model()->fetchAll("logdate>=? AND logdate<=? AND nick=? AND status!=?",array($startDate,$endDate,$nick,2));
         $todolist = array();
 
         foreach($result as $row){
