@@ -9,7 +9,7 @@ return array(
     'databases'=>array(
 
         'db' => array(
-            'host' => '10.116.213.225',
+            'host' => '10.132.165.20',
             'port' => '3306',
             'dbname' => 'dmcark_cps',
             'username' => 'cps.da-mai.com',
