@@ -45,7 +45,7 @@ class TodoController extends Controller
     }
 
     public function actionDone(){
-        $id = Env::getRequest("id");
+        $id = Env::getQuery("id");
         $updator = Env::getRequestWithDefault("updator","游客");
 
         $update_time = date("Y-m-d H:i:s");
@@ -68,7 +68,7 @@ class TodoController extends Controller
     }
 
     public function actionDel(){
-        $id = Env::getRequest("id");
+        $id = Env::getQuery("id");
         $updator = Env::getRequestWithDefault("updator","游客");
         $update_time = date("Y-m-d H:i:s");
         $model = ShopTodoList::model()->findByPk($id);
@@ -90,7 +90,7 @@ class TodoController extends Controller
     }
 
     public function actionGetbynick(){
-        $nick = Env::getRequest("nick");
+        $nick = Env::getQuery("nick");
 
         $history = ShopTodoList::fetchHistoryListByNick($nick);
         $list = ShopTodoList::fetchCurrentListByNick($nick);
@@ -110,7 +110,7 @@ class TodoController extends Controller
     }
 
     public function actionMy(){
-        $pic = Env::getRequest("pic");
+        $pic = Env::getQuery("pic");
         $list = ShopTodoList::fetchListByPic($pic);
         $this->renderJson(array(
             "isSuccess"=>true,
@@ -121,7 +121,7 @@ class TodoController extends Controller
     }
 
     public function actionMytips(){
-        $pic = Env::getRequest("pic");
+        $pic = Env::getQuery("pic");
         $startDate = date("Y-m-d",strtotime("-15 days"));
         $endDate =  date("Y-m-d");
         $count = ShopTodoList::model()->count("logdate>=? AND logdate<=? AND pic=? AND status=?",array($startDate,$endDate,$pic,0));
@@ -133,7 +133,7 @@ class TodoController extends Controller
     }
 
     public function actionMore(){
-        $nick = Env::getRequest("nick");
+        $nick = Env::getQuery("nick");
         $logdate = Env::getRequestWithDefault("logdate",date("Y-m-d"));
         $list = ShopTodoList::fetchRangeListByNick($nick,$logdate);
         $this->render('more',array("list"=>$list,"query"=>array("nick"=>$nick,"logdate"=>$logdate)));
