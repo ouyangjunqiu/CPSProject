@@ -87,7 +87,6 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default">废弃</button>
-                <button type="button" class="btn btn-primary" data-role="sure">完成</button>
                 <button type="button" class="btn btn-primary" data-role="reply">完成并回复</button>
                 <a data-toggle="modal" data-target="#ShopTodoAddModal" data-backdrop="false" data-role="doreply"></a>
             </div>
