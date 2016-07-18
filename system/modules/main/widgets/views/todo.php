@@ -390,6 +390,7 @@
                         $("#my-todo-wrap [data-role=my-todo]").iLoad();
                         target.iLoad();
                         e.attr("data-nick",resp.data.nick);
+                        e.attr("data-pic",resp.data.creator);
                         e.trigger("click");
                     }
                 },
@@ -411,6 +412,10 @@
             var button = $(event.relatedTarget); // Button that triggered the modal
             var nick = button.attr("data-nick");
             self.find("input[name=nick]").val(nick);
+            var pic = button.attr("data-pic");
+            if(pic && pic.length>0){
+                self.find("select[name=pic]").val(pic);
+            }
 
 
             $('#ShopTodoAddModal').find(".btn").attr("data-trigger-target",button.attr("data-trigger-target"));
