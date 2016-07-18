@@ -1,6 +1,6 @@
 
 <div class="modal fade" id="ShopTodoAddModal" role="dialog" aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog" role="document" aria-hidden="true">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -63,7 +63,7 @@
 </div>
 
 <div class="modal fade" id="ShopTodoViewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog" role="document" aria-hidden="true">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -76,7 +76,7 @@
     </div>
 </div>
 <div class="modal fade" id="ShopTodoOpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog" role="document" aria-hidden="true">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -87,7 +87,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default">废弃</button>
-                <button type="button" class="btn btn-primary">完成</button>
+                <button type="button" class="btn btn-primary" data-role="sure">完成</button>
+                <button type="button" class="btn btn-primary" data-role="reply">完成并回复</button>
+                <a data-toggle="modal" data-target="#ShopTodoAddModal" data-backdrop="false" data-role="doreply"></a>
             </div>
         </div>
     </div>
@@ -343,7 +345,7 @@
 
         });
 
-        $('#ShopTodoOpModal').delegate('.btn-primary','click',function(){
+        $('#ShopTodoOpModal').delegate('.btn-primary[data-role=sure]','click',function(){
             var id = $(this).attr("data-id");
             var targetid = $(this).attr("data-trigger-target");
             var target = targetid && $("#"+targetid).find("[data-load=overlay]");
@@ -357,6 +359,38 @@
                     if(resp.isSuccess) {
                         $("#my-todo-wrap [data-role=my-todo]").iLoad();
                         target.iLoad();
+                    }
+                },
+                beforeSend:function(){
+                    $('#ShopTodoOpModal').modal('hide');
+                    $("body").showLoading();
+                },
+                error:function(){
+                    app.error("操作失败，请确认网络连接是否正常后请重试!");
+                    $("body").hideLoading();
+                }
+            });
+
+        });
+
+        $('#ShopTodoOpModal').delegate('.btn-primary[data-role=reply]','click',function(){
+            var id = $(this).attr("data-id");
+            var e = $('#ShopTodoOpModal').find("a[data-role=doreply]");
+            var targetid = $(this).attr("data-trigger-target");
+            e.attr("data-trigger-target",targetid);
+            var target = targetid && $("#"+targetid).find("[data-load=overlay]");
+            $.ajax({
+                url:"<?php echo $urls["todo_done_url"];?>",
+                type:"post",
+                data:{id:id,updator:'<?php echo empty($user["username"])?"游客":$user["username"];?>'},
+                dataType:"json",
+                success:function(resp){
+                    $("body").hideLoading();
+                    if(resp.isSuccess) {
+                        $("#my-todo-wrap [data-role=my-todo]").iLoad();
+                        target.iLoad();
+                        e.attr("data-nick",resp.data.nick);
+                        e.trigger("click");
                     }
                 },
                 beforeSend:function(){
