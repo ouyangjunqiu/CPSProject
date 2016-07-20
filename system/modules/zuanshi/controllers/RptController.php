@@ -188,7 +188,7 @@ class RptController extends Controller
         $list = AccountRpt::model()->fetchAll("log_date>=? AND log_date<=? AND nick=?",array($beginDate,$endDate,$nick));
 
         foreach($list as &$rpt){
-            if(empty($rpt["extra"])) {
+            if(!empty($rpt["extra"])) {
                 $extra = CJSON::decode($rpt["extra"], true);
                 $rpt["extra"] = $extra;
             }else{
