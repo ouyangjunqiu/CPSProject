@@ -1,5 +1,6 @@
 <?php
 namespace application\modules\zuanshi\controllers;
+use CJSON;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
 use cloud\core\utils\ExtRangeDate;
@@ -187,8 +188,12 @@ class RptController extends Controller
         $list = AccountRpt::model()->fetchAll("log_date>=? AND log_date<=? AND nick=?",array($beginDate,$endDate,$nick));
 
         foreach($list as &$rpt){
-            $extra = json_decode($rpt["extra"],true);
-            $rpt["extra"] = $extra;
+            if(empty($rpt["extra"])) {
+                $extra = CJSON::decode($rpt["extra"], true);
+                $rpt["extra"] = $extra;
+            }else{
+                $rpt["extra"] = array();
+            }
         }
 
 
