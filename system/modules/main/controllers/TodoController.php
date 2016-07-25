@@ -17,9 +17,9 @@ class TodoController extends Controller
         $logdate = Env::getRequest("logdate");
         $nick = Env::getRequest("nick");
         $content = Env::getRequest("content");
-        $priority = Env::getRequestWithDefault("priority","普通");
+        $priority = Env::getQueryDefault("priority","普通");
         $pic = Env::getRequest("pic");
-        $creator = Env::getRequestWithDefault("creator","游客");
+        $creator = Env::getQueryDefault("creator","游客");
         $create_time = date("Y-m-d H:i:s");
         $status = 0;
 
@@ -46,7 +46,7 @@ class TodoController extends Controller
 
     public function actionDone(){
         $id = Env::getQuery("id");
-        $updator = Env::getRequestWithDefault("updator","游客");
+        $updator = Env::getQueryDefault("updator","游客");
 
         $update_time = date("Y-m-d H:i:s");
         $model = ShopTodoList::model()->findByPk($id);
@@ -69,7 +69,7 @@ class TodoController extends Controller
 
     public function actionDel(){
         $id = Env::getQuery("id");
-        $updator = Env::getRequestWithDefault("updator","游客");
+        $updator = Env::getQueryDefault("updator","游客");
         $update_time = date("Y-m-d H:i:s");
         $model = ShopTodoList::model()->findByPk($id);
         if($model == null){
@@ -134,7 +134,7 @@ class TodoController extends Controller
 
     public function actionMore(){
         $nick = Env::getQuery("nick");
-        $logdate = Env::getRequestWithDefault("logdate",date("Y-m-d"));
+        $logdate = Env::getQueryDefault("logdate",date("Y-m-d"));
         $list = ShopTodoList::fetchRangeListByNick($nick,$logdate);
         $this->render('more',array("list"=>$list,"query"=>array("nick"=>$nick,"logdate"=>$logdate)));
     }

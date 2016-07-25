@@ -20,7 +20,7 @@ class FileController extends Controller
         $nick = Env::getRequest("nick");
         $filemd5 = Env::getRequest("file_md5");
         $filename = Env::getRequest("file_name");
-        $creator = Env::getRequestWithDefault("creator","游客");
+        $creator = Env::getQueryDefault("creator","游客");
         $logdate = date("Y-m-d");
         $logtime = date("H:i:s");
 

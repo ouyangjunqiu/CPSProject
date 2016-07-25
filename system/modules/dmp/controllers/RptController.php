@@ -55,10 +55,10 @@ class RptController extends Controller
 
     public function actionIndex(){
 
-        $page = Env::getRequestWithSessionDefault("page",1,"main.default.index.page");
-        $pageSize = Env::getRequestWithSessionDefault("page_size",20,"main.default.index.pagesize");
-        $nick = Env::getRequestWithSessionDefault("nick","","main.default.index.nick");
-        $pic = Env::getRequestWithSessionDefault("pic","","main.default.index.pic");
+        $page = Env::getSession("page",1,"main.default.index");
+        $pageSize = Env::getSession("page_size",20,"main.default.index");
+        $nick = Env::getSession("nick","","main.default.index");
+        $pic = Env::getSession("pic","","main.default.index");
 
         $criteria = new \CDbCriteria();
         $criteria->addCondition("status='0'");

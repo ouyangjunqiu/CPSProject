@@ -16,19 +16,19 @@ class VieController extends Controller
             return;
         }
 
-        $days = Env::getRequestWithSessionDefault("days",365,"zuanshi.vie.index.days");
+        $days = Env::getSession("days",365,"zuanshi.vie.index");
         if(empty($days) || (int)$days >0){
             $rangeDate = ExtRangeDate::rangeNow(365);
         }else{
             $rangeDate = ExtRangeDate::rangeNow($days);
         }
 
-        $keyword = Env::getRequestWithSessionDefault("keyword","","zuanshi.vie.index.keyword");
-        $low_cnt = Env::getRequestWithSessionDefault("low_cnt","","zuanshi.vie.index.low_cnt");
-        $max_cnt = Env::getRequestWithSessionDefault("max_cnt","","zuanshi.vie.index.max_cnt");
+        $keyword = Env::getSession("keyword","","zuanshi.vie.index");
+        $low_cnt = Env::getSession("low_cnt","","zuanshi.vie.index");
+        $max_cnt = Env::getSession("max_cnt","","zuanshi.vie.index");
 
-        $is_use = Env::getRequestWithSessionDefault("is_use","","zuanshi.vie.index.is_use");
-        $orderby = Env::getRequestWithSessionDefault("orderby","","zuanshi.vie.index.orderby");
+        $is_use = Env::getSession("is_use","","zuanshi.vie.index");
+        $orderby = Env::getSession("orderby","","zuanshi.vie.index");
 
         $begin_date = $rangeDate->startDate;
         $end_date = $rangeDate->endDate;
