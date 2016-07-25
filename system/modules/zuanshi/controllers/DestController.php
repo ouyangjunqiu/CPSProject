@@ -48,7 +48,7 @@ class DestController extends Controller
 
     public function actionIndex(){
         $nick = Env::getRequest("nick");
-        $orderby = Env::getRequestWithSessionDefault("orderby","charge","zuanshi.dest.index.orderby");
+        $orderby = Env::getSession("orderby","charge","zuanshi.dest.index");
         $nick = trim($nick);
         $data = DestRptSource::fetchAllSummaryByCache($nick);
         if(!empty($orderby)) {

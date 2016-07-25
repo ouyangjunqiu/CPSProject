@@ -21,10 +21,10 @@ use application\modules\zuanshi\model\ShopTradeRpt;
 class DownController extends Controller
 {
     public function actionMore(){
-        $nick = Env::getRequestWithSessionDefault("nick","","zuanshi.rpt.index.nick");
+        $nick = Env::getSession("nick","","zuanshi.rpt.index");
         $rangeDate = ExtRangeDate::range(30);
-        $beginDate = Env::getRequestWithSessionDefault("begin_date",$rangeDate->startDate,"zuanshi.rpt.index.begin_date");
-        $endDate = Env::getRequestWithSessionDefault("end_date",$rangeDate->endDate,"zuanshi.rpt.index.end_date");
+        $beginDate = Env::getSession("begin_date",$rangeDate->startDate,"zuanshi.rpt.index");
+        $endDate = Env::getSession("end_date",$rangeDate->endDate,"zuanshi.rpt.index");
 
         $list = AccountRpt::model()->fetchAll("log_date>=? AND log_date<=? AND nick=?",array($beginDate,$endDate,$nick));
 
@@ -99,15 +99,13 @@ class DownController extends Controller
 
     public function actionSummary(){
 
-        $q = Env::getRequestWithSessionDefault("q","","main.default.index.q");
-        $q = addslashes($q);
-        $pic = Env::getRequestWithSessionDefault("pic","","main.default.index.pic");
-        $pic = addslashes($pic);
+        $q = Env::getSession("q","","main.default.index");
+        $pic = Env::getSession("pic","","main.default.index");
 
         $defaultDate = ExtRangeDate::range(7);
 
-        $startdate = Env::getRequestWithSessionDefault("startdate",$defaultDate->startDate,"zuanshi.rpt.summary.startdate");
-        $enddate = Env::getRequestWithSessionDefault("enddate",$defaultDate->endDate,"zuanshi.rpt.summary.enddate");
+        $startdate = Env::getSession("startdate",$defaultDate->startDate,"zuanshi.rpt.summary");
+        $enddate = Env::getSession("enddate",$defaultDate->endDate,"zuanshi.rpt.summary");
 
         $criteria = new \CDbCriteria();
         $criteria->addCondition("status='0'");
@@ -170,7 +168,7 @@ class DownController extends Controller
     }
 
     public function actionAdboard(){
-        $nick = Env::getRequest("nick");
+        $nick = Env::getQueryDefault("nick","");
         $data = array();
 
         $data[] = array(

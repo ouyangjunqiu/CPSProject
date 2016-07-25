@@ -12,18 +12,16 @@ use application\modules\zuanshi\model\ShopTradeRpt;
 class SummaryController extends Controller
 {
     public function actionIndex(){
-        $page = Env::getRequestWithSessionDefault("page",1,"main.default.index.page");
-        $pageSize = Env::getRequestWithSessionDefault("page_size",PAGE_SIZE,"main.default.index.pagesize");
-        $q = Env::getRequestWithSessionDefault("q","","main.default.index.q");
-        $q = addslashes($q);
+        $page = Env::getSession("page",1,"main.default.index");
+        $pageSize = Env::getSession("page_size",PAGE_SIZE,"main.default.index");
+        $q = Env::getSession("q","","main.default.index");
 
-        $pic = Env::getRequestWithSessionDefault("pic","","main.default.index.pic");
-        $pic = addslashes($pic);
+        $pic = Env::getSession("pic","","main.default.index");
 
         $defaultDate = ExtRangeDate::range(7);
 
-        $startdate = Env::getRequestWithSessionDefault("startdate",$defaultDate->startDate,"zuanshi.rpt.summary.startdate");
-        $enddate = Env::getRequestWithSessionDefault("enddate",$defaultDate->endDate,"zuanshi.rpt.summary.enddate");
+        $startdate = Env::getSession("startdate",$defaultDate->startDate,"zuanshi.rpt.summary");
+        $enddate = Env::getSession("enddate",$defaultDate->endDate,"zuanshi.rpt.summary");
 
         $criteria = new \CDbCriteria();
         $criteria->addCondition("status='0'");
@@ -57,8 +55,8 @@ class SummaryController extends Controller
     public function actionPic(){
         $defaultDate = ExtRangeDate::range(7);
 
-        $startdate = Env::getRequestWithSessionDefault("startdate",$defaultDate->startDate,"zuanshi.rpt.summary.startdate");
-        $enddate = Env::getRequestWithSessionDefault("enddate",$defaultDate->endDate,"zuanshi.rpt.summary.enddate");
+        $startdate = Env::getSession("startdate",$defaultDate->startDate,"zuanshi.rpt.summary");
+        $enddate = Env::getSession("enddate",$defaultDate->endDate,"zuanshi.rpt.summary");
 
         $criteria = new \CDbCriteria();
         $criteria->addCondition("status='0'");

@@ -45,7 +45,7 @@ class DefaultController extends Controller
     }
 
     public function actionDown(){
-        $md5 = Env::getRequest("md5");
+        $md5 = Env::getQueryDefault("md5","");
         $attach = FileModel::model()->fetch("md5=?",array($md5));
         if(!empty($attach)){
             $file = File::readFile($attach["target"]);

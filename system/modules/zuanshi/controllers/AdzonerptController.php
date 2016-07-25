@@ -56,7 +56,7 @@ class AdzonerptController extends Controller
 
     public function actionIndex(){
         $nick = Env::getRequest("nick");
-        $orderby = Env::getRequestWithSessionDefault("orderby","charge","zuanshi.adzonerpt.index.orderby");
+        $orderby = Env::getSession("orderby","charge","zuanshi.adzonerpt.index");
         $nick = trim($nick);
         $data = AdzoneRptSource::fetchAllSummaryByCache($nick);
         if(!empty($orderby)) {

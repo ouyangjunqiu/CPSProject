@@ -28,12 +28,10 @@ class DefaultController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$page = Env::getRequestWithSessionDefault("page",1,"main.default.index.page");
-		$pageSize = Env::getRequestWithSessionDefault("page_size",PAGE_SIZE,"main.default.index.pagesize");
-		$q = Env::getRequestWithSessionDefault("q","","main.default.index.q");
-		$q = addslashes($q);
-		$pic = Env::getRequestWithSessionDefault("pic","","main.default.index.pic");
-		$pic = addslashes($pic);
+		$page = Env::getSession("page",1,"main.default.index");
+		$pageSize = Env::getSession("page_size",PAGE_SIZE,"main.default.index");
+		$q = Env::getSession("q","","main.default.index");
+		$pic = Env::getSession("pic","","main.default.index");
 		$shoptype = Env::getQuery("shoptype");
 		$page = (int)$page;
 		$pageSize = (int)$pageSize;
@@ -64,12 +62,10 @@ class DefaultController extends Controller
 	 * 暂停的店铺列表
 	 */
 	public function actionStoplist(){
-		$page = Env::getRequestWithSessionDefault("page",1,"main.default.index.page");
-		$pageSize = Env::getRequestWithSessionDefault("page_size",PAGE_SIZE,"main.default.index.pagesize");
-		$q = Env::getRequestWithSessionDefault("q","","main.default.index.q");
-		$q = addslashes($q);
-		$pic = Env::getRequestWithSessionDefault("pic","","main.default.index.pic");
-		$pic = addslashes($pic);
+		$page = Env::getSession("page",1,"main.default.index");
+		$pageSize = Env::getSession("page_size",PAGE_SIZE,"main.default.index");
+		$q = Env::getSession("q","","main.default.index");
+		$pic = Env::getSession("pic","","main.default.index");
 		$page = (int)$page;
 		$pageSize = (int)$pageSize;
 		$shoptype = Env::getRequest("shoptype");

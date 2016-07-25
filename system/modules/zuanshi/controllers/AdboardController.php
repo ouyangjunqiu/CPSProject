@@ -47,7 +47,7 @@ class AdboardController extends Controller
 
     public function actionIndex(){
         $nick = Env::getRequest("nick");
-        $orderby = Env::getRequestWithSessionDefault("orderby","charge","zuanshi.adboard.index.orderby");
+        $orderby = Env::getSession("orderby","charge","zuanshi.adboard.index");
         $logdate = date("Y-m-d");
         $nick = trim($nick);
         $data = AdboardRptSource::fetchAllSummaryByCache($nick);

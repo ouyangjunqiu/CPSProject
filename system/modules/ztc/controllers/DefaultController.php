@@ -12,17 +12,15 @@ use cloud\core\utils\Env;
 class DefaultController extends Controller
 {
     public function actionIndex(){
-        $page = Env::getRequestWithSessionDefault("page",1,"main.default.index.page");
-        $pageSize = Env::getRequestWithSessionDefault("page_size",PAGE_SIZE,"main.default.index.pagesize");
-        $q = Env::getRequestWithSessionDefault("q","","main.default.index.q");
-        $q = addslashes($q);
+        $page = Env::getSession("page",1,"main.default.index");
+        $pageSize = Env::getSession("page_size",PAGE_SIZE,"main.default.index");
+        $q = Env::getSession("q","","main.default.index");
         $view = Env::getRequest("view");
 
         $page = (int)$page;
         $pageSize = (int)$pageSize;
 
-        $pic = Env::getRequestWithSessionDefault("pic","","main.default.index.pic");
-        $pic = addslashes($pic);
+        $pic = Env::getSession("pic","","main.default.index");
 
         $criteria = new \CDbCriteria();
         $criteria->addCondition("status='0'");
