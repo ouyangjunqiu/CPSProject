@@ -137,9 +137,5 @@ EOT;
         return $result;
     }
 
-    public static function fetchAllBySure( $condition = '', $params = array()){
-
-
-    }
 
 }
