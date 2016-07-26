@@ -184,7 +184,7 @@ class VieController extends Controller
                         "src" => $shop["src"],
                         "shoptext" => json_encode($shop["shop"]),
                         "itemtext" => json_encode($shop["item"]),
-                        "shopid" => $shop["shop"]["userid"],
+                        "shopid" => empty($shop["shop"]["userid"])?0:$shop["shop"]["userid"],
                         "isdeleted"=>0
                     )
                 );
