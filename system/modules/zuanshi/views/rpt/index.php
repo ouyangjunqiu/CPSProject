@@ -19,7 +19,7 @@
                 <span class="shop-list-txt">智·钻</span><small>
                     <a href="<?php echo $this->createUrl("/zuanshi/dashboard/index");?>"><span class="label label-default">全店推广<small>(实时报表)</small></span></a>
                     <a href="<?php echo $this->createUrl("/zuanshi/rpt/index");?>"><span class="label label-info">全店推广<small>(近期报表)</small></span></a>
-                    <a href="<?php echo $this->createUrl("/zuanshi/rpt/index2");?>"><span class="label label-default">明星店铺<small>(近期报表)</small></span></a>
+<!--                    <a href="--><?php //echo $this->createUrl("/zuanshi/rpt/index2");?><!--"><span class="label label-default">明星店铺<small>(近期报表)</small></span></a>-->
                     <a href="<?php echo $this->createUrl("/zuanshi/summary/index");?>"><span class="label label-default">店铺统计报表</span></a>
                     <a href="<?php echo $this->createUrl("/zuanshi/summary/pic");?>"><span class="label label-default">人员统计报表</span></a>
 
