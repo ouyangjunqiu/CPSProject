@@ -95,7 +95,11 @@ class AdvertiserrptController extends Controller
     public function actionGetbynick(){
         $nick = Env::getQueryDefault("nick","");
         $data = AdvertiserRptSource::fetchAllByNick($nick);
-        $this->renderJson(array("isSuccess"=>true,"data"=>$data));
+        if($data === false){
+            $this->renderJson(array("isSuccess"=>false));
+        }else{
+            $this->renderJson(array("isSuccess"=>true,"data"=>$data));
+        }
     }
 
 }

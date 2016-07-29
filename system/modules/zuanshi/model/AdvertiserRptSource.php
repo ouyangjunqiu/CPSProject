@@ -53,7 +53,10 @@ class AdvertiserRptSource extends Model
     public static function fetchByNick($nick,$effectType = "click",$effect = 7){
         $logdate = date("Y-m-d");
         $row = self::model()->fetch("logdate=? AND nick=? AND effectType=? AND effect=?",array($logdate,$nick,$effectType,$effect));
-        $source = \CJSON::decode($row);
+        if(empty($row)){
+            return array("list"=>array(),"total"=>array());
+        }
+        $source = \CJSON::decode($row["data"]);
         $total = array(
             "adPv"=> 0,
             "alipayInShopNum" => 0,
@@ -102,6 +105,12 @@ class AdvertiserRptSource extends Model
     }
 
     public static function fetchAllByNick($nick,$effectType = "click"){
+        $logdate = date("Y-m-d");
+        $count = self::model()->count("logdate=? AND nick=? AND effectType=?",array($logdate,$nick,$effectType));
+        if($count<=0){
+            return false;
+        }
+
         $result = array();
         $e = [3,7,15];
         foreach($e as $effect){
