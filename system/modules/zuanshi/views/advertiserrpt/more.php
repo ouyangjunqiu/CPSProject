@@ -53,7 +53,7 @@
             </div>
 
             <div class="col-md-1">
-                <a class="btn btn-warning" href="<?php echo $this->createUrl("/zuanshi/down/more",array("nick"=>$query["nick"],"begin_date"=>$query['beginDate'],"end_date"=>$query['endDate']));?>" id="down-excel">下载</a>
+                <a class="btn btn-warning" href="<?php echo $this->createUrl("/zuanshi/down/advertiserrpt",array("nick"=>$query["nick"],"begin_date"=>$query['beginDate'],"end_date"=>$query['endDate']));?>" id="down-excel">下载</a>
             </div>
         </div>
 
@@ -115,9 +115,9 @@
                     <td class="b1"><?php echo \cloud\core\utils\String::nFormat($rpt["charge"]);?></td>
                     <td><?php echo round($rpt["ecpc"],2);?></td>
 
-                    <td class="b2"><?php echo $rpt["roi"];?></td>
-                    <td class="b2"><?php echo $click7list[$i]["roi"];?></td>
-                    <td class="b2"><?php echo $click15list[$i]["roi"];?></td>
+                    <td class="b2"><?php echo round($rpt["roi"],2);?></td>
+                    <td class="b2"><?php echo round($click7list[$i]["roi"],2);?></td>
+                    <td class="b2"><?php echo round($click15list[$i]["roi"],2);?></td>
 
                     <td><?php echo \cloud\core\utils\String::nFormat($rpt["alipayInshopAmt"]);?></td>
                     <td><?php echo \cloud\core\utils\String::nFormat($click7list[$i]["alipayInshopAmt"]);?></td>
