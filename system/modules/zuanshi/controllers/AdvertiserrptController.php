@@ -13,6 +13,7 @@ use application\modules\zuanshi\model\AdvertiserRptSource;
 use application\modules\zuanshi\model\ShopTradeRpt;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
+use cloud\core\utils\ExtRangeDate;
 
 class AdvertiserrptController extends Controller
 {
@@ -62,6 +63,32 @@ class AdvertiserrptController extends Controller
         $data = ShopSearch::openlist();
 
         $this->render("index",$data);
+    }
+
+    public function actionMore(){
+        $nick = Env::getSession("nick","","zuanshi.rpt.index");
+
+        $rangeDate = ExtRangeDate::range(30);
+        $beginDate = Env::getSession("begin_date",$rangeDate->startDate,"zuanshi.rpt.index");
+        $endDate = Env::getSession("end_date",$rangeDate->endDate,"zuanshi.rpt.index");
+        $view = Env::getRequest("view");
+
+        if(empty($nick)){
+
+            if(strtolower($view) == "json") {
+                $this->renderJson(array("data"=>array("list"=>array(),"query"=>array("nick"=>$nick,"beginDate"=>$beginDate,"endDate"=>$endDate))));
+            }else{
+                $this->render("more",array("list"=>array(),"query"=>array("nick"=>$nick,"beginDate"=>$beginDate,"endDate"=>$endDate)));
+            }
+        }
+
+        $list = AdvertiserRpt::fetchAllByNick($nick,$beginDate,$endDate,"click");
+
+        if(strtolower($view) == "json") {
+            $this->renderJson(array("data"=>array("list"=>$list,"query"=>array("nick"=>$nick,"beginDate"=>$beginDate,"endDate"=>$endDate))));
+        }else{
+            $this->render("more",array("list"=>$list,"query"=>array("nick"=>$nick,"beginDate"=>$beginDate,"endDate"=>$endDate)));
+        }
     }
 
     public function actionGetbynick(){
