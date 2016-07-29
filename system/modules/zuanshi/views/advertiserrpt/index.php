@@ -27,7 +27,7 @@
 
             </div>
             <div class="search-right">
-                <?php $this->widget("application\\modules\\main\\widgets\\ShopSearchWidget",array("url"=>$this->createUrl("/zuanshi/dashboard/index",array("page"=>1)),"query"=>$query));?>
+                <?php $this->widget("application\\modules\\main\\widgets\\ShopSearchWidget",array("url"=>$this->createUrl("/zuanshi/advertiserrpt/index",array("page"=>1)),"query"=>$query));?>
 
             </div>
         </div>
@@ -497,7 +497,7 @@
         $(".top-ul>li").eq(1).addClass("top-li-hover");
 
         $(".c-pager").jPager({currentPage: <?php echo $pager["page"]-1;?>, total: <?php echo $pager["count"];?>, pageSize: <?php echo $pager["page_size"];?>,events: function(dp){
-            location.href = app.url("<?php echo $this->createUrl('/zuanshi/dashboard/index');?>",{page:dp.index+1})
+            location.href = app.url("<?php echo $this->createUrl('/zuanshi/advertiserrpt/index');?>",{page:dp.index+1})
         }});
 
         $("a[data-type=realtime]").click(function(e) {
