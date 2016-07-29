@@ -92,7 +92,7 @@
                                     </div>
                                     <div class="col-md-1">
                                         <small>
-                                            <a class="label label-primary" href="<?php echo $this->createUrl("/zuanshi/rpt/more",array("nick"=>$row["nick"]));?>">详情</a>
+                                            <a class="label label-primary" href="<?php echo $this->createUrl("/zuanshi/advertiserrpt/more",array("nick"=>$row["nick"]));?>">详情</a>
                                         </small>
                                     </div>
                                 </div>
