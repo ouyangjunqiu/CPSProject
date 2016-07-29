@@ -437,16 +437,16 @@
             <tr class="small"><td><strong>${rpt.logDate}</strong></td>
             <td>${rpt.adPv}</td>
             <td>${rpt.click}</td>
-            <td>${rpt.ctr*100}</td>
+            <td>${(rpt.ctr*100).toFixed(2)}</td>
             <td>${rpt.charge}</td>
-            <td>${rpt.ecpc}</td>
+            <td>${rpt.ecpc.toFixed(2)}</td>
             <td>${rpt.dirShopColNum+rpt.inshopItemColNum}</td>
             <td>${rpt.alipayInShopNum}</td>
             <td>${data["click7"]["list"][i]["alipayInShopNum"]}</td>
             <td>${data["click15"]["list"][i]["alipayInShopNum"]}</td>
-            <td>${rpt.roi}</td>
-            <td>${data["click7"]["list"][i]["roi"]}</td>
-            <td>${data["click15"]["list"][i]["alipayInShopNum"]}</td>
+            <td>${rpt.roi.toFixed(2)}</td>
+            <td>${data["click7"]["list"][i]["roi"].toFixed(2)}</td>
+            <td>${data["click15"]["list"][i]["alipayInShopNum"].toFixed(2)}</td>
             <td></td>
             <td></td>
             </tr>
@@ -457,9 +457,9 @@
             <tr class="small"><td><strong>总计</strong></td>
             <td>${data.click3.total.adPv}</td>
             <td>${data.click3.total.click}</td>
-            <td>${data.click3.total.ctrStr}</td>
+            <td>${(data.click3.total.ctr*100).toFixed(2)}</td>
             <td>${data.click3.total.charge}</td>
-            <td>${data.click3.total.ecpc}</td>
+            <td>${data.click3.total.ecpc.toFixed(2)}</td>
             <td>${data.click3.total.dirShopColNum+data.click3.total.inshopItemColNum}</td>
             <td>${data.click3.total.alipayInShopNum}</td>
             <td>${data.click7.total.alipayInShopNum}</td>
