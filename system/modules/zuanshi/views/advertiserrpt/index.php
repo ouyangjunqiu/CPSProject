@@ -447,8 +447,8 @@
             <td>${rpt.roi.toFixed(2)}</td>
             <td>${data["click7"]["list"][i]["roi"].toFixed(2)}</td>
             <td>${data["click15"]["list"][i]["alipayInShopNum"].toFixed(2)}</td>
-            <td></td>
-            <td></td>
+            <td>${data["trade"]["list"][i]["payAmt"]}</td>
+            <td>${(data["trade"]["list"][i]["payAmt"]/rpt.charge*100).toFixed(2)}</td>
             </tr>
         {{/each}}
 
@@ -467,8 +467,8 @@
             <td>${data.click3.total.roi}</td>
             <td>${data.click7.total.roi}</td>
             <td>${data.click15.total.roi}</td>
-            <td></td>
-            <td></td>
+            <td>${data.trade.total.payAmt}</td>
+            <td>${(data.trade.total.payAmt/data.click3.total.charge*100).toFixed(2)}</td>
             </tr>
         {{/if}}
         </tbody>

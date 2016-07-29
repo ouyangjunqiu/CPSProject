@@ -11,6 +11,7 @@ namespace application\modules\zuanshi\controllers;
 use application\modules\main\model\Shop;
 use application\modules\zuanshi\model\AdvertiserRpt;
 use application\modules\zuanshi\model\AdvertiserRptSource;
+use application\modules\zuanshi\model\ShopTradeRpt;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
 
@@ -94,10 +95,15 @@ class AdvertiserrptController extends Controller
 
     public function actionGetbynick(){
         $nick = Env::getQueryDefault("nick","");
+        $shopname = Env::getQueryDefault("shopname","");
         $data = AdvertiserRptSource::fetchAllByNick($nick);
+
+
         if($data === false){
             $this->renderJson(array("isSuccess"=>false));
         }else{
+            $data["trade"] = ShopTradeRpt::fetchAllByShopname($shopname,16);
+
             $this->renderJson(array("isSuccess"=>true,"data"=>$data));
         }
     }
