@@ -290,6 +290,7 @@
                                         }else{
                                             echo "<span class=\"label label-warning\">{$tag}</span> ";
                                         }
+                                        $i++;
                                     }
                                     ?>
                                 </span>
