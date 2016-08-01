@@ -281,9 +281,15 @@
                             <div class="col-md-4"><small>标签:</small></div>
                             <div class="col-md-6">
                                 <span class="pic_read">
-                                    <?php $tags = explode(",",$row["tags"]);
+                                    <?php
+                                    $tags = explode(",",$row["tags"]);
+                                    $i = 1;
                                     foreach($tags as $tag){
-                                        echo "<span class=\"label label-info\">{$tag}</span>";
+                                        if($i%2==0){
+                                            echo "<span class=\"label label-info\">{$tag}</span> ";
+                                        }else{
+                                            echo "<span class=\"label label-warning\">{$tag}</span> ";
+                                        }
                                     }
                                     ?>
                                 </span>
