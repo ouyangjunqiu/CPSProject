@@ -18,7 +18,7 @@
                 <span class="shop-list-icon"></span>
                 <span class="shop-list-txt">智·钻</span><small>
                     <a href="<?php echo $this->createUrl("/zuanshi/dashboard/index");?>"><span class="label label-default">全店推广<small>(实时报表)</small></span></a>
-                    <a href="<?php echo $this->createUrl("/zuanshi/rpt/index");?>"><span class="label label-info">全店推广<small>(近期报表)</small></span></a>
+                    <a href="<?php echo $this->createUrl("/zz/advertiserrpt/index");?>"><span class="label label-info">全店推广<small>(近期报表)</small></span></a>
                     <!--                    <a href="--><?php //echo $this->createUrl("/zuanshi/rpt/index2");?><!--"><span class="label label-default">明星店铺<small>(近期报表)</small></span></a>-->
                     <a href="<?php echo $this->createUrl("/zuanshi/summary/index");?>"><span class="label label-default">店铺统计报表</span></a>
                     <a href="<?php echo $this->createUrl("/zuanshi/summary/pic");?>"><span class="label label-default">人员统计报表</span></a>
@@ -83,7 +83,7 @@
                             </div>
 
                             <div role="tabpanel" class="tab-pane active" id="rpt_<?php echo $row["id"];?>">
-                                <div data-tmpl="zuanshi-advertiserrpt-list-tmpl" data-load="overlay" data-url="<?php echo $this->createUrl("/zuanshi/advertiserrpt/getbynick",array("nick"=>$row["nick"],"shopname"=>$row["shopname"]));?>">
+                                <div data-tmpl="zuanshi-advertiserrpt-list-tmpl" data-load="overlay" data-url="<?php echo $this->createUrl("/zz/advertiserrpt/getbynick",array("nick"=>$row["nick"],"shopname"=>$row["shopname"]));?>">
                                 </div>
 
                                 <div class="row">
@@ -92,7 +92,7 @@
                                     </div>
                                     <div class="col-md-1">
                                         <small>
-                                            <a class="label label-primary" href="<?php echo $this->createUrl("/zuanshi/advertiserrpt/more",array("nick"=>$row["nick"]));?>">详情</a>
+                                            <a class="label label-primary" href="<?php echo $this->createUrl("/zz/advertiserrpt/more",array("nick"=>$row["nick"]));?>">详情</a>
                                         </small>
                                     </div>
                                 </div>
@@ -100,7 +100,7 @@
                             </div>
 
                             <div role="tabpanel" class="tab-pane" id="rpt_chart_<?php echo $row["id"];?>">
-                                <div data-role="rpt_chart" data-url="<?php echo $this->createUrl("/zuanshi/advertiserrpt/getbynick",array("nick"=>$row["nick"],"shopname"=>$row["shopname"]));?>">
+                                <div data-role="rpt_chart" data-url="<?php echo $this->createUrl("/zz/advertiserrpt/getbynick",array("nick"=>$row["nick"],"shopname"=>$row["shopname"]));?>">
                                 </div>
 
                             </div>
@@ -497,7 +497,7 @@
         $(".top-ul>li").eq(1).addClass("top-li-hover");
 
         $(".c-pager").jPager({currentPage: <?php echo $pager["page"]-1;?>, total: <?php echo $pager["count"];?>, pageSize: <?php echo $pager["page_size"];?>,events: function(dp){
-            location.href = app.url("<?php echo $this->createUrl('/zuanshi/advertiserrpt/index');?>",{page:dp.index+1})
+            location.href = app.url("<?php echo $this->createUrl('/zz/advertiserrpt/index');?>",{page:dp.index+1})
         }});
 
         $("a[data-type=realtime]").click(function(e) {

@@ -151,4 +151,5 @@ class HistoryController extends Controller
             ));
         }
     }
+
 }
