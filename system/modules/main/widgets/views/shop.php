@@ -88,9 +88,29 @@
                                 </span>
                             </div>
                         </div>
+                        <?php if(!empty($row["tags"])):?>
                         <div class="row">
-                            <div class="col-md-3"><small>快速交谈:</small></div>
-                            <div class="col-md-9">
+                            <div class="col-md-2"><small>标签:</small></div>
+                            <div class="col-md-10">
+                                    <?php
+                                    $tags = explode(",",$row["tags"]);
+                                    $i = 1;
+                                    foreach($tags as $tag){
+                                        if($i%2==0){
+                                            echo "<span class=\"label label-info\">{$tag}</span> ";
+                                        }else{
+                                            echo "<span class=\"label label-warning\">{$tag}</span> ";
+                                        }
+                                        $i++;
+                                    }
+                                    ?>
+
+                            </div>
+                        </div>
+                        <?php endif;?>
+                        <div class="row">
+                            <div class="col-md-2"><small>交谈:</small></div>
+                            <div class="col-md-10">
                                 <a href="http://www.taobao.com/webww/ww.php?ver=3&touid=<?php echo $row["nick"];?>&siteid=cntaobao&status=1&charset=u8" target="_blank"><i class="contact contact-wangwang"></i></a>
                                 <?php if(!empty($row["qq"])):?><a href="tencent://message/?uin=<?php echo $row["qq"];?>&Site=QQ交谈&Menu=yes"><i class="contact contact-qq"></i></a><?php endif;?>
                                 <?php if(!empty($row["email"])):?><a href="mailto:<?php echo $row["email"];?>"><i class="contact contact-email"></i></a><?php endif;?>
