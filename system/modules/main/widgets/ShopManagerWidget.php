@@ -21,7 +21,8 @@ class ShopManagerWidget extends CWidget
         if(empty($budget)){
             $budget = array(
                 "ztc_budget"=>0,
-                "zuanshi_budget"=>0
+                "zuanshi_budget"=>0,
+                "tags"=>""
             );
         }
         $row = array_merge($row,$budget);
