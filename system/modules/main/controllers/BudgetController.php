@@ -31,6 +31,11 @@ class BudgetController extends Controller
             $attr["zuanshi_budget"] = $zuanshi_budget;
         }
 
+        $tags = Env::getRequest("tags");
+        if(isset($tags)){
+            $attr["tags"] = $tags;
+        }
+
         $model = ShopBudget::model()->find("nick=?",array($nick));
         if($model == null){
             $model = new ShopBudget();

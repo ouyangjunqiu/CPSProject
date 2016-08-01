@@ -273,6 +273,25 @@
                                 </span>
                             </div>
                             <div class="col-md-2">
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4"><small>标签:</small></div>
+                            <div class="col-md-6">
+                                <span class="pic_read">
+                                    <?php $tags = explode(",",$row["tags"]);
+                                    foreach($tags as $tag){
+                                        echo "<span class=\"label label-info\">{$tag}</span>";
+                                    }
+                                    ?>
+                                </span>
+                                <span class="pic_input form_writer" style="display: none">
+                                    <input type="text" value="<?php echo $row["tags"];?>"  name="tags"/>
+                                </span>
+                            </div>
+                            <div class="col-md-2">
                                 <span class="pic_input" style="display: none">
                                     <button type="button" class="btn btn-primary" data-click="budget-save">保存</button>
                                 </span>
