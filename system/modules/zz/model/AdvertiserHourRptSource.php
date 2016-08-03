@@ -94,13 +94,13 @@ class AdvertiserHourRptSource extends Model
             }
         }
 
-        $yesterhourData["cpc"] = round(@($yesterhourData["charge"]/$yesterhourData["click"]),2);
+        $yesterhourData["ecpc"] = round(@($yesterhourData["charge"]/$yesterhourData["click"]),2);
         $yesterhourData["ctr"] = round(@($yesterhourData["click"]/$yesterhourData["adPv"]),4);
 
         $yesterhourData["ctrStr"] = round($yesterhourData["ctr"]*100,2);
 
         $yesterhourData["chargeGrowth"] = Math::growth($yesterhourData["charge"],$todayTotal["charge"]);
-        $yesterhourData["cpcGrowth"] = Math::growth($yesterhourData["cpc"],$todayTotal["cpc"]);
+        $yesterhourData["ecpcGrowth"] = Math::growth($yesterhourData["ecpc"],$todayTotal["ecpc"]);
         $yesterhourData["ctrGrowth"] = Math::growth($yesterhourData["ctr"],$todayTotal["ctr"]);
 
         $yesterdayTotal = $yesterdayData["total"];
@@ -111,7 +111,7 @@ class AdvertiserHourRptSource extends Model
         }
 
         $yesterdayTotal["ctrStr"] = round($yesterdayTotal["ctr"]*100,2);
-        $yesterdayTotal["cpcGrowth"] = Math::growth($yesterdayTotal["cpc"],$todayTotal["cpc"]);
+        $yesterdayTotal["ecpcGrowth"] = Math::growth($yesterdayTotal["ecpc"],$todayTotal["ecpc"]);
         $yesterdayTotal["ctrGrowth"] = Math::growth($yesterdayTotal["ctr"],$todayTotal["ctr"]);
 
         return array(
