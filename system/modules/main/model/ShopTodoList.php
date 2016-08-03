@@ -96,18 +96,14 @@ class ShopTodoList extends Model
         return $list;
     }
 
-    public static function fetchRangeListByNick($nick,$logdate){
-        $startDate = date("Y-m-d",strtotime("-2 days",strtotime($logdate)));
-        $endDate =  date("Y-m-d",strtotime("+2 days",strtotime($logdate)));
+    public static function fetchRangeListByNick($nick,$start,$end){
 
-        $result = self::model()->fetchAll("logdate>=? AND logdate<=? AND nick=? AND status!=?",array($startDate,$endDate,$nick,2));
-        $todolist = array();
+        $result = self::model()->fetchAll("logdate>=? AND logdate<=? AND nick=? AND status!=?",array($start,$end,$nick,2));
+        $list = array();
 
         foreach($result as $row){
 
-            $key = date("Ymd",strtotime($row["logdate"]));
-
-            $todolist[$key][] = array_merge(
+            $list[] = array_merge(
                 $row,
                 array(
                     "title"=>String::ireplaceUrl($row["content"],"<small>[链接]</small>"),
@@ -118,16 +114,6 @@ class ShopTodoList extends Model
 
         }
 
-        $list = array();
-        for($i=-2;$i<=2;$i++){
-            $key = date("Ymd",strtotime("$i days",strtotime($logdate)));
-            $datestr = date("Y.m.d",strtotime("$i days",strtotime($logdate)));
-            if(isset($todolist[$key])){
-                $list[] = array("list"=>$todolist[$key],"logdate"=>$datestr);
-            }else{
-                $list[] = array("list"=>array(),"logdate"=>$datestr);
-            }
-        }
         return $list;
 
     }

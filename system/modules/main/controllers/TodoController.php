@@ -10,6 +10,7 @@ namespace application\modules\main\controllers;
 use application\modules\main\model\ShopTodoList;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
+use cloud\core\utils\ExtRangeDate;
 
 class TodoController extends Controller
 {
@@ -134,9 +135,11 @@ class TodoController extends Controller
 
     public function actionMore(){
         $nick = Env::getQuery("nick");
-        $logdate = Env::getQueryDefault("logdate",date("Y-m-d"));
-        $list = ShopTodoList::fetchRangeListByNick($nick,$logdate);
-        $this->render('more',array("list"=>$list,"query"=>array("nick"=>$nick,"logdate"=>$logdate)));
+        $rangeDate = ExtRangeDate::rangeNow(15);
+        $startdate = Env::getSession("begin_date",$rangeDate->startDate,"main.todo.more");
+        $enddate = Env::getSession("end_date",$rangeDate->startDate,"main.todo.more");
+        $list = ShopTodoList::fetchRangeListByNick($nick,$startdate,$enddate);
+        $this->render('more',array("list"=>$list,"query"=>array("nick"=>$nick,"beginDate"=>$startdate,"endDate"=>$enddate)));
     }
 
 }
