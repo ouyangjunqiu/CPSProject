@@ -9,6 +9,7 @@
 namespace application\modules\zz\controllers;
 
 
+use application\modules\main\utils\ShopSearch;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
 use application\modules\zz\model\AdvertiserHourRptSource;
@@ -58,6 +59,11 @@ class AdvertiserhourController extends Controller
 
         $this->renderJson(array("isSuccess"=>true,"data"=>$rpt));
         return;
+    }
+
+    public function actionIndex(){
+        $data = ShopSearch::openlist();
+        $this->render("index",$data);
     }
 
 

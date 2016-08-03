@@ -17,8 +17,9 @@
             <div class="search-left com-list-tit" style="display: block;">
                 <span class="shop-list-icon"></span>
                 <span class="shop-list-txt">智·钻</span><small>
-                    <a href="<?php echo $this->createUrl("/zz/advertiserhour/index");?>"><span class="label label-default">全店推广<small>(实时报表)</small></span></a>
-                    <a href="<?php echo $this->createUrl("/zz/advertiserrpt/index");?>"><span class="label label-info">全店推广<small>(近期报表)</small></span></a>
+
+                    <a href="<?php echo $this->createUrl("/zz/advertiserhour/index");?>"><span class="label label-info">全店推广<small>(实时报表)</small></span></a>
+                    <a href="<?php echo $this->createUrl("/zz/advertiserrpt/index");?>"><span class="label label-default">全店推广<small>(近期报表)</small></span></a>
                     <!--                    <a href="--><?php //echo $this->createUrl("/zuanshi/rpt/index2");?><!--"><span class="label label-default">明星店铺<small>(近期报表)</small></span></a>-->
                     <a href="<?php echo $this->createUrl("/zuanshi/summary/index");?>"><span class="label label-default">店铺统计报表</span></a>
                     <a href="<?php echo $this->createUrl("/zuanshi/summary/pic");?>"><span class="label label-default">人员统计报表</span></a>
@@ -27,7 +28,7 @@
 
             </div>
             <div class="search-right">
-                <?php $this->widget("application\\modules\\main\\widgets\\ShopSearchWidget",array("url"=>$this->createUrl("/zz/advertiserrpt/index",array("page"=>1)),"query"=>$query));?>
+                <?php $this->widget("application\\modules\\main\\widgets\\ShopSearchWidget",array("url"=>$this->createUrl("/zz/advertiserhour/index",array("page"=>1)),"query"=>$query));?>
 
             </div>
         </div>
@@ -44,12 +45,12 @@
                 <td class="check-infor-td">
                     <div class="baby-box" data-nick="<?php echo $row["nick"];?>" data-role="list">
                         <ul class="nav nav-tabs shop-nav" role="tablist">
-                            <li role="presentation">
+                            <li role="presentation" class="active">
                                 <a data-type="realtime" href="#realtime_<?php echo $row["id"];?>" title="实时状况" aria-controls="realtime_<?php echo $row["id"];?>" role="tab" data-toggle="tab" aria-expanded="true">
                                     <i class="fa fa-flash"></i><span>实时状况</span>
                                 </a>
                             </li>
-                            <li role="presentation"  class="active">
+                            <li role="presentation">
                                 <a data-type="rpt" href="#rpt_<?php echo $row["id"];?>" title="历史报表" aria-controls="rpt_<?php echo $row["id"];?>" role="tab" data-toggle="tab" aria-expanded="true">
                                     <i class="fa fa-bar-chart-o"></i><span>近期报表<small>(近15天)</small></span>
                                 </a>
@@ -62,12 +63,12 @@
                         </ul>
                         <div class="tab-content">
 
-                            <div role="tabpanel" class="tab-pane" id="realtime_<?php echo $row["id"];?>">
-                                <div class="row" data-tmpl="shop-zuanshi-realtime-list-tmpl" data-role="shop-zuanshi-realtime-list" data-url="<?php echo $this->createUrl("/zz/advertiserhour/getbynick",array("nick"=>$row["nick"]));?>" >
+                            <div role="tabpanel" class="tab-pane active" id="realtime_<?php echo $row["id"];?>">
+                                <div class="row" data-load="overlay" data-tmpl="shop-zuanshi-realtime-list-tmpl" data-role="shop-zuanshi-realtime-list" data-url="<?php echo $this->createUrl("/zz/advertiserhour/getbynick",array("nick"=>$row["nick"]));?>" >
 
                                 </div>
 
-                                <div class="row padding" data-tmpl="shop-campaign-budget-warning-tmpl" data-role="shop-campaign-budget-warning" data-url="<?php echo $this->createUrl("/zuanshi/dashboard/getcampaignbudgetwarning",array("nick"=>$row["nick"]));?>">
+                                <div class="row padding" data-load="overlay" data-tmpl="shop-campaign-budget-warning-tmpl" data-url="<?php echo $this->createUrl("/zuanshi/dashboard/getcampaignbudgetwarning",array("nick"=>$row["nick"]));?>">
 
                                 </div>
 <!--                                <div class="row">-->
@@ -100,7 +101,7 @@
                             </div>
 
 <!--                            <div role="tabpanel" class="tab-pane" id="rpt_chart_--><?php //echo $row["id"];?><!--">-->
-<!--                                <div data-role="rpt_chart" data-url="--><?php //echo $this->createUrl("/zz/advertiserrpt/getbynick",array("nick"=>$row["nick"],"shopname"=>$row["shopname"]));?><!--">-->
+<!--                                <div data-role="rpt_chart" data-url="--><?php //echo $this->createUrl("/zuanshi/rpt/getbynick",array("nick"=>$row["nick"],"shopname"=>$row["shopname"]));?><!--">-->
 <!--                                </div>-->
 <!---->
 <!--                            </div>-->
@@ -497,19 +498,15 @@
         $(".top-ul>li").eq(1).addClass("top-li-hover");
 
         $(".c-pager").jPager({currentPage: <?php echo $pager["page"]-1;?>, total: <?php echo $pager["count"];?>, pageSize: <?php echo $pager["page_size"];?>,events: function(dp){
-            location.href = app.url("<?php echo $this->createUrl('/zz/advertiserrpt/index');?>",{page:dp.index+1})
+            location.href = app.url("<?php echo $this->createUrl('/zz/advertiserhour/index');?>",{page:dp.index+1})
         }});
 
-        $("a[data-type=realtime]").click(function(e) {
+        $("a[data-type=rpt]").click(function(e) {
             e.preventDefault();
             var self = $(this);
             self.tab("show");
-            var target = $(self.attr("href")).find("[data-role=shop-zuanshi-realtime-list]");
+            var target = $(self.attr("href")).find("[data-role=shop-zuanshirpt-list]");
             target.iLoad();
-
-            var t = $(self.attr("href")).find("[data-role=shop-campaign-budget-warning]");
-            t.iLoad();
-
         });
 
         //$("[data-toggle=popover]").popover({html : true});
