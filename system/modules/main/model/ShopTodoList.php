@@ -51,7 +51,7 @@ class ShopTodoList extends Model
         $startDate = date("Y-m-d",strtotime("-15 days"));
         $endDate =  date("Y-m-d",strtotime("-2 days"));
 
-        $history = self::model()->fetchAll("logdate>=? AND logdate<=? AND nick=? AND status=?",array($startDate,$endDate,$nick,0));
+        $history = self::model()->fetchAll("logdate>=? AND logdate<=? AND nick=? AND status!=?",array($startDate,$endDate,$nick,2));
         foreach($history as &$row){
             $row["title"] = String::ireplaceUrl($row["content"],"<small>[链接]</small>");
             $row["md5"] = md5($row["nick"]);
@@ -61,9 +61,9 @@ class ShopTodoList extends Model
     }
 
     public static function fetchCurrentListByNick($nick){
-        $startDate = date("Y-m-d",strtotime("-2 days"));
+        $startDate = date("Y-m-d");
         $endDate =  date("Y-m-d",strtotime("+7 days"));
-        $result = self::model()->fetchAll("logdate>? AND logdate<? AND nick=? AND status!=?",array($startDate,$endDate,$nick,2));
+        $result = self::model()->fetchAll("logdate>=? AND logdate<=? AND nick=? AND status!=?",array($startDate,$endDate,$nick,2));
         $todolist = array();
 
         foreach($result as $row){
@@ -85,7 +85,7 @@ class ShopTodoList extends Model
         }
 
         $list = array();
-        for($i=-1;$i<=1;$i++){
+        for($i=0;$i<=1;$i++){
             $key = date("Ymd",strtotime("$i days"));
             if(isset($todolist[$key])){
                 $list[] = $todolist[$key];
