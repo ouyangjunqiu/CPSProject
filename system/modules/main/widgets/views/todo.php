@@ -106,12 +106,12 @@
               {{each(i,v) data.history}}
                 {{if v.status==1}}
                     <a data-toggle="modal" data-target="#ShopTodoViewModal" data-backdrop="false" class="list-group-item list-group-item-success" data-content="${v.content}">
-                    <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] {{v.creator}}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
+                    <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
                     <span class="badge label label-success"><i class="fa fa-clock-o"></i> ${v.days} days</small>
                     </a>
                 {{else}}
                    <a data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" class="list-group-item list-group-item-danger" data-content="${v.content}" data-trigger-target="todo_${v.md5}">
-                    <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] {{v.creator}}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
+                    <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
                     <span class="badge label label-danger"><i class="fa fa-clock-o"></i> ${v.days} days</small>
                    </a>
                 {{/if}}
@@ -128,11 +128,11 @@
               {{each(i,v) data.list[0]}}
                 {{if v.status==1}}
                     <a data-toggle="modal" data-target="#ShopTodoViewModal" data-backdrop="false" class="list-group-item list-group-item-success" data-content="${v.content}">
-                    <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] {{v.creator}}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
+                    <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
                     </a>
                 {{else}}
                    <a data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" class="list-group-item" data-content="${v.content}"  data-trigger-target="todo_${v.md5}">
-                    <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] {{v.creator}}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
+                    <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
                    </a>
                 {{/if}}
               {{/each}}
@@ -146,12 +146,12 @@
               {{each(i,v) data.list[1]}}
                {{if v.status==1}}
                     <a data-toggle="modal" data-target="#ShopTodoViewModal" data-backdrop="false" class="list-group-item list-group-item-success" data-content="${v.content}">
-                    <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] {{v.creator}}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
+                    <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
                      <small class="badge label label-success"><i class="fa fa-clock-o"></i> ${v.days} days</small>
                     </a>
                 {{else}}
                    <a data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" class="list-group-item" data-content="${v.content}"  data-trigger-target="todo_${v.md5}">
-                    <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] {{v.creator}}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
+                    <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
                     <small class="badge label label-success"><i class="fa fa-clock-o"></i> ${v.days} days</small>
                    </a>
                 {{/if}}
