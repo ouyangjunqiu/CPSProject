@@ -96,9 +96,9 @@ class AdvertiserRptSource extends Model
             $total["uv"]+=$row["uv"];
         }
 
-        $total["roi"] = round(@$total["alipayInshopAmt"]/$total["charge"],2);
-        $total["ctr"] = round(@$total["click"]/$total["adPv"],4);
-        $total["ecpc"] = round(@$total["charge"]/$total["click"],2);
+        $total["roi"] = empty($total["charge"])?"-":round(@($total["alipayInshopAmt"]/$total["charge"]),2);
+        $total["ctr"] = empty($total["adPv"])?"-":round(@$total["click"]/$total["adPv"],4);
+        $total["ecpc"] = empty($total["click"])?"-":round(@$total["charge"]/$total["click"],2);
 
         return array("list"=>$list,"total"=>$total);
 
