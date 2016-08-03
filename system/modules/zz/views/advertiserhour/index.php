@@ -442,7 +442,7 @@
             {{if rpt.ctr>0}}
                 ${(rpt.ctr*100).toFixed(2)}
             {{else}}
-                -
+                0
             {{/if}}
             </td>
             <td>${rpt.charge}</td>
@@ -450,7 +450,7 @@
             {{if rpt.ecpc>0}}
                 ${rpt.ecpc.toFixed(2)}
             {{else}}
-                -
+                0
             {{/if}}
             </td>
             <td>${rpt.dirShopColNum+rpt.inshopItemColNum}</td>
@@ -461,21 +461,21 @@
             {{if rpt.roi>0}}
                 ${rpt.roi.toFixed(2)}
             {{else}}
-                -
+                0
             {{/if}}
             </td>
             <td>
             {{if data["click7"]["list"][i]["roi"]}}
                 ${data["click7"]["list"][i]["roi"].toFixed(2)}
             {{else}}
-                -
+                0
             {{/if}}
             </td>
             <td>
             {{if data["click15"]["list"][i]["roi"]}}
                 ${data["click15"]["list"][i]["roi"].toFixed(2)}
             {{else}}
-                -
+                0
             {{/if}}
             </td>
             <td>
@@ -504,7 +504,7 @@
             {{if data.click3.total.ctr>0}}
                 ${(data.click3.total.ctr*100).toFixed(2)}
             {{else}}
-                -
+                0
             {{/if}}
             </td>
             <td>${data.click3.total.charge}</td>
@@ -512,7 +512,7 @@
             {{if data.click3.total.ecpc>0}}
                 ${data.click3.total.ecpc.toFixed(2)}
             {{else}}
-                -
+                0
             {{/if}}
             </td>
             <td>${data.click3.total.dirShopColNum+data.click3.total.inshopItemColNum}</td>
