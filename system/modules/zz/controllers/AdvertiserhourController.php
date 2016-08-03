@@ -47,27 +47,18 @@ class AdvertiserhourController extends Controller
         }
     }
 
-    public function actionMore(){
-        $nick = Env::getRequest("nick");
 
-
-        $rpt = AdvertiserHourRptSource::fetchListByNick($nick);
-
-        if(!empty($rpt)){
-
-            $this->render('more',array("data"=>$rpt,"query"=>array(
-                "nick"=>$nick
-            )));
-        }else{
-            $this->render('more',array("data"=>array(
-
-            ),"query"=>array(
-                "nick"=>$nick
-            )));
-
+    public function actionGetbynick(){
+        $nick = Env::getQueryDefault("nick","");
+        $rpt = AdvertiserHourRptSource::fetchSummaryByNick($nick);
+        if(empty($rpt)){
+            $this->renderJson(array("isSuccess"=>false,"data"=>array("list"=>array())));
+            return;
         }
 
-
+        $this->renderJson(array("isSuccess"=>true,"data"=>$rpt));
+        return;
     }
+
 
 }
