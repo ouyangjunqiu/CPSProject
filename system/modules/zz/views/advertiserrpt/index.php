@@ -437,14 +437,32 @@
             <tr class="small"><td><strong>${rpt.logDate}</strong></td>
             <td>${rpt.adPv}</td>
             <td>${rpt.click}</td>
-            <td>${(rpt.ctr*100).toFixed(2)}</td>
+            <td>
+            {{if rpt.ctr>0}}
+                ${(rpt.ctr*100).toFixed(2)}
+            {{else}}
+                -
+            {{/if}}
+            </td>
             <td>${rpt.charge}</td>
-            <td>${rpt.ecpc.toFixed(2)}</td>
+            <td>
+            {{if rpt.ecpc>0}}
+                ${rpt.ecpc.toFixed(2)}
+            {{else}}
+                -
+            {{/if}}
+            </td>
             <td>${rpt.dirShopColNum+rpt.inshopItemColNum}</td>
             <td>${rpt.alipayInShopNum}</td>
             <td>${data["click7"]["list"][i]["alipayInShopNum"]}</td>
             <td>${data["click15"]["list"][i]["alipayInShopNum"]}</td>
-            <td>${rpt.roi.toFixed(2)}</td>
+            <td>
+            {{if rpt.roi>0}}
+                ${rpt.roi.toFixed(2)}
+            {{else}}
+                -
+            {{/if}}
+            </td>
             <td>
             {{if data["click7"]["list"][i]["roi"]}}
                 ${data["click7"]["list"][i]["roi"].toFixed(2)}
@@ -481,9 +499,21 @@
             <tr class="small"><td><strong>总计</strong></td>
             <td>${data.click3.total.adPv}</td>
             <td>${data.click3.total.click}</td>
-            <td>${(data.click3.total.ctr*100).toFixed(2)}</td>
+            <td>
+            {{if data.click3.total.ctr>0}}
+                ${(data.click3.total.ctr*100).toFixed(2)}
+            {{else}}
+                -
+            {{/if}}
+            </td>
             <td>${data.click3.total.charge}</td>
-            <td>${data.click3.total.ecpc.toFixed(2)}</td>
+            <td>
+            {{if data.click3.total.ecpc>0}}
+                ${data.click3.total.ecpc.toFixed(2)}
+            {{else}}
+                -
+            {{/if}}
+            </td>
             <td>${data.click3.total.dirShopColNum+data.click3.total.inshopItemColNum}</td>
             <td>${data.click3.total.alipayInShopNum}</td>
             <td>${data.click7.total.alipayInShopNum}</td>
