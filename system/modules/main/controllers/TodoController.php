@@ -137,7 +137,7 @@ class TodoController extends Controller
         $nick = Env::getQuery("nick");
         $rangeDate = ExtRangeDate::rangeNow(15);
         $startdate = Env::getSession("begin_date",$rangeDate->startDate,"main.todo.more");
-        $enddate = Env::getSession("end_date",$rangeDate->startDate,"main.todo.more");
+        $enddate = Env::getSession("end_date",$rangeDate->endDate,"main.todo.more");
         $list = ShopTodoList::fetchRangeListByNick($nick,$startdate,$enddate);
         $this->render('more',array("list"=>$list,"query"=>array("nick"=>$nick,"beginDate"=>$startdate,"endDate"=>$enddate)));
     }
