@@ -108,32 +108,32 @@
             ?>
             <?php foreach($list["click3"]["list"] as $i=>$rpt):?>
                 <tr class="small">
-                    <td><strong><?php echo $rpt["logDate"];?></strong></td>
-                    <td><?php echo $rpt["adPv"];?></td>
-                    <td><?php echo $rpt["click"];?></td>
-                    <td><?php echo round($rpt["ctr"]*100,2);?></td>
-                    <td class="b1"><?php echo \cloud\core\utils\String::nFormat($rpt["charge"]);?></td>
-                    <td><?php echo round($rpt["ecpc"],2);?></td>
+                    <td><strong><?php echo @$rpt["logDate"];?></strong></td>
+                    <td><?php echo @$rpt["adPv"];?></td>
+                    <td><?php echo @$rpt["click"];?></td>
+                    <td><?php echo @round($rpt["ctr"]*100,2);?></td>
+                    <td class="b1"><?php echo @\cloud\core\utils\String::nFormat($rpt["charge"]);?></td>
+                    <td><?php echo @round($rpt["ecpc"],2);?></td>
 
-                    <td class="b2"><?php echo round($rpt["roi"],2);?></td>
-                    <td class="b2"><?php echo round($click7list[$i]["roi"],2);?></td>
-                    <td class="b2"><?php echo round($click15list[$i]["roi"],2);?></td>
+                    <td class="b2"><?php echo @round($rpt["roi"],2);?></td>
+                    <td class="b2"><?php echo @round($click7list[$i]["roi"],2);?></td>
+                    <td class="b2"><?php echo @round($click15list[$i]["roi"],2);?></td>
 
-                    <td><?php echo \cloud\core\utils\String::nFormat($rpt["alipayInshopAmt"]);?></td>
-                    <td><?php echo \cloud\core\utils\String::nFormat($click7list[$i]["alipayInshopAmt"]);?></td>
-                    <td><?php echo \cloud\core\utils\String::nFormat($click15list[$i]["alipayInshopAmt"]);?></td>
+                    <td><?php echo @\cloud\core\utils\String::nFormat($rpt["alipayInshopAmt"]);?></td>
+                    <td><?php echo @\cloud\core\utils\String::nFormat($click7list[$i]["alipayInshopAmt"]);?></td>
+                    <td><?php echo @\cloud\core\utils\String::nFormat($click15list[$i]["alipayInshopAmt"]);?></td>
 
-                    <td><?php echo $rpt["alipayInShopNum"];?></td>
-                    <td><?php echo $click7list[$i]["alipayInShopNum"];?></td>
-                    <td><?php echo $click15list[$i]["alipayInShopNum"];?></td>
+                    <td><?php echo @$rpt["alipayInShopNum"];?></td>
+                    <td><?php echo @$click7list[$i]["alipayInShopNum"];?></td>
+                    <td><?php echo @$click15list[$i]["alipayInShopNum"];?></td>
 
-                    <td><?php echo isset($rpt["cartNum"])?$rpt["cartNum"]:"-";?></td>
-                    <td><?php echo isset($click7list[$i]["cartNum"])?$click7list[$i]["cartNum"]:"-";?></td>
-                    <td><?php echo isset($click15list[$i]["cartNum"])?$click15list[$i]["cartNum"]:"-";?></td>
+                    <td><?php echo @isset($rpt["cartNum"])?$rpt["cartNum"]:"-";?></td>
+                    <td><?php echo @isset($click7list[$i]["cartNum"])?$click7list[$i]["cartNum"]:"-";?></td>
+                    <td><?php echo @isset($click15list[$i]["cartNum"])?$click15list[$i]["cartNum"]:"-";?></td>
 
-                    <td><?php echo $rpt["dirShopColNum"];?></td>
-                    <td><?php echo $rpt["inshopItemColNum"];?></td>
-                    <td><?php echo $click7list[$i]["uv"];?></td>
+                    <td><?php echo @$rpt["dirShopColNum"];?></td>
+                    <td><?php echo @$rpt["inshopItemColNum"];?></td>
+                    <td><?php echo @$click7list[$i]["uv"];?></td>
 
                     <td><?php echo round(@($rpt["dirShopColNum"]/$rpt["uv"]*100),2);?></td>
                     <td><?php echo round(@($rpt["inshopItemColNum"]/$rpt["uv"]*100),2);?></td>
@@ -143,19 +143,19 @@
             <?php endforeach;?>
             <tr class="small">
                 <td><strong>总计</strong></td>
-                <td><?php echo $click3total["adPv"];?></td>
-                <td><?php echo $click3total["click"];?></td>
+                <td><?php echo @$click3total["adPv"];?></td>
+                <td><?php echo @$click3total["click"];?></td>
                 <td><?php echo @round($click3total["ctr"]*100,2);?></td>
-                <td class="b1"><?php echo \cloud\core\utils\String::nFormat($click3total["charge"]);?></td>
+                <td class="b1"><?php echo @\cloud\core\utils\String::nFormat($click3total["charge"]);?></td>
                 <td><?php echo @round($click3total["ecpc"],2);?></td>
 
                 <td class="b2"><?php echo @round($click3total["roi"],2);?></td>
                 <td class="b2"><?php echo @round($click7total["roi"],2);?></td>
                 <td class="b2"><?php echo @round($click15total["roi"],2);?></td>
 
-                <td><?php echo \cloud\core\utils\String::nFormat($click3total["alipayInshopAmt"]);?></td>
-                <td><?php echo \cloud\core\utils\String::nFormat($click7total["alipayInshopAmt"]);?></td>
-                <td><?php echo \cloud\core\utils\String::nFormat($click15total["alipayInshopAmt"]);?></td>
+                <td><?php echo @\cloud\core\utils\String::nFormat($click3total["alipayInshopAmt"]);?></td>
+                <td><?php echo @\cloud\core\utils\String::nFormat($click7total["alipayInshopAmt"]);?></td>
+                <td><?php echo @\cloud\core\utils\String::nFormat($click15total["alipayInshopAmt"]);?></td>
 
                 <td><?php echo @round($click3total["alipayInShopNum"]);?></td>
                 <td><?php echo @round($click7total["alipayInShopNum"]);?></td>
@@ -165,9 +165,9 @@
                 <td><?php echo @round($click7total["cartNum"]);?></td>
                 <td><?php echo @round($click15total["cartNum"]);?></td>
 
-                <td><?php echo $click3total["dirShopColNum"];?></td>
-                <td><?php echo $click3total["inshopItemColNum"];?></td>
-                <td><?php echo $click3total["uv"];?></td>
+                <td><?php echo @$click3total["dirShopColNum"];?></td>
+                <td><?php echo @$click3total["inshopItemColNum"];?></td>
+                <td><?php echo @$click3total["uv"];?></td>
 
                 <td><?php echo round(@($click3total["dirShopColNum"]/$click3total["uv"]*100),2);?></td>
                 <td><?php echo round(@($click3total["inshopItemColNum"]/$click3total["uv"]*100),2);?></td>
