@@ -83,7 +83,7 @@
 <!--                                </div>-->
                             </div>
 
-                            <div role="tabpanel" class="tab-pane active" id="rpt_<?php echo $row["id"];?>">
+                            <div role="tabpanel" class="tab-pane" id="rpt_<?php echo $row["id"];?>">
                                 <div data-tmpl="zuanshi-advertiserrpt-list-tmpl" data-load="overlay" data-url="<?php echo $this->createUrl("/zz/advertiserrpt/getbynick",array("nick"=>$row["nick"],"shopname"=>$row["shopname"]));?>">
                                 </div>
 
