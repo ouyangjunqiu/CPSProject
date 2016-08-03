@@ -135,10 +135,10 @@
                     <td><?php echo @$rpt["inshopItemColNum"];?></td>
                     <td><?php echo @$click7list[$i]["uv"];?></td>
 
-                    <td><?php echo round(@($rpt["dirShopColNum"]/$rpt["uv"]*100),2);?></td>
-                    <td><?php echo round(@($rpt["inshopItemColNum"]/$rpt["uv"]*100),2);?></td>
-                    <td><?php echo round(@($click7list[$i]["alipayInshopAmt"]/$click7list[$i]["alipayInShopNum"]),2);?></td>
-                    <td><?php echo round(@($click7list[$i]["alipayInShopNum"]/$click7list[$i]["uv"]*100),2);?></td>
+                    <td><?php echo empty($rpt["uv"])?0:round(@($rpt["dirShopColNum"]/$rpt["uv"]*100),2);?></td>
+                    <td><?php echo empty($rpt["uv"])?0:round(@($rpt["inshopItemColNum"]/$rpt["uv"]*100),2);?></td>
+                    <td><?php echo empty($click7list[$i]["alipayInShopNum"])?0:round(@($click7list[$i]["alipayInshopAmt"]/$click7list[$i]["alipayInShopNum"]),2);?></td>
+                    <td><?php echo empty($click7list[$i]["uv"])?0:round(@($click7list[$i]["alipayInShopNum"]/$click7list[$i]["uv"]*100),2);?></td>
                 </tr>
             <?php endforeach;?>
             <tr class="small">
@@ -169,10 +169,10 @@
                 <td><?php echo @$click3total["inshopItemColNum"];?></td>
                 <td><?php echo @$click3total["uv"];?></td>
 
-                <td><?php echo round(@($click3total["dirShopColNum"]/$click3total["uv"]*100),2);?></td>
-                <td><?php echo round(@($click3total["inshopItemColNum"]/$click3total["uv"]*100),2);?></td>
-                <td><?php echo round(@($click7total["alipayInshopAmt"]/$click7total["alipayInShopNum"]),2);?></td>
-                <td><?php echo round(@($click7total["alipayInShopNum"]/$click7total["uv"]*100),2);?></td>
+                <td><?php echo empty($click3total["uv"])?0:round(@($click3total["dirShopColNum"]/$click3total["uv"]*100),2);?></td>
+                <td><?php echo empty($click3total["uv"])?0:round(@($click3total["inshopItemColNum"]/$click3total["uv"]*100),2);?></td>
+                <td><?php echo empty($click7total["alipayInShopNum"])?0:round(@($click7total["alipayInshopAmt"]/$click7total["alipayInShopNum"]),2);?></td>
+                <td><?php echo empty($click7total["uv"])?0:round(@($click7total["alipayInShopNum"]/$click7total["uv"]*100),2);?></td>
             </tr>
             </tbody>
         </table>
