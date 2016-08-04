@@ -413,7 +413,7 @@
     <div>
         <p class="text-danger">安装插件后，登录钻石展位即可同步展示！</p>
     </div>
-    {{else}}
+ {{else}}
     <table data-role="list" class="baby-frame-table" style="table-layout: fixed;">
         <thead><tr class="small">
             <th>日期</th>
@@ -455,8 +455,20 @@
             </td>
             <td>${rpt.dirShopColNum+rpt.inshopItemColNum}</td>
             <td>${rpt.alipayInShopNum}</td>
-            <td>${data["click7"]["list"][i]["alipayInShopNum"]}</td>
-            <td>${data["click15"]["list"][i]["alipayInShopNum"]}</td>
+            <td>
+            {{if data["click7"]["list"][i]}}
+                ${data["click7"]["list"][i]["alipayInShopNum"]}
+            {{else}}
+                -
+            {{/if}}
+            </td>
+            <td>
+            {{if data["click15"]["list"][i]}}
+                ${data["click15"]["list"][i]["alipayInShopNum"]}
+            {{else}}
+                -
+            {{/if}}
+            </td>
             <td>
             {{if rpt.roi>0}}
                 ${rpt.roi.toFixed(2)}
@@ -465,17 +477,25 @@
             {{/if}}
             </td>
             <td>
-            {{if data["click7"]["list"][i]["roi"]}}
-                ${data["click7"]["list"][i]["roi"].toFixed(2)}
+            {{if data["click7"]["list"][i]}}
+                {{if data["click7"]["list"][i]["roi"]}}
+                    ${data["click7"]["list"][i]["roi"].toFixed(2)}
+                {{else}}
+                    0
+                {{/if}}
             {{else}}
-                0
+                -
             {{/if}}
             </td>
             <td>
-            {{if data["click15"]["list"][i]["roi"]}}
-                ${data["click15"]["list"][i]["roi"].toFixed(2)}
+            {{if data["click15"]["list"][i]}}
+                {{if data["click15"]["list"][i]["roi"]}}
+                    ${data["click15"]["list"][i]["roi"].toFixed(2)}
+                {{else}}
+                    0
+                {{/if}}
             {{else}}
-                0
+                -
             {{/if}}
             </td>
             <td>
@@ -517,11 +537,35 @@
             </td>
             <td>${data.click3.total.dirShopColNum+data.click3.total.inshopItemColNum}</td>
             <td>${data.click3.total.alipayInShopNum}</td>
-            <td>${data.click7.total.alipayInShopNum}</td>
-            <td>${data.click15.total.alipayInShopNum}</td>
+            <td>
+            {{if data.click7.total}}
+                ${data.click7.total.alipayInShopNum}
+            {{else}}
+                -
+            {{/if}}
+            </td>
+            <td>
+            {{if data.click15.total}}
+                ${data.click15.total.alipayInShopNum}
+            {{else}}
+                -
+            {{/if}}
+            </td>
             <td>${data.click3.total.roi}</td>
-            <td>${data.click7.total.roi}</td>
-            <td>${data.click15.total.roi}</td>
+            <td>
+            {{if data.click7.total}}
+                ${data.click7.total.roi}
+            {{else}}
+                -
+            {{/if}}
+            </td>
+            <td>
+            {{if data.click15.total}}
+                ${data.click15.total.roi}
+            {{else}}
+                -
+            {{/if}}
+            </td>
             <td>${data.trade.total.payAmt}</td>
             <td>
                 {{if data.trade.total.payAmt>0}}
@@ -534,7 +578,7 @@
         {{/if}}
         </tbody>
 
-        </table>
+    </table>
 {{/if}}
 </script>
 
