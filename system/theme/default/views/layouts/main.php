@@ -126,7 +126,7 @@
                         <p>我的店铺</p>
                     </a>
                 </li>
-                <li><a href="<?php echo $this->createUrl("/zuanshi/dashboard/index");?>" target="_blank">
+                <li><a href="<?php echo $this->createUrl("/zz/advertiserrpt/index");?>" target="_blank">
 
                         <p class="top-icon-p"><i class="zuanshi-icon"></i></p>
 
