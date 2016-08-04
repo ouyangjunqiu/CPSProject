@@ -17,6 +17,7 @@ class AboardpackageController extends Controller
     public function actionSource(){
 
         $nick = Env::getRequest("nick");
+        $nick = trim($nick);
         $data = Env::getRequest("data");
         $list = \CJSON::decode($data);
         if(is_array($list)){

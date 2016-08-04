@@ -47,6 +47,7 @@
                             <input type="text" class="form-control"  value="<?php echo $query['beginDate'];?> ~ <?php echo $query['endDate'];?>">
                             <span class="input-group-addon"><b class="caret"></b></span>
                         </div>
+                        <small><a href="<?php echo $this->createUrl("/zuanshi/rpt/more",array("nick"=>$query["nick"]));?>">*2016年7月前的数据点击这里</a></small>
                     </div>
 
                 </form>
