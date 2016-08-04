@@ -507,7 +507,11 @@
             </td>
             <td>
                 {{if data["trade"]["list"][i]}}
-                    ${(rpt.charge/data["trade"]["list"][i]["payAmt"]*100).toFixed(2)}
+                    {{if data["trade"]["list"][i]["payAmt"]>0}}
+                        ${(rpt.charge/data["trade"]["list"][i]["payAmt"]*100).toFixed(2)}
+                    {{else}}
+                        0
+                    {{/if}}
                 {{else}}
                     -
                 {{/if}}
