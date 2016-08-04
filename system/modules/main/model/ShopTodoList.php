@@ -51,7 +51,7 @@ class ShopTodoList extends Model
         $startDate = date("Y-m-d",strtotime("-15 days"));
         $endDate =  date("Y-m-d",strtotime("-2 days"));
 
-        $history = self::model()->fetchAll("logdate>=? AND logdate<=? AND nick=? AND status!=?",array($startDate,$endDate,$nick,2));
+        $history = self::model()->fetchAll("logdate>=? AND logdate<=? AND nick=? AND status!=? ORDER BY logdate ASC",array($startDate,$endDate,$nick,2));
         foreach($history as &$row){
             $row["title"] = String::ireplaceUrl($row["content"],"<small>[链接]</small>");
             $row["md5"] = md5($row["nick"]);
@@ -63,7 +63,7 @@ class ShopTodoList extends Model
     public static function fetchCurrentListByNick($nick){
         $startDate = date("Y-m-d");
         $endDate =  date("Y-m-d",strtotime("+7 days"));
-        $result = self::model()->fetchAll("logdate>=? AND logdate<=? AND nick=? AND status!=?",array($startDate,$endDate,$nick,2));
+        $result = self::model()->fetchAll("logdate>=? AND logdate<=? AND nick=? AND status!=? ORDER BY logdate ASC",array($startDate,$endDate,$nick,2));
         $todolist = array();
 
         foreach($result as $row){
@@ -98,7 +98,7 @@ class ShopTodoList extends Model
 
     public static function fetchRangeListByNick($nick,$start,$end){
 
-        $result = self::model()->fetchAll("logdate>=? AND logdate<=? AND nick=? AND status!=?",array($start,$end,$nick,2));
+        $result = self::model()->fetchAll("logdate>=? AND logdate<=? AND nick=? AND status!=? ORDER BY logdate ASC",array($start,$end,$nick,2));
         $list = array();
 
         foreach($result as $row){
