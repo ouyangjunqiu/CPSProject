@@ -73,9 +73,22 @@ class AdvertiserHourRptSource extends Model
                 if($r["hourId"]>$curHour)
                     $curHour = $r["hourId"];
             }
+        }else{
+            $curHour = $rpt["loghour"];
         }
 
-        $todayTotal = $todayData["total"];
+        if(isset($todayData["total"])){
+            $todayTotal = $todayData["total"];
+        }else{
+            $todayTotal = array(
+                "charge" => 0,
+                "click" =>0,
+                "adPv" => 0,
+                "ctr"=>0,
+                "ecpc"=>0
+            );
+        }
+
         $todayTotal["ctrStr"] = round($todayTotal["ctr"]*100,2);
 
         $yesterhourData = array(
@@ -103,7 +116,17 @@ class AdvertiserHourRptSource extends Model
         $yesterhourData["ecpcGrowth"] = Math::growth($yesterhourData["ecpc"],$todayTotal["ecpc"]);
         $yesterhourData["ctrGrowth"] = Math::growth($yesterhourData["ctr"],$todayTotal["ctr"]);
 
-        $yesterdayTotal = $yesterdayData["total"];
+        if(isset($yesterdayData["total"])) {
+            $yesterdayTotal = $yesterdayData["total"];
+        }else{
+            $yesterdayTotal = array(
+                "charge" => 0,
+                "click" =>0,
+                "adPv" => 0,
+                "ctr"=>0,
+                "ecpc"=>0
+            );
+        }
         if($accountData["zuanshi_budget"]>0){
             $yesterdayTotal["chargeRate"] = round(@($todayTotal["charge"]/$accountData["zuanshi_budget"]*100),2);
         }else{
