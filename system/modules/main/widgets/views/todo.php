@@ -100,7 +100,7 @@
         <div class="col-md-4">
           <div class="list-group">
               <a class="list-group-item disabled">
-                以往
+                以往 <span class="badge">近7天</span>
               </a>
 
               {{each(i,v) data.history}}

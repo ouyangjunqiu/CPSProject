@@ -48,7 +48,7 @@ class ShopTodoList extends Model
     }
 
     public static function fetchHistoryListByNick($nick){
-        $startDate = date("Y-m-d",strtotime("-15 days"));
+        $startDate = date("Y-m-d",strtotime("-7 days"));
         $endDate =  date("Y-m-d",strtotime("-2 days"));
 
         $history = self::model()->fetchAll("logdate>=? AND logdate<=? AND nick=? AND status!=? ORDER BY logdate ASC",array($startDate,$endDate,$nick,2));
