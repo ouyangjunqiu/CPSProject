@@ -20,7 +20,7 @@
                         <span class="shop-list-txt"><?php echo $query["nick"];?></span>
                         <small>
 <!--                            <a href="--><?php //echo $this->createUrl("/zuanshi/advertiser/more",array("nick"=>$query["nick"]));?><!--"><span class="label label-default">实时状况</span></a>-->
-                            <a href="<?php echo $this->createUrl("/zuanshi/rpt/more",array("nick"=>$query["nick"]));?>"><span class="label label-info">全店推广报表</span></a>
+                            <a href="<?php echo $this->createUrl("/zz/advertiserrpt/index",array("nick"=>$query["nick"]));?>"><span class="label label-info">全店推广报表</span></a>
 <!--                            <a href="--><?php //echo $this->createUrl("/zuanshi/adboard/index",array("nick"=>$query["nick"]));?><!--"><span class="label label-default">创意优选</span></a>-->
 <!--                            <a href="--><?php //echo $this->createUrl("/zuanshi/dest/index",array("nick"=>$query["nick"]));?><!--"><span class="label label-default">定向优选</span></a>-->
 <!--                            <a href="--><?php //echo $this->createUrl("/zuanshi/adzonerpt/index",array("nick"=>$query["nick"]));?><!--"><span class="label label-default">资源位优选</span></a>-->
@@ -237,7 +237,7 @@
             });
 
             $("#backBtn").click(function(){
-                 window.location.href='<?php echo $this->createUrl("/zuanshi/rpt/index");?>';
+                 window.location.href='<?php echo $this->createUrl("/zz/advertiserrpt/index");?>';
             });
 
             $("#table_fixed").freezeHeader();
