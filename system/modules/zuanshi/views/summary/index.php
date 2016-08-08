@@ -44,6 +44,9 @@
                         <span class="input-group-addon"><b class="caret"></b></span>
                     </div>
                 </div>
+                <div class="form-group">
+                    <small><a href="<?php echo $this->createUrl("/zz/summary/index");?>">*2016年8月后的数据点击这里</a></small>
+                </div>
             </form>
 
         </div>

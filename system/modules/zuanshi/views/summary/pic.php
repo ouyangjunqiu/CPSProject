@@ -31,16 +31,22 @@
     </div>
 
     <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
-        <div class="col-md-3">
-            <div class="input-group"  id="dateSetting">
-                <span class="input-group-addon"> <i class="fa fa-calendar"></i> </span>
-                <input type="text" class="form-control" value="<?php echo $query['startdate'];?> ~ <?php echo $query['enddate'];?>">
-                <span class="input-group-addon"><b class="caret"></b></span>
+        <form class="form-inline">
+            <div class="form-group">
+                <small>统计:</small>
+            </div>
+            <div class="form-group">
+                <div class="input-group"  id="dateSetting">
+                    <span class="input-group-addon"> <i class="fa fa-calendar"></i> </span>
+                    <input type="text" class="form-control" value="<?php echo $query['startdate'];?> ~ <?php echo $query['enddate'];?>">
+                    <span class="input-group-addon"><b class="caret"></b></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <small><a href="<?php echo $this->createUrl("/zz/summary/pic");?>">*2016年8月后的数据点击这里</a></small>
             </div>
 
-        </div>
-        <div class="col-md-8">
-        </div>
+        </form>
         <div class="col-md-1">
             <!--            <button class="btn btn-warning" id="down-excel">下载</button>-->
         </div>
