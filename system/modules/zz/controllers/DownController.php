@@ -105,7 +105,7 @@ class DownController extends Controller
 
         foreach($shops["list"] as &$row){
 
-            $row["rpt"] = AdvertiserRpt::fetchAllByNick($startdate,$enddate,$row["nick"],"click");
+            $row["rpt"] = AdvertiserRpt::fetchAllByNick($row["nick"],$startdate,$enddate,"click");
 
             $row["tradeRpt"] = ShopTradeRpt::summaryByNick($startdate,$enddate,$row["shopname"]);
         }

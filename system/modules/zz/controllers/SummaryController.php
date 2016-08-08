@@ -23,7 +23,7 @@ class SummaryController extends Controller
 
         foreach($data["list"] as &$row){
 
-            $row["rpt"] = AdvertiserRpt::fetchAllByNick($startdate,$enddate,$row["nick"],"click");
+            $row["rpt"] = AdvertiserRpt::fetchAllByNick($row["nick"],$startdate,$enddate,"click");
 
             $row["tradeRpt"] = ShopTradeRpt::summaryByNick($startdate,$enddate,$row["shopname"]);
         }
@@ -50,7 +50,7 @@ class SummaryController extends Controller
         foreach($list as &$row){
 
             if(!empty($row["zuanshi_pic"])){
-                $row["rpt"] = AdvertiserRpt::fetchAllByNick($startdate,$enddate,$row["nick"],"click");
+                $row["rpt"] = AdvertiserRpt::fetchAllByNick($row["nick"],$startdate,$enddate,"click");
 
                 $row["tradeRpt"] = ShopTradeRpt::summaryByNick($startdate,$enddate,$row["shopname"]);
                 $row["zuanshi_pic"] = trim($row["zuanshi_pic"]);
