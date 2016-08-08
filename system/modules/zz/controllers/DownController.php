@@ -9,6 +9,8 @@
 namespace application\modules\zz\controllers;
 
 
+use application\modules\main\utils\ShopSearch;
+use application\modules\zuanshi\model\ShopTradeRpt;
 use application\modules\zz\model\AdvertiserRpt;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
@@ -88,6 +90,66 @@ class DownController extends Controller
 
         File::exportExcel("{$nick}-{$beginDate}至{$endDate}报表",$data);
 
+    }
+
+    public function actionSummary(){
+
+
+        $defaultDate = ExtRangeDate::range(7);
+
+        $startdate = Env::getSession("startdate",$defaultDate->startDate,"zuanshi.rpt.summary");
+        $enddate = Env::getSession("enddate",$defaultDate->endDate,"zuanshi.rpt.summary");
+
+
+        $shops = ShopSearch::openlist();
+
+        foreach($shops["list"] as &$row){
+
+            $row["rpt"] = AdvertiserRpt::fetchAllByNick($startdate,$enddate,$row["nick"],"click");
+
+            $row["tradeRpt"] = ShopTradeRpt::summaryByNick($startdate,$enddate,$row["shopname"]);
+        }
+
+
+        $data = array(
+            array(
+                "店铺名",
+                "主营行业",
+                "运营对接人",
+                "直通车负责人",
+                "钻展负责人",
+                "大数据负责人",
+                "展现",
+                "点击",
+                "消耗",
+                "三天转化金额",
+                "三天转化ROI",
+                "七天转化金额",
+                "七天转化ROI",
+                "营业额"
+            )
+        );
+
+        foreach($shops["list"] as $row){
+            $data[] = array(
+                $row["nick"],
+                $row["shopcatname"],
+                $row["pic"],
+                $row["ztc_pic"],
+                $row["zuanshi_pic"],
+                $row["bigdata_pic"],
+                empty($row["rpt"]["click3"]["total"])?"-":@$row["rpt"]["click3"]["total"]["adPv"],
+                empty($row["rpt"]["click3"]["total"])?"-":@$row["rpt"]["click3"]["total"]["click"],
+                empty($row["rpt"]["click3"]["total"])?"-":@$row["rpt"]["click3"]["total"]["charge"],
+                empty($row["rpt"]["click3"]["total"])?"-":@$row["rpt"]["click3"]["total"]["alipayInshopAmt"],
+                empty($row["rpt"]["click3"]["total"])?"-":@$row["rpt"]["click3"]["total"]["roi"],
+                empty($row["rpt"]["click7"]["total"])?"-":@$row["rpt"]["click7"]["total"]["alipayInshopAmt"],
+                empty($row["rpt"]["click7"]["total"])?"-":@$row["rpt"]["click7"]["total"]["roi"],
+                $row["tradeRpt"]["total_pay_amt"]
+            );
+        }
+
+        File::exportExcel("钻展统计报表{$startdate}至{$enddate}",$data);
     }
 
 
