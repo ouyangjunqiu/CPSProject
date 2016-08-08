@@ -96,6 +96,7 @@ class AdvertiserRpt extends Model
         $total["roi"] = empty($total["charge"])?"0":@round($total["alipayInshopAmt"]/$total["charge"],2);
         $total["ctr"] = empty($total["adPv"])?"0":@round($total["click"]/$total["adPv"],4);
         $total["ecpc"] = empty($total["click"])?"0":@round($total["charge"]/$total["click"],2);
+        $total["alipayInshopAmt"] = round($total["alipayInshopAmt"],2);
         return array("list"=>$list,"total"=>$total);
 
     }
