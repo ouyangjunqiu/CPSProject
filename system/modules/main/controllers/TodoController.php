@@ -103,7 +103,7 @@ class TodoController extends Controller
                 "list"=>$list
             ),
             "query"=>array(
-                "nick"=>$nick,
+                "nick"=>mb_convert_encoding($nick,"utf-8","auto"),
                 "md5"=>md5($nick)
             )
         ));
