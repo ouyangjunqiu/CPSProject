@@ -107,6 +107,8 @@ class AdvertiserHourRptSource extends Model
             }
         }
 
+        $todayTotal["ecpc"] = empty($todayTotal["ecpc"])?0:$todayTotal["ecpc"];
+
         $yesterhourData["ecpc"] = round(@($yesterhourData["charge"]/$yesterhourData["click"]),2);
         $yesterhourData["ctr"] = round(@($yesterhourData["click"]/$yesterhourData["adPv"]),4);
 
@@ -118,6 +120,7 @@ class AdvertiserHourRptSource extends Model
 
         if(isset($yesterdayData["total"])) {
             $yesterdayTotal = $yesterdayData["total"];
+            $yesterdayTotal["ecpc"] = empty($yesterdayTotal["ecpc"])?0:$yesterdayTotal["ecpc"];
         }else{
             $yesterdayTotal = array(
                 "charge" => 0,
