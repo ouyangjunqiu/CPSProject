@@ -61,8 +61,8 @@ $y_charge = array();
 $y_amt = array();
 for($i=1;$i<$month;$i++){
     $x[] = $i;
-    $y_charge= isset($data[$i])?$data[$i]["charge"]:0;
-    $y_amt = isset($data[$i])?$data[$i]["alipayInshopAmt"]:0;
+    $y_charge[] = isset($data[$i])?$data[$i]["charge"]:0;
+    $y_amt[] = isset($data[$i])?$data[$i]["alipayInshopAmt"]:0;
 }
 ?>
 
