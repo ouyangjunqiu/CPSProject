@@ -50,5 +50,5 @@ class AdvertiserMonthRpt extends Model
         return array();
     }
 
-    
+
 }
