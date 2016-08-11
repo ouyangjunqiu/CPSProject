@@ -1,64 +1,45 @@
 <?php
 namespace application\modules\zuanshi\cli;
 
-use cloud\core\cli\Controller;
+use application\modules\main\model\Shop;
 use application\modules\zuanshi\model\AccountRpt;
-use application\modules\zuanshi\model\AccountRptSource;
-use application\modules\zuanshi\model\AccountRptSourceSync;
+use application\modules\zz\model\AdvertiserMonthRpt;
+use cloud\core\cli\Controller;
 
 class RptController  extends Controller
 {
-    public function actionTest(){
-        $date = date("Y-m-d");
-        $list = AccountRptSource::model()->fetchAll("date='{$date}'");
-        foreach($list as $row){
-//            print_r($row);
-            $exists = AccountRptSourceSync::model()->exists("source_id='{$row["id"]}'");
-            if($exists){
-                echo $row["id"]." 已同步";
+
+    public function actionMonth(){
+
+        $firstday = date('Y-m-01', strtotime("2016-07-05"));
+        $lastday = date('Y-m-d', strtotime("$firstday +1 month -1 day"));
+        $year = date("Y",$lastday);
+        $month = date("m",$lastday);
+
+        $criteria = new \CDbCriteria();
+        $criteria->addCondition("status='0'");
+        $shops = Shop::model()->fetchAll($criteria);
+        foreach($shops as $shop){
+            $total = AccountRpt::summaryByNick($firstday,$lastday,$shop["nick"]);
+            if(empty($total) || empty($total["ad_pv"]))
                 continue;
-            }
-            $rpts = json_decode($row["rpts"],true);
 
-            if(isset($rpts["data"]["rptAdvertiserDayList"]) && !empty($rpts["data"]["rptAdvertiserDayList"])){
-                foreach($rpts["data"]["rptAdvertiserDayList"] as $rpt){
-                    $date = $rpt["logDate"];
-                    AccountRpt::model()->deleteAll("log_date=? AND nick=?",array($date,$rpt["advertiserName"]));
+            AdvertiserMonthRpt::model()->deleteAll("logyear=? AND nick=? AND logmonth=?",array($year,$shop["nick"],$month));
 
-                    $model = new AccountRpt();
-                    $model->setAttributes(array(
-                        "advertiser_id"=>$rpt["advertiserId"],
-                        "nick"=> $rpt["advertiserName"],
-                        "ad_pv"=> $rpt["adPv"],
-                        "charge"=> $rpt["charge"],
-                        "click"=> $rpt["click"],
-                        "ctr"=> $rpt["ctr"],
-                        "log_date"=> $rpt["logDate"],
-                        "ecpc"=> $rpt["ecpc"],
-                        "ecpm"=> $rpt["ecpm"],
-                        "roi"=> $rpt["roi"],
-                        "roi7"=> $rpt["roi7"],
-                        "roi15"=> $rpt["roi15"],
-                        "extra"=>json_encode($rpt)
-                    ));
-                    if($model->save()){
-                        echo "保存成功";
-                    }else{
-                        print_r($model->getErrors());
-                    }
-                }
+            $model = new AdvertiserMonthRpt();
+            $model->setAttributes(
+                array(
+                    "logyear"=>$year,
+                    "nick"=>$shop["nick"],
+                    "logmonth"=>$month,
+                    "data"=>\CJSON::encode($total),
+                    "logdate"=>date("Y-m-d")
+                )
+            );
+            if(!$model->save()){
+                print_r($model->getErrors());
             }
-            $sync = new AccountRptSourceSync();
-            $sync->setAttributes(array("source_id"=>$row["id"]));
-            $sync->save();
         }
-    }
-    public function actionSync(){
-
-
-    }
-
-    public function actionCreate(){
 
     }
 
