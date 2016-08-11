@@ -11,10 +11,10 @@ class RptController  extends Controller
 
     public function actionMonth(){
 
-        $firstday = date('Y-m-01', strtotime("2016-07-05"));
+        $firstday = date('Y-m-01', strtotime("-1 month -5 day"));
         $lastday = date('Y-m-d', strtotime("$firstday +1 month -1 day"));
-        $year = date("Y",$lastday);
-        $month = date("m",$lastday);
+        $year = date("Y",strtotime($lastday));
+        $month = date("m",strtotime($lastday));
 
         $criteria = new \CDbCriteria();
         $criteria->addCondition("status='0'");
