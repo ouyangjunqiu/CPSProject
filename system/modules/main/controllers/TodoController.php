@@ -91,22 +91,30 @@ class TodoController extends Controller
     }
 
     public function actionGetbynick(){
-        $nick = Env::getQuery("nick");
+        try{
+            $nick = Env::getQuery("nick");
 
-        $history = ShopTodoList::fetchHistoryListByNick($nick);
-        $list = ShopTodoList::fetchCurrentListByNick($nick);
+            $history = ShopTodoList::fetchHistoryListByNick($nick);
+            $list = ShopTodoList::fetchCurrentListByNick($nick);
 
-        $this->renderJson(array(
-            "isSuccess"=>true,
-            "data"=>array(
-                "history"=>$history,
-                "list"=>$list
-            ),
-            "query"=>array(
-                "nick"=>mb_convert_encoding($nick,"utf-8","auto"),
-                "md5"=>md5($nick)
-            )
-        ));
+            $this->renderJson(array(
+                "isSuccess"=>true,
+                "data"=>array(
+                    "history"=>$history,
+                    "list"=>$list
+                ),
+                "query"=>array(
+                    "nick"=>mb_convert_encoding($nick,"utf-8","auto"),
+                    "md5"=>md5($nick)
+                )
+            ));
+        }catch(\Exception $e){
+            $this->renderJson(array(
+                "isSuccess"=>false,
+                "msg"=>$e->getMessage(),
+                "code"=>$e->getCode()
+            ));
+        }
 
     }
 
