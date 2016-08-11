@@ -11,33 +11,42 @@ class RptController  extends Controller
 
     public function actionMonth(){
 
-        $firstday = date('Y-m-01', strtotime("-1 month -5 day"));
-        $lastday = date('Y-m-d', strtotime("$firstday +1 month -1 day"));
-        $year = date("Y",strtotime($lastday));
-        $month = date("m",strtotime($lastday));
+        for($i=1;$i<=7;$i++){
+            $firstday = date('Y-m-01', strtotime("2016-0$i-05"));
+            $lastday = date('Y-m-d', strtotime("$firstday +1 month -1 day"));
+            $year = date("Y",strtotime($lastday));
+            $month = date("m",strtotime($lastday));
 
-        $criteria = new \CDbCriteria();
-        $criteria->addCondition("status='0'");
-        $shops = Shop::model()->fetchAll($criteria);
-        foreach($shops as $shop){
-            $total = AccountRpt::summaryByNick($firstday,$lastday,$shop["nick"]);
-            if(empty($total) || empty($total["ad_pv"]))
-                continue;
+            $criteria = new \CDbCriteria();
+            $criteria->addCondition("status='0'");
+            $shops = Shop::model()->fetchAll($criteria);
+            foreach($shops as $shop){
+                $total = AccountRpt::summaryByNick($firstday,$lastday,$shop["nick"]);
+                if(empty($total) || empty($total["ad_pv"]))
+                    continue;
 
-            AdvertiserMonthRpt::model()->deleteAll("logyear=? AND nick=? AND logmonth=?",array($year,$shop["nick"],$month));
+                AdvertiserMonthRpt::model()->deleteAll("logyear=? AND nick=? AND logmonth=?",array($year,$shop["nick"],$month));
 
-            $model = new AdvertiserMonthRpt();
-            $model->setAttributes(
-                array(
-                    "logyear"=>$year,
-                    "nick"=>$shop["nick"],
-                    "logmonth"=>$month,
-                    "data"=>\CJSON::encode($total),
-                    "logdate"=>date("Y-m-d")
-                )
-            );
-            if(!$model->save()){
-                print_r($model->getErrors());
+                $data = array(
+                    "adPv"=>$total["ad_pv"],
+                    "charge"=>$total["charge"],
+                    "click"=>$total["click"],
+                    "alipayInshopAmt"=>$total["pay"],
+                    "alipayInshopAmt7"=>$total["pay7"],
+                );
+                $model = new AdvertiserMonthRpt();
+                $model->setAttributes(
+                    array(
+                        "logyear"=>$year,
+                        "nick"=>$shop["nick"],
+                        "logmonth"=>$month,
+                        "data"=>\CJSON::encode($data),
+                        "logdate"=>date("Y-m-d")
+                    )
+                );
+                if(!$model->save()){
+                    print_r($model->getErrors());
+                }
             }
         }
 
