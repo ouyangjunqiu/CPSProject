@@ -9,7 +9,6 @@
 	<meta name="generator" content="" />
 	<meta name="author" content="" />
 	<meta name="copyright" content="" />
-    <meta name="token" content="<?php echo \cloud\core\utils\Env::formHash();?>"/>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
     <?php
