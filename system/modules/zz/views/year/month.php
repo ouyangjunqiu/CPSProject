@@ -75,7 +75,7 @@ for($i=1;$i<$month;$i++){
     $x[] = $i;
     $y_charge[] = isset($data[$i])?$data[$i]["charge"]:0;
     $y_amt[] = isset($data[$i])?round($data[$i]["alipayInshopAmt"],2):0;
-    $y_trade[] = isset($trade[$i])?round($trade[$i]["alipayInshopAmt"],2):0;
+    $y_trade[] = isset($trade[$i])?round($trade[$i],2):0;
 }
 ?>
 
