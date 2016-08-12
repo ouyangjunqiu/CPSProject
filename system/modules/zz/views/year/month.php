@@ -318,7 +318,7 @@ for($i=1;$i<$month;$i++){
             ],
             series: [
                 {
-                    type: 'spline',
+                    type: 'column',
                     name: '推广利润',
                     yAxis: 0,
                     data: <?php echo CJavaScript::jsonEncode($y_rate);?>,
