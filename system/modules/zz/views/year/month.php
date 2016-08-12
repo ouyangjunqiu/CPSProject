@@ -51,12 +51,11 @@
 
         <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
             <div class="col-md-6">
-                <div data-role="charts" role-id="amt"></div>
-
+                <div data-role="charts" role-id="rate"></div>
             </div>
 
             <div class="col-md-6">
-
+                <div data-role="charts" role-id="amt"></div>
             </div>
         </div>
 
@@ -70,12 +69,14 @@ $month = (int)date("m");
 $x = array();
 $y_charge = array();
 $y_amt = array();
+$y_rate = array();
 $y_trade = array();
 for($i=1;$i<$month;$i++){
     $x[] = $i;
     $y_charge[] = isset($data[$i])?$data[$i]["charge"]:null;
     $y_amt[] = isset($data[$i])?round($data[$i]["alipayInshopAmt"],2):null;
     $y_trade[] = isset($trade[$i])?round($trade[$i],2):null;
+    $y_rate[] = isset($data[$i])?round($data[$i]["alipayInshopAmt"]-$data[$i]["charge"],2):null;
 }
 ?>
 
@@ -271,9 +272,71 @@ for($i=1;$i<$month;$i++){
             ]
         };
 
+        var c4 = {
+            chart: {
+                height: 400,
+                width: 500
+            },
+            title: {
+                text: "<?php echo $query['year'];?>年度推广利润走势"
+            },
+            xAxis: {
+                categories: <?php echo CJavaScript::jsonEncode($x);?>,
+                tickInterval:1,
+                tickPosition: 'outside',
+                tickmarkPlacement: 'on',
+                gridLineWidth: 1,
+                gridLineColor:"#e2e2e2",
+                gridLineDashStyle:"Dash",
+                labels: {
+                    format: '{value} 月'
+                }
+            },
+            plotOptions: {
+                column: {
+                    dataLabels: {
+                        enabled: true,
+                        formatter: function () {
+                            return this.y + '';
+                        }
+                    },
+                    enableMouseTracking: true
+                }
+            },
+            yAxis: [
+                {
+                    labels: {
+                        format: '{value} 元',
+                        style: {
+                            color: '#4d7fff'
+                        }
+                    },
+                    title: {
+                        text: ''
+                    }
+                }
+            ],
+            series: [
+                {
+                    type: 'spline',
+                    name: '推广利润',
+                    yAxis: 0,
+                    data: <?php echo CJavaScript::jsonEncode($y_rate);?>,
+                    marker: {
+                        lineWidth: 2,
+                        lineColor: '#4d7fff',
+                        fillColor: '#4d7fff'
+                    },
+
+                    color: '#4d7fff'
+                }
+            ]
+        };
+
         $("[role-id=charge]").highcharts(c1);
         $("[role-id=alipayInshopAmt]").highcharts(c2);
         $("[role-id=amt]").highcharts(c3);
+        $("[role-id=rate]").highcharts(c4);
 
     });
 </script>
