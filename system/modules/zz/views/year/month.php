@@ -49,6 +49,17 @@
             </div>
         </div>
 
+        <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
+            <div class="col-md-6">
+                <div data-role="charts" role-id="amt"></div>
+
+            </div>
+
+            <div class="col-md-6">
+
+            </div>
+        </div>
+
     </div>
     <div style="height: 50px;"></div>
 
@@ -59,10 +70,12 @@ $month = (int)date("m");
 $x = array();
 $y_charge = array();
 $y_amt = array();
+$y_trade = array();
 for($i=1;$i<$month;$i++){
     $x[] = $i;
     $y_charge[] = isset($data[$i])?$data[$i]["charge"]:0;
     $y_amt[] = isset($data[$i])?round($data[$i]["alipayInshopAmt"],2):0;
+    $y_trade[] = isset($trade[$i])?round($trade[$i]["alipayInshopAmt"],2):0;
 }
 ?>
 
@@ -198,8 +211,69 @@ for($i=1;$i<$month;$i++){
             ]
         };
 
+        var c3 = {
+            chart: {
+                height: 400,
+                width: 500
+            },
+            title: {
+                text: "<?php echo $query['year'];?>年度营业额走势"
+            },
+            xAxis: {
+                categories: <?php echo CJavaScript::jsonEncode($x);?>,
+                tickInterval:1,
+                tickPosition: 'outside',
+                tickmarkPlacement: 'on',
+                gridLineWidth: 1,
+                gridLineColor:"#e2e2e2",
+                gridLineDashStyle:"Dash",
+                labels: {
+                    format: '{value} 月'
+                }
+            },
+            plotOptions: {
+                spline: {
+                    dataLabels: {
+                        enabled: true,
+                        formatter: function () {
+                            return this.y + '';
+                        }
+                    },
+                    enableMouseTracking: true
+                }
+            },
+            yAxis: [
+                {
+                    labels: {
+                        format: '{value} 元',
+                        style: {
+                            color: '#4d7fff'
+                        }
+                    }, title: {
+                    text: ''
+                },
+                    min: 0
+                }
+            ],
+            series: [
+                {
+                    type: 'spline',
+                    name: '营业额',
+                    yAxis: 0,
+                    data: <?php echo CJavaScript::jsonEncode($y_trade);?>,
+                    marker: {
+                        lineWidth: 2,
+                        lineColor: '#4d7fff',
+                        fillColor: '#4d7fff'
+                    },
+                    color: '#4d7fff'
+                }
+            ]
+        };
+
         $("[role-id=charge]").highcharts(c1);
         $("[role-id=alipayInshopAmt]").highcharts(c2);
+        $("[role-id=amt]").highcharts(c3);
 
     });
 </script>

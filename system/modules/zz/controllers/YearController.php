@@ -8,6 +8,7 @@
 namespace application\modules\zz\controllers;
 
 
+use application\modules\zuanshi\model\ShopTradeMonthRpt;
 use application\modules\zz\model\AdvertiserMonthRpt;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
@@ -24,7 +25,14 @@ class YearController extends Controller
            $data[$row["logmonth"]] = \CJSON::decode($row["data"]);
         }
 
-        $this->render("month",array("data"=>$data,"query"=>array("nick"=>$nick,"year"=>$year)));
+        $tradeSource = ShopTradeMonthRpt::model()->fetchAll("logyear=? AND nick=?",array($year,$nick));
+        $tradeData = array();
+        foreach($tradeSource as $row){
+            $tradeData[$row["logmonth"]] = $row["amt"];
+        }
+
+
+        $this->render("month",array("data"=>$data,"trade"=>$tradeData,"query"=>array("nick"=>$nick,"year"=>$year)));
     }
 
 }
