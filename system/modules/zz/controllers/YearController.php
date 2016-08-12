@@ -24,7 +24,7 @@ class YearController extends Controller
            $data[$row["logmonth"]] = \CJSON::decode($row["data"]);
         }
 
-        $this->render("month",array("data"=>$data,"query"=>array("nick"=>$nick)));
+        $this->render("month",array("data"=>$data,"query"=>array("nick"=>$nick,"year"=>$year)));
     }
 
 }

@@ -62,7 +62,7 @@ $y_amt = array();
 for($i=1;$i<$month;$i++){
     $x[] = $i;
     $y_charge[] = isset($data[$i])?$data[$i]["charge"]:0;
-    $y_amt[] = isset($data[$i])?$data[$i]["alipayInshopAmt"]:0;
+    $y_amt[] = isset($data[$i])?round($data[$i]["alipayInshopAmt"],2):0;
 }
 ?>
 
@@ -83,7 +83,7 @@ for($i=1;$i<$month;$i++){
                 width: 500
             },
             title: {
-                text: "年度消耗走势"
+                text: "<?php echo $query['year'];?>年度消耗走势"
             },
             xAxis: {
                 categories: <?php echo CJavaScript::jsonEncode($x);?>,
@@ -92,7 +92,10 @@ for($i=1;$i<$month;$i++){
                 tickmarkPlacement: 'on',
                 gridLineWidth: 1,
                 gridLineColor:"#e2e2e2",
-                gridLineDashStyle:"Dash"
+                gridLineDashStyle:"Dash",
+                labels: {
+                    format: '{value} 月'
+                }
             },
             plotOptions: {
                 spline: {
@@ -108,7 +111,7 @@ for($i=1;$i<$month;$i++){
             yAxis: [
                 {
                     labels: {
-                        format: '{value}',
+                        format: '{value} 元',
                         style: {
                             color: '#4d7fff'
                         }
@@ -141,7 +144,7 @@ for($i=1;$i<$month;$i++){
                 width: 500
             },
             title: {
-                text: "年度转化金额走势"
+                text: "<?php echo $query['year'];?>年度转化金额走势"
             },
             xAxis: {
                 categories: <?php echo CJavaScript::jsonEncode($x);?>,
@@ -150,7 +153,10 @@ for($i=1;$i<$month;$i++){
                 tickmarkPlacement: 'on',
                 gridLineWidth: 1,
                 gridLineColor:"#e2e2e2",
-                gridLineDashStyle:"Dash"
+                gridLineDashStyle:"Dash",
+                labels: {
+                    format: '{value} 月'
+                }
             },
             plotOptions: {
                 spline: {
@@ -166,7 +172,7 @@ for($i=1;$i<$month;$i++){
             yAxis: [
                 {
                     labels: {
-                        format: '{value}',
+                        format: '{value} 元',
                         style: {
                             color: '#4d7fff'
                         }
