@@ -14,28 +14,30 @@ class AdboardrptController extends Controller
 {
     public function actionWeek(){
 
-        $begindate = date("Y-m-d",mktime(0,0,0,date("m"),date("d")-date("w")+1-7,date("Y")));
-        $enddate = date("Y-m-d",mktime(23,59,59,date("m"),date("d")-date("w")+7-7,date("Y")));
-        $criteria = new \CDbCriteria();
-        $criteria->addCondition("status='0'");
-        $shops = Shop::model()->fetchAll($criteria);
-        foreach($shops as $shop){
-            $data =  AdboardRptHistory::fetchAllSummaryByNick($begindate,$enddate,$shop["nick"]);
-            if(empty($data))
-                continue;
-            AdboardWeekRpt::model()->deleteAll("begindate=? AND enddate=? AND nick=?",array($begindate,$enddate,$shop["nick"]));
-            $model = new AdboardWeekRpt();
-            $model->setAttributes(array(
-                "begindate"=>$begindate,
-                "enddate"=>$enddate,
-                "nick"=>$shop["nick"],
-                "data"=>\CJSON::encode($data)
-            ));
-            if(!$model->save()){
-                print_r($model->getErrors());
+        for($i=2;$i<=1;$i++){
+            $begindate = date("Y-m-d",mktime(0,0,0,date("m"),date("d")-date("w")+1-(7*$i),date("Y")));
+            $enddate = date("Y-m-d",mktime(23,59,59,date("m"),date("d")-date("w")+7-(7*$i),date("Y")));
+            $criteria = new \CDbCriteria();
+            $criteria->addCondition("status='0'");
+            $shops = Shop::model()->fetchAll($criteria);
+            foreach($shops as $shop){
+                $data =  AdboardRptHistory::fetchAllSummaryByNick($begindate,$enddate,$shop["nick"]);
+                if(empty($data))
+                    continue;
+                AdboardWeekRpt::model()->deleteAll("begindate=? AND enddate=? AND nick=?",array($begindate,$enddate,$shop["nick"]));
+                $model = new AdboardWeekRpt();
+                $model->setAttributes(array(
+                    "begindate"=>$begindate,
+                    "enddate"=>$enddate,
+                    "nick"=>$shop["nick"],
+                    "data"=>\CJSON::encode($data)
+                ));
+                if(!$model->save()){
+                    print_r($model->getErrors());
+                }
+
+
             }
-
-
         }
 
     }
