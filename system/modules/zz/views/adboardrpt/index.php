@@ -19,7 +19,7 @@
                         <span class="shop-list-icon"></span>
                         <span class="shop-list-txt"><?php echo $query["nick"];?></span>
                         <small>
-                            <a href="<?php echo $this->createUrl("/zz/advertiserrpt/more",array("nick"=>$query["nick"]));?>"><span class="label label-info">全店推广报表</span></a>
+                            <a href="<?php echo $this->createUrl("/zz/advertiserrpt/more",array("nick"=>$query["nick"]));?>"><span class="label label-default">全店推广报表</span></a>
                             <a href="<?php echo $this->createUrl("/zz/year/month",array("nick"=>$query["nick"]));?>"><span class="label label-default">年度走势</span></a>
                             <a href="<?php echo $this->createUrl("/zz/adboardrpt/index",array("nick"=>$query["nick"]));?>"><span class="label label-info">创意优选</span></a>
 
@@ -108,7 +108,7 @@
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-5">
-                                <small>消耗:</small>
+                                <small>消耗(元):</small>
                             </div>
                             <div class="col-md-4">
                                 <strong><?php echo \cloud\core\utils\String::nFormat($rpt["charge"]);?></strong>
@@ -118,7 +118,7 @@
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-5">
-                                <small>点击单价:</small>
+                                <small>点击单价(元):</small>
                             </div>
                             <div class="col-md-4">
                                 <strong><?php echo round(@($rpt["charge"]/$rpt["click"]),2);?></strong>
@@ -128,7 +128,7 @@
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-5">
-                                <small>点击率:</small>
+                                <small>点击率(%):</small>
                             </div>
                             <div class="col-md-4">
                                 <strong><?php echo $rpt["ctr"];?></strong>
@@ -142,7 +142,7 @@
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-5">
-                                <small>转化金额:</small>
+                                <small>转化金额(元):</small>
                             </div>
                             <div class="col-md-4">
                                 <strong><?php echo empty($rpt["alipayInshopAmt"])?0:\cloud\core\utils\String::nFormat($rpt["alipayInshopAmt"]);?></strong>
