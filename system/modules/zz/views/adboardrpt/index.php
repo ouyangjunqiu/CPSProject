@@ -162,7 +162,7 @@
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-5">
-                                <small>三天订单数:</small>
+                                <small>订单数:</small>
                             </div>
                             <div class="col-md-4">
                                 <strong><?php echo $rpt["alipayInShopNum"];?></strong>
