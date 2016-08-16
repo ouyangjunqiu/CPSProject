@@ -60,7 +60,6 @@
                 <th>创意名称</th>
                 <th class="b1">流量相关</th>
                 <th class="b2">转化相关</th>
-                <th>热度相关</th>
             </tr>
             </thead>
             <tbody>
@@ -72,18 +71,17 @@
             <?php foreach($list as $rpt):?>
                 <tr>
                     <td>
-<!---->
-<!--                        <a data-target="#tooltip_box" data-backdrop="false" data-toggle="modal" data-image="--><?php //echo $rpt["imagePath"];?><!--" data-name="--><?php //echo $rpt["adboardName"];?><!--">-->
-<!--                            <div class="thumbnail">-->
-<!---->
-<!--                                <img src="--><?php //echo $rpt["imagePath"];?><!--" alt="--><?php //echo $rpt["adboardName"];?><!--" class="img-rounded" />-->
-<!---->
-<!--                                <div class="caption">-->
-<!--                                    <p>--><?php //echo $rpt["adboardName"];?><!--</p>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!---->
-<!--                        </a>-->
+                        <a data-target="#tooltip_box" data-backdrop="false" data-toggle="modal" data-image="<?php echo $rpt["imagePath"];?>" data-name="<?php echo $rpt["adboardName"];?>">
+                            <div class="thumbnail">
+
+                                <img src="<?php echo $rpt["imagePath"];?>" alt="<?php echo $rpt["adboardName"];?>" class="img-rounded" />
+
+                                <div class="caption">
+                                    <p><?php echo $rpt["adboardName"];?></p>
+                                </div>
+                            </div>
+
+                        </a>
                        <strong><?php echo $rpt["adboardName"];?></strong>
                     </td>
                     <td class="b1">
@@ -145,46 +143,23 @@
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-5">
-                                <small>三天转化金额:</small>
+                                <small>转化金额:</small>
                             </div>
                             <div class="col-md-4">
-                                <strong><?php echo empty($rpt["pay"])?"-":\cloud\core\utils\String::nFormat($rpt["pay"]);?></strong>
+                                <strong><?php echo empty($rpt["alipayInshopAmt"])?0:\cloud\core\utils\String::nFormat($rpt["alipayInshopAmt"]);?></strong>
                             </div>
                             <div class="col-md-2"></div>
                         </div>
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-5">
-                                <small>七天转化金额:</small>
+                                <small>ROI:</small>
                             </div>
                             <div class="col-md-4">
-                                <strong><?php echo empty($rpt["pay7"])?"-":\cloud\core\utils\String::nFormat($rpt["pay7"]);?></strong>
+                                <strong><?php echo empty($rpt["roi"])?"-":round($rpt["roi"],2);?></strong>
                             </div>
                             <div class="col-md-2"></div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-5">
-                                <small>三天ROI:</small>
-                            </div>
-                            <div class="col-md-4">
-                                <strong><?php echo empty($rpt["pay"])?"-":round(@($rpt["pay"]/$rpt["charge"]),2);?></strong>
-                            </div>
-                            <div class="col-md-2"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-5">
-                                <small>七天ROI:</small>
-                            </div>
-                            <div class="col-md-4">
-                                <strong><?php echo empty($rpt["pay7"])?"-":round(@($rpt["pay7"]/$rpt["charge"]),2);?></strong>
-                            </div>
-                            <div class="col-md-2"></div>
-                        </div>
-                    </td>
-
-                    <td>
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-5">
@@ -195,16 +170,7 @@
                             </div>
                             <div class="col-md-2"></div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-5">
-                                <small>七天订单数:</small>
-                            </div>
-                            <div class="col-md-4">
-                                <strong><?php echo $rpt["alipayInShopNum7"];?></strong>
-                            </div>
-                            <div class="col-md-2"></div>
-                        </div>
+
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-5">
@@ -226,7 +192,6 @@
                             <div class="col-md-2"></div>
                         </div>
                     </td>
-
                 </tr>
 
             <?php endforeach;?>

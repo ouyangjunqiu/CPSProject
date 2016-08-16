@@ -9,6 +9,7 @@
 namespace application\modules\zz\controllers;
 
 
+use application\modules\zuanshi\model\AboardPackage;
 use application\modules\zz\model\AdboardWeekRpt;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
@@ -35,6 +36,20 @@ class AdboardrptController extends Controller
         }
         if(!empty($data) && !empty($orderby)) {
             Sorter::sort($data,$orderby);
+        }
+
+        if(count($data)>5){
+            $data = array_slice($data,0,5);
+        }
+
+        foreach($data as &$row){
+            $package = AboardPackage::model()->fetch("adboardId=?",array($row["adboardId"]));
+            if(!empty($package)){
+                $packageData = \CJSON::decode($package["data"]);
+                $row["imagePath"] = $packageData["imagePath"];
+            }else{
+                $row["imagePath"] = "";
+            }
         }
 
         $this->render("index",array("list"=>$data,"query"=>array("nick"=>$nick,"begindate"=>$begindate,"enddate"=>$enddate,"orderby"=>$orderby)));
