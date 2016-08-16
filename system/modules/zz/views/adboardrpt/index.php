@@ -21,7 +21,6 @@
                         <small>
                             <a href="<?php echo $this->createUrl("/zz/advertiserrpt/more",array("nick"=>$query["nick"]));?>"><span class="label label-info">全店推广报表</span></a>
                             <a href="<?php echo $this->createUrl("/zz/year/month",array("nick"=>$query["nick"]));?>"><span class="label label-default">年度走势</span></a>
-
                             <a href="<?php echo $this->createUrl("/zz/adboardrpt/index",array("nick"=>$query["nick"]));?>"><span class="label label-info">创意优选</span></a>
 
                         </small>
@@ -37,15 +36,16 @@
         </div>
         <div class="row" style="margin: 10px 0px;">
             <div class="col-md-11">
-                <small><?php echo date("Y.m.d",strtotime($query["begindate"]));?>~<?php echo date("Y.m.d",strtotime($query["enddate"]));?>统计报表:</small>
-                <a href="<?php echo $this->createUrl("/zz/adboardrpt/index",array("nick"=>$query["nick"],"orderby"=>"ctr"));?>">
-                    <?php if($query["orderby"] == "ctr"):?><span class="label label-info"><?php else:?><span class="label label-default"><?php endif;?>点击率</span>
-                </a>
+                <small>统计: <?php echo date("m.d",strtotime($query["begindate"]));?> ~ <?php echo date("m.d",strtotime($query["enddate"]));?> </small>
+
                 <a href="<?php echo $this->createUrl("/zz/adboardrpt/index",array("nick"=>$query["nick"],"orderby"=>"charge"));?>">
                     <?php if($query["orderby"] == "charge"):?><span class="label label-info"><?php else:?><span class="label label-default"><?php endif;?>消耗</span>
                 </a>
                 <a href="<?php echo $this->createUrl("/zz/adboardrpt/index",array("nick"=>$query["nick"],"orderby"=>"alipayInshopAmt"));?>">
                     <?php if($query["orderby"] == "alipayInshopAmt"):?><span class="label label-info"><?php else:?><span class="label label-default"><?php endif;?>转化</span>
+                </a>
+                <a href="<?php echo $this->createUrl("/zz/adboardrpt/index",array("nick"=>$query["nick"],"orderby"=>"ctr"));?>">
+                    <?php if($query["orderby"] == "ctr"):?><span class="label label-info"><?php else:?><span class="label label-default"><?php endif;?>点击率</span>
                 </a>
             </div>
 
@@ -82,7 +82,6 @@
                             </div>
 
                         </a>
-                       <strong><?php echo $rpt["adboardName"];?></strong>
                     </td>
                     <td class="b1">
                         <div class="row">
