@@ -20,7 +20,7 @@ class AdboardrptController extends Controller
             $now_start = date('Y-m-d',strtotime("$date -".($w ? $w - 1 : 6).' days')); //获取本周开始日期，如果$w是0，则表示周日，减去 6 天
 
             $begindate = date('Y-m-d',strtotime("$now_start - ".(7*$i)." days"));  //上周开始日期
-            $enddate = date('Y-m-d',strtotime("$begindate + 7 days"));  //上周结束日期
+            $enddate = date('Y-m-d',strtotime("$begindate + 6 days"));  //上周结束日期
             echo $begindate."~".$enddate."\n";
 
             $criteria = new \CDbCriteria();
