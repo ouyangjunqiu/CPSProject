@@ -14,7 +14,7 @@ class AdboardrptController extends Controller
 {
     public function actionWeek(){
 
-        for($i=2;$i<=1;$i++){
+        for($i=2;$i>=1;$i--){
             $date = date('Y-m-d');
             $w  = date('w',strtotime($date));
             $now_start = date('Y-m-d',strtotime("$date -".($w ? $w - 1 : 6).' days')); //获取本周开始日期，如果$w是0，则表示周日，减去 6 天
