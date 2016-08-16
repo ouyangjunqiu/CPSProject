@@ -218,7 +218,7 @@
                             <div class="col-md-3"><small>店铺地址:</small></div>
                             <div class="col-md-7">
                                 <span class="pic_read w2">
-                                   <a href="<?php echo $row["shopurl"];?>" target="_blank" title="<?php echo $row["shopurl"];?>"><?php echo $row["shopurl"];?></a>
+                                   <a href="<?php echo $row["shopurl"];?>" target="_blank" title="<?php echo $row["shopurl"];?>"><?php echo empty($row["shopurl"])?"":(strlen($row["shopurl"])>32?substr($row["shopurl"],0,32)."...":$row["shopurl"]);?></a>
                                 </span>
                                 <span class="pic_input form_writer" style="display: none">
                                     <input type="text" value="<?php echo $row["shopurl"];?>" name="shopurl"/>
