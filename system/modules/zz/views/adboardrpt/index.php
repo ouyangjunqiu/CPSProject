@@ -76,7 +76,7 @@
 
                                 <img src="<?php echo $rpt["imagePath"];?>" alt="<?php echo $rpt["adboardName"];?>" class="img-rounded" style="width: 220px;"/>
 
-                                <div class="caption">
+                                <div class="caption" style="text-align: center;">
                                     <p><?php echo $rpt["adboardName"];?></p>
                                 </div>
                             </div>
