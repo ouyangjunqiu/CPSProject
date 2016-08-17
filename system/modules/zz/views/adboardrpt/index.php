@@ -74,7 +74,7 @@
                         <a data-target="#tooltip_box" data-backdrop="false" data-toggle="modal" data-image="<?php echo $rpt["imagePath"];?>" data-name="<?php echo $rpt["adboardName"];?>">
                             <div class="thumbnail">
 
-                                <img src="<?php echo $rpt["imagePath"];?>" alt="<?php echo $rpt["adboardName"];?>" class="img-rounded" />
+                                <img src="<?php echo $rpt["imagePath"];?>" alt="<?php echo $rpt["adboardName"];?>" class="img-rounded" style="width: 220px;"/>
 
                                 <div class="caption">
                                     <p><?php echo $rpt["adboardName"];?></p>
@@ -152,7 +152,7 @@
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-5">
-                                <small>ROI:</small>
+                                <small>投资回报:</small>
                             </div>
                             <div class="col-md-4">
                                 <strong><?php echo empty($rpt["roi"])?"-":round($rpt["roi"],2);?></strong>
