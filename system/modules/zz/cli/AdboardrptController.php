@@ -1,6 +1,7 @@
 <?php
 namespace application\modules\zz\cli;
 use application\modules\main\model\Shop;
+use application\modules\zz\model\AdboardE3Rpt;
 use application\modules\zz\model\AdboardRptHistory;
 use application\modules\zz\model\AdboardWeekRpt;
 use cloud\core\cli\Controller;
@@ -12,6 +13,72 @@ use cloud\core\cli\Controller;
  */
 class AdboardrptController extends Controller
 {
+    public function actionE3(){
+        $fields = array(
+            "campaignId",
+            "campaignName",
+            "transId",
+            "transName",
+            "adboardId",
+            "adboardName",
+            "adPv",
+            "alipayInShopNum",
+            "alipayInshopAmt",
+            "avgAccessPageNum",
+            "avgAccessTime",
+            "cartNum",
+            "charge",
+            "click",
+            "ctr",
+            "cvr",
+            "deepInshopUv",
+            "dirShopColNum",
+            "ecpc",
+            "ecpm",
+            "gmvInshopAmt",
+            "gmvInshopNum",
+            "inshopItemColNum",
+            "roi",
+            "uv"
+        );
+
+        for($i=6;$i>3;$i--){
+            $logdate = date('Y-m-d',strtotime("-$i days"));
+            $criteria = new \CDbCriteria();
+            $criteria->addCondition("status='0'");
+            $shops = Shop::model()->fetchAll($criteria);
+            foreach($shops as $shop){
+                $sources = AdboardRptHistory::model()->fetchAll("logdate=? AND nick=? AND effectType=? AND effect=?",array($logdate,$shop["nick"],"click",3));
+                if(empty($sources))
+                    continue;
+                foreach($sources as $source){
+                    $data =  \CJSON::decode($source["data"]);
+                    if(!empty($data) && !empty($data["result"])){
+
+                        foreach($data["result"] as $row){
+                            $rpt = array(
+                                "logdate"=>$logdate,
+                                "nick"=>$shop["nick"]
+                            );
+                            foreach($fields as $f){
+                                $rpt[$f] = $row[$f];
+                            }
+
+                            AdboardE3Rpt::model()->deleteAll("logdate=? AND nick=? AND campaignId=? AND transId=? AND adboardId=?",array($rpt["logdate"],$rpt["nick"],$rpt["campaignId"],$rpt["transId"],$rpt["adboardId"]));
+                            $model = new AdboardE3Rpt();
+                            $model->setAttributes($rpt);
+                            if(!$model->save()){
+                                print_r($model->getErrors());
+                            }
+                        }
+
+                    }
+                }
+
+            }
+        }
+    }
+
     public function actionWeek(){
 
         for($i=2;$i>=1;$i--){
