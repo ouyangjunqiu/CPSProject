@@ -5,6 +5,7 @@ use application\modules\zz\model\DestE15Rpt;
 use application\modules\zz\model\DestE3Rpt;
 use application\modules\zz\model\DestE7Rpt;
 use application\modules\zz\model\DestRptHistory;
+use application\modules\zz\model\DestWeekRpt;
 use cloud\core\cli\Controller;
 
 /**
@@ -214,6 +215,42 @@ class DestrptController extends Controller
 
             }
         }
+    }
+
+    public function actionWeek(){
+
+        for($i=2;$i>=1;$i--){
+            $date = date('Y-m-d');
+            $w  = date('w',strtotime($date));
+            $now_start = date('Y-m-d',strtotime("$date -".($w ? $w - 1 : 6).' days')); //获取本周开始日期，如果$w是0，则表示周日，减去 6 天
+
+            $begindate = date('Y-m-d',strtotime("$now_start - ".(7*$i)." days"));  //上周开始日期
+            $enddate = date('Y-m-d',strtotime("$begindate + 6 days"));  //上周结束日期
+            echo $begindate."~".$enddate."\n";
+
+            $criteria = new \CDbCriteria();
+            $criteria->addCondition("status='0'");
+            $shops = Shop::model()->fetchAll($criteria);
+            foreach($shops as $shop){
+                $data =  DestRptHistory::fetchAllSummaryByNick($begindate,$enddate,$shop["nick"]);
+                if(empty($data))
+                    continue;
+                DestWeekRpt::model()->deleteAll("begindate=? AND enddate=? AND nick=?",array($begindate,$enddate,$shop["nick"]));
+                $model = new DestWeekRpt();
+                $model->setAttributes(array(
+                    "begindate"=>$begindate,
+                    "enddate"=>$enddate,
+                    "nick"=>$shop["nick"],
+                    "data"=>\CJSON::encode($data)
+                ));
+                if(!$model->save()){
+                    print_r($model->getErrors());
+                }
+
+
+            }
+        }
+
     }
 
 

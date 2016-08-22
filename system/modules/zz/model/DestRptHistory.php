@@ -8,6 +8,7 @@
 
 namespace application\modules\zz\model;
 
+use CJSON;
 use cloud\core\model\Model;
 
 class DestRptHistory extends Model
@@ -53,6 +54,69 @@ class DestRptHistory extends Model
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
         return array();
+    }
+
+    /**
+     * @param $begindate
+     * @param $enddate
+     * @param $nick
+     * @param string $effectType
+     * @param int $effect
+     * @return array
+     */
+    public static function fetchAllSummaryByNick($begindate,$enddate,$nick,$effectType = "click",$effect = 3){
+
+        $sources = self::model()->fetchAll("logdate>=? AND logdate<=? AND nick=? AND effectType=? AND effect=?",array($begindate,$enddate,$nick,$effectType,$effect));
+        $list = array();
+        foreach($sources as $row) {
+            $rpts = CJSON::decode($row["data"],true);
+
+            if(isset($rpts["result"])) {
+                foreach ($rpts["result"] as $rpt) {
+                    $list[$rpt["targetName"]][] = $rpt;
+                }
+            }
+        }
+
+
+
+        $data = array();
+        foreach($list as $targetName => $rpts){
+            $summary = array(
+                "charge" => 0,
+                "click" => 0,
+                "adPv" => 0,
+                "uv" => 0,
+                "cartNum" =>0,
+                "dirShopColNum" => 0,
+                "inshopItemColNum" => 0,
+                "alipayInshopAmt"=>0,
+                "alipayInShopNum" => 0
+            );
+            foreach($rpts as $rpt){
+                $summary["targetName"] = $rpt["targetName"];
+                $summary["destType"] = $rpt["destType"];
+                $summary["charge"] += $rpt["charge"];
+                $summary["click"] += $rpt["click"];
+                $summary["adPv"] += $rpt["adPv"];
+                $summary["uv"] += $rpt["uv"];
+                $summary["dirShopColNum"] += $rpt["dirShopColNum"];
+                $summary["inshopItemColNum"] += $rpt["inshopItemColNum"];
+                $summary["alipayInShopNum"] += $rpt["alipayInShopNum"];
+                $summary["alipayInshopAmt"] += $rpt["alipayInshopAmt"];
+                $summary["cartNum"] += $rpt["cartNum"];
+
+            }
+            if($summary["adPv"]>0 && $summary["click"]>0 && $summary["charge"]>0){
+                $data[] = array_merge($summary,array(
+                    "ctr" => round(@($summary["click"]/$summary["adPv"]),4)*100,
+                    "ecpc" => round(@($summary["charge"]/$summary["click"]),2),
+                    "roi" => round(@($summary["alipayInshopAmt"]/$summary["charge"]),2),
+                ));
+            }
+
+        }
+        return $data;
     }
 
 }
