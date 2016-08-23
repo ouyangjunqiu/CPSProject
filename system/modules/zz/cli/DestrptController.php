@@ -226,7 +226,6 @@ class DestrptController extends Controller
 
             $begindate = date('Y-m-d',strtotime("$now_start - ".(7*$i)." days"));  //上周开始日期
             $enddate = date('Y-m-d',strtotime("$begindate + 6 days"));  //上周结束日期
-            echo $begindate."~".$enddate."\n";
 
             $criteria = new \CDbCriteria();
             $criteria->addCondition("status='0'");
