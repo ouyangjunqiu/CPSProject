@@ -38,13 +38,13 @@
             <div class="col-md-11">
                 <small>统计: <?php echo date("m.d",strtotime($query["begindate"]));?> ~ <?php echo date("m.d",strtotime($query["enddate"]));?> </small>
 
-                <a href="<?php echo $this->createUrl("/zz/adboardrpt/index",array("nick"=>$query["nick"],"orderby"=>"charge"));?>">
+                <a href="<?php echo $this->createUrl("/zz/weekrpt/index",array("nick"=>$query["nick"],"orderby"=>"charge"));?>">
                     <?php if($query["orderby"] == "charge"):?><span class="label label-info"><?php else:?><span class="label label-default"><?php endif;?>消耗</span>
                 </a>
-                <a href="<?php echo $this->createUrl("/zz/adboardrpt/index",array("nick"=>$query["nick"],"orderby"=>"alipayInshopAmt"));?>">
+                <a href="<?php echo $this->createUrl("/zz/weekrpt/index",array("nick"=>$query["nick"],"orderby"=>"alipayInshopAmt"));?>">
                     <?php if($query["orderby"] == "alipayInshopAmt"):?><span class="label label-info"><?php else:?><span class="label label-default"><?php endif;?>转化</span>
                 </a>
-                <a href="<?php echo $this->createUrl("/zz/adboardrpt/index",array("nick"=>$query["nick"],"orderby"=>"ctr"));?>">
+                <a href="<?php echo $this->createUrl("/zz/weekrpt/index",array("nick"=>$query["nick"],"orderby"=>"ctr"));?>">
                     <?php if($query["orderby"] == "ctr"):?><span class="label label-info"><?php else:?><span class="label label-default"><?php endif;?>点击率</span>
                 </a>
             </div>
