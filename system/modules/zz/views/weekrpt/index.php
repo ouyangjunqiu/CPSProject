@@ -96,11 +96,11 @@
                <tr>
                 <td>
                         <a data-target="#tooltip_box" data-backdrop="false" data-toggle="modal" data-image="${rpt.imagePath}" data-name="${rpt.adboardName}">
-                            <div class="thumbnail">
+                            <div class="">
 
                                 <img src="${rpt.imagePath}" alt="${rpt.adboardName}" class="img-rounded" style="width: 220px;"/>
 
-                                <div class="caption" style="text-align: center;">
+                                <div class="caption">
                                     <p>${rpt.adboardName}</p>
                                 </div>
                             </div>
