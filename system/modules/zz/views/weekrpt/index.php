@@ -95,8 +95,8 @@
 </div>
 
 <script type="text/x-jquery-tmpl" id="zuanshi-adboard-week-rpt-tmpl">
-    <table class="table-frame" style="table-layout: fixed;">
-        <thead class="header">
+    <table class="table">
+        <thead>
             <tr class="small">
                 <th>创意名称</th>
                 <th class="b1">流量相关</th>
@@ -240,8 +240,8 @@
 
 <script type="text/x-jquery-tmpl" id="zuanshi-dmpdest-week-rpt-tmpl">
 
-<table class="baby-frame-table" id="table_fixed" style="table-layout: fixed;">
-     <thead class="header">
+<table class="table">
+     <thead>
         <tr class="small">
             <th>人群名称</th>
             <th>展现</th>
