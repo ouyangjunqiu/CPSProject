@@ -68,7 +68,17 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><small>DMP定向优选</small></div>
                 <div class="panel-body">
-                    <div data-load="overlay" data-tmpl="zuanshi-dmpdest-week-rpt-tmpl" data-role="zuanshi-dmpdest-week-rpt-tmpl" data-url="<?php echo $this->createUrl("/zz/destrpt/week",array("nick"=>$query["nick"],"date"=>$query["date"],"orderby"=>$query["orderby"],"destType"=>128));?>">
+                    <div data-load="overlay" data-tmpl="zuanshi-dest-week-rpt-tmpl" data-role="zuanshi-dmpdest-week-rpt-tmpl" data-url="<?php echo $this->createUrl("/zz/destrpt/week",array("nick"=>$query["nick"],"date"=>$query["date"],"orderby"=>$query["orderby"],"destType"=>128));?>">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin: 10px 0px;">
+            <div class="panel panel-default">
+                <div class="panel-heading"><small>访客定向优选</small></div>
+                <div class="panel-body">
+                    <div data-load="overlay" data-tmpl="zuanshi-dest-week-rpt-tmpl" data-role="zuanshi-fankedest-week-rpt-tmpl" data-url="<?php echo $this->createUrl("/zz/destrpt/week",array("nick"=>$query["nick"],"date"=>$query["date"],"orderby"=>$query["orderby"],"destType"=>16));?>">
                     </div>
                 </div>
             </div>
@@ -238,7 +248,7 @@
 </table>
 </script>
 
-<script type="text/x-jquery-tmpl" id="zuanshi-dmpdest-week-rpt-tmpl">
+<script type="text/x-jquery-tmpl" id="zuanshi-dest-week-rpt-tmpl">
 
 <table class="table">
      <thead>
@@ -271,7 +281,7 @@
      <tbody>
 
         {{if !isSuccess}}
-            <tr><td colspan="17">暂无DMP定向分析报表!</td></tr>
+            <tr><td colspan="17">暂无定向分析报表!</td></tr>
         {{else}}
 
             {{each(i,rpt) data}}
@@ -329,6 +339,7 @@
      </tbody>
 </table>
 </script>
+
 
 <script type="application/javascript">
 
