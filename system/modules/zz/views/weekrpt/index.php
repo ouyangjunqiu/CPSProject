@@ -286,28 +286,28 @@
 
                     <td>
                         {{if rpt.uv>0}}
-                         ${rpt.dirShopColNum/rpt.uv*100.toFixed(2)}
+                         ${(rpt.dirShopColNum/rpt.uv*100).toFixed(2)}
                         {{else}}
                             -
                         {{/if}}
                     </td>
                     <td>
                         {{if rpt.uv>0}}
-                         ${rpt.inshopItemColNum/rpt.uv*100.toFixed(2)}
+                         ${(rpt.inshopItemColNum/rpt.uv*100).toFixed(2)}
                         {{else}}
                             -
                         {{/if}}
                     </td>
                     <td>
                         {{if rpt.alipayInShopNum>0}}
-                            ${rpt.alipayInshopAmt/rpt.alipayInShopNum*100.toFixed(2)}
+                            ${(rpt.alipayInshopAmt/rpt.alipayInShopNum*100).toFixed(2)}
                         {{else}}
                             -
                         {{/if}}
                     </td>
                     <td>
                         {{if rpt.uv>0}}
-                            ${rpt.alipayInShopNum/rpt.uv*100.toFixed(2)}
+                            ${(rpt.alipayInShopNum/rpt.uv*100).toFixed(2)}
                         {{else}}
                             -
                         {{/if}}
