@@ -99,8 +99,8 @@
         <thead>
             <tr class="small">
                 <th>创意名称</th>
-                <th class="b1">流量相关</th>
-                <th class="b2">转化相关</th>
+                <th>流量相关</th>
+                <th>转化相关</th>
             </tr>
         </thead>
         <tbody>
@@ -122,7 +122,7 @@
 
                         </a>
                     </td>
-                    <td class="b1">
+                    <td>
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-5">
@@ -177,7 +177,7 @@
                     </td>
 
 
-                    <td class="b2">
+                    <td>
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-5">
@@ -247,10 +247,10 @@
             <th>展现</th>
             <th>点击</th>
             <th>点击率(%)</th>
-            <th class="b1">消耗(元)</th>
+            <th>消耗(元)</th>
             <th>点击单价(元)</th>
 
-            <th class="b2">投资回报率</th>
+            <th>投资回报率</th>
 
             <th>转化金额(元)</th>
 
