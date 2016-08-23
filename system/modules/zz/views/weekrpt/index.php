@@ -68,7 +68,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><small>DMP定向优选</small></div>
                 <div class="panel-body">
-                    <div data-load="overlay" data-tmpl="zuanshi-dest-week-rpt-tmpl" data-role="zuanshi-dmpdest-week-rpt-tmpl" data-url="<?php echo $this->createUrl("/zz/destrpt/week",array("nick"=>$query["nick"],"date"=>$query["date"],"orderby"=>$query["orderby"],"destType"=>128));?>">
+                    <div data-load="overlay" data-tmpl="zuanshi-dest-week-rpt-tmpl" data-role="zuanshi-dmpdest-week-rpt" data-url="<?php echo $this->createUrl("/zz/destrpt/week",array("nick"=>$query["nick"],"date"=>$query["date"],"orderby"=>$query["orderby"],"destType"=>128));?>">
                     </div>
                 </div>
             </div>
@@ -78,7 +78,17 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><small>访客定向优选</small></div>
                 <div class="panel-body">
-                    <div data-load="overlay" data-tmpl="zuanshi-dest-week-rpt-tmpl" data-role="zuanshi-fankedest-week-rpt-tmpl" data-url="<?php echo $this->createUrl("/zz/destrpt/week",array("nick"=>$query["nick"],"date"=>$query["date"],"orderby"=>$query["orderby"],"destType"=>16));?>">
+                    <div data-load="overlay" data-tmpl="zuanshi-dest-week-rpt-tmpl" data-role="zuanshi-fankedest-week-rpt" data-url="<?php echo $this->createUrl("/zz/destrpt/week",array("nick"=>$query["nick"],"date"=>$query["date"],"orderby"=>$query["orderby"],"destType"=>16));?>">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin: 10px 0px;">
+            <div class="panel panel-default">
+                <div class="panel-heading"><small>资源位优选</small></div>
+                <div class="panel-body">
+                    <div data-load="overlay" data-tmpl="zuanshi-adzone-week-rpt-tmpl" data-role="zuanshi-adzone-week-rpt" data-url="<?php echo $this->createUrl("/zz/adzonerpt/week",array("nick"=>$query["nick"],"date"=>$query["date"],"orderby"=>$query["orderby"]));?>">
                     </div>
                 </div>
             </div>
@@ -340,6 +350,97 @@
 </table>
 </script>
 
+<script type="text/x-jquery-tmpl" id="zuanshi-adzone-week-rpt-tmpl">
+
+<table class="table">
+     <thead>
+        <tr class="small">
+            <th>资源位名称</th>
+            <th>展现</th>
+            <th>点击</th>
+            <th>点击率(%)</th>
+            <th>消耗(元)</th>
+            <th>点击单价(元)</th>
+
+            <th>投资回报率</th>
+
+            <th>转化金额(元)</th>
+
+            <th>订单数</th>
+
+            <th>加购物车数</th>
+
+            <th>店铺收藏数</th>
+            <th>宝贝收藏数</th>
+            <th>访客数</th>
+
+            <th>店铺收藏率(%)</th>
+            <th>宝贝收藏率(%)</th>
+            <th>客单价(元)</th>
+            <th>支付转化率(%)</th>
+        </tr>
+     </thead>
+     <tbody>
+
+        {{if !isSuccess}}
+            <tr><td colspan="17">暂无资源位分析报表!</td></tr>
+        {{else}}
+
+            {{each(i,rpt) data}}
+                <tr class="small">
+                    <td><strong>${rpt.adzoneName}</strong></td>
+                    <td>${rpt.adPv}</td>
+                    <td>${rpt.click}</td>
+                    <td>${rpt.ctr}</td>
+                    <td class="b1">${rpt.charge}</td>
+                    <td>${rpt.ecpc}</td>
+
+                    <td class="b2">${rpt.roi}</td>
+                    <td class="b2">${rpt.alipayInshopAmt}</td>
+
+                    <td>${rpt.alipayInShopNum}</td>
+
+                    <td>${rpt.cartNum}</td>
+
+                    <td>${rpt.dirShopColNum}</td>
+                    <td>${rpt.inshopItemColNum}</td>
+                    <td>${rpt.uv}</td>
+
+                    <td>
+                        {{if rpt.uv>0}}
+                         ${(rpt.dirShopColNum/rpt.uv*100).toFixed(2)}
+                        {{else}}
+                            -
+                        {{/if}}
+                    </td>
+                    <td>
+                        {{if rpt.uv>0}}
+                         ${(rpt.inshopItemColNum/rpt.uv*100).toFixed(2)}
+                        {{else}}
+                            -
+                        {{/if}}
+                    </td>
+                    <td>
+                        {{if rpt.alipayInShopNum>0}}
+                            ${(rpt.alipayInshopAmt/rpt.alipayInShopNum).toFixed(2)}
+                        {{else}}
+                            -
+                        {{/if}}
+                    </td>
+                    <td>
+                        {{if rpt.uv>0}}
+                            ${(rpt.alipayInShopNum/rpt.uv*100).toFixed(2)}
+                        {{else}}
+                            -
+                        {{/if}}
+
+                    </td>
+                </tr>
+            {{/each}}
+        {{/if}}
+     </tbody>
+</table>
+</script>
 
 <script type="application/javascript">
 
@@ -348,15 +449,8 @@
 
         $(".top-ul>li").eq(1).addClass("top-li-hover");
 
-        $("#searchBtn").click(function(){
-            var form = $(this).parents("form");
-            form.submit();
-
-        });
-
-
         $("#backBtn").click(function(){
-            window.location.href='<?php echo $this->createUrl("/zuanshi/rpt/index");?>';
+            window.location.href='<?php echo $this->createUrl("/zz/advertiserrpt/index");?>';
         });
 
         $('#tooltip_box').on('show.bs.modal', function (event) {

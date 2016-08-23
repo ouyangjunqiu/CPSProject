@@ -8,14 +8,12 @@
 
 namespace application\modules\zz\controllers;
 
-
-use application\modules\zuanshi\model\AboardPackage;
-use application\modules\zz\model\AdboardWeekRpt;
+use application\modules\zz\model\AdzoneWeekRpt;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
 use cloud\core\utils\Sorter;
 
-class AdboardrptController extends Controller
+class AdzonerptController extends Controller
 {
     public function actionWeek(){
         $nick = Env::getRequest("nick");
@@ -28,8 +26,7 @@ class AdboardrptController extends Controller
         $enddate = date('Y-m-d',strtotime("$begindate + 6 days"));  //上周结束日期
 
         $nick = trim($nick);
-        $source = AdboardWeekRpt::model()->fetch("begindate=? AND enddate=? AND nick=?",array($begindate,$enddate,$nick));
-        $data = array();
+        $source = AdzoneWeekRpt::model()->fetch("begindate=? AND enddate=? AND nick=?",array($begindate,$enddate,$nick));
         if(!empty($source)) {
 
             $data = \CJSON::decode($source["data"]);
@@ -41,15 +38,6 @@ class AdboardrptController extends Controller
                 $data = array_slice($data,0,5);
             }
 
-            foreach($data as &$row){
-                $package = AboardPackage::model()->fetch("adboardId=?",array($row["adboardId"]));
-                if(!empty($package)){
-                    $packageData = \CJSON::decode($package["data"]);
-                    $row["imagePath"] = $packageData["imagePath"];
-                }else{
-                    $row["imagePath"] = "";
-                }
-            }
             $this->renderJson(array(
                 "isSuccess"=>true,
                 "data"=>$data,
@@ -73,7 +61,6 @@ class AdboardrptController extends Controller
                 )
             ));
         }
-
     }
 
 }
