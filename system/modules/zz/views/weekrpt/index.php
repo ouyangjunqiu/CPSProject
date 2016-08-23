@@ -320,7 +320,7 @@
                     </td>
                     <td>
                         {{if rpt.alipayInShopNum>0}}
-                            ${(rpt.alipayInshopAmt/rpt.alipayInShopNum*100).toFixed(2)}
+                            ${(rpt.alipayInshopAmt/rpt.alipayInShopNum).toFixed(2)}
                         {{else}}
                             -
                         {{/if}}
