@@ -58,6 +58,11 @@
             <div data-load="overlay" data-tmpl="zuanshi-adboard-week-rpt-tmpl" data-role="zuanshi-adboard-week-rpt" data-url="<?php echo $this->createUrl("/zz/adboardrpt/week",array("nick"=>$query["nick"],"date"=>$query["date"],"orderby"=>$query["orderby"]));?>">
             </div>
         </div>
+
+        <div class="row" style="margin: 10px 0px;">
+            <div data-load="overlay" data-tmpl="zuanshi-dmpdest-week-rpt-tmpl" data-role="zuanshi-dmpdest-week-rpt-tmpl" data-url="<?php echo $this->createUrl("/zz/destrpt/week",array("nick"=>$query["nick"],"date"=>$query["date"],"orderby"=>$query["orderby"],"destType"=>128));?>">
+            </div>
+        </div>
     </div>
 
     <div id="tooltip_box" class="modal fade" role="dialog" tabindex="-1">
@@ -94,14 +99,14 @@
         {{else}}
             {{each(i,rpt) data}}
                <tr>
-                <td>
+                    <td>
                         <a data-target="#tooltip_box" data-backdrop="false" data-toggle="modal" data-image="${rpt.imagePath}" data-name="${rpt.adboardName}">
                             <div class="">
 
                                 <img src="${rpt.imagePath}" alt="${rpt.adboardName}" class="img-rounded" style="width: 220px;"/>
 
                                 <div class="caption">
-                                    <p>${rpt.adboardName}</p>
+                                    <p><small>${rpt.adboardName}</small></p>
                                 </div>
                             </div>
 
@@ -223,6 +228,97 @@
 </table>
 </script>
 
+<script type="text/x-jquery-tmpl" id="zuanshi-dmpdest-week-rpt-tmpl">
+
+<table class="baby-frame-table" id="table_fixed" style="table-layout: fixed;">
+     <thead class="header">
+        <tr class="small">
+            <th>人群名称</th>
+            <th>展现</th>
+            <th>点击</th>
+            <th>点击率(%)</th>
+            <th class="b1">消耗(元)</th>
+            <th>点击单价(元)</th>
+
+            <th class="b2">投资回报率</th>
+
+            <th>转化金额(元)</th>
+
+            <th>订单数</th>
+
+            <th>加购物车数</th>
+
+            <th>店铺收藏数</th>
+            <th>宝贝收藏数</th>
+            <th>访客数</th>
+
+            <th>店铺收藏率(%)</th>
+            <th>宝贝收藏率(%)</th>
+            <th>客单价(元)</th>
+            <th>支付转化率(%)</th>
+        </tr>
+     </thead>
+     <tbody>
+
+        {{if !isSuccess}}
+            <tr><td colspan="17">暂无DMP定向分析报表!</td></tr>
+        {{else}}
+
+            {{each(i,rpt) data}}
+                <tr class="small">
+                    <td><strong>${rpt.targetName}</strong></td>
+                    <td>${rpt.adPv}</td>
+                    <td>${rpt.click}</td>
+                    <td>${rpt.ctr}</td>
+                    <td class="b1">${rpt.charge}</td>
+                    <td>${rpt.ecpc}</td>
+
+                    <td class="b2">${rpt.roi}</td>
+                    <td class="b2">${rpt.alipayInshopAmt}</td>
+
+                    <td>${rpt.alipayInShopNum}</td>
+
+                    <td>${rpt.cartNum}</td>
+
+                    <td>${rpt.dirShopColNum}</td>
+                    <td>${rpt.inshopItemColNum}</td>
+                    <td>${rpt.uv}</td>
+
+                    <td>
+                        {{if rpt.uv>0}}
+                         ${rpt.dirShopColNum/rpt.uv*100.toFixed(2)}
+                        {{else}}
+                            -
+                        {{/if}}
+                    </td>
+                    <td>
+                        {{if rpt.uv>0}}
+                         ${rpt.inshopItemColNum/rpt.uv*100.toFixed(2)}
+                        {{else}}
+                            -
+                        {{/if}}
+                    </td>
+                    <td>
+                        {{if rpt.alipayInShopNum>0}}
+                            ${rpt.alipayInshopAmt/rpt.alipayInShopNum*100.toFixed(2)}
+                        {{else}}
+                            -
+                        {{/if}}
+                    </td>
+                    <td>
+                        {{if rpt.uv>0}}
+                            ${rpt.alipayInShopNum/rpt.uv*100.toFixed(2)}
+                        {{else}}
+                            -
+                        {{/if}}
+
+                    </td>
+                </tr>
+            {{/each}}
+        {{/if}}
+     </tbody>
+</table>
+</script>
 
 <script type="application/javascript">
 
