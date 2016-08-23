@@ -55,12 +55,22 @@
         </div>
 
         <div class="row" style="margin: 10px 0px;">
-            <div data-load="overlay" data-tmpl="zuanshi-adboard-week-rpt-tmpl" data-role="zuanshi-adboard-week-rpt" data-url="<?php echo $this->createUrl("/zz/adboardrpt/week",array("nick"=>$query["nick"],"date"=>$query["date"],"orderby"=>$query["orderby"]));?>">
+            <div class="panel panel-default">
+                <div class="panel-heading"><small>创意优选</small></div>
+                <div class="panel-body">
+                    <div data-load="overlay" data-tmpl="zuanshi-adboard-week-rpt-tmpl" data-role="zuanshi-adboard-week-rpt" data-url="<?php echo $this->createUrl("/zz/adboardrpt/week",array("nick"=>$query["nick"],"date"=>$query["date"],"orderby"=>$query["orderby"]));?>">
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="row" style="margin: 10px 0px;">
-            <div data-load="overlay" data-tmpl="zuanshi-dmpdest-week-rpt-tmpl" data-role="zuanshi-dmpdest-week-rpt-tmpl" data-url="<?php echo $this->createUrl("/zz/destrpt/week",array("nick"=>$query["nick"],"date"=>$query["date"],"orderby"=>$query["orderby"],"destType"=>128));?>">
+            <div class="panel panel-default">
+                <div class="panel-heading"><small>DMP定向优选</small></div>
+                <div class="panel-body">
+                    <div data-load="overlay" data-tmpl="zuanshi-dmpdest-week-rpt-tmpl" data-role="zuanshi-dmpdest-week-rpt-tmpl" data-url="<?php echo $this->createUrl("/zz/destrpt/week",array("nick"=>$query["nick"],"date"=>$query["date"],"orderby"=>$query["orderby"],"destType"=>128));?>">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
