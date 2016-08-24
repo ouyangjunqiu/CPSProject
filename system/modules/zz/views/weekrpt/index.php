@@ -38,7 +38,7 @@
             <div class="col-md-11">
                 <small>统计:
 
-                    <a href="<?php echo $this->createUrl("/zz/weekrpt/index",array("nick"=>$query["nick"],"date"=>date("Y-m-d",strtotime($query["enddate"]." +1 days"))));?>"><span class="glyphicon glyphicon-chevron-left"></span> </a>
+                    <a href="<?php echo $this->createUrl("/zz/weekrpt/index",array("nick"=>$query["nick"],"date"=>date("Y-m-d",strtotime($query["enddate"]." -1 days"))));?>"><span class="glyphicon glyphicon-chevron-left"></span> </a>
 
                     <?php echo date("m.d",strtotime($query["begindate"]));?> ~ <?php echo date("m.d",strtotime($query["enddate"]));?> </small>
 
