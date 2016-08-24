@@ -34,8 +34,8 @@ class AdzonerptController extends Controller
                 Sorter::sort($data,$orderby);
             }
 
-            if(count($data)>5){
-                $data = array_slice($data,0,5);
+            if(count($data)>10){
+                $data = array_slice($data,0,10);
             }
 
             $this->renderJson(array(

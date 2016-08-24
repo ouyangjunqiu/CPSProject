@@ -42,8 +42,8 @@ class DestrptController extends Controller
                 Sorter::sort($list,$orderby);
             }
 
-            if(count($list)>5){
-                $list = array_slice($list,0,5);
+            if(count($list)>10){
+                $list = array_slice($list,0,10);
             }
 
             $this->renderJson(array(

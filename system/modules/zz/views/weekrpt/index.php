@@ -42,7 +42,10 @@
                     <?php if($query["orderby"] == "charge"):?><span class="label label-info"><?php else:?><span class="label label-default"><?php endif;?>消耗</span>
                 </a>
                 <a href="<?php echo $this->createUrl("/zz/weekrpt/index",array("nick"=>$query["nick"],"orderby"=>"alipayInshopAmt"));?>">
-                    <?php if($query["orderby"] == "alipayInshopAmt"):?><span class="label label-info"><?php else:?><span class="label label-default"><?php endif;?>转化</span>
+                    <?php if($query["orderby"] == "alipayInshopAmt"):?><span class="label label-info"><?php else:?><span class="label label-default"><?php endif;?>转化额</span>
+                </a>
+                <a href="<?php echo $this->createUrl("/zz/weekrpt/index",array("nick"=>$query["nick"],"orderby"=>"roi"));?>">
+                    <?php if($query["orderby"] == "roi"):?><span class="label label-info"><?php else:?><span class="label label-default"><?php endif;?>投资回报率</span>
                 </a>
                 <a href="<?php echo $this->createUrl("/zz/weekrpt/index",array("nick"=>$query["nick"],"orderby"=>"ctr"));?>">
                     <?php if($query["orderby"] == "ctr"):?><span class="label label-info"><?php else:?><span class="label label-default"><?php endif;?>点击率</span>
@@ -268,6 +271,7 @@
             <th>点击</th>
             <th>点击率(%)</th>
             <th>消耗(元)</th>
+            <th>千次展现成本(元)</th>
             <th>点击单价(元)</th>
 
             <th>投资回报率</th>
@@ -282,6 +286,7 @@
             <th>宝贝收藏数</th>
             <th>访客数</th>
 
+            <th>加购率(%)</th>
             <th>店铺收藏率(%)</th>
             <th>宝贝收藏率(%)</th>
             <th>客单价(元)</th>
@@ -301,6 +306,7 @@
                     <td>${rpt.click}</td>
                     <td>${rpt.ctr}</td>
                     <td class="b1">${rpt.charge}</td>
+                    <td>${(rpt.charge/rpt.adPv*1000).toFixed(2)}</td>
                     <td>${rpt.ecpc}</td>
 
                     <td class="b2">${rpt.roi}</td>
@@ -313,6 +319,13 @@
                     <td>${rpt.dirShopColNum}</td>
                     <td>${rpt.inshopItemColNum}</td>
                     <td>${rpt.uv}</td>
+                    <td>
+                        {{if rpt.uv>0}}
+                         ${(rpt.cartNum/rpt.uv*100).toFixed(2)}
+                        {{else}}
+                            -
+                        {{/if}}
+                    </td>
 
                     <td>
                         {{if rpt.uv>0}}
@@ -360,8 +373,8 @@
             <th>点击</th>
             <th>点击率(%)</th>
             <th>消耗(元)</th>
+            <th>千次展现成本(元)</th>
             <th>点击单价(元)</th>
-
             <th>投资回报率</th>
 
             <th>转化金额(元)</th>
@@ -373,7 +386,7 @@
             <th>店铺收藏数</th>
             <th>宝贝收藏数</th>
             <th>访客数</th>
-
+            <th>加购率(%)</th>
             <th>店铺收藏率(%)</th>
             <th>宝贝收藏率(%)</th>
             <th>客单价(元)</th>
@@ -393,6 +406,7 @@
                     <td>${rpt.click}</td>
                     <td>${rpt.ctr}</td>
                     <td class="b1">${rpt.charge}</td>
+                    <td>${(rpt.charge/rpt.adPv*1000).toFixed(2)}</td>
                     <td>${rpt.ecpc}</td>
 
                     <td class="b2">${rpt.roi}</td>
@@ -405,6 +419,13 @@
                     <td>${rpt.dirShopColNum}</td>
                     <td>${rpt.inshopItemColNum}</td>
                     <td>${rpt.uv}</td>
+                    <td>
+                        {{if rpt.uv>0}}
+                         ${(rpt.cartNum/rpt.uv*100).toFixed(2)}
+                        {{else}}
+                            -
+                        {{/if}}
+                    </td>
 
                     <td>
                         {{if rpt.uv>0}}

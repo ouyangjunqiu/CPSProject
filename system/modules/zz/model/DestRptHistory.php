@@ -112,6 +112,7 @@ class DestRptHistory extends Model
                     "ctr" => round(@($summary["click"]/$summary["adPv"]),4)*100,
                     "ecpc" => round(@($summary["charge"]/$summary["click"]),2),
                     "roi" => round(@($summary["alipayInshopAmt"]/$summary["charge"]),2),
+                    "ecpm" => round(@($summary["charge"]/$summary["adPv"]*1000),2),
                 ));
             }
 
