@@ -119,7 +119,7 @@ class DestrptController extends Controller
             $criteria->addCondition("status='0'");
             $shops = Shop::model()->fetchAll($criteria);
             foreach($shops as $shop){
-                $sources = DestRptHistory::model()->fetchAll("logdate=? AND nick=? AND effectType=? AND effect=?",array($logdate,$shop["nick"],"click",3));
+                $sources = DestRptHistory::model()->fetchAll("logdate=? AND nick=? AND effectType=? AND effect=?",array($logdate,$shop["nick"],"click",7));
                 if(empty($sources))
                     continue;
                 foreach($sources as $source){
@@ -186,7 +186,7 @@ class DestrptController extends Controller
             $criteria->addCondition("status='0'");
             $shops = Shop::model()->fetchAll($criteria);
             foreach($shops as $shop){
-                $sources = DestRptHistory::model()->fetchAll("logdate=? AND nick=? AND effectType=? AND effect=?",array($logdate,$shop["nick"],"click",3));
+                $sources = DestRptHistory::model()->fetchAll("logdate=? AND nick=? AND effectType=? AND effect=?",array($logdate,$shop["nick"],"click",15));
                 if(empty($sources))
                     continue;
                 foreach($sources as $source){
