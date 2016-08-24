@@ -36,7 +36,17 @@
         </div>
         <div class="row" style="margin: 10px 0px;">
             <div class="col-md-11">
-                <small>统计: <?php echo date("m.d",strtotime($query["begindate"]));?> ~ <?php echo date("m.d",strtotime($query["enddate"]));?> </small>
+                <small>统计:
+
+                    <a href="<?php echo $this->createUrl("/zz/weekrpt/index",array("nick"=>$query["nick"],"date"=>date("Y-m-d",strtotime($query["begindate"]." -1 days"))));?>"><span class="glyphicon glyphicon-chevron-left"></span> </a>
+
+                    <?php echo date("m.d",strtotime($query["begindate"]));?> ~ <?php echo date("m.d",strtotime($query["enddate"]));?> </small>
+
+                    <?php if(time()>strtotime($query["enddate"]." +1 days")):?>
+                    <a href="<?php echo $this->createUrl("/zz/weekrpt/index",array("nick"=>$query["nick"],"date"=>date("Y-m-d",strtotime($query["enddate"]." +1 days"))));?>"><span class="glyphicon glyphicon-chevron-right"></span> </a>
+                    <?php else:?>
+                        <span class="glyphicon glyphicon-chevron-right disable"></span>
+                    <?php endif;?>
 
                 <a href="<?php echo $this->createUrl("/zz/weekrpt/index",array("nick"=>$query["nick"],"orderby"=>"charge"));?>">
                     <?php if($query["orderby"] == "charge"):?><span class="label label-info"><?php else:?><span class="label label-default"><?php endif;?>消耗</span>
