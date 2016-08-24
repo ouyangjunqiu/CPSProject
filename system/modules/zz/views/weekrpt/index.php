@@ -44,8 +44,7 @@
 
                     <?php if(time()>strtotime($query["enddate"]." +8 days")):?>
                     <a href="<?php echo $this->createUrl("/zz/weekrpt/index",array("nick"=>$query["nick"],"date"=>date("Y-m-d",strtotime($query["enddate"]." +8 days"))));?>"><span class="glyphicon glyphicon-chevron-right"></span> </a>
-                    <?php else:?>
-                        <span class="glyphicon glyphicon-chevron-right disable"></span>
+                    
                     <?php endif;?>
 
                 <a href="<?php echo $this->createUrl("/zz/weekrpt/index",array("nick"=>$query["nick"],"orderby"=>"charge"));?>">
