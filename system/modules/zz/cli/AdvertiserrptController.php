@@ -72,7 +72,7 @@ class AdvertiserrptController extends Controller
             $shops = Shop::model()->fetchAll($criteria);
             foreach($shops as $shop){
                 $data =  AdvertiserRpt::fetchByNick($shop["nick"],$begindate,$enddate,'click',3);
-                if(empty($data))
+                if(empty($data) || empty($data["total"]) || $data["total"]["adPv"]<=0)
                     continue;
                 AdvertiserWeekRpt::model()->deleteAll("begindate=? AND enddate=? AND nick=?",array($begindate,$enddate,$shop["nick"]));
                 $model = new AdvertiserWeekRpt();
