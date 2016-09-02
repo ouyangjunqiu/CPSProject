@@ -1,6 +1,6 @@
 <?php
 
-namespace application\modules\main\model;
+namespace application\modules\sycm\model;
 
 use cloud\core\model\Model;
 

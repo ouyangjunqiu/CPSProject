@@ -7,7 +7,7 @@
 
 namespace application\modules\sycm\controllers;
 
-use application\modules\main\model\ShopRanking;
+use application\modules\sycm\model\ShopRanking;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
 
