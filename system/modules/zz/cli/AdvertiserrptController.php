@@ -17,7 +17,7 @@ class AdvertiserrptController extends Controller
 {
     public function actionMonth(){
 
-            $firstday = date('Y-m-01');
+            $firstday = date('Y-m-01',strtotime("-1 month +1 day"));
             $lastday = date('Y-m-d', strtotime("$firstday +1 month -1 day"));
             $year = date("Y",strtotime($lastday));
             $month = date("m",strtotime($lastday));
