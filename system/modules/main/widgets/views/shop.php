@@ -117,6 +117,70 @@
 
                             </div>
                         </div>
+
+                        <?php if(!empty($rpt) && $rpt["total"]["charge"]>0):?>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <small><strong>智钻上周状况</strong></small>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <small>消耗:</small>
+                                </div>
+                                <div class="col-md-2">
+                                    <small><strong><?php echo $rpt["total"]["charge"];?></strong></small>
+                                </div>
+                                <div class="col-md-4">
+                                    <small>日均消耗:</small>
+                                </div>
+                                <div class="col-md-2">
+                                    <small><strong><?php echo @round($rpt["total"]["charge"]/count($rpt["list"]),2);?></strong></small>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <small>成交单数:</small>
+                                </div>
+                                <div class="col-md-2">
+                                    <small><strong><?php echo $rpt["total"]["alipayInShopNum"];?></strong></small>
+                                </div>
+                                <div class="col-md-4">
+                                    <small>转化成本:</small>
+                                </div>
+                                <div class="col-md-2">
+                                    <small><strong><?php echo @round($rpt["total"]["charge"]/$rpt["total"]["alipayInShopNum"],2);?></strong></small>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <small>加购数:</small>
+                                </div>
+                                <div class="col-md-2">
+                                    <small><strong><?php echo $rpt["total"]["cartNum"];?></strong></small>
+                                </div>
+                                <div class="col-md-4">
+                                    <small>加购成本:</small>
+                                </div>
+                                <div class="col-md-2">
+                                    <small><strong><?php echo @round($rpt["total"]["charge"]/$rpt["total"]["cartNum"],2);?></strong></small>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <small>收藏数:</small>
+                                </div>
+                                <div class="col-md-2">
+                                    <small><strong><?php echo ($rpt["total"]["dirShopColNum"]+$rpt["total"]["inshopItemColNum"]);?></strong></small>
+                                </div>
+                                <div class="col-md-4">
+                                    <small>收藏成本:</small>
+                                </div>
+                                <div class="col-md-2">
+                                    <small><strong><?php echo @round($rpt["total"]["charge"]/($rpt["total"]["dirShopColNum"]+$rpt["total"]["inshopItemColNum"]),2);?></strong></small>
+                                </div>
+                            </div>
+                        <?php endif;?>
                         <div class="row">
                             <div class="babyinfor-interface">
                                 <a href="javascript:void(0);" class="zuanshi quick_login_btn" extension="uninstall" login-type="zuanshi" data-nick="<?php echo $row["nick"];?>" data-password="<?php echo $row["login_password"];?>" data-username="<?php echo $row["login_nick"];?>">智·钻</a>
