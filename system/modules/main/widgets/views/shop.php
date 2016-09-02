@@ -125,59 +125,67 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <small>消耗:</small>
                                 </div>
                                 <div class="col-md-2">
                                     <small><strong><?php echo $rpt["total"]["charge"];?></strong></small>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <small>日均消耗:</small>
                                 </div>
                                 <div class="col-md-2">
                                     <small><strong><?php echo @round($rpt["total"]["charge"]/count($rpt["list"]),2);?></strong></small>
                                 </div>
+                                <div class="col-md-2">
+                                </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <small>成交单数:</small>
                                 </div>
                                 <div class="col-md-2">
                                     <small><strong><?php echo $rpt["total"]["alipayInShopNum"];?></strong></small>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <small>转化成本:</small>
                                 </div>
                                 <div class="col-md-2">
                                     <small><strong><?php echo @round($rpt["total"]["charge"]/$rpt["total"]["alipayInShopNum"],2);?></strong></small>
                                 </div>
+                                <div class="col-md-2">
+                                </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <small>加购数:</small>
                                 </div>
                                 <div class="col-md-2">
                                     <small><strong><?php echo $rpt["total"]["cartNum"];?></strong></small>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <small>加购成本:</small>
                                 </div>
                                 <div class="col-md-2">
                                     <small><strong><?php echo @round($rpt["total"]["charge"]/$rpt["total"]["cartNum"],2);?></strong></small>
                                 </div>
+                                <div class="col-md-2">
+                                </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <small>收藏数:</small>
                                 </div>
                                 <div class="col-md-2">
                                     <small><strong><?php echo ($rpt["total"]["dirShopColNum"]+$rpt["total"]["inshopItemColNum"]);?></strong></small>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <small>收藏成本:</small>
                                 </div>
                                 <div class="col-md-2">
                                     <small><strong><?php echo @round($rpt["total"]["charge"]/($rpt["total"]["dirShopColNum"]+$rpt["total"]["inshopItemColNum"]),2);?></strong></small>
+                                </div>
+                                <div class="col-md-2">
                                 </div>
                             </div>
                         <?php endif;?>
