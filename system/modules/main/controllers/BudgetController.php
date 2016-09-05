@@ -33,7 +33,10 @@ class BudgetController extends Controller
 
         $tags = Env::getRequest("tags");
         if(isset($tags)){
-            $attr["tags"] = str_replace("，",",",$tags);
+            $tags = trim($tags);
+            $tags = str_replace(" ",",",$tags);
+            $tags = str_replace("，",",",$tags);
+            $attr["tags"] = preg_replace("/,+/",",",$tags);
         }
 
         $model = ShopBudget::model()->find("nick=?",array($nick));
