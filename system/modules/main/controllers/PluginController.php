@@ -9,7 +9,9 @@ namespace application\modules\main\controllers;
 
 
 use application\modules\main\model\Plugin;
+use application\modules\main\model\PluginInstallLog;
 use cloud\core\controllers\Controller;
+use cloud\core\utils\Env;
 
 class PluginController extends Controller
 {
@@ -24,6 +26,25 @@ class PluginController extends Controller
             "isvalid"=>1
         ));
 
+        if($model->save()){
+            $this->renderJson(array("isSuccess"=>true,"data"=>$model));
+        }else{
+            $this->renderJson(array("isSuccess"=>false,"msg"=>$model->getErrors()));
+        }
+    }
+
+    public function actionLog(){
+        $username = Env::getRequest('username');
+        $version = Env::getRequest('version');
+        $logdate = date("Y-m-d");
+
+        PluginInstallLog::model()->deleteAll("logdate=? AND username=?",array($logdate,$username));
+        $model = new PluginInstallLog();
+        $model->setAttributes(array(
+            "logdate"=>$logdate,
+            "version"=>$version,
+            "username"=>$username
+        ));
         if($model->save()){
             $this->renderJson(array("isSuccess"=>true,"data"=>$model));
         }else{

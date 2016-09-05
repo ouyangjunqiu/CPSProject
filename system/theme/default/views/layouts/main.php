@@ -95,7 +95,8 @@
                 <li class="user user-menu">
                     <a href="#"> <i class="fa fa-user"></i>
                         <span class="hidden-xs">
-                            <?php $user =\cloud\core\utils\Env::getUser();if(!empty($user)){echo $user["username"];}else{echo "游客";}?></span>
+                            <?php $user =\cloud\core\utils\Env::getUser();if(!empty($user)){echo $user["username"];}else{echo "游客";}?>
+                        </span>
                     </a>
                 </li>
                 <li class="dropdown browser-plugin">
@@ -207,13 +208,37 @@
 
 
     <script src='<?php echo STATICURL."/base/js/score.js"; ?>'></script>
+
+<?php
+$user = \cloud\core\utils\Env::getUser();
+$username = (!empty($user) && isset($user["username"]))?$user["username"]:"游客";
+?>
     <script type="text/javascript">
         $(document).ready(function(){
+
+            var ilog = function(v){
+                var t = $.cookie("cpstools.install.log.time");
+                if(!t || Date.now()>t) {
+                    var date = new Date();
+                    date.setTime(date.getTime() + 8*3600 * 1000);
+                    $.cookie("cpstools.install.log.time", date.getTime());
+                    $.ajax({
+                        url: '<?php echo $this->createUrl("/main/plugin/log");?>',
+                        type: 'post',
+                        data: {
+                            username: '<?php echo $username;?>',
+                            version: v
+                        }
+                    })
+                }
+            };
+
             var plugininstall = false;
             window.addEventListener('message',function(event){
                 if(event && event.data && event.data.type){
                     switch (event.data.type){
                         case "CPSTOOLS_EXTENSION_INSTALL":
+                            ilog(event.data.version);
                             plugininstall = true;
                             if(event.data.upgrade)
                                 app.confirm("精准投放平台小助手有新的版本发布,是否立刻下载安装?",function(){
