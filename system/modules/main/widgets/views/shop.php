@@ -103,8 +103,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <span class="label label-info"><?php echo $row["shoptype"];?></span>
-                                <?php echo !empty($row["ztc_budget"])?"<span \"label label-warning\">直通车暂停</span>":"<span class=\"label label-info\">直通车推广</span>";?>
-                                <?php echo !empty($row["zuanshi_budget"])?"<span \"label label-warning\">智钻暂停</span>":"<span class=\"label label-info\">智钻推广</span>";?>
+                                <?php echo empty($row["ztc_budget"])?"<span \"label label-warning\">直通车暂停</span>":"<span class=\"label label-info\">直通车推广</span>";?>
+                                <?php echo empty($row["zuanshi_budget"])?"<span \"label label-warning\">智钻暂停</span>":"<span class=\"label label-info\">智钻推广</span>";?>
                                 <?php
                                 if(!empty($row["tags"])){
                                     $tags = explode(",",$row["tags"]);
