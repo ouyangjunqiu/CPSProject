@@ -17,6 +17,8 @@ class StringUtil
         $str = trim($str);
         $str = str_replace(" ",",",$str);
         $str = str_replace("，",",",$str);
+        $str = str_replace("、",",",$str);
+
         return preg_replace("/,+/",",",$str);
     }
 
