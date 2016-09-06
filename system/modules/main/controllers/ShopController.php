@@ -8,6 +8,7 @@
  */
 namespace application\modules\main\controllers;
 
+use application\modules\main\utils\StringUtil;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
 use application\modules\main\model\Shop;
@@ -29,9 +30,14 @@ class ShopController extends Controller
             $this->renderJson(array("isSuccess" => false, "msg" => "店铺名不能为空!"));
         }
         $pic = Env::getRequest("pic");
+        $pic = StringUtil::tagFormat($pic);
+
         $ztc_pic = Env::getRequest("ztc_pic");
+        $ztc_pic = StringUtil::tagFormat($ztc_pic);
         $zuanshi_pic = Env::getRequest("zuanshi_pic");
+        $zuanshi_pic = StringUtil::tagFormat($zuanshi_pic);
         $bigdata_pic = Env::getRequest("bigdata_pic");
+        $bigdata_pic = StringUtil::tagFormat($bigdata_pic);
         $model = Shop::model()->find("nick=?",array($nick));
         if(empty($model)){
             $this->renderJson(array("isSuccess"=>false));
@@ -210,22 +216,22 @@ class ShopController extends Controller
             }
             $pic = Env::getRequest("pic");
             if(!String::isEmpty($pic)){
-                $arr["pic"] = trim($pic);
+                $arr["pic"] = StringUtil::tagFormat($pic);
             }
 
             $zuanshipic = Env::getRequest("zuanshi_pic");
             $bigdatapic = Env::getRequest("bigdata_pic");
             $ztcpic = Env::getRequest("ztc_pic");
             if(!String::isEmpty($zuanshipic)){
-                $arr["zuanshi_pic"] = trim($zuanshipic);
+                $arr["zuanshi_pic"] = StringUtil::tagFormat($zuanshipic);
             }
 
             if(!String::isEmpty($bigdatapic)){
-                $arr["bigdata_pic"] = trim($bigdatapic);
+                $arr["bigdata_pic"] = StringUtil::tagFormat($bigdatapic);
             }
 
             if(!String::isEmpty($ztcpic)){
-                $arr["ztc_pic"] = trim($ztcpic);
+                $arr["ztc_pic"] = StringUtil::tagFormat($ztcpic);
             }
 
             $arr["create_date"] = date("Y-m-d");
@@ -277,10 +283,10 @@ class ShopController extends Controller
                 "shopurl"=>$shopurl,
                 "login_nick"=>$loginnick,
                 "login_password"=>$loginpassword,
-                "pic"=>$pic,
-                "zuanshi_pic"=>$zuanshipic,
-                "bigdata_pic"=>$bigdatapic,
-                "ztc_pic"=>$ztcpic,
+                "pic"=>StringUtil::tagFormat($pic),
+                "zuanshi_pic"=>StringUtil::tagFormat($zuanshipic),
+                "bigdata_pic"=>StringUtil::tagFormat($bigdatapic),
+                "ztc_pic"=>StringUtil::tagFormat($ztcpic),
                 "shoptype"=>$shoptype,
                 "status"=>0,
                 "create_date"=>date("Y-m-d"),
@@ -293,10 +299,10 @@ class ShopController extends Controller
                 "shopurl"=>$shopurl,
                 "login_nick"=>$loginnick,
                 "login_password"=>$loginpassword,
-                "pic"=>$pic,
-                "zuanshi_pic"=>$zuanshipic,
-                "bigdata_pic"=>$bigdatapic,
-                "ztc_pic"=>$ztcpic,
+                "pic"=>StringUtil::tagFormat($pic),
+                "zuanshi_pic"=>StringUtil::tagFormat($zuanshipic),
+                "bigdata_pic"=>StringUtil::tagFormat($bigdatapic),
+                "ztc_pic"=>StringUtil::tagFormat($ztcpic),
                 "shoptype"=>$shoptype,
                 "status"=>0
             ));
