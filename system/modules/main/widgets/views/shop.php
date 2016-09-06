@@ -547,6 +547,13 @@
             <div role="tabpanel" class="tab-pane" id="more_<?php echo $row["id"];?>" data-role="shop-more">
 
                 <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="babyinfor-frame-tit">
+                                <a href="<?php echo $row["shopurl"];?>" target="_blank"><?php echo $row["nick"];?> </a>
+                            </p>
+                        </div>
+                    </div>
 
                     <div class="row">
                         <div class="babyinfor-interface">
