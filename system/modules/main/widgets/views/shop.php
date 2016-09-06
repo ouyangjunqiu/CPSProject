@@ -121,7 +121,7 @@
                         </div>
 
                         <?php if(!empty($rpt) && $rpt["total"]["charge"]>0):?>
-                            <div class="row">
+                            <div class="row" style="margin-top: 10px;">
                                 <div class="col-md-12">
                                     <small><strong>智钻上周状况</strong></small>
                                 </div>
