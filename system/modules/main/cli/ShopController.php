@@ -29,4 +29,17 @@ class ShopController extends Controller
 
     }
 
+    public function actionOff(){
+        $criteria = new \CDbCriteria();
+        $criteria->addCondition("status='1'");
+        $shops = Shop::model()->findAll($criteria);
+        foreach($shops as $shop){
+            $shop->status = 2;
+
+            if(!$shop->save()){
+                print_r($shop);
+            }
+        }
+    }
+
 }

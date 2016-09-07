@@ -20,23 +20,7 @@
 <section class="content">
 
     <div class="row">
-        <div class="col-lg-3 col-xs-6">
 
-            <div class="small-box bg-aqua">
-                <div class="inner">
-                    <h3>
-                        <?php echo $summary["total"];?>
-                    </h3>
-                    <p>
-                        总店铺数
-                    </p>
-
-                </div>
-                <a href="javascript:void(0)" class="small-box-footer">
-                    查看详细 <i class="fa fa-arrow-circle-right"></i>
-                </a>
-            </div>
-        </div>
         <div class="col-lg-3 col-xs-6">
 
             <div class="small-box bg-green">
@@ -45,7 +29,7 @@
                         <?php echo $summary["opentotal"];?>
                     </h3>
                     <p>
-                       合作中店铺数
+                       服务店铺数
                     </p>
                 </div>
 
@@ -62,7 +46,7 @@
                         <?php echo $summary["stoptotal"];?>
                     </h3>
                     <p>
-                        暂停店铺数
+                        当月流失店铺数
                     </p>
                 </div>
 
@@ -79,11 +63,28 @@
                         <?php echo $summary["offtotal"];?>
                     </h3>
                     <p>
-                        流失店铺数
+                        以往流失店铺数
                     </p>
 
                 </div>
                 <a href="<?php echo $this->createUrl("/main/default/stoplist");?>" class="small-box-footer">
+                    查看详细 <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>
+                        <?php echo $summary["total"]-$summary["opentotal"];?>
+                    </h3>
+                    <p>
+                        总流失店铺数
+                    </p>
+
+                </div>
+                <a href="javascript:void(0)" class="small-box-footer">
                     查看详细 <i class="fa fa-arrow-circle-right"></i>
                 </a>
             </div>
@@ -176,10 +177,7 @@
                             <tr>
                                 <th>负责人</th>
                                 <th>操作店铺数</th>
-                                <th>直钻业务店铺数</th>
-                                <th>实际直钻业务店铺数</th>
-                                <th>暂停店铺数</th>
-                                <th>流失店铺数</th>
+                                <th>当月流失店铺数</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -188,10 +186,7 @@
                                 <tr>
                                     <td><a href="<?php echo $this->createUrl("/main/default/index",array("q"=>$log["pic"],"pic"=>"","page"=>1));?>" class="btn-link"><?php echo $log["pic"];?></strong> </a></td>
                                     <td><?php echo $log["opentotal"];?></td>
-                                    <td> <?php echo $log["typetotal1"];?></td>
-                                    <td> <?php echo $log["typetotal4"];?></td>
                                     <td> <?php echo $log["stoptotal"];?></td>
-                                    <td> <?php echo $log["offtotal"];?></td>
                                 </tr>
 
                             <?php endforeach;?>
@@ -221,10 +216,7 @@
                             <tr>
                                 <th>负责人</th>
                                 <th>操作店铺数</th>
-                                <th>直钻业务店铺数</th>
-                                <th>实际直钻业务店铺数</th>
-                                <th>暂停店铺数</th>
-                                <th>流失店铺数</th>
+                                <th>当月流失店铺数</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -233,10 +225,7 @@
                                 <tr>
                                     <td><a href="<?php echo $this->createUrl("/main/default/index",array("q"=>$log["pic"],"pic"=>"","page"=>1));?>" class="btn-link"><?php echo $log["pic"];?></strong> </a></td>
                                     <td><?php echo $log["opentotal"];?></td>
-                                    <td> <?php echo $log["typetotal1"];?></td>
-                                    <td> <?php echo $log["typetotal4"];?></td>
                                     <td> <?php echo $log["stoptotal"];?></td>
-                                    <td> <?php echo $log["offtotal"];?></td>
                                 </tr>
 
                             <?php endforeach;?>

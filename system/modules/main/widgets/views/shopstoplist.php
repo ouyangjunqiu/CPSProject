@@ -108,14 +108,14 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <a href="javascript:void(0)"  data-click="restart" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo Yii::app()->urlManager->createUrl('/main/shop/restart');?>"><small>1. 恢复合作..</small></a>
+                            <a href="javascript:void(0)"  data-click="restart" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo Yii::app()->urlManager->createUrl('/main/shop/restart');?>"><small>1. 恢复服务..</small></a>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <a href="javascript:void(0)" data-click="off" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo Yii::app()->urlManager->createUrl('/main/shop/off');?>"><small>2. 终止合作..</small></a>
-                        </div>
-                    </div>
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-12">-->
+<!--                            <a href="javascript:void(0)" data-click="off" data-nick="--><?php //echo $row["nick"];?><!--" data-url="--><?php //echo Yii::app()->urlManager->createUrl('/main/shop/off');?><!--"><small>2. 终止合作..</small></a>-->
+<!--                        </div>-->
+<!--                    </div>-->
                     <div class="row">
                         <div class="col-md-12">
                             <small><strong>推广相关</strong></small>
