@@ -42,12 +42,19 @@ class DefaultController extends Controller
 		$pageSize = Env::getSession("page_size",PAGE_SIZE,"main.default.index");
 		$q = Env::getSession("q","","main.default.index");
 		$pic = Env::getSession("pic","","main.default.index");
+		$status = Env::getRequest("status");
 		$page = (int)$page;
 		$pageSize = (int)$pageSize;
 		$shoptype = Env::getRequest("shoptype");
 
 		$criteria = new \CDbCriteria();
-		$criteria->addInCondition("status",array(1,2));
+		if(!empty($status)){
+			$status = (int)$status;
+			$criteria->addCondition("status='{$status}'");
+		}else{
+			$criteria->addInCondition("status",array(1,2));
+		}
+
 		if(!empty($pic)) {
 			$criteria->addCondition("(pic LIKE '%{$pic}%' OR zuanshi_pic LIKE '%{$pic}%' OR bigdata_pic LIKE '%{$pic}%' OR ztc_pic  LIKE '%{$pic}%')");
 		}
