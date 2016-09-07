@@ -73,6 +73,7 @@
             <th class="b2">七天转化金额</th>
             <th class="b2">七天转化ROI</th>
             <th class="b2">营业额</th>
+            <th class="b2">消耗占比</th>
         </tr>
         </thead>
         <tbody>
@@ -94,6 +95,7 @@
                 <td class="b2"><?php echo $row["rpt"]["pay7"];?></td>
                 <td class="b2"><?php echo round(@($row["rpt"]["pay7"]/$row["rpt"]["charge"]),2);?></td>
                 <td class="b2"><?php echo \cloud\core\utils\String::nFormat($row["tradeRpt"]["total_pay_amt"]);?></td>
+                <td class="b2"><?php echo round(@($row["rpt"]["charge"]/$row["tradeRpt"]["total_pay_amt"])*100,2);?></td>
             </tr>
 
         <?php endforeach;?>
