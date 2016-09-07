@@ -183,8 +183,8 @@ class ShopController extends Controller
                     $arr["open_date"] = date("Y-m-d");
                     break;
                 case "off":
-                    $arr["status"] = 2;
-                    $arr["off_date"] = date("Y-m-d");
+                    $arr["status"] = 1;
+                    $arr["stop_date"] = date("Y-m-d");
                     break;
             }
         }
