@@ -3,7 +3,7 @@
     <div class="search-box">
         <div class="row">
             <div class="col-md-12">
-                <form action="<?php echo $this->createUrl("/");?>" method="post" class="form-inline" id="item-detail-request-form">
+                <form action="<?php echo $this->createUrl("/tool/default/getitem");?>" method="post" class="form-inline" id="item-detail-request-form">
                     <div class="input-group">
                         <input class="form-control" name="num_iid" value="" />
                         <span class="input-group-addon">
@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <div class="panel" id="item-detail-panel">
+    <div class="panel" id="item-detail-panel" style="display: none">
         <div class="panel-body">
 
         </div>
