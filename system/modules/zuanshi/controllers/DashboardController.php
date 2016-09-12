@@ -18,8 +18,9 @@ use application\modules\zuanshi\model\AdvertiserHourRptSource;
 class DashboardController extends Controller
 {
     public function actionIndex(){
-        $data = ShopSearch::openlist();
-        $this->render("index",$data);
+        //$data = ShopSearch::openlist();
+        //$this->render("index",$data);
+        $this->redirect(array("/zz/advertiserhour/index"));
     }
 
     public function actionGetbynick(){
