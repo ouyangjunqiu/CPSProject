@@ -33,7 +33,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-4"><small>运营对接人:</small></div>
+                            <div class="col-md-4"><small>运营顾问:</small></div>
                             <div class="col-md-6">
                                 <span class="pic_read">
                                     <strong><?php echo $row["pic"];?></strong>
@@ -49,7 +49,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4"><small>钻展负责人:</small></div>
+                            <div class="col-md-4"><small>智钻顾问:</small></div>
                             <div class="col-md-6">
                                 <span class="pic_read">
                                     <strong><?php echo $row["zuanshi_pic"];?></strong>
@@ -61,7 +61,7 @@
                             <div class="col-md-2"></div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4"><small>直通车负责人:</small></div>
+                            <div class="col-md-4"><small>直通车顾问:</small></div>
                             <div class="col-md-6">
                                 <span class="pic_read">
                                     <strong><?php echo $row["ztc_pic"];?></strong>
@@ -73,7 +73,7 @@
                             <div class="col-md-2"></div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4"><small>大数据负责人:</small></div>
+                            <div class="col-md-4"><small>数据顾问:</small></div>
                             <div class="col-md-6">
                                 <span class="pic_read">
                                     <strong><?php echo $row["bigdata_pic"];?></strong>

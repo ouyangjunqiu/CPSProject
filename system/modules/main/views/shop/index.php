@@ -35,10 +35,10 @@
                     <tr><td>店铺地址：</td><td> <input type="text" class="form-control" name="shopurl"></td><td></td></tr>
                     <tr><td>淘宝登录账户：</td><td> <input type="text" class="form-control" name="login_nick"></td><td></td></tr>
                     <tr><td>淘宝登录密码：</td><td> <input type="text" class="form-control" name="login_password"></td><td></td></tr>
-                    <tr><td>运营对接人：</td><td> <input type="text" class="form-control" name="pic"></td><td></td></tr>
-                    <tr><td>钻展负责人:</td><td> <input type="text" class="form-control" name="zuanshi_pic"></td><td></td></tr>
-                    <tr><td>直通车负责人:</td><td> <input type="text" class="form-control" name="ztc_pic"></td><td></td></tr>
-                    <tr><td>大数据负责人:</td><td> <input type="text" class="form-control" name="bigdata_pic"></td><td></td></tr>
+                    <tr><td>运营顾问：</td><td> <input type="text" class="form-control" name="pic"></td><td></td></tr>
+                    <tr><td>智钻顾问:</td><td> <input type="text" class="form-control" name="zuanshi_pic"></td><td></td></tr>
+                    <tr><td>直通车顾问:</td><td> <input type="text" class="form-control" name="ztc_pic"></td><td></td></tr>
+                    <tr><td>数据顾问:</td><td> <input type="text" class="form-control" name="bigdata_pic"></td><td></td></tr>
                     <tr><td>合作业务：</td><td>
                             <?php echo CHtml::dropDownList("shoptype","直钻业务",\application\modules\main\model\Shop::$saleTypes,array("class"=>"form-control"));?>
                           </td><td></td></tr>
