@@ -81,7 +81,7 @@ class Category extends Model
 
     public static function getTreeText($child_id, $split = '>')
     {
-        $category = self::findByPk($child_id);
+        $category = self::model()->findByPk($child_id);
 
         if ($category === null) {
             return implode($split, self::$tree_text);

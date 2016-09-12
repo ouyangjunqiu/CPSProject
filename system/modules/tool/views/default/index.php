@@ -1,17 +1,18 @@
 <div class="index-table-div">
 
     <div class="search-box">
-        <div class="shop-list-cont" id="shop-search">
-            <div class="search-left com-list-tit" style="display: block;">
-                <span class="shop-list-icon"></span>
-                <span class="shop-list-txt">常用工具</span>
-                <small>
-                    <a href="<?php echo $this->createUrl("/tool/default/index");?>"><span class="label label-info">宝贝详情</span></a>
+        <div class="shop-list-cont">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="search-left com-list-tit" style="display: block;">
+                        <span class="shop-list-icon"></span>
+                        <span class="shop-list-txt">常用工具</span>
+                        <small>
+                            <a href="<?php echo $this->createUrl("/tool/default/index");?>"><span class="label label-info">宝贝详情</span></a>
 
-                </small>
-            </div>
-            <div class="search-right">
-
+                        </small>
+                    </div>
+                </div>
             </div>
         </div>
 
