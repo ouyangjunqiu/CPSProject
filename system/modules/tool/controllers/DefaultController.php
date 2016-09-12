@@ -30,7 +30,7 @@ class DefaultController extends Controller
         if($resp->hasError()){
             $this->renderJson(array("isSuccess"=>false,"msg"=>$resp->getError()));
         }
-        $this->renderJson(array("isSuccess"=>true,"data"=>$resp->getData()));
+        $this->renderJson(array("isSuccess"=>true,"data"=>$resp->getData("item")));
 
     }
 
