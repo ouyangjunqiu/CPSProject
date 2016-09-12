@@ -21,7 +21,7 @@
 
     </div>
 
-    <div class="row">
+    <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
         <div class="col-md-4">
 
         </div>
@@ -50,7 +50,7 @@
     <div class="row">
       <div class="col-xs-6 col-md-3">
         <a href="${data.detail_url}" class="thumbnail">
-          <img data-src="${data.pic_url}" alt="${data.title}">
+          <img data-src="${data.pic_url}" src="${data.pic_url}" alt="${data.title}">
         </a>
       </div>
       <div class="col-md-9">
