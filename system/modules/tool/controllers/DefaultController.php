@@ -8,6 +8,7 @@
 namespace application\modules\tool\controllers;
 
 
+use application\modules\tool\model\Category;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
 
@@ -30,7 +31,17 @@ class DefaultController extends Controller
         if($resp->hasError()){
             $this->renderJson(array("isSuccess"=>false,"msg"=>$resp->getError()));
         }
-        $this->renderJson(array("isSuccess"=>true,"data"=>$resp->getData("item")));
+
+        $item = $resp->getData("item");
+        $item = \CJSON::decode(\CJSON::encode($item));
+        $item["category_tree"] = Category::getTreeText($item["cid"]);
+        $props = explode(";",$item["props_name"]);
+        if(!empty($props)){
+            foreach($props as $prop){
+                $item["props"][] = explode(":",$prop);
+            }
+        }
+        $this->renderJson(array("isSuccess"=>true,"data"=>$item));
 
     }
 
