@@ -54,8 +54,8 @@
         </a>
       </div>
       <div class="col-md-9">
-        <p>${data.title}</p>
-        <p>价格:${data.price}</p>
+        <p><small>标题:</small>${data.title}</p>
+        <p><small>价格:</small>${data.price}</p>
       </div>
     </div>
 
