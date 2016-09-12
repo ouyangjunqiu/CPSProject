@@ -50,12 +50,12 @@
     <div class="row">
       <div class="col-xs-6 col-md-3">
         <a href="${data.detail_url}" class="thumbnail">
-          <img data-src="${data.pic_url}" src="${data.pic_url}" alt="${data.title}">
+          <img data-src="${data.pic_url}" src="${data.pic_url}" alt="${data.title}" style="width:120px;height:120px"/>
         </a>
       </div>
       <div class="col-md-9">
         <p>${data.title}</p>
-        <p>${data.price}</p>
+        <p>价格:${data.price}</p>
       </div>
     </div>
 
