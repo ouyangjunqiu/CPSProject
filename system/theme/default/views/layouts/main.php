@@ -144,11 +144,11 @@
                     </a>
                 </li>
                 <li>
-                    <a href="http://yunying.da-mai.com/" target="_blank">
+                    <a href="<?php echo $this->createUrl("/tool/default/index");?>" target="_blank">
 
-                        <p class="top-icon-p"><i class="yunying-icon"></i></p>
+                        <p class="top-icon-p"><i class="shopset-icon"></i></p>
 
-                        <p>运营规划</p>
+                        <p>常用工具</p>
                     </a>
                 </li>
 
