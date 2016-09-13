@@ -101,7 +101,7 @@
         {{each(i,v) data.list}}
         <div class="item row">
             <p class="message">
-                <a href="<?php echo $this->createUrl("/main/default/index");?>&q=${v.nick}" data-nick="${v.nick}" class="name" target="_blank">
+                <a href="<?php echo cloud\Cloud::app()->getUrlManager()->createUrl("/main/default/index");?>&q=${v.nick}" data-nick="${v.nick}" class="name" target="_blank">
                     <small class="text-muted pull-right label label-success"><i class="fa fa-clock-o"></i> {{if v.days==0}}今天{{else}}${v.days}天前{{/if}}</small>
                     ${v.nick}
                 </a>
