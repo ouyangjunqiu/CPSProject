@@ -96,13 +96,11 @@
 
         </div>
         <div class="box-footer">
-            <i class="fa fa-comments-o"></i>
-            <h3 class="box-title"></h3>
-            <div class="box-tools pull-right">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm" data-click="close"><i class="fa fa-times"></i></button>
-                </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-default btn-sm" data-click="close"><i class="fa fa-times"></i></button>
             </div>
+
         </div>
 </div>
 
