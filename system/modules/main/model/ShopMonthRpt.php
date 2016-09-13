@@ -4,13 +4,13 @@ namespace application\modules\main\model;
 
 use cloud\core\model\Model;
 
-class Summary extends Model
+class ShopMonthRpt extends Model
 {
 
     /**
      * Returns the static model of the specified AR class.
      * @param string $className active record class name.
-     * @return Summary the static model class
+     * @return ShopMonthRpt the static model class
      */
     public static function model($className = __CLASS__)
     {
@@ -22,7 +22,7 @@ class Summary extends Model
      */
     public function tableName()
     {
-        return '{{summary}}';
+        return '{{shop_m_rpt}}';
     }
 
     /**
@@ -34,10 +34,10 @@ class Summary extends Model
         // will receive user inputs.
         return array(
 
-            array('log_date,shoptotal, casetotal,caseruntotal, caseruntotal_ztc, caseruntotal_zuanshi ', 'safe'),
+            array('year,month,data', 'safe'),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('log_date,shoptotal, casetotal,caseruntotal, caseruntotal_ztc, caseruntotal_zuanshi', 'safe', 'on' => 'search'),
+            array('year,month,data', 'safe', 'on' => 'search'),
         );
     }
 
