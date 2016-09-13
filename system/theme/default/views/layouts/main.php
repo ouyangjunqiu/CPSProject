@@ -85,7 +85,7 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <li class="dropdown my-todo">
-                    <a href="<?php echo $this->createUrl("/main/dashboard/index");?>"><i class="fa fa-comments-o"></i> 我的事项
+                    <a href="<?php echo $this->createUrl("/main/todo/mylist");?>"><i class="fa fa-comments-o"></i> 我的事项
                     <span class="label label-danger">0</span>
                     </a>
                 </li>
@@ -271,8 +271,8 @@ $username = (!empty($user) && isset($user["username"]))?$user["username"]:"游�
                     type:"get",
                     success:function(resp){
                         if(resp.isSuccess && resp.data && resp.data.count>0){
-                            $(".nav li.my-todo label").show();
-                            $(".nav li.my-todo label").html(resp.data.count);
+                            $(".nav li.my-todo .label").show();
+                            $(".nav li.my-todo .label").html(resp.data.count);
 
                             var t = $.cookie("todo.alert.time");
                             if(!t || Date.now()>t){
@@ -282,8 +282,8 @@ $username = (!empty($user) && isset($user["username"]))?$user["username"]:"游�
                                 window.postMessage({type:'alertMessage',title:"待办提醒",message:"你有"+resp.data.count+"件待办事项未完成!"},'*');
                             }
                         }else{
-                            $(".nav li.my-todo label").html(0);
-                            $(".nav li.my-todo label").hide();
+                            $(".nav li.my-todo .label").html(0);
+                            $(".nav li.my-todo .label").hide();
                         }
                     }
                 })
