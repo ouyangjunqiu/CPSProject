@@ -36,6 +36,8 @@ class ShopController extends Controller
         foreach($shops as $shop){
             $shop->status = 2;
 
+            $shop->off_date = date("Y-m-d");
+
             if(!$shop->save()){
                 print_r($shop);
             }

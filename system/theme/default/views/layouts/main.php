@@ -84,7 +84,11 @@
 
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-                <li class="dropdown">  <a href="<?php echo $this->createUrl("/main/dashboard/index");?>"><i class="fa fa-dashboard"></i> 店铺总览</a></li>
+                <li class="dropdown my-todo">
+                    <a href="<?php echo $this->createUrl("/main/dashboard/index");?>"><i class="fa fa-comments-o"></i> 我的事项
+                    <span class="label label-danger">0</span>
+                    </a>
+                </li>
                 <?php $tool = \application\modules\main\model\Plugin::fetchVersion();?>
 <!--                <li class="dropdown"><a href="--><?php //echo Yii::app()->baseUrl;?><!--/upload/CPSTools.crx"><i class="fa fa-download"></i> 下载2.8.3</a></li>-->
                 <li class="dropdown"><a href="<?php echo $this->createUrl("/file/default/down",array("md5"=>$tool["file_md5"]));?>">
@@ -257,6 +261,35 @@ $username = (!empty($user) && isset($user["username"]))?$user["username"]:"游�
                     },function(){});
                 }
             },15000);
+
+
+            var r = function(){
+
+                $.ajax({
+                    url:"<?php echo $this->createUrl("/main/todo/mytips",array("pic"=>$username));?>",
+                    dataType:"json",
+                    type:"get",
+                    success:function(resp){
+                        if(resp.isSuccess && resp.data && resp.data.count>0){
+                            $(".nav li.my-todo label").show();
+                            $(".nav li.my-todo label").html(resp.data.count);
+
+                            var t = $.cookie("todo.alert.time");
+                            if(!t || Date.now()>t){
+                                var date = new Date();
+                                date.setTime(date.getTime() +  30* 60 * 1000);
+                                $.cookie("todo.alert.time",date.getTime());
+                                window.postMessage({type:'alertMessage',title:"待办提醒",message:"你有"+resp.data.count+"件待办事项未完成!"},'*');
+                            }
+                        }else{
+                            $(".nav li.my-todo label").html(0);
+                            $(".nav li.my-todo label").hide();
+                        }
+                    }
+                })
+            };
+            setInterval(r,10000);
+            r();
         })
     </script>
 
