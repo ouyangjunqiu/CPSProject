@@ -199,9 +199,9 @@ small.danger{
 
 #my-todo-wrap{
     position: absolute;
-    top: 0px;
-    right: 0px;
-    width: 350px;
+    top: 45px;
+    right: 5px;
+    width: 400px;
     display: none;
     opacity: 0.95;
     height: 450px;
