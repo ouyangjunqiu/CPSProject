@@ -12,7 +12,8 @@
                         <span class="shop-list-txt">常用工具:</span>
                         <small>
                             <a href="<?php echo $this->createUrl("/tool/default/index");?>"><span class="label label-info">宝贝详情</span></a>
-
+                            <a href="http://yunying.da-mai.com" target="_blank"><span class="label label-default">运营系统</span></a>
+                            <a href="http://idea.da-mai.com" target="_blank"><span class="label label-default">创意中心</span></a>
                         </small>
                     </div>
                 </div>
