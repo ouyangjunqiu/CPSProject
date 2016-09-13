@@ -126,6 +126,31 @@
 
     </script>
 
+<script type="text/x-jquery-tmpl" id="my-create-todo-list-tmpl">
+
+        {{each(i,v) data.list}}
+        <div class="item row">
+            <p class="message">
+                <a href="<?php echo cloud\Cloud::app()->getUrlManager()->createUrl("/main/default/index");?>&q=${v.nick}" data-nick="${v.nick}" class="name" target="_blank">
+                    <small class="text-muted pull-right label label-success"><i class="fa fa-clock-o"></i> {{if v.days==0}}今天{{else}}${v.days}天前{{/if}}</small>
+                    ${v.nick}
+                </a>
+                {{if v.status==1}}
+                    <a data-toggle="modal" data-target="#ShopTodoViewModal" data-backdrop="false" class="list-group-item list-group-item-success" data-content="${v.content}">
+                    <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
+                    </a>
+                {{else}}
+                   <a data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" class="list-group-item list-group-item-danger" data-content="${v.content}" data-trigger-target="todo_${v.md5}">
+                    <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
+                   </a>
+                {{/if}}
+            </p>
+
+        </div>
+        {{/each}}
+
+    </script>
+
 
 <div class="modal fade" id="ShopTodoOpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document" aria-hidden="true">
@@ -161,12 +186,12 @@
                 {{if v.status==1}}
                     <a data-toggle="modal" data-target="#ShopTodoViewModal" data-backdrop="false" class="list-group-item list-group-item-success" data-content="${v.content}">
                     <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
-                    <span class="label label-success"><i class="fa fa-clock-o"></i> ${v.days} days</small>
+                    <small class="label label-success"><i class="fa fa-clock-o"></i> ${v.days} days</small>
                     </a>
                 {{else}}
                    <a data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" class="list-group-item list-group-item-danger" data-content="${v.content}" data-trigger-target="todo_${v.md5}">
                     <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
-                    <span class="label label-danger"><i class="fa fa-clock-o"></i> ${v.days} days</small>
+                    <small class="label label-danger"><i class="fa fa-clock-o"></i> ${v.days} days</small>
                    </a>
                 {{/if}}
               {{/each}}
