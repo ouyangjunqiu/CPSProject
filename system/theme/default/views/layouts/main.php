@@ -85,7 +85,7 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <li class="dropdown my-todo">
-                    <a href="javascript:void(0)"><i class="fa fa-comments-o"></i> 我的事项
+                    <a href="javascript:void(0)"><i class="fa fa-comments-o"></i> 我的待办
                     <span class="label label-danger">0</span>
                     </a>
                 </li>

@@ -78,8 +78,9 @@
 
 <div id="my-todo-wrap">
 
-    <div class="box box-success">
+    <div class="box box-default">
         <div class="box-header">
+
             <i class="fa fa-comments-o"></i>
             <h3 class="box-title"></h3>
             <div class="box-tools pull-right">
@@ -88,8 +89,20 @@
                 </div>
             </div>
         </div>
-        <div style="min-height: 500px;" data-role="my-todo" class="box-body chat overlay-wrapper" data-tmpl="my-todo-list-tmpl" data-url="<?php echo \cloud\Cloud::app()->getUrlManager()->createUrl("/main/todo/my",array("pic"=>empty($user["username"])?"游客":$user["username"]));?>">
+        <div style="min-height: 500px;"  class="box-body chat">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#mypictodo_list" title="待办事项" aria-controls="mytodo_list" role="tab" data-toggle="tab" aria-expanded="true">
+                        <span>@我的事项</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content">
 
+                <div role="tabpanel" class="tab-pane active" id="mypictodo_list">
+                    <div data-role="my-todo" class="overlay-wrapper" data-tmpl="my-todo-list-tmpl" data-url="<?php echo \cloud\Cloud::app()->getUrlManager()->createUrl("/main/todo/my",array("pic"=>empty($user["username"])?"游客":$user["username"]));?>"></div>
+                </div>
+            </div>
 
         </div>
     </div>
