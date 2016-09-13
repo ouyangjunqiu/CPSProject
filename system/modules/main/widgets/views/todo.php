@@ -79,16 +79,6 @@
 <div id="my-todo-wrap">
 
     <div class="box box-default">
-        <div class="box-header">
-
-            <i class="fa fa-comments-o"></i>
-            <h3 class="box-title"></h3>
-            <div class="box-tools pull-right">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm" data-click="close"><i class="fa fa-times"></i></button>
-                </div>
-            </div>
-        </div>
         <div style="min-height: 500px;"  class="box-body chat">
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active">
@@ -105,7 +95,15 @@
             </div>
 
         </div>
-    </div>
+        <div class="box-footer">
+            <i class="fa fa-comments-o"></i>
+            <h3 class="box-title"></h3>
+            <div class="box-tools pull-right">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-sm" data-click="close"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+        </div>
 </div>
 
 
