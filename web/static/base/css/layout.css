@@ -503,7 +503,7 @@ button, input[type="submit"], input[type="button"] {
 .search-right .input-text{ padding:5px 3px;}
 .search-right .btn-orange{ height: 30px;line-height: 27px; width:70px; background-color:#fa6d51; }
 /*-----------滚动到头部---------*/
-.scroll-top-box{ z-index:100000; position:fixed; _position:absolute; bottom:50%; right:10px;
+.scroll-top-box{ z-index:1000; position:fixed; _position:absolute; bottom:50%; right:10px;
     background:url("../image/milestone/adviser/icon.png") -160px -250px ;width:95px; height:87px; display:none;  cursor:pointer;}
 
 
