@@ -28,6 +28,7 @@ class SummaryController extends Controller
             $data["shop"][] = $shop["nick"];
         }
 
+        ShopMonthRpt::model()->deleteAll("year=? AND month=?",array($year,$month));
         $model = new ShopMonthRpt();
         $model->setAttributes(array(
             "year" => $year,
