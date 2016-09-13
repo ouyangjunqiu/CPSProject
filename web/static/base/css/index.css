@@ -197,4 +197,19 @@ small.danger{
     color: #e25f36!important;
 }
 
+#my-todo-wrap{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 350px;
+    display: none;
+    opacity: 0.95;
+    height: 450px;
+    z-index: 1000;
+}
+
+#my-todo-wrap .box-body{
+    overflow-y: auto !important;
+    overflow-x: hidden;
+}
 

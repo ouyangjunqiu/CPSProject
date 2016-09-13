@@ -85,7 +85,7 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <li class="dropdown my-todo">
-                    <a href="<?php echo $this->createUrl("/main/todo/mylist");?>"><i class="fa fa-comments-o"></i> 我的事项
+                    <a href="javascript:void(0)"><i class="fa fa-comments-o"></i> 我的事项
                     <span class="label label-danger">0</span>
                     </a>
                 </li>
@@ -170,6 +170,11 @@
 
 </div>
 <!-- /.content-wrapper -->
+
+
+    <?php $this->widget("application\\modules\\main\\widgets\\ShopTodoWidget");?>
+
+
 
 <!-- Main Footer -->
 <footer class="main-footer">
@@ -290,6 +295,18 @@ $username = (!empty($user) && isset($user["username"]))?$user["username"]:"游�
             };
             setInterval(r,10000);
             r();
+
+            $(".nav li.my-todo a").click(function(){
+                $("#my-todo-wrap").show();
+
+                //$("#my-todo-wrap [data-role=my-todo]").css("height",$(window).height()+"px");
+                $("#my-todo-wrap [data-role=my-todo]").iLoad();
+
+            });
+
+            $("#my-todo-wrap .btn[data-click=close]").click(function(){
+                $("#my-todo-wrap").hide();
+            });
         })
     </script>
 

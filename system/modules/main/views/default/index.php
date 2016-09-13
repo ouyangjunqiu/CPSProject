@@ -180,8 +180,6 @@ $username = empty($user)?"游客":$user["username"];
 </div>
 
 
-<?php $this->widget("application\\modules\\main\\widgets\\ShopTodoWidget");?>
-
 <script src='<?php echo STATICURL."/base/js/plugins/ajaxfileupload/ajaxfileupload.js"; ?>'></script>
 
 <script type="text/x-jquery-tmpl" id="shop-file-list-tmpl">
