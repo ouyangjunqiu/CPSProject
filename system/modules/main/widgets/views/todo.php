@@ -93,7 +93,7 @@
                 </li>
             </ul>
             <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="my_todo_list">
+                <div role="tabpanel" class="tab-pane active" id="mypictodo_list">
                     <div data-role="my-todo" class="overlay-wrapper" data-tmpl="my-todo-list-tmpl" data-url="<?php echo \cloud\Cloud::app()->getUrlManager()->createUrl("/main/todo/my",array("pic"=>empty($user["username"])?"游客":$user["username"]));?>"></div>
                 </div>
 
