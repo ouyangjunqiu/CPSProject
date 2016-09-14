@@ -79,7 +79,7 @@
 <div id="my-todo-wrap">
 
     <div class="box box-default">
-        <div style="min-height: 500px;"  class="box-body chat">
+        <div class="box-body chat">
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active">
                     <a href="#mypictodo_list" title="待办事项" aria-controls="mytodo_list" role="tab" data-toggle="tab" aria-expanded="true">
