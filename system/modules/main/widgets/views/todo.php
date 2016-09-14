@@ -123,7 +123,7 @@
                     <small class="text-muted pull-right label label-success"><i class="fa fa-clock-o"></i> {{if v.days==0}}今天{{else}}${v.days}天前{{/if}}</small>
                     ${v.nick}
                 </a>
-                <a data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" data-content="${v.content}" data-trigger-target="todo_${v.md5}">
+                <a data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" class="list-group-item" data-backdrop="false" data-content="${v.content}" data-trigger-target="todo_${v.md5}">
 
                     <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}}
                </a>
