@@ -131,7 +131,7 @@
                         <p>我的店铺</p>
                     </a>
                 </li>
-                <li><a href="<?php echo $this->createUrl("/zz/advertiserrpt/index");?>" target="_blank">
+                <li><a href="<?php echo $this->createUrl("/zz/advertiserrpt/index");?>">
 
                         <p class="top-icon-p"><i class="zuanshi-icon"></i></p>
 
@@ -140,7 +140,7 @@
                 </li>
              
                 <li>
-                    <a href="<?php echo $this->createUrl("/ztc/default/index");?>" target="_blank">
+                    <a href="<?php echo $this->createUrl("/ztc/default/index");?>">
 
                         <p class="top-icon-p"><i class="ztc-icon"></i></p>
 
@@ -148,7 +148,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo $this->createUrl("/tool/default/index");?>" target="_blank">
+                    <a href="<?php echo $this->createUrl("/tool/default/index");?>">
 
                         <p class="top-icon-p"><i class="shopset-icon"></i></p>
 
