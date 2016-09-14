@@ -119,7 +119,7 @@ class ShopTodoList extends Model
     }
 
     public static function fetchListByPic($pic){
-        $startDate = date("Y-m-d",strtotime("-15 days"));
+        $startDate = date("Y-m-d",strtotime("-7 days"));
         $endDate =  date("Y-m-d");
         $result = self::model()->fetchAll("logdate>=? AND logdate<=? AND pic=? AND status=?",array($startDate,$endDate,$pic,0));
         foreach($result as &$row){
@@ -130,6 +130,20 @@ class ShopTodoList extends Model
         return $result;
 
     }
+
+    public static function fetchListByCreator($pic){
+        $startDate = date("Y-m-d",strtotime("-7 days"));
+        $endDate =  date("Y-m-d");
+        $result = self::model()->fetchAll("logdate>=? AND logdate<=? AND creator=? AND status!=?",array($startDate,$endDate,$pic,2));
+        foreach($result as &$row){
+            $row["title"] = String::ireplaceUrl($row["content"],"<small>[链接]</small>");
+            $row["days"] = ceil((strtotime(date("Y-m-d"))-strtotime($row["logdate"]))/3600/24);
+            $row["md5"] = md5($row["nick"]);
+        }
+        return $result;
+
+    }
+
 
 
 }

@@ -86,11 +86,19 @@
                         <span>@我的事项</span>
                     </a>
                 </li>
+                <li role="presentation">
+                    <a href="#my_create_todo_list" title="待办事项" aria-controls="my_create_todo_list" role="tab" data-toggle="tab" aria-expanded="true">
+                        <span>我发布的事项</span>
+                    </a>
+                </li>
             </ul>
             <div class="tab-content">
-
-                <div role="tabpanel" class="tab-pane active" id="mypictodo_list">
+                <div role="tabpanel" class="tab-pane active" id="my_todo_list">
                     <div data-role="my-todo" class="overlay-wrapper" data-tmpl="my-todo-list-tmpl" data-url="<?php echo \cloud\Cloud::app()->getUrlManager()->createUrl("/main/todo/my",array("pic"=>empty($user["username"])?"游客":$user["username"]));?>"></div>
+                </div>
+
+                <div role="tabpanel" class="tab-pane" id="my_create_todo_list">
+                    <div data-role="my-todo" class="overlay-wrapper" data-tmpl="my-create-todo-list-tmpl" data-url="<?php echo \cloud\Cloud::app()->getUrlManager()->createUrl("/main/todo/mycreate",array("pic"=>empty($user["username"])?"游客":$user["username"]));?>"></div>
                 </div>
             </div>
 

@@ -129,6 +129,19 @@ class TodoController extends Controller
         ));
     }
 
+    public function actionMycreate(){
+        $pic = Env::getQuery("pic");
+        $list = ShopTodoList::fetchListByCreator($pic);
+        $this->renderJson(array(
+            "isSuccess"=>true,
+            "data"=>array(
+                "list"=>$list
+            ),
+        ));
+    }
+
+
+
     public function actionMytips(){
         $pic = Env::getQuery("pic");
         $startDate = date("Y-m-d",strtotime("-15 days"));
