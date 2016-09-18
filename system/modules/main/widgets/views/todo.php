@@ -171,9 +171,22 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default">废弃</button>
-                <button type="button" class="btn btn-primary" data-role="reply">完成并回复</button>
-                <a data-toggle="modal" data-target="#ShopTodoAddModal" data-backdrop="false" data-role="doreply"></a>
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" class="do_reply_ctrl"> 回复
+                            </label>
+                        </div>
+
+                    </div>
+                    <div class="col-md-10">
+                        <button type="button" class="btn btn-default">废弃</button>
+                        <button type="button" class="btn btn-primary" data-role="reply" data-reply="no">完成</button>
+                        <a data-toggle="modal" data-target="#ShopTodoAddModal" data-backdrop="false" data-role="doreply"></a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -344,6 +357,16 @@
             });
 
         });
+        $('#ShopTodoOpModal').delegate('.do_reply_ctrl','change',function(){
+            var reply = $('#ShopTodoOpModal').find(".btn-primary[data-role=reply]");
+            if(this.checked){
+                reply.attr("data-reply","yes").html("完成并回复");
+            }else{
+                reply.attr("data-reply","no").html("完成");
+            }
+
+        });
+
 
         $('#ShopTodoOpModal').delegate('.btn-primary[data-role=reply]','click',function(){
             var id = $(this).attr("data-id");
@@ -351,6 +374,9 @@
             var targetid = $(this).attr("data-trigger-target");
             e.attr("data-trigger-target",targetid);
             var target = targetid && $("#"+targetid).find("[data-load=overlay]");
+            var isReply = $(this).attr("data-reply");
+            isReply = (isReply && isReply == "yes")?true:false;
+
             $.ajax({
                 url:"<?php echo $urls["todo_done_url"];?>",
                 type:"post",
@@ -361,9 +387,11 @@
                     if(resp.isSuccess) {
                         $("#my-todo-wrap [data-role=my-todo]").iLoad();
                         target.iLoad();
-                        e.attr("data-nick",resp.data.nick);
-                        e.attr("data-pic",resp.data.creator);
-                        e.trigger("click");
+                        if(isReply){
+                            e.attr("data-nick",resp.data.nick);
+                            e.attr("data-pic",resp.data.creator);
+                            e.trigger("click");
+                        }
                     }
                 },
                 beforeSend:function(){
