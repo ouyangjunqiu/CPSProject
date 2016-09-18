@@ -26,7 +26,13 @@ class ShopSearch {
             $criteria->addCondition("(pic LIKE '%{$pic}%' OR zuanshi_pic LIKE '%{$pic}%' OR bigdata_pic LIKE '%{$pic}%' OR ztc_pic  LIKE '%{$pic}%')");
         }
         if(!empty($q)) {
-            $criteria->addCondition("(shopname LIKE '%{$q}%' OR shopcatname LIKE '%{$q}%' OR shoptype LIKE '%{$q}%' OR nick LIKE '%{$q}%' OR pic LIKE '%{$q}%' OR zuanshi_pic LIKE '%{$q}%' OR bigdata_pic LIKE '%{$q}%' OR ztc_pic  LIKE '%{$q}%')");
+            $q = StringUtil::tagFormat($q);
+            $arr = explode(",",$q);
+
+            foreach($arr as $o){
+                $condition = "(shopname LIKE '%{$o}%' OR shopcatname LIKE '%{$o}%' OR shoptype LIKE '%{$o}%' OR nick LIKE '%{$o}%' OR pic LIKE '%{$o}%' OR zuanshi_pic LIKE '%{$o}%' OR bigdata_pic LIKE '%{$o}%' OR ztc_pic  LIKE '%{$o}%')";
+                $criteria->addCondition($condition);
+            }
         }
 
         $count = Shop::model()->count($criteria);
