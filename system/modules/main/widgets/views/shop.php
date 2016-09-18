@@ -83,12 +83,40 @@
                                 </span>
                             </div>
                             <div class="col-md-2">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"><small>推广助理:</small></div>
+                            <div class="col-md-6">
+                                <span class="pic_read">
+                                    <strong><?php
+                                        $subPic = \CJSON::decode($row["sub_pic"]);
+                                        if($subPic["ztc"]){
+                                            echo "<span class='glyphicon glyphicon-ok'></span>直通车 ";
+                                        }
+                                        if($subPic["zuanshi"]){
+                                            echo "<span class='glyphicon glyphicon-ok'></span>智钻 ";
+                                        }
+
+                                        ?></strong>
+                                </span>
+                                <span class="pic_input form_writer" style="display: none">
+                                 <div class="checkbox">
+                                     <label>
+                                         <input type="checkbox" name="sub_pic[ztc]" value="1"> 直通车
+                                     </label>
+                                     <label>
+                                         <input type="checkbox" name="sub_pic[zuanshi]" value="1"> 智钻
+                                     </label>
+                                 </div>
+                                </span>
+                            </div>
+                            <div class="col-md-2">
                                 <span class="pic_input" style="display: none">
                                     <button type="button" class="btn btn-primary" data-click="pic-save" data-url="<?php echo Yii::app()->urlManager->createUrl('/main/shop/pic');?>">保存</button>
                                 </span>
                             </div>
                         </div>
-
 
                         <div class="row">
                             <div class="col-md-2"><small>交谈:</small></div>

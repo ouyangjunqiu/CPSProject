@@ -38,13 +38,22 @@ class ShopController extends Controller
         $zuanshi_pic = StringUtil::tagFormat($zuanshi_pic);
         $bigdata_pic = Env::getRequest("bigdata_pic");
         $bigdata_pic = StringUtil::tagFormat($bigdata_pic);
+        $sub_pic = Env::getRequest("sub_pic");
+        $sub_pic = \CJSON::encode($sub_pic);
+
         $model = Shop::model()->find("nick=?",array($nick));
         if(empty($model)){
             $this->renderJson(array("isSuccess"=>false));
             return;
         }
 
-        $model->setAttributes(array("pic"=>$pic,"zuanshi_pic"=>$zuanshi_pic,"ztc_pic"=>$ztc_pic,"bigdata_pic"=>$bigdata_pic));
+        $model->setAttributes(array(
+            "pic"=>$pic,
+            "zuanshi_pic"=>$zuanshi_pic,
+            "ztc_pic"=>$ztc_pic,
+            "bigdata_pic"=>$bigdata_pic,
+            "sub_pic"=>$sub_pic
+        ));
 
         if($model->save()){
             $this->renderJson(array("isSuccess"=>true,"data"=>$model));
