@@ -61,7 +61,7 @@
                     <a data-id="<?php echo $todo["id"];?>" data-toggle="modal" data-target="#ShopTodoViewModal" data-backdrop="false" class="list-group-item list-group-item-success" data-content="<?php echo $todo["content"];?>">
                         <small>[<?php echo $todo["priority"];?>]  <?php echo $todo["creator"];?>说:</small><?php echo $todo["title"];?> <?php if(!empty($todo["pic"])):?><small>@<?php echo $todo["pic"];?></small><?php endif;?>
 
-                        <span class="badge label label-success"><i class="fa fa-clock-o"></i> <?php echo $todo["daysStr"];?> days</span>
+                        <span class="badge label label-success"><i class="fa fa-clock-o"></i> <?php echo $todo["daysStr"];?></span>
                     </a>
                 <?php endif;?>
             <?php endforeach;?>
