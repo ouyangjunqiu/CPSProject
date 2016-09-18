@@ -43,32 +43,41 @@
 
     <div class="row" style="margin-top: 10px;margin-bottom: 10px;" data-role="shop-todo-list" data-nick="<?php echo $query["nick"];?>">
         <div class="list-group">
-            <a class="list-group-item active">
+            <div class="list-group-item active">
                 待办事项
-            </a>
+            </div>
             <?php foreach($list as $todo):?>
 
                 <?php if($todo["status"] == 0):?>
-                    <a data-id="<?php echo $todo["id"];?>" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" class="list-group-item" data-content="<?php echo $todo["content"];?>">
-                        <small>[<?php echo $todo["priority"];?>] <?php echo $todo["creator"];?>说:</small><?php echo $todo["title"];?> <?php if(!empty($todo["pic"])):?><small>@<?php echo $todo["pic"];?></small><?php endif;?>
+                    <div  class="list-group-item">
+
+                        <a data-id="<?php echo $todo["id"];?>" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" data-content="<?php echo $todo["content"];?>">
+                            <small>[<?php echo $todo["priority"];?>] <?php echo $todo["creator"];?>说:</small><?php echo $todo["title"];?> <?php if(!empty($todo["pic"])):?><small>@<?php echo $todo["pic"];?></small><?php endif;?>
+                        </a>
                         <?php if($todo["days"]<=0):?>
                             <span class="badge label label-danger"><i class="fa fa-clock-o"></i> <?php echo $todo["daysStr"];?></span>
                         <?php else:?>
                             <span class="badge label label-info"><i class="fa fa-clock-o"></i> <?php echo $todo["daysStr"];?></span>
                         <?php endif;?>
-                    </a>
+                        <a class="badge label label-info" data-id="<?php echo $todo["id"];?>" data-role="del-todo">废除</a>
+                    </div>
                 <?php else:?>
-                    <a data-id="<?php echo $todo["id"];?>" data-toggle="modal" data-target="#ShopTodoViewModal" data-backdrop="false" class="list-group-item list-group-item-success" data-content="<?php echo $todo["content"];?>">
+                <div  class="list-group-item list-group-item-success" >
+                    <a data-id="<?php echo $todo["id"];?>" data-toggle="modal" data-target="#ShopTodoViewModal" data-backdrop="false" data-content="<?php echo $todo["content"];?>">
                         <small>[<?php echo $todo["priority"];?>]  <?php echo $todo["creator"];?>说:</small><?php echo $todo["title"];?> <?php if(!empty($todo["pic"])):?><small>@<?php echo $todo["pic"];?></small><?php endif;?>
-
-                        <span class="badge label label-success"><i class="fa fa-clock-o"></i> <?php echo $todo["daysStr"];?></span>
                     </a>
+                    <span class="badge label label-success"><i class="fa fa-clock-o"></i> <?php echo $todo["daysStr"];?></span>
+                </div>
                 <?php endif;?>
             <?php endforeach;?>
         </div>
 
     </div>
 </div>
+<?php
+$user = \cloud\core\utils\Env::getUser();
+$username = (!empty($user) && isset($user["username"]))?$user["username"]:"游客";
+?>
 <?php $this->widget("application\\modules\\main\\widgets\\ShopTodoWidget");?>
     <script type="application/javascript">
 
@@ -92,6 +101,33 @@
                     begin_date:start.format('YYYY-MM-DD'),
                     end_date:end.format('YYYY-MM-DD')
                 })
+
+            });
+
+            $("[data-role=del-todo]").click(function(){
+                var id = $(this).attr("data-id");
+                app.confirm("是否确认废除?",function(){
+
+                    $.ajax({
+                        url:"<?php echo $this->createUrl("/main/todo/del");?>",
+                        type:"post",
+                        data:{id:id,updator:'<?php echo $username;?>'},
+                        dataType:"json",
+                        success:function(resp){
+                            $("body").hideLoading();
+                            if(resp.isSuccess) {
+                                location.reload();
+                            }
+                        },
+                        beforeSend:function(){
+                            $("body").showLoading();
+                        },
+                        error:function(){
+                            app.error("操作失败，请确认网络连接是否正常后请重试!");
+                            $("body").hideLoading();
+                        }
+                    });
+                },function(){});
 
             });
 
