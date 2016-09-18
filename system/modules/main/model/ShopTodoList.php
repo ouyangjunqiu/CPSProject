@@ -77,7 +77,8 @@ class ShopTodoList extends Model
             }
 
             $row["title"] = String::ireplaceUrl($row["content"],"<small>[链接]</small>");
-            $row["days"] = ceil((strtotime(date("Y-m-d"))-strtotime($row["logdate"]))/3600/24);
+            $row["days"] = ceil((strtotime($row["logdate"])-strtotime(date("Y-m-d")))/3600/24);
+
             $row["md5"] = md5($row["nick"]);
             $row["daysStr"] = StringUtil::daysFormat($row["days"]);
 
@@ -105,7 +106,8 @@ class ShopTodoList extends Model
 
         foreach($result as $row){
             $row["title"] = String::ireplaceUrl($row["content"],"<small>[链接]</small>");
-            $row["days"] = ceil((strtotime(date("Y-m-d"))-strtotime($row["logdate"]))/3600/24);
+            $row["days"] = ceil((strtotime($row["logdate"])-strtotime(date("Y-m-d")))/3600/24);
+
             $row["md5"] = md5($row["nick"]);
             $row["daysStr"] = StringUtil::daysFormat($row["days"]);
 
@@ -122,7 +124,8 @@ class ShopTodoList extends Model
         $result = self::model()->fetchAll("logdate>=? AND logdate<=? AND pic=? AND status=?",array($startDate,$endDate,$pic,0));
         foreach($result as &$row){
             $row["title"] = String::ireplaceUrl($row["content"],"<small>[链接]</small>");
-            $row["days"] = ceil((strtotime(date("Y-m-d"))-strtotime($row["logdate"]))/3600/24);
+            $row["days"] = ceil((strtotime($row["logdate"])-strtotime(date("Y-m-d")))/3600/24);
+
             $row["md5"] = md5($row["nick"]);
             $row["daysStr"] = StringUtil::daysFormat($row["days"]);
         }
@@ -136,7 +139,8 @@ class ShopTodoList extends Model
         $result = self::model()->fetchAll("logdate>=? AND logdate<=? AND creator=? AND status!=?",array($startDate,$endDate,$pic,2));
         foreach($result as &$row){
             $row["title"] = String::ireplaceUrl($row["content"],"<small>[链接]</small>");
-            $row["days"] = ceil((strtotime(date("Y-m-d"))-strtotime($row["logdate"]))/3600/24);
+            $row["days"] = ceil((strtotime($row["logdate"])-strtotime(date("Y-m-d")))/3600/24);
+
             $row["md5"] = md5($row["nick"]);
             $row["daysStr"] = StringUtil::daysFormat($row["days"]);
         }
