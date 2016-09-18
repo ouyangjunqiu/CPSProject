@@ -8,6 +8,7 @@
 namespace application\modules\main\model;
 
 
+use application\modules\main\utils\StringUtil;
 use cloud\core\model\Model;
 use cloud\core\utils\String;
 
@@ -56,6 +57,8 @@ class ShopTodoList extends Model
             $row["title"] = String::ireplaceUrl($row["content"],"<small>[链接]</small>");
             $row["md5"] = md5($row["nick"]);
             $row["days"] = ceil((strtotime($row["logdate"])-strtotime(date("Y-m-d")))/3600/24);
+
+            $row["daysStr"] = StringUtil::daysFormat($row["days"]);
         }
         return $history;
     }
@@ -73,14 +76,13 @@ class ShopTodoList extends Model
                 $key = date("Ymd",strtotime($row["logdate"]));
             }
 
-            $todolist[$key][] = array_merge(
-                $row,
-                array(
-                    "title"=>String::ireplaceUrl($row["content"],"<small>[链接]</small>"),
-                    "md5" => md5($row["nick"]),
-                    "days"=>ceil((strtotime($row["logdate"])-strtotime(date("Y-m-d")))/3600/24)
-                )
-            );
+            $row["title"] = String::ireplaceUrl($row["content"],"<small>[链接]</small>");
+            $row["days"] = ceil((strtotime(date("Y-m-d"))-strtotime($row["logdate"]))/3600/24);
+            $row["md5"] = md5($row["nick"]);
+            $row["daysStr"] = StringUtil::daysFormat($row["days"]);
+
+
+            $todolist[$key][] = $row;
 
         }
 
@@ -102,16 +104,12 @@ class ShopTodoList extends Model
         $list = array();
 
         foreach($result as $row){
+            $row["title"] = String::ireplaceUrl($row["content"],"<small>[链接]</small>");
+            $row["days"] = ceil((strtotime(date("Y-m-d"))-strtotime($row["logdate"]))/3600/24);
+            $row["md5"] = md5($row["nick"]);
+            $row["daysStr"] = StringUtil::daysFormat($row["days"]);
 
-            $list[] = array_merge(
-                $row,
-                array(
-                    "title"=>String::ireplaceUrl($row["content"],"<small>[链接]</small>"),
-                    "md5" => md5($row["nick"]),
-                    "days"=>ceil((strtotime($row["logdate"])-strtotime(date("Y-m-d")))/3600/24)
-                )
-            );
-
+            $list[] = $row;
         }
 
         return $list;
@@ -126,6 +124,7 @@ class ShopTodoList extends Model
             $row["title"] = String::ireplaceUrl($row["content"],"<small>[链接]</small>");
             $row["days"] = ceil((strtotime(date("Y-m-d"))-strtotime($row["logdate"]))/3600/24);
             $row["md5"] = md5($row["nick"]);
+            $row["daysStr"] = StringUtil::daysFormat($row["days"]);
         }
         return $result;
 
@@ -139,6 +138,7 @@ class ShopTodoList extends Model
             $row["title"] = String::ireplaceUrl($row["content"],"<small>[链接]</small>");
             $row["days"] = ceil((strtotime(date("Y-m-d"))-strtotime($row["logdate"]))/3600/24);
             $row["md5"] = md5($row["nick"]);
+            $row["daysStr"] = StringUtil::daysFormat($row["days"]);
         }
         return $result;
 
