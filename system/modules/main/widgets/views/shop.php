@@ -86,27 +86,28 @@
                             </div>
                         </div>
                         <div class="row">
+                            <?php $subPic = \CJSON::decode($row["sub_pic"]);?>
                             <div class="col-md-4"><small>推广助理:</small></div>
                             <div class="col-md-6">
                                 <span class="pic_read">
                                     <strong><?php
-                                        $subPic = \CJSON::decode($row["sub_pic"]);
-                                        if($subPic["ztc"]){
-                                            echo "<span class='glyphicon glyphicon-ok'></span>直通车 ";
+
+                                        if(isset($subPic["ztc"]) && $subPic["ztc"]){
+                                            echo "<i class='glyphicon glyphicon-ok' style='color: #00a65a'></i>直通车 ";
                                         }
-                                        if($subPic["zuanshi"]){
-                                            echo "<span class='glyphicon glyphicon-ok'></span>智钻 ";
+                                        if(isset($subPic["zuanshi"]) && $subPic["zuanshi"]){
+                                            echo "<i class='glyphicon glyphicon-ok' style='color: #00a65a'></i>智钻 ";
                                         }
 
                                         ?></strong>
                                 </span>
-                                <span class="pic_input form_writer" style="display: none">
+                                <span class="pic_input" style="display: none">
                                  <div class="checkbox">
                                      <label>
-                                         <input type="checkbox" name="sub_pic[ztc]" value="1"> 直通车
+                                         <input type="checkbox" name="sub_pic[ztc]" value="1" <?php if(isset($subPic["ztc"]) && $subPic["ztc"]):?>checked<?php endif;?>> 直通车
                                      </label>
                                      <label>
-                                         <input type="checkbox" name="sub_pic[zuanshi]" value="1"> 智钻
+                                         <input type="checkbox" name="sub_pic[zuanshi]" value="1" <?php if(isset($subPic["zuanshi"]) && $subPic["zuanshi"]):?>checked<?php endif;?>> 智钻
                                      </label>
                                  </div>
                                 </span>
