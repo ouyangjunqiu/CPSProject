@@ -93,10 +93,10 @@
                                     <?php
 
                                         if(isset($subPic["ztc"]) && $subPic["ztc"]){
-                                            echo "<i class='glyphicon glyphicon-ok' style='color: #00a65a'></i>直通车 ";
+                                            echo "<i class='glyphicon glyphicon-ok' style='color: #00a65a'></i> 直通车 ";
                                         }
                                         if(isset($subPic["zuanshi"]) && $subPic["zuanshi"]){
-                                            echo "<i class='glyphicon glyphicon-ok' style='color: #00a65a'></i>智钻 ";
+                                            echo "<i class='glyphicon glyphicon-ok' style='color: #00a65a'></i> 智钻 ";
                                         }
 
                                         ?>
