@@ -194,12 +194,12 @@
                 {{if v.status==1}}
                     <a data-toggle="modal" data-target="#ShopTodoViewModal" data-backdrop="false" class="list-group-item list-group-item-success" data-content="${v.content}">
                     <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
-                    <small class="label label-success"><i class="fa fa-clock-o"></i> ${v.days} days</small>
+                    <small class="label label-success"><i class="fa fa-clock-o"></i> ${v.days} 天</small>
                     </a>
                 {{else}}
                    <a data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" class="list-group-item list-group-item-danger" data-content="${v.content}" data-trigger-target="todo_${v.md5}">
                     <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
-                    <small class="label label-danger"><i class="fa fa-clock-o"></i> ${v.days} days</small>
+                    <small class="label label-danger"><i class="fa fa-clock-o"></i> ${v.days} 天</small>
                    </a>
                 {{/if}}
               {{/each}}
@@ -234,12 +234,12 @@
                {{if v.status==1}}
                     <a data-toggle="modal" data-target="#ShopTodoViewModal" data-backdrop="false" class="list-group-item list-group-item-success" data-content="${v.content}">
                     <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
-                     <small class="label label-success"><i class="fa fa-clock-o"></i> ${v.days} days</small>
+                     <small class="label label-success"><i class="fa fa-clock-o"></i> ${v.days} 天</small>
                     </a>
                 {{else}}
                    <a data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" class="list-group-item" data-content="${v.content}"  data-trigger-target="todo_${v.md5}">
                     <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
-                    <small class="label label-success"><i class="fa fa-clock-o"></i> ${v.days} days</small>
+                    <small class="label label-success"><i class="fa fa-clock-o"></i> ${v.days} 天</small>
                    </a>
                 {{/if}}
               {{/each}}
