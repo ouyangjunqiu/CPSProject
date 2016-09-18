@@ -181,7 +181,6 @@
 
                     </div>
                     <div class="col-md-10">
-                        <button type="button" class="btn btn-default">废弃</button>
                         <button type="button" class="btn btn-primary" data-role="reply" data-reply="no">完成</button>
                         <a data-toggle="modal" data-target="#ShopTodoAddModal" data-backdrop="false" data-role="doreply"></a>
                     </div>
