@@ -5165,6 +5165,10 @@ table.text-center th {
 .list-group-item.disabled{
   cursor: auto !important;
 }
+.label-disable{
+  background-color: #ccc;
+  color: #666;
+}
 
 /*精装版翻页样式结束*/
 
