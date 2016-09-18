@@ -90,7 +90,7 @@
                             <div class="col-md-4"><small>推广助理:</small></div>
                             <div class="col-md-6">
                                 <span class="pic_read">
-                                    <strong><?php
+                                    <?php
 
                                         if(isset($subPic["ztc"]) && $subPic["ztc"]){
                                             echo "<i class='glyphicon glyphicon-ok' style='color: #00a65a'></i>直通车 ";
@@ -99,7 +99,7 @@
                                             echo "<i class='glyphicon glyphicon-ok' style='color: #00a65a'></i>智钻 ";
                                         }
 
-                                        ?></strong>
+                                        ?>
                                 </span>
                                 <span class="pic_input" style="display: none">
                                  <div class="checkbox">
