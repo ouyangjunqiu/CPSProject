@@ -51,22 +51,17 @@
                 <?php if($todo["status"] == 0):?>
                     <a data-id="<?php echo $todo["id"];?>" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" class="list-group-item" data-content="<?php echo $todo["content"];?>">
                         <small>[<?php echo $todo["priority"];?>] <?php echo $todo["creator"];?>说:</small><?php echo $todo["title"];?> <?php if(!empty($todo["pic"])):?><small>@<?php echo $todo["pic"];?></small><?php endif;?>
-                        <?php if($todo["days"]<0):?>
-                            <span class="badge label label-danger"><i class="fa fa-clock-o"></i> <?php echo $todo["days"];?> days</span>
-                        <?php elseif($todo["days"] == 0):?>
-                            <span class="badge label label-danger"><i class="fa fa-clock-o"></i> 今日</span>
+                        <?php if($todo["days"]<=0):?>
+                            <span class="badge label label-danger"><i class="fa fa-clock-o"></i> <?php echo $todo["daysStr"];?></span>
                         <?php else:?>
-                            <span class="badge label label-info"><i class="fa fa-clock-o"></i> <?php echo $todo["days"];?> days</span>
+                            <span class="badge label label-info"><i class="fa fa-clock-o"></i> <?php echo $todo["daysStr"];?></span>
                         <?php endif;?>
                     </a>
                 <?php else:?>
                     <a data-id="<?php echo $todo["id"];?>" data-toggle="modal" data-target="#ShopTodoViewModal" data-backdrop="false" class="list-group-item list-group-item-success" data-content="<?php echo $todo["content"];?>">
                         <small>[<?php echo $todo["priority"];?>]  <?php echo $todo["creator"];?>说:</small><?php echo $todo["title"];?> <?php if(!empty($todo["pic"])):?><small>@<?php echo $todo["pic"];?></small><?php endif;?>
-                        <?php if($todo["days"]  == 0):?>
-                            <span class="badge label label-success"><i class="fa fa-clock-o"></i> 今日</span>
-                        <?php else:?>
-                            <span class="badge label label-success"><i class="fa fa-clock-o"></i> <?php echo $todo["days"];?> days</span>
-                        <?php endif;?>
+
+                        <span class="badge label label-success"><i class="fa fa-clock-o"></i> <?php echo $todo["daysStr"];?> days</span>
                     </a>
                 <?php endif;?>
             <?php endforeach;?>
