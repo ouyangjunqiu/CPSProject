@@ -90,6 +90,7 @@
                             <div class="col-md-4"><small>推广助理:</small></div>
                             <div class="col-md-6">
                                 <span class="pic_read">
+                                    <small>
                                     <?php
 
                                         if(isset($subPic["ztc"]) && $subPic["ztc"]){
@@ -100,6 +101,7 @@
                                         }
 
                                         ?>
+                                    </small>
                                 </span>
                                 <span class="pic_input" style="display: none">
                                  <div class="checkbox">
