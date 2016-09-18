@@ -200,7 +200,7 @@
                                     <small><strong><?php echo $rpt["total"]["alipayInshopAmt"];?></strong></small>
                                 </div>
                                 <div class="col-md-3">
-                                    <small>投资回报率:</small>
+                                    <small>投资回报:</small>
                                 </div>
                                 <div class="col-md-2">
                                     <small><strong><?php echo @round($rpt["total"]["roi"],2);?></strong></small>
