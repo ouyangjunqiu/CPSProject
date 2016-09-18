@@ -84,7 +84,7 @@
                     </p>
 
                 </div>
-                <a href="javascript:void(0)" class="small-box-footer">
+                <a href="<?php echo $this->createUrl("/main/default/stoplist");?>" class="small-box-footer">
                     查看详细 <i class="fa fa-arrow-circle-right"></i>
                 </a>
             </div>
@@ -104,7 +104,7 @@
                     </p>
 
                 </div>
-                <a href="<?php echo $this->createUrl("/main/default/index",array("shoptype"=>"直钻业务","q"=>"","pic"=>"","page"=>1));?>" class="small-box-footer">
+                <a href="<?php echo $this->createUrl("/main/default/index",array("q"=>"直钻业务","pic"=>"","page"=>1));?>" class="small-box-footer">
                     查看详细 <i class="fa fa-arrow-circle-right"></i>
                 </a>
             </div>
@@ -121,7 +121,7 @@
                     </p>
                 </div>
 
-                <a href="<?php echo $this->createUrl("/main/default/index",array("shoptype"=>"直通车业务","q"=>"","pic"=>"","page"=>1));?>" class="small-box-footer">
+                <a href="<?php echo $this->createUrl("/main/default/index",array("q"=>"直通车业务","pic"=>"","page"=>1));?>" class="small-box-footer">
                     查看详细 <i class="fa fa-arrow-circle-right"></i>
                 </a>
             </div>
@@ -138,7 +138,7 @@
                     </p>
                 </div>
 
-                <a href="<?php echo $this->createUrl("/main/default/index",array("shoptype"=>"钻展业务","q"=>"","pic"=>"","page"=>1));?>" class="small-box-footer">
+                <a href="<?php echo $this->createUrl("/main/default/index",array("q"=>"钻展业务","pic"=>"","page"=>1));?>" class="small-box-footer">
                     查看详细 <i class="fa fa-arrow-circle-right"></i>
                 </a>
             </div>
@@ -155,7 +155,7 @@
                     </p>
 
                 </div>
-                <a href="javascript:void(0)" class="small-box-footer">
+                <a href="<?php echo $this->createUrl("/main/default/index",array("q"=>"其它业务","pic"=>"","page"=>1));?>" class="small-box-footer">
                     查看详细 <i class="fa fa-arrow-circle-right"></i>
                 </a>
             </div>

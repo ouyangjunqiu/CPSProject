@@ -9,6 +9,7 @@ namespace application\modules\main\controllers;
 
 
 use application\modules\main\model\ShopBudget;
+use application\modules\main\utils\StringUtil;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
 
@@ -33,10 +34,7 @@ class BudgetController extends Controller
 
         $tags = Env::getRequest("tags");
         if(isset($tags)){
-            $tags = trim($tags);
-            $tags = str_replace(" ",",",$tags);
-            $tags = str_replace("，",",",$tags);
-            $attr["tags"] = preg_replace("/,+/",",",$tags);
+            $attr["tags"] = StringUtil::tagFormat($tags);
         }
 
         $model = ShopBudget::model()->find("nick=?",array($nick));
