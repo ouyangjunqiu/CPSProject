@@ -124,7 +124,13 @@
                             <div class="col-md-4"><small>服务周期:</small></div>
                             <div class="col-md-8">
                                 <?php if(!empty($row["enddate"])):?>
+                                    <?php $days = ceil((strtotime($row["enddate"])-strtotime(date("Y-m-d")))/3600/24);?>
+                                    <?php if($days>=0):?>
+                                        <small>剩余</small><strong><?php echo $days;?></strong><small>天</small>
 
+                                        <small>(<?php echo empty($row["startdate"])?"":date("Y.m.d",$row["startdate"]);?>~<?php echo date("Y.m.d",$row["enddate"]);?>)</small>
+
+                                    <?php endif;?>
 
                                 <?php endif;?>
                             </div>
