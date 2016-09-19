@@ -74,7 +74,7 @@
 <script type="text/x-jquery-tmpl" id="shop-ztcbalance-tmpl">
     {{if data.length>0}}
         {{each(i,rpt) data}}
-        <p><small>余额:</small><strong>${rpt.balance}</strong><small>(${rpt.balance_time})</small></p>
+        <p><small>余额: </small><strong>${rpt.balance}元</strong><small> (${rpt.balance_time})</small></p>
         {{/each}}
     {{/if}}
 </script>
