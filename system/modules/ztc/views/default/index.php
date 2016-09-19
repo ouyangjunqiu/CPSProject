@@ -47,7 +47,7 @@
 
                         <div class="tab-content">
 
-                            <div role="tabpanel" class="tab-pane active" id="todo_<?php echo md5($row["nick"]);?>">
+                            <div role="tabpanel" class="tab-pane active" id="rpt_<?php echo md5($row["nick"]);?>">
 
                                 <div class="overlay-wrapper" data-tmpl="shop-ztcrpt-list-tmpl" data-load="overlay" data-url="http://yj.da-mai.com/index.php?r=milestone/adviser/custreport&nick=<?php echo $row["nick"];?>">
                                 </div>
@@ -250,7 +250,7 @@
                         type: 'areaspline',
                         name: '消耗',
                         yAxis: 1,
-                        data: app.charts.formatData(data, 'charge'),
+                        data: app.charts.formatData(data, 'cost'),
                         color: '#3499DC'
                     },
                     {
