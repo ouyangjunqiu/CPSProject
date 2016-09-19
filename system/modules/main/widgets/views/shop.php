@@ -120,6 +120,22 @@
                                 </span>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-4"><small>服务周期:</small></div>
+                            <div class="col-md-8">
+                                <?php if(!empty($row["enddate"])):?>
+
+                                    <?php $days = ceil((strtotime($row["enddate"])-strtotime(date("Y-m-d")))/24/3600);?>
+                                    <?php if($days>=0):?>
+                                    <small>剩余</small><strong><?php echo $days;?></strong><small>天</small>
+
+                                    <small>(<?php echo date("Y.m.d",$row["startdate"]);?>~<?php echo date("Y.m.d",$row["enddate"]);?>)</small>
+
+                                    <?php endif;?>
+                                <?php endif;?>
+                            </div>
+                        </div>
+
 
                         <div class="row">
                             <div class="col-md-2"><small>交谈:</small></div>
@@ -343,7 +359,7 @@
                                 <span class="pic_read">
                                     <strong><?php echo $row["startdate"];?></strong>
                                 </span>
-                                <span class="pic_input" style="display: none">
+                                <span class="pic_input form_writer" style="display: none">
                                     <input type="text" value="<?php echo $row["startdate"];?>" name="startdate"/>
                                 </span>
                             </div>
@@ -357,7 +373,7 @@
                                 <span class="pic_read">
                                     <strong><?php echo $row["enddate"];?></strong>
                                 </span>
-                                <span class="pic_input" style="display: none">
+                                <span class="pic_input form_writer" style="display: none">
                                     <input type="text" value="<?php echo $row["enddate"];?>" name="enddate"/>
                                 </span>
                             </div>
