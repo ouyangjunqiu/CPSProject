@@ -48,7 +48,7 @@
                         <div class="tab-content">
 
                             <div role="tabpanel" class="tab-pane active" id="rpt_<?php echo md5($row["nick"]);?>">
-                                <div class="overlay-wrapper" data-tmpl="shop-ztcbalance-tmpl" data-load="overlay" data-url="http://yj.da-mai.com/index.php?r=milestone/adviser/shopinfo&nickname=<?php echo $row["nick"];?>">
+                                <div class="overlay-wrapper" data-role="ztc_balance" data-tmpl="shop-ztcbalance-tmpl" data-load="overlay" data-url="http://yj.da-mai.com/index.php?r=milestone/adviser/shopinfo&nickname=<?php echo $row["nick"];?>">
 
                                 </div>
                                 <div class="overlay-wrapper" data-tmpl="shop-ztcrpt-list-tmpl" data-load="overlay" data-url="http://yj.da-mai.com/index.php?r=milestone/adviser/custreport&nick=<?php echo $row["nick"];?>">
@@ -74,7 +74,7 @@
 <script type="text/x-jquery-tmpl" id="shop-ztcbalance-tmpl">
     {{if data.length>0}}
         {{each(i,rpt) data}}
-        <p><small>余额: </small><strong>${rpt.balance}元</strong><small> (${rpt.balance_time})</small></p>
+        <p><small>余额: </small><strong>${rpt.balance}元</strong><small> (${rpt.balance_time}) <a href="javascript:void(0)" data-url="http://yj.da-mai.com/index.php?r=milestone/adviser/refreshBalance&nick=${rpt.nick}" class='shop-balance-ctrl'>更新</a></small></p>
         {{/each}}
     {{/if}}
 </script>
@@ -390,7 +390,20 @@
                 self.tab('show');
             });
 
-        })
+        });
+
+        $("body").delegate(".shop-balance-ctrl","click",function(){
+            var parent = $(this).parents("[data-role=ztc_balance]");
+            var url = $(this).attr("data-url");
+            $.ajax({
+                url:url,
+                type:"post",
+                dataType:"json",
+                success:function(){
+                    parent.iLoad();
+                }
+            })
+        });
 
     });
 
