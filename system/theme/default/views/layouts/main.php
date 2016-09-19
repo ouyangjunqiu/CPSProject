@@ -49,16 +49,20 @@
         <script type="text/javascript">
 
                 $.user.login("http://login.da-mai.com/", function (data) {
-
-                    $.ajax({
+                    $.when($.ajax({
+                        type: "post",
+                        url: "http://yj.da-mai.com/index.php?r=milestone/adviser/addSession",
+                        data: {username: data.username,realname:data.username},
+                        dataType: "json"
+                    }), $.ajax({
                         type: "post",
                         url: "<?php echo $this->createUrl("/user/default/login");?>",
                         data: {user: data},
-                        dataType: "json",
-                        success: function () {
-                            window.location.reload();
-                        }
-                    });
+                        dataType: "json"
+                    })).when(function(){
+                        window.location.reload();
+                    })
+
                 });
 
         </script>
