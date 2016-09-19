@@ -59,7 +59,7 @@
                         url: "<?php echo $this->createUrl("/user/default/login");?>",
                         data: {user: data},
                         dataType: "json"
-                    })).when(function(){
+                    })).then(function(){
                         window.location.reload();
                     })
 
