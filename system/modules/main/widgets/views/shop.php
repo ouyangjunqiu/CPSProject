@@ -128,7 +128,7 @@
                                     <?php if($days>=0):?>
                                         <small>剩余</small><strong><?php echo $days;?></strong><small>天</small>
 
-                                        <small>(<?php echo empty($row["startdate"])?"":date("Y.m.d",$row["startdate"]);?>~<?php echo date("Y.m.d",$row["enddate"]);?>)</small>
+                                        <small>(<?php echo empty($row["startdate"])?"":date("Y.m.d",strtotime($row["startdate"]));?>~<?php echo date("Y.m.d",strtotime($row["enddate"]));?>)</small>
 
                                     <?php endif;?>
 
