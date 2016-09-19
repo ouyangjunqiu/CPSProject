@@ -247,6 +247,15 @@ class ShopController extends Controller
                 $arr["ztc_pic"] = StringUtil::tagFormat($ztcpic);
             }
 
+            $startdate = Env::getRequest("startdate");
+            $enddate = Env::getRequest("enddate");
+            if(!String::isEmpty($startdate)){
+                $arr["startdate"] = $startdate;
+            }
+            if(!String::isEmpty($enddate)){
+                $arr["enddate"] = $enddate;
+            }
+
             $arr["create_date"] = date("Y-m-d");
             $model->setAttributes($arr);
             if($model->save()){
