@@ -137,12 +137,10 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4"><small>推广工具:</small></div>
-                            <div class="col-md-4">
-                                <?php echo empty($row["ztc_budget"])?"<span class=\"label label-disable\"><i class='glyphicon glyphicon-pause'></i> 直通车</span>":"<span class=\"label label-info\"><i class='glyphicon glyphicon-ok'></i> 直通车</span>";?>
+                            <div class="col-md-8">
+                                <?php echo empty($row["ztc_budget"])?"<span class=\"label label-disable\"><i class='glyphicon glyphicon-pause'></i> 直通车</span> ":"<span class=\"label label-info\"><i class='glyphicon glyphicon-ok'></i> 直通车</span> ";?>
 
-                            </div>
-                            <div class="col-md-4">
-                                <?php echo empty($row["zuanshi_budget"])?"<span class=\"label label-disable\"><i class='glyphicon glyphicon-pause'></i> 智钻</span>":"<span class=\"label label-info\"><i class='glyphicon glyphicon-ok'></i> 智钻</span>";?>
+                                <?php echo empty($row["zuanshi_budget"])?"<span class=\"label label-disable\"><i class='glyphicon glyphicon-pause'></i> 智钻</span> ":"<span class=\"label label-info\"><i class='glyphicon glyphicon-ok'></i> 智钻</span> ";?>
                             </div>
                         </div>
 
