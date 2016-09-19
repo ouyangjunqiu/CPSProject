@@ -338,6 +338,34 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col-md-3"><small>服务周期(起):</small></div>
+                            <div class="col-md-7">
+                                <span class="pic_read">
+                                    <strong><?php echo $row["startdate"];?></strong>
+                                </span>
+                                <span class="pic_input" style="display: none">
+                                    <input type="text" value="<?php echo $row["startdate"];?>" name="startdate"/>
+                                </span>
+                            </div>
+                            <div class="col-md-2">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3"><small>服务周期(止):</small></div>
+                            <div class="col-md-7">
+                                <span class="pic_read">
+                                    <strong><?php echo $row["enddate"];?></strong>
+                                </span>
+                                <span class="pic_input" style="display: none">
+                                    <input type="text" value="<?php echo $row["enddate"];?>" name="enddate"/>
+                                </span>
+                            </div>
+                            <div class="col-md-2">
+
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-3"><small>店铺地址:</small></div>
                             <div class="col-md-7">
                                 <span class="pic_read w2">
