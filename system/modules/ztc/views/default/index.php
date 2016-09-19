@@ -48,7 +48,9 @@
                         <div class="tab-content">
 
                             <div role="tabpanel" class="tab-pane active" id="rpt_<?php echo md5($row["nick"]);?>">
+                                <div class="overlay-wrapper" data-tmpl="shop-ztcbalance-tmpl" data-load="overlay" data-url="http://yj.da-mai.com/index.php?r=milestone/adviser/shopinfo&nickname=<?php echo $row["nick"];?>">
 
+                                </div>
                                 <div class="overlay-wrapper" data-tmpl="shop-ztcrpt-list-tmpl" data-load="overlay" data-url="http://yj.da-mai.com/index.php?r=milestone/adviser/custreport&nick=<?php echo $row["nick"];?>">
                                 </div>
 
@@ -69,6 +71,13 @@
     <div class="c-pager">
     </div>
 </div>
+<script type="text/x-jquery-tmpl" id="shop-ztcbalance-tmpl">
+    {{if data.length>0}}
+        {{each(i.rpt) data}}
+        <p><small>余额:</small><strong>${rpt.balance}</strong><small>(${rpt.balance_time})</small></p>
+        {{/each}}
+    {{/if}}
+</script>
 
 <script type="text/x-jquery-tmpl" id="shop-ztcrpt-list-tmpl">
  {{if data.reports.length<=0}}
