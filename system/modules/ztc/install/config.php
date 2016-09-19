@@ -2,7 +2,7 @@
 return array(
     'param' => array(
         'name' => '核心模块',
-        'description' => '系统核心模块',
+        'description' => '直通车模块',
         'author' => 'oShine',
         'version' => '1.0',
 		'indexShow' => array(
