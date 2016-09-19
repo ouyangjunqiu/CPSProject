@@ -134,7 +134,7 @@
                     width: 1100
                 },
                 title: {
-                    text: "直通车趋势"
+                    text: ""
                 },
                 xAxis: {
                     categories: $(data).map(function (k, v) {
