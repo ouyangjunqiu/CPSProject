@@ -74,7 +74,7 @@
 <script type="text/x-jquery-tmpl" id="shop-ztcbalance-tmpl">
     {{if data.length>0}}
         {{each(i,rpt) data}}
-        <p><small>余额: </small><strong>${rpt.balance}元</strong><small> (${rpt.balance_time}) <a href="javascript:void(0)" data-url="http://yj.da-mai.com/index.php?r=milestone/adviser/refreshBalance&nick=${rpt.nick}" class='shop-balance-ctrl'>更新</a></small></p>
+        <p><small>余额: </small><strong>${rpt.balance}元</strong><small> (${rpt.balance_time}) <a href="javascript:void(0)" data-url="http://yj.da-mai.com/index.php?r=milestone/adviser/refreshBalance&nick=${rpt.nick}" class='shop-balance-ctrl'>[更新]</a></small></p>
         {{/each}}
     {{/if}}
 </script>
@@ -401,6 +401,9 @@
                 dataType:"json",
                 success:function(){
                     parent.iLoad();
+                },
+                error:function(){
+                    app.alert("更新失败,请确认服务是否过期!");
                 }
             })
         });
