@@ -610,7 +610,6 @@
         app.charts.zuanshi_custdata = function(data) {
             return {
                 chart: {
-                    height: 280,
                     width: 1100
                 },
                 title: {
@@ -733,13 +732,13 @@
                         data: app.charts.formatData(data, 'charge'),
                         color: '#3499DC'
                     },
-//                    {
-//                        type: 'areaspline',
-//                        name: '成交额',
-//                        yAxis: 1,
-//                        data: app.charts.formatData(data, 'pay'),
-//                        color: '#FA6E50'
-//                    },
+                    {
+                        type: 'areaspline',
+                        name: '转化金额',
+                        yAxis: 1,
+                        data: app.charts.formatData(data, 'alipayInshopAmt'),
+                        color: '#FA6E50'
+                    },
                     {
                         type: 'spline',
                         name: '3天订单数',

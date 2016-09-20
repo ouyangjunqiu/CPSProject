@@ -59,7 +59,9 @@ var app = {};
     app.charts.formatData = function(data,column){
         var result = [];
         $(data).each(function (k, v) {
-            result.push(parseFloat(v[column]));
+            var num = parseFloat(v[column]);
+            num = parseInt(num)==num?num:num.toFixed(2);
+            result.push(num);
         });
         return result;
     };
