@@ -5,7 +5,7 @@
 	<meta charset=<?php echo CHARSET; ?> />
 	<title>精准投放管理平台</title>
 
-	<link rel="shortcut icon" href="<?php echo STATICURL; ?>/base/image/icon.png">
+	<link rel="shortcut icon" href="<?php echo STATICURL; ?>/base/cps/image/icon.png">
 	<meta name="generator" content="" />
 	<meta name="author" content="" />
 	<meta name="copyright" content="" />
@@ -18,15 +18,15 @@
     ?>
 
 	<!-- load css -->
-	<link rel="stylesheet" href="<?php echo STATICURL.'/base/css/bootstrap.min.css'; ?>" />
+	<link rel="stylesheet" href="<?php echo STATICURL.'/base/bootstrap/css/bootstrap.min.css'; ?>" />
     <link rel="stylesheet" href="<?php echo STATICURL.'/base/js/plugins/datatables/dataTables.bootstrap.css'; ?>" />
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="<?php echo STATICURL.'/base/css/font-awesome.min.css'; ?>" />
-    <link rel="stylesheet" href="<?php echo STATICURL.'/base/css/ionicons.min.css'; ?>" />
+    <link rel="stylesheet" href="<?php echo STATICURL.'/base/font-awesome/css/font-awesome.min.css'; ?>" />
+    <link rel="stylesheet" href="<?php echo STATICURL.'/base/ionicons/css/ionicons.min.css'; ?>" />
 
-    <link rel="stylesheet" href="<?php echo STATICURL.'/base/css/common.css'; ?>">
-    <link rel="stylesheet" href="<?php echo STATICURL.'/base/css/style.css'; ?>">
-    <link rel="stylesheet" href="<?php echo STATICURL.'/base/css/layout.css'; ?>">
+    <link rel="stylesheet" href="<?php echo STATICURL.'/base/cps/css/common.css'; ?>">
+    <link rel="stylesheet" href="<?php echo STATICURL.'/base/cps/css/style.css'; ?>">
+    <link rel="stylesheet" href="<?php echo STATICURL.'/base/cps/css/layout.css'; ?>">
 
     <!-- jQuery 2.1.4 -->
     <script src='<?php echo STATICURL.'/base/js/plugins/jQuery/jQuery-2.1.4.min.js'; ?>'></script>
@@ -125,7 +125,7 @@
     <div class="top-nav ">
         <div class="top container">
             <div class="logo">
-                <img src="<?php echo STATICURL.'/base/image/logo.png';?>" alt="精准投放管理平台">
+                <img src="<?php echo STATICURL.'/base/cps/image/logo.png';?>" alt="精准投放管理平台">
             </div>
             <ul class="top-ul tab-tit">
                 <li class="">
@@ -196,7 +196,7 @@
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
-<script src='<?php echo STATICURL."/base/js/bootstrap.min.js?".VERSION; ?>'></script>
+<script src='<?php echo STATICURL."/base//bootstrap/js/bootstrap.min.js?v3"; ?>'></script>
 <script src='<?php echo STATICURL."/base/js/plugins/tmpl/jquery.tmpl.min.js"; ?>'></script>
 <script src='<?php echo STATICURL."/base/js/plugins/draggable/jquery-ui-1.10.4.custom.min.js"; ?>'></script>
 <script src='<?php echo STATICURL."/base/js/plugins/jquery-artDialog/jquery.artDialog.js"; ?>'></script>

@@ -2,22 +2,9 @@
 <html lang="en">
 	<head>
 		<meta charset="<?php echo CHARSET; ?>">
-		<link rel="shortcut icon" href="<?php echo STATICURL; ?>/base/image/favicon.ico">
+		<link rel="shortcut icon" href="<?php echo STATICURL; ?>/base/cps/image/favicon.ico">
 		<title><?php echo $msgTitle; ?></title>
-		<!-- load css -->
-		<style>
-			/* Status Tip */
-			.status-tip i,.status-tip a.tip-url {background-image: url(<?php echo STATICURL; ?>/base/image/status_tip.png);background-repeat: no-repeat;}
-			.status-tip{margin: 0 auto;width: 576px;text-align: center;}
-			.status-tip i{margin: 0 auto;display: block;width: 80px;height: 80px;}
-			.status-tip p{margin-bottom: 0;line-height: 40px;font-size: 20px;}
-			.status-tip a.tip-url{display: block;height: 100px;width: 100%;background-position: 0 -80px;text-indent: -9999px;}
-			.status-tip-error i{ background-position: -80px 0; }
-			.status-tip-info i{ background-position: -160px 0; }
-			.status-tip-lock .status-tip i{ background-position: -240px 0; }
-			.ct { margin-top:80px;}
-		</style>
-		<link rel="stylesheet" href="<?php echo STATICURL ?>/base/css/error.css">
+		<link rel="stylesheet" href="<?php echo STATICURL; ?>/base/cps/css/error.css">
 	</head>
 	<body>
 		<div class="ct">
