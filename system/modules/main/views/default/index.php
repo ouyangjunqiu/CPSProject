@@ -42,10 +42,10 @@ $username = empty($user)?"游客":$user["username"];
                     <div class="baby-box" data-role="shop-plan-case-list">
                         <ul class="nav nav-tabs shop-nav" role="tablist">
                             <li role="presentation" class="active"><a href="#todo_<?php echo md5($row["nick"]);?>" title="待办事项" aria-controls="todo_<?php echo md5($row["nick"]);?>" role="tab" data-toggle="tab" aria-expanded="true">
-                                    <i class="fa fa-th-list"></i><span>待办事项</span></a>
+                                    <i class="glyphicon glyphicon-tasks"></i><span>待办事项</span></a>
                             </li>
                             <li role="presentation"><a href="#file_<?php echo md5($row["nick"]);?>" data-type="file" title="云共享" aria-controls="file_<?php echo md5($row["nick"]);?>" role="tab" data-toggle="tab" aria-expanded="true">
-                                    <i class="fa fa-cloud"></i><span>云共享</span></a>
+                                    <i class="glyphicon glyphicon-cloud"></i><span>云共享</span></a>
                             </li>
 <!--                            <li role="presentation"><a href="#ploy_--><?php //echo md5($row["nick"]);?><!--" title="营销推广规划" aria-controls="ploy_--><?php //echo md5($row["nick"]);?><!--" role="tab" data-toggle="tab" aria-expanded="true">-->
 <!--                                    <i class="glyphicon glyphicon-record"></i><span>营销推广规划</span></a>-->
@@ -61,7 +61,7 @@ $username = empty($user)?"游客":$user["username"];
                                 <div class="row">
 
                                     <div class="col-md-4">
-                                        <a data-toggle="modal" data-target="#ShopTodoAddModal" data-backdrop="false" data-trigger-target="todo_<?php echo md5($row["nick"]);?>" data-nick="<?php echo $row["nick"];?>"><i class="fa fa-plus"></i>新建待办事项...</a>
+                                        <a data-toggle="modal" data-target="#ShopTodoAddModal" data-backdrop="false" data-trigger-target="todo_<?php echo md5($row["nick"]);?>" data-nick="<?php echo $row["nick"];?>"><i class="glyphicon glyphicon-plus"></i>新建待办事项...</a>
 
                                     </div>
                                     <div class="col-md-7">
@@ -78,7 +78,7 @@ $username = empty($user)?"游客":$user["username"];
                                 </div>
 
                                 <a data-toggle="modal" data-target="#ShopFileUploadModal" data-backdrop="false" data-logdate-index="1" data-nick="<?php echo $row["nick"];?>" data-creator="<?php echo $username;?>" data-trigger-target="#file_<?php echo md5($row["nick"]);?>">
-                                    <i class="fa fa-cloud-upload"></i> 上传文件...
+                                    <i class="glyphicon glyphicon-cloud-upload"></i> 上传文件...
                                 </a>
                             </div>
 

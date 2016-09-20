@@ -7,7 +7,7 @@
             <li role="presentation"><a href="#budget_<?php echo $row["id"];?>" title="推广设置" aria-controls="budget_<?php echo $row["id"];?>" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-usd"></i><span>推广设置</span></a></li>
             <li role="presentation"><a href="#contact_<?php echo $row["id"];?>" title="联系方式" aria-controls="contact_<?php echo $row["id"];?>" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-earphone"></i><span>联系方式</span></a></li>
             <li role="presentation"><a href="#op_<?php echo $row["id"];?>" title="店铺操作" aria-controls="op_<?php echo $row["id"];?>" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-cog"></i><span>店铺操作</span></a></li>
-            <li role="presentation"><a href="#more_<?php echo $row["id"];?>" title="快捷登录" aria-controls="op_<?php echo $row["id"];?>" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-option-horizontal"></i><span>更多应用</span></a></li>
+            <li role="presentation"><a href="#more_<?php echo $row["id"];?>" title="快捷登录" aria-controls="op_<?php echo $row["id"];?>" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-th"></i><span>更多应用</span></a></li>
 
         </ul>
 
