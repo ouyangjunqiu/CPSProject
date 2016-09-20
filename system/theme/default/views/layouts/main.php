@@ -43,6 +43,7 @@
     <link rel="stylesheet" href="<?php echo STATICURL.'/base/js/plugins/jquery-artDialog/artDialog-simple.css'; ?>">
     <link rel="stylesheet" href="<?php echo STATICURL.'/base/js/plugins/jquery-showLoading/showLoading.css'; ?>">
     <link rel="stylesheet" href="<?php echo STATICURL.'/base/js/plugins/dropify/css/dropify.min.css'; ?>">
+    <link rel="stylesheet" href="<?php echo STATICURL.'/base/cps/css/index.css'; ?>">
 
     <?php if(!\cloud\core\utils\Env::isLogin()):?>
         <script src='<?php echo STATICURL.'/main/js/login.js'; ?>'></script>
