@@ -868,7 +868,7 @@
             var url = target.data("url");
             $.get(url,{},function(resp){
                 var data = [];
-                if(resp.data.click3 && resp.data.click3.list){
+                if(resp.isSuccess){
                     $.each(resp.data.click3.list,function(v){
                         data.push(this);
                     });
