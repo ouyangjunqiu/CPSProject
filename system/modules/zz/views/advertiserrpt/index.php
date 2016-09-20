@@ -872,6 +872,7 @@
                 $.each(resp.data.click3.list,function(v){
                     data.push(v);
                 });
+                console.log(data);
                 var config = app.charts.zuanshi_custdata(data);
                 config.chart.width = target.width();
                 target.highcharts(config);
