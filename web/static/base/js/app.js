@@ -66,6 +66,18 @@ var app = {};
         return result;
     };
 
+    app.charts.formatDataToPercent = function(data,column){
+        var result = [];
+        $(data).each(function (k, v) {
+            var num = parseFloat(parseFloat(v[column])*100);
+            num = parseInt(num)==num?num:parseFloat(num.toFixed(2));
+            result.push(num);
+        });
+        return result;
+    };
+
+
+
     app.charts.formatHourData = function(data,column){
         var result = [];
         var keys = app.charts.formatData(data,"hourId");

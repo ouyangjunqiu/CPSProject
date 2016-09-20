@@ -672,8 +672,8 @@
                                 color: '#2FCD71'
                             }
                         }, title: {
-                        text: ''
-                    },
+                            text: ''
+                        },
                         min: 0
                     },
                     {
@@ -683,8 +683,8 @@
                                 color: '#3499DC'
                             }
                         }, title: {
-                        text: ''
-                    }
+                            text: ''
+                        }
                     },
                     {
                         labels: {
@@ -693,8 +693,8 @@
                                 color: '#3499DC'
                             }
                         }, title: {
-                        text: ''
-                    },
+                            text: ''
+                        },
                         opposite: true,
                         min: 0,
                         allowDecimals: false
@@ -706,8 +706,8 @@
                                 color: '#2FCD71'
                             }
                         }, title: {
-                        text: ''
-                    },
+                            text: ''
+                        },
                         opposite: true
                     },
                     {
@@ -717,11 +717,22 @@
                                 color: '#3499DC'
                             }
                         }, title: {
-                        text: ''
-                    },
+                            text: ''
+                        },
                         opposite: true,
                         min: 0,
                         allowDecimals: false
+                    },
+                    {
+                        labels: {
+                            format: '{value}',
+                            style: {
+                                color: '#2FCD71'
+                            }
+                        }, title: {
+                            text: ''
+                        },
+                        min: 0
                     }
                 ],
                 series: [
@@ -808,7 +819,7 @@
                         type: 'spline',
                         name: '点击率',
                         yAxis: 0,
-                        data: app.charts.formatData(data, 'ctr'),
+                        data: app.charts.formatDataToPercent(data, 'ctr'),
                         marker: {
                             lineWidth: 2,
                             lineColor: '#92B1DA',
@@ -833,7 +844,7 @@
                     {
                         type: 'spline',
                         name: '点击单价',
-                        yAxis: 0,
+                        yAxis: 1,
                         data: app.charts.formatData(data, 'ecpc'),
                         marker: {
                             lineWidth: 2,
@@ -846,7 +857,7 @@
                     {
                         type: 'spline',
                         name: '投资回报率',
-                        yAxis: 0,
+                        yAxis: 5,
                         data: app.charts.formatData(data, 'roi'),
                         marker: {
                             lineWidth: 2,
