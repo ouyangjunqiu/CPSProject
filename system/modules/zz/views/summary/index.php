@@ -61,10 +61,10 @@
         <tr class="small">
             <th>店铺名</th>
             <th>主营行业</th>
-            <th>运营对接人</th>
-            <th>直通车负责人</th>
-            <th>钻展负责人</th>
-            <th>大数据负责人</th>
+            <th>运营顾问</th>
+            <th>直通车顾问</th>
+            <th>智钻顾问</th>
+            <th>数据顾问</th>
             <th class="b2">展现</th>
             <th class="b2">点击</th>
             <th class="b2">消耗</th>

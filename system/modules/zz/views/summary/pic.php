@@ -57,7 +57,7 @@
     <table class="baby-frame-table" id="table-fixed" style="table-layout: fixed;">
         <thead>
         <tr class="small">
-            <th>钻展负责人</th>
+            <th>智钻顾问</th>
             <th>负责店铺数</th>
             <th class="b2">点击率(%)</th>
             <th class="b2">消耗</th>
