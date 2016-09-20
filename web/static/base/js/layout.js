@@ -285,6 +285,41 @@
     });
 
 })($);
+(function ($) {
+    $.extend({
+     winZoom:function(){
+        var ratio = 0,
+            screen = window.screen,
+            ua = navigator.userAgent.toLowerCase();
+
+        if( ~ua.indexOf('firefox') ){
+            if( window.devicePixelRatio !== undefined ){
+                ratio = window.devicePixelRatio;
+            }
+        }
+        else if( ~ua.indexOf('msie') ){
+            if( screen.deviceXDPI && screen.logicalXDPI ){
+                ratio = screen.deviceXDPI / screen.logicalXDPI;
+            }
+        }
+        else if( window.outerWidth !== undefined && window.innerWidth !== undefined ){
+            ratio = window.outerWidth / window.innerWidth;
+        }
+
+        if( ratio ){
+            ratio = Math.round( ratio * 100 );
+        }
+
+        // 360安全浏览器下的innerWidth包含了侧边栏的宽度
+        if( ratio !== 100 ){
+            if( ratio >= 95 && ratio <= 105 ){
+                ratio = 100;
+            }
+        }
+
+        return ratio;
+    }});
+})($);
 
 
 $(document).ready(function(){
@@ -384,6 +419,14 @@ $(document).ready(function(){
             //  $(".main-header").hide();
         }
     });
+
+
+
+    var ratio = $.winZoom();
+
+    if( ratio < 100 || ratio > 100){
+        $(".tips-wrapper").html('<p class="alert alert-warning">浏览器处于缩放模式,为了你更好的浏览体验，请使用ctrl+0进行重置</p>').show();
+    }
 
 });
 

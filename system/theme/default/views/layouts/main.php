@@ -31,7 +31,6 @@
     <!-- jQuery 2.1.4 -->
     <script src='<?php echo STATICURL.'/base/js/plugins/jQuery/jQuery-2.1.4.min.js'; ?>'></script>
     <script src='<?php echo STATICURL.'/base/js/plugins/jQuery/jquery.cookie.js'; ?>'></script>
-    <script src='<?php echo STATICURL."/base/js/layout.js"; ?>'></script>
     <script src='<?php echo STATICURL."/base/js/app.js"; ?>'></script>
 
     <!-- Bootstrap 3.3.5 -->
@@ -220,7 +219,7 @@
 
 <!--    <script src='--><?php //echo STATICURL."/base/js/plugins/tinymce/tinymce.min.js"; ?><!--'></script>-->
 
-
+    <script src='<?php echo STATICURL."/base/js/layout.js"; ?>'></script>
     <script src='<?php echo STATICURL."/base/js/score.js"; ?>'></script>
 
 <?php
