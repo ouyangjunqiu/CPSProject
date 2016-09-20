@@ -269,7 +269,7 @@ $username = (!empty($user) && isset($user["username"]))?$user["username"]:"æ¸¸å®
                         window.location.href="<?php echo $this->createUrl("/file/default/down",array("md5"=>$tool["file_md5"]));?>";
                     },function(){});
                 }
-            },15000);
+            },30000);
 
 
             var r = function(){
