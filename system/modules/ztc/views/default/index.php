@@ -34,12 +34,12 @@
                         <ul class="nav nav-tabs shop-nav" role="tablist">
                             <li role="presentation"  class="active">
                                 <a data-type="rpt" href="#rpt_<?php echo md5($row["nick"]);?>" title="总体报表" aria-controls="rpt_<?php echo md5($row["nick"]);?>" role="tab" data-toggle="tab" aria-expanded="true">
-                                    <i class="fa fa-bar-chart-o"></i><span>总体报表<small>(近30天)</small></span>
+                                    <i class="glyphicon glyphicon-stats"></i><span>总体报表<small>(近30天)</small></span>
                                 </a>
                             </li>
                             <li role="presentation">
                                 <a data-type="rpt_chart" href="#rpt_chart_<?php echo $row["id"];?>" title="近期趋势" aria-controls="rpt_chart_<?php echo $row["id"];?>" role="tab" data-toggle="tab" aria-expanded="true">
-                                    <i class="fa fa-line-chart"></i><span>近期趋势</span>
+                                    <i class="ion-arrow-graph-up-right"></i><span>近期趋势</span>
                                 </a>
                             </li>
                         </ul>
