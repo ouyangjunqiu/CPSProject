@@ -120,21 +120,24 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-4"><small>服务周期:</small></div>
-                            <div class="col-md-8">
-                                <?php if(!empty($row["enddate"])):?>
-                                    <?php $days = ceil((strtotime($row["enddate"])-strtotime(date("Y-m-d")))/3600/24);?>
-                                    <?php if($days>=0):?>
+                        <?php if(!empty($row["enddate"])):?>
+
+                            <?php $days = ceil((strtotime($row["enddate"])-strtotime(date("Y-m-d")))/3600/24);?>
+                            <?php if($days>=0):?>
+                                <div class="row">
+                                    <div class="col-md-4"><small>服务周期:</small></div>
+                                    <div class="col-md-8">
+
                                         <small>剩余</small><strong><?php echo $days;?></strong><small>天</small>
 
                                         <small>(<?php echo empty($row["startdate"])?"":date("y.n.j",strtotime($row["startdate"]));?>~<?php echo date("y.n.j",strtotime($row["enddate"]));?>)</small>
 
-                                    <?php endif;?>
+                                    </div>
+                                </div>
 
-                                <?php endif;?>
-                            </div>
-                        </div>
+                            <?php endif;?>
+
+                        <?php endif;?>
                         <div class="row">
                             <div class="col-md-4"><small>推广工具:</small></div>
                             <div class="col-md-8">
