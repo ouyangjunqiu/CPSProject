@@ -2,8 +2,8 @@
     <a name="<?php echo $row["nick"];?>" class="_anchor"></a>
     <div class="tab">
         <ul class="nav nav-tabs shop-nav" role="tablist">
-            <li role="presentation" class="active"><a href="#home_<?php echo $row["id"];?>" title="基本信息" aria-controls="home_<?php echo $row["id"];?>" role="tab" data-toggle="tab"><i class="fa fa-home"></i><span>基本信息</span></a></li>
-            <li role="presentation"><a href="#op_<?php echo $row["id"];?>" title="店铺操作" aria-controls="op_<?php echo $row["id"];?>" role="tab" data-toggle="tab"><i class="fa fa-cog"></i><span>店铺操作</span></a></li>
+            <li role="presentation" class="active"><a href="#home_<?php echo $row["id"];?>" title="基本信息" aria-controls="home_<?php echo $row["id"];?>" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-home"></i><span>基本信息</span></a></li>
+            <li role="presentation"><a href="#op_<?php echo $row["id"];?>" title="店铺操作" aria-controls="op_<?php echo $row["id"];?>" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-cog"></i><span>店铺操作</span></a></li>
         </ul>
 
         <div class="tab-content">
