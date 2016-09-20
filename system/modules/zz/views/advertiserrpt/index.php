@@ -45,12 +45,12 @@
                         <ul class="nav nav-tabs shop-nav" role="tablist">
                             <li role="presentation">
                                 <a data-type="realtime" href="#realtime_<?php echo $row["id"];?>" title="实时状况" aria-controls="realtime_<?php echo $row["id"];?>" role="tab" data-toggle="tab" aria-expanded="true">
-                                    <i class="fa fa-flash"></i><span>实时状况</span>
+                                    <i class="glyphicon glyphicon-flash"></i><span>实时状况</span>
                                 </a>
                             </li>
                             <li role="presentation"  class="active">
                                 <a data-type="rpt" href="#rpt_<?php echo $row["id"];?>" title="历史报表" aria-controls="rpt_<?php echo $row["id"];?>" role="tab" data-toggle="tab" aria-expanded="true">
-                                    <i class="fa fa-bar-chart-o"></i><span>近期报表<small>(近15天)</small></span>
+                                    <i class="glyphicon glyphicon-stats"></i><span>近期报表<small>(近15天)</small></span>
                                 </a>
                             </li>
 <!--                            <li role="presentation">-->
