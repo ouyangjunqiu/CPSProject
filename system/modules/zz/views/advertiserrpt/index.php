@@ -868,7 +868,11 @@
             var target = $(self.attr("href")).find("[data-role=rpt_chart]");
             var url = target.data("url");
             $.get(url,{},function(resp){
-                var config = app.charts.zuanshi_custdata(resp.data.click3.list);
+                var data = [];
+                $.each(resp.data.click3.list,function(v){
+                    data.push(v);
+                });
+                var config = app.charts.zuanshi_custdata(data);
                 config.chart.width = target.width();
                 target.highcharts(config);
                 self.tab('show');
