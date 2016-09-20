@@ -425,7 +425,7 @@ $(document).ready(function(){
     var ratio = $.winZoom();
 
     if( ratio < 100 || ratio > 100){
-        $(".tips-wrapper").html('<p class="alert alert-warning">浏览器处于缩放模式,为了你更好的浏览体验，请使用ctrl+0进行重置</p>').show();
+        $(".tips-wrapper").html('<p class="alert alert-warning">浏览器处于缩放模式,为了你更好的浏览体验，请使用ctrl+0进行重置后刷新该界面.</p>').show();
     }
 
 });
