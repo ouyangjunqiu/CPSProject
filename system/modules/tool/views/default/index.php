@@ -33,7 +33,7 @@
                 <div class="input-group">
                     <input class="form-control" name="num_iid" value="" />
                         <span class="input-group-addon">
-                            <i class="fa fa-search"></i>
+                            <i class="glyphicon glyphicon-search"></i>
                         </span>
                 </div>
             </form>

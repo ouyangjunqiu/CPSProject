@@ -16,7 +16,7 @@
 
 
         <span class="input-group-addon">
-            <i class="fa fa-search"></i>
+            <i class="glyphicon glyphicon-search"></i>
         </span>
         <input type="text" name="q" class="form-control" placeholder="关键字搜索" value="<?php echo CHtml::encode($query["q"]);?>">
     </div>
@@ -27,12 +27,12 @@
     $(document).ready(function(){
         $("#shop-search-form").keydown(function(event){
             if(event.which == 13){
-                $("#shop-search-form .fa-search").trigger("click");
+                $("#shop-search-form .glyphicon-search").trigger("click");
                 return false;
             }
         });
 
-        $("#shop-search-form .fa-search").click(function(){
+        $("#shop-search-form .glyphicon-search").click(function(){
             var form = $(this).parents("#shop-search-form");
             var data = {};
             data.q = form.find("input[name=q]").val();
