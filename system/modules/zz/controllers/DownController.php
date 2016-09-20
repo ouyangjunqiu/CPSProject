@@ -101,9 +101,9 @@ class DownController extends Controller
         $enddate = Env::getSession("enddate",$defaultDate->endDate,"zuanshi.rpt.summary");
 
 
-        $shops = ShopSearch::openlist();
+        $list = ShopSearch::openAll();
 
-        foreach($shops["list"] as &$row){
+        foreach($list as &$row){
 
             $row["rpt"] = AdvertiserRpt::fetchAllByNick($row["nick"],$startdate,$enddate,"click");
 
@@ -130,7 +130,7 @@ class DownController extends Controller
             )
         );
 
-        foreach($shops["list"] as $row){
+        foreach($list as $row){
             $data[] = array(
                 $row["nick"],
                 $row["shopcatname"],

@@ -52,4 +52,30 @@ class ShopSearch {
             "query"=>array("q"=>$q,"pic"=>$pic)
         );
     }
+
+    public static function openAll(){
+
+        $q = Env::getSession("q","","main.default.index");
+
+        $pic = Env::getSession("pic","","main.default.index");
+
+        $criteria = new \CDbCriteria();
+        $criteria->addCondition("status='0'");
+        if(!empty($pic)) {
+            $criteria->addCondition("(pic LIKE '%{$pic}%' OR zuanshi_pic LIKE '%{$pic}%' OR bigdata_pic LIKE '%{$pic}%' OR ztc_pic  LIKE '%{$pic}%')");
+        }
+        if(!empty($q)) {
+            $q = StringUtil::tagFormat($q);
+            $arr = explode(",",$q);
+
+            foreach($arr as $o){
+                $condition = "(shopname LIKE '%{$o}%' OR shopcatname LIKE '%{$o}%' OR shoptype LIKE '%{$o}%' OR nick LIKE '%{$o}%' OR pic LIKE '%{$o}%' OR zuanshi_pic LIKE '%{$o}%' OR bigdata_pic LIKE '%{$o}%' OR ztc_pic  LIKE '%{$o}%')";
+                $criteria->addCondition($condition);
+            }
+        }
+
+        $list = Shop::model()->fetchAll($criteria);
+
+        return $list;
+    }
 }
