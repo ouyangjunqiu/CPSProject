@@ -619,7 +619,7 @@
                     categories: $(data).map(function (k, v) {
                         return v.logDate;
                     }),
-                    tickInterval:4,
+                    tickInterval:3,
                     tickPosition: 'outside',
                     tickmarkPlacement: 'on',
                     gridLineWidth: 1,
