@@ -106,7 +106,7 @@
         <div class="box-footer">
 
             <div class="btn-group">
-                <button type="button" class="btn btn-default btn-sm" data-click="close"><i class="fa fa-times"></i></button>
+                <button type="button" class="btn btn-default btn-sm" data-click="close"><i class="glyphicon glyphicon-chevron-up"></i></button>
             </div>
 
         </div>
