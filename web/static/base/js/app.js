@@ -60,7 +60,7 @@ var app = {};
         var result = [];
         $(data).each(function (k, v) {
             var num = parseFloat(v[column]);
-            num = parseInt(num)==num?num:num.toFixed(2);
+            num = parseInt(num)==num?num:parseFloat(num.toFixed(2));
             result.push(num);
         });
         return result;
