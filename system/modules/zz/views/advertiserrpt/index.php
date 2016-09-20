@@ -868,10 +868,11 @@
             var url = target.data("url");
             $.get(url,{},function(resp){
                 var data = [];
-                $.each(resp.data.click3.list,function(v){
-                    data.push(this);
-                });
-                console.log(data);
+                if(resp.data.click3 && resp.data.click3.list){
+                    $.each(resp.data.click3.list,function(v){
+                        data.push(this);
+                    });
+                }
                 var config = app.charts.zuanshi_custdata(data);
                 config.chart.width = target.width();
                 target.highcharts(config);
