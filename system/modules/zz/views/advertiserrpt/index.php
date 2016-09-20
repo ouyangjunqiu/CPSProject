@@ -53,11 +53,11 @@
                                     <i class="glyphicon glyphicon-stats"></i><span>近期报表<small>(近15天)</small></span>
                                 </a>
                             </li>
-<!--                            <li role="presentation">-->
-<!--                                <a data-type="rpt_chart" href="#rpt_chart_--><?php //echo $row["id"];?><!--" title="近期趋势" aria-controls="rpt_chart_--><?php //echo $row["id"];?><!--" role="tab" data-toggle="tab" aria-expanded="true">-->
-<!--                                    <i class="fa fa-line-chart"></i><span>近期趋势</span>-->
-<!--                                </a>-->
-<!--                            </li>-->
+                            <li role="presentation">
+                                <a data-type="rpt_chart" href="#rpt_chart_<?php echo $row["id"];?>" title="近期趋势" aria-controls="rpt_chart_<?php echo $row["id"];?>" role="tab" data-toggle="tab" aria-expanded="true">
+                                    <i class="ion-arrow-graph-up-right"></i><span>近期趋势</span>
+                                </a>
+                            </li>
                         </ul>
                         <div class="tab-content">
 
@@ -98,11 +98,10 @@
 
                             </div>
 
-<!--                            <div role="tabpanel" class="tab-pane" id="rpt_chart_--><?php //echo $row["id"];?><!--">-->
-<!--                                <div data-role="rpt_chart" data-url="--><?php //echo $this->createUrl("/zz/advertiserrpt/getbynick",array("nick"=>$row["nick"],"shopname"=>$row["shopname"]));?><!--">-->
-<!--                                </div>-->
-<!---->
-<!--                            </div>-->
+                            <div role="tabpanel" class="tab-pane" id="rpt_chart_<?php echo $row["id"];?>">
+                                <div data-role="rpt_chart" data-url="<?php echo $this->createUrl("/zz/advertiserrpt/getbynick",array("nick"=>$row["nick"],"shopname"=>$row["shopname"]));?>">
+                                </div>
+                            </div>
 
 
                         </div>
@@ -608,20 +607,274 @@
 
         });
 
+        app.charts.zuanshi_custdata = function(data) {
+            return {
+                chart: {
+                    height: 280,
+                    width: 1100
+                },
+                title: {
+                    text: ""
+                },
+                xAxis: {
+                    categories: $(data).map(function (k, v) {
+                        return v.logDate;
+                    }),
+                    tickInterval:4,
+                    tickPosition: 'outside',
+                    tickmarkPlacement: 'on',
+                    gridLineWidth: 1,
+                    gridLineColor:"#e2e2e2",
+                    gridLineDashStyle:"Dash"
+                    //labels: {
+                    //    formatter: function () {
+                    //        var labelVal = this.value;
+                    //        var reallyVal = labelVal;
+                    //        if (Object.keys(data).length > 7) {
+                    //            reallyVal = labelVal.substring(0, labelVal.length - 3) + "<br/>" + labelVal.substring(2, labelVal.length - 2) + "<br/>" + labelVal.substring(3, labelVal.length);
+                    //        } else {
+                    //            reallyVal = labelVal.substring(0, labelVal.length);
+                    //        }
+                    //        return reallyVal;
+                    //    }
+                    //}
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true //显示每条曲线每个节点的数据项的值
+                        },
+                        enableMouseTracking: true
+                    },
+                    column: {
+                        dataLabels: {
+                            enabled: true,
+                            formatter: function () {
+                                return this.y + "";
+                            }
+                        },
+                        enableMouseTracking: true
+                    },
+                    spline: {
+                        dataLabels: {
+                            enabled: true,
+                            formatter: function () {
+                                return this.y + '';
+                            }
+                        },
+                        enableMouseTracking: true
+                    }
+                },
+                yAxis: [
+                    {
+                        labels: {
+                            format: '{value}%',
+                            style: {
+                                color: '#2FCD71'
+                            }
+                        }, title: {
+                        text: ''
+                    },
+                        min: 0
+                    },
+                    {
+                        labels: {
+                            format: '{value}元',
+                            style: {
+                                color: '#3499DC'
+                            }
+                        }, title: {
+                        text: ''
+                    }
+                    },
+                    {
+                        labels: {
+                            format: '{value}次',
+                            style: {
+                                color: '#3499DC'
+                            }
+                        }, title: {
+                        text: ''
+                    },
+                        opposite: true,
+                        min: 0,
+                        allowDecimals: false
+                    },
+                    {
+                        labels: {
+                            format: '{value}k',
+                            style: {
+                                color: '#2FCD71'
+                            }
+                        }, title: {
+                        text: ''
+                    },
+                        opposite: true
+                    },
+                    {
+                        labels: {
+                            format: '{value}笔',
+                            style: {
+                                color: '#3499DC'
+                            }
+                        }, title: {
+                        text: ''
+                    },
+                        opposite: true,
+                        min: 0,
+                        allowDecimals: false
+                    }
+                ],
+                series: [
+                    {
+                        type: 'areaspline',
+                        name: '消耗',
+                        yAxis: 1,
+                        data: app.charts.formatData(data, 'charge'),
+                        color: '#3499DC'
+                    },
+//                    {
+//                        type: 'areaspline',
+//                        name: '成交额',
+//                        yAxis: 1,
+//                        data: app.charts.formatData(data, 'pay'),
+//                        color: '#FA6E50'
+//                    },
+                    {
+                        type: 'spline',
+                        name: '3天订单数',
+                        yAxis: 4,
+                        data: app.charts.formatData(data, 'alipayInShopNum'),
+                        marker: {
+                            lineWidth: 2,
+                            lineColor: '#9378D8',
+                            fillColor: '#9378D8'
+                        },
+                        color: '#9378D8',
+                        visible: false
+                    },
+                    {
+                        type: 'spline',
+                        name: '点击',
+                        yAxis: 2,
+                        data: app.charts.formatData(data, 'click'),
+                        marker: {
+                            lineWidth: 2,
+                            lineColor: '#1ABC9D',
+                            fillColor: '#1ABC9D'
+                        },
+                        color: '#1ABC9D',
+                        visible: false
+                    },
+                    {
+                        type: 'spline',
+                        name: '宝贝收藏',
+                        yAxis: 2,
+                        data: app.charts.formatData(data, 'inshopItemColNum'),
+                        marker: {
+                            lineWidth: 2,
+                            lineColor: '#0086AA',
+                            fillColor: '#0086AA'
+                        },
+                        color: '#0086AA',
+                        visible: false
+                    },
+                    {
+                        type: 'spline',
+                        name: '店铺收藏',
+                        yAxis: 2,
+                        data: app.charts.formatData(data, 'dirShopColNum'),
+                        marker: {
+                            lineWidth: 2,
+                            lineColor: '#E55778',
+                            fillColor: '#E55778'
+                        },
+                        color: '#E55778',
+                        visible: false
+                    },
+                    {
+                        type: 'spline',
+                        name: '展现',
+                        yAxis: 2,
+                        data: app.charts.formatData(data, 'adPv'),
+                        marker: {
+                            lineWidth: 2,
+                            lineColor: '#E98223',
+                            fillColor: '#E98223'
+                        },
+                        color: '#E98223',
+                        visible: false
+                    },
+                    {
+                        type: 'spline',
+                        name: '点击率',
+                        yAxis: 0,
+                        data: app.charts.formatData(data, 'ctr'),
+                        marker: {
+                            lineWidth: 2,
+                            lineColor: '#92B1DA',
+                            fillColor: '#92B1DA'
+                        },
+                        color: '#92B1DA',
+                        visible: false
+                    },
+//                    {
+//                        type: 'spline',
+//                        name: '转化率',
+//                        yAxis: 0,
+//                        data: app.charts.formatData(data, 'ci'),
+//                        marker: {
+//                            lineWidth: 2,
+//                            lineColor: '#E55778',
+//                            fillColor: '#E55778'
+//                        },
+//                        color: '#E55778',
+//                        visible: false
+//                    },
+                    {
+                        type: 'spline',
+                        name: '点击单价',
+                        yAxis: 0,
+                        data: app.charts.formatData(data, 'ecpc'),
+                        marker: {
+                            lineWidth: 2,
+                            lineColor: '#377700',
+                            fillColor: '#377700'
+                        },
+                        color: '#377700',
+                        visible: false
+                    },
+                    {
+                        type: 'spline',
+                        name: '投资回报率',
+                        yAxis: 0,
+                        data: app.charts.formatData(data, 'roi'),
+                        marker: {
+                            lineWidth: 2,
+                            lineColor: '#377700',
+                            fillColor: '#377700'
+                        },
+                        color: '#377700',
+                        visible: false
+                    }
+                ]
+            };
+        };
+
         //$("[data-toggle=popover]").popover({html : true});
-//        $("a[data-type=rpt_chart]").click(function(e){
-//            e.preventDefault();
-//            var self = $(this);
-//            var target = $(self.attr("href")).find("[data-role=rpt_chart]");
-//            var url = target.data("url");
-//            $.get(url,{},function(resp){
-//                var config = app.charts.default(resp.data.list,"");
-//                config.chart.width = target.width();
-//                target.highcharts(config);
-//                self.tab('show');
-//            });
-//
-//        })
+        $("a[data-type=rpt_chart]").click(function(e){
+            e.preventDefault();
+            var self = $(this);
+            var target = $(self.attr("href")).find("[data-role=rpt_chart]");
+            var url = target.data("url");
+            $.get(url,{},function(resp){
+                var config = app.charts.zuanshi_custdata(resp.data.click3.list);
+                config.chart.width = target.width();
+                target.highcharts(config);
+                self.tab('show');
+            });
+
+        })
 
 
     });
