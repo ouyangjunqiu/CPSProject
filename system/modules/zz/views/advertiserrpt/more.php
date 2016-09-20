@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="<?php echo STATICURL.'/base/css/index.css'; ?>">
 <link rel="stylesheet" href="<?php echo STATICURL.'/main/css/index.css'; ?>">
 <style type="text/css">
     .b1{

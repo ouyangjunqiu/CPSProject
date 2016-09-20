@@ -1,5 +1,4 @@
 
-<link rel="stylesheet" href="<?php echo STATICURL.'/base/css/index.css'; ?>">
 <link rel="stylesheet" href="<?php echo STATICURL.'/main/css/index.css'; ?>">
 <div class="index-table-div">
     <form id="plugin-setting-form" class="form-horizontal">

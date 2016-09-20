@@ -1,6 +1,5 @@
 <script src='<?php echo STATICURL."/main/js/shop.js"; ?>'></script>
 
-<link rel="stylesheet" href="<?php echo STATICURL.'/base/css/index.css'; ?>">
 <link rel="stylesheet" href="<?php echo STATICURL.'/main/css/index.css'; ?>">
 
 <div class="index-table-div">
