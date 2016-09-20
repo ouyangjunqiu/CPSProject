@@ -90,19 +90,19 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <li class="dropdown my-todo">
-                    <a href="javascript:void(0)"><i class="fa fa-comments-o"></i> 我的待办
+                    <a href="javascript:void(0)"><i class="ion-chatbubbles"></i> 我的待办
                     <span class="label label-danger">0</span>
                     </a>
                 </li>
                 <?php $tool = \application\modules\main\model\Plugin::fetchVersion();?>
 <!--                <li class="dropdown"><a href="--><?php //echo Yii::app()->baseUrl;?><!--/upload/CPSTools.crx"><i class="fa fa-download"></i> 下载2.8.3</a></li>-->
                 <li class="dropdown"><a href="<?php echo $this->createUrl("/file/default/down",array("md5"=>$tool["file_md5"]));?>">
-                        <i class="fa fa-download"></i> 下载插件
+                        <i class="glyphicon glyphicon-save"></i> 下载插件
                         <span class="label label-warning"><?php echo $tool["version"];?></span>
                     </a></li>
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="user user-menu">
-                    <a href="#"> <i class="fa fa-user"></i>
+                    <a href="#"> <i class="glyphicon glyphicon-user"></i>
                         <span class="hidden-xs">
                             <?php $user =\cloud\core\utils\Env::getUser();if(!empty($user)){echo $user["username"];}else{echo "游客";}?>
                         </span>
@@ -110,7 +110,7 @@
                 </li>
                 <li class="dropdown browser-plugin">
                     <a class="plugin-version" data-version="<?php echo $tool["version"];?>">
-                        <i class="fa fa-windows"></i>
+                        <i class="ion-social-windows"></i>
                         <span class="label label-danger">0</span>
                     </a>
                 </li>
