@@ -870,7 +870,7 @@
             $.get(url,{},function(resp){
                 var data = [];
                 $.each(resp.data.click3.list,function(v){
-                    data.push(v);
+                    data.push(this);
                 });
                 console.log(data);
                 var config = app.charts.zuanshi_custdata(data);
