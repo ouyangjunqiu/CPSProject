@@ -430,7 +430,7 @@
                 url:"http://yj.da-mai.com/index.php?r=manmachine/adviser/refreshData",
                 type:"post",
                 data:{nick:nick},
-                dataType:"json",
+                dataType:"jsonp",
                 success:function(resp){
                     if(resp.flag){
                         parent.iLoad();
