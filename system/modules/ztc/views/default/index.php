@@ -431,13 +431,8 @@
                 type:"post",
                 data:{nick:nick},
                 dataType:"jsonp",
-                success:function(resp){
-                    if(resp.flag){
-                        parent.iLoad();
-                    }
-                    else{
-                        app.alert("更新失败,请确认服务是否过期!");
-                    }
+                success:function(){
+                    parent.iLoad();
                 },
                 error:function(){
                     app.alert("更新失败,请确认服务是否过期!");
