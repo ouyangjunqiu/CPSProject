@@ -25,7 +25,7 @@ class DefaultController extends Controller
             $this->renderJson(array("isSuccess"=>false));
             return;
         }
-        $config = new \TopLinker_Config("12608680","1bf29de6e10ab7f90d2857a5c901fff2");
+        $config = new \TopLinker_Config("21115760","f07253aa9f3d494fb7b01c85bec1fc0f");
         $toplinker = new \TopLinker($config);
         $resp = $toplinker->load("taobao.item.get",array("num_iid"=>$num_iid,"fields"=>"detail_url,num_iid,title,pic_url,price,approve_status,nick,cid,created,list_time,delist_time,modified,props_name"));
         if($resp->hasError()){
