@@ -338,10 +338,11 @@
                             <div class="col-md-3"><small>淘宝密码:</small></div>
                             <div class="col-md-7">
                                 <span class="pic_read">
-                                    <strong><?php echo str_repeat("*",strlen($row["login_password"]));?></strong>
+                                     <strong><?php echo $row["login_password"];?></strong>
+<!--                                    <strong>--><?php //echo str_repeat("*",strlen($row["login_password"]));?><!--</strong>-->
                                 </span>
                                 <span class="pic_input form_writer" style="display: none">
-                                    <input type="password" value="<?php echo $row["login_password"];?>" name="login_password"/>
+                                    <input type="text" value="<?php echo $row["login_password"];?>" name="login_password"/>
                                 </span>
                             </div>
                             <div class="col-md-2">
