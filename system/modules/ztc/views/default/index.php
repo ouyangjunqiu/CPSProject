@@ -50,7 +50,7 @@
                                 <div class="overlay-wrapper" data-role="ztc_balance" data-tmpl="shop-ztcbalance-tmpl" data-load="overlay" data-url="http://yj.da-mai.com/index.php?r=milestone/adviser/shopinfo&nickname=<?php echo $row["nick"];?>">
 
                                 </div>
-                                <div class="overlay-wrapper" data-tmpl="shop-ztcrpt-list-tmpl" data-load="overlay" data-url="http://yj.da-mai.com/index.php?r=milestone/adviser/custreport&nick=<?php echo $row["nick"];?>">
+                                <div class="overlay-wrapper" data-role="ztc_custdata" data-tmpl="shop-ztcrpt-list-tmpl" data-load="overlay" data-url="http://yj.da-mai.com/index.php?r=milestone/adviser/custreport&nick=<?php echo $row["nick"];?>" data-nick="<?php echo $row["nick"];?>">
                                 </div>
 
                             </div>
@@ -118,7 +118,7 @@
         </tbody>
 
         </table>
-        <p><small>*注：数据服务由大麦优驾提供</small></p>
+        <p><small>*注：数据服务由大麦优驾提供 <a href="javascript:void(0);" class='shop-custdata-ctrl'>[更新]</a></small></p>
 {{/if}}
 </script>
 
@@ -416,6 +416,28 @@
                 dataType:"json",
                 success:function(){
                     parent.iLoad();
+                },
+                error:function(){
+                    app.alert("更新失败,请确认服务是否过期!");
+                }
+            })
+        });
+
+        $("body").delegate(".ztc-custdata-ctrl","click",function(){
+            var parent = $(this).parents("[data-role=ztc_custdata]");
+            var nick = parent.attr("data-nick");
+            $.ajax({
+                url:"http://yj.da-mai.com/index.php?r=manmachine/adviser/refreshData",
+                type:"post",
+                data:{nick:nick},
+                dataType:"json",
+                success:function(resp){
+                    if(resp.flag){
+                        parent.iLoad();
+                    }
+                    else{
+                        app.alert("更新失败,请确认服务是否过期!");
+                    }
                 },
                 error:function(){
                     app.alert("更新失败,请确认服务是否过期!");
