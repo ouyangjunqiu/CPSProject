@@ -429,7 +429,7 @@ $(document).ready(function(){
         }
     };
 
-    $("body").resize(function(){
+    $(window).resize(function(){
         zoomFn();
     });
 
