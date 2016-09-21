@@ -186,11 +186,39 @@ $("a[data-click=stop]").click(function(){
     });
 
 
-$("#babyInforTb tr").hover(function(){
-    $(this).find("span.editor").show();
-},function(){
-    $(this).find("span.editor").hide();
-});
+    $("a[data-click=shoprpt]").click(function(){
+        var source_url = $(this).attr("data-ztcrpt-href");
+        var post_url = $(this).attr("data-post-ztcrpt-href");
+        $.ajax({
+            url:source_url,
+            dataType:"json",
+            success:function(resp){
+
+                $.ajax({
+                    url:post_url,
+                    dataType:"json",
+                    data:{
+                        effectType:"click",
+                        effect:15,
+                        data:JSON.stringify(resp.data.reports)
+                    },
+                    type:"post",
+                    success:function(){
+                        app.confirm("更新成功");
+                    }
+                })
+
+            }
+        })
+
+    });
+
+
+    $("#babyInforTb tr").hover(function(){
+        $(this).find("span.editor").show();
+    },function(){
+        $(this).find("span.editor").hide();
+    });
 
     $("body").delegate(".quick_login_btn[extension=uninstall]","click",function(){
         CPS.app.alert("你还没有安装浏览器插件，无法完成自动登录！");

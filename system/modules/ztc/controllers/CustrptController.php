@@ -57,5 +57,12 @@ class CustrptController extends Controller
         }
     }
 
+    public function actionHasget(){
+        $nick = Env::getRequest("nick");
+        $hasget = CustRptSource::model()->exists("log_date=? AND nick=?",array(date("Y-m-d"),$nick));
+        $this->renderJson(array("isSuccess" => true,"hasget"=>$hasget));
+
+    }
+
 
 }

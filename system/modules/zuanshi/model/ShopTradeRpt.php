@@ -75,6 +75,28 @@ class ShopTradeRpt extends Model
 
     }
 
+    /**
+     * @param $startdate
+     * @param $enddate
+     * @param $nick
+     * @return array
+     */
+    public static function fetchAllByNickV2($startdate,$enddate,$nick){
+
+        $source = self::model()->fetchAll("log_date>=? AND log_date<=? AND nick=?",array($startdate,$enddate,$nick));
+        $total = array(
+            "payAmt"=>0
+        );
+        $list = array();
+        foreach($source as $row){
+            $d = date("Ymd",strtotime($row["log_date"]));
+            $list[$d] = $row;
+            $total["payAmt"] += $row["payAmt"];
+        }
+        return array("list"=>$list,"total"=>$total);
+
+    }
+
     public static function summaryLastWeekByNick($nick){
         $rangeDate = ExtRangeDate::lastWeek();
         $list = self::model()->fetchAll("log_date>=? AND log_date<=? AND shopname=?",array($rangeDate->startDate,$rangeDate->endDate,$nick));

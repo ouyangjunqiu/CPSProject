@@ -106,4 +106,16 @@ class AdvertiserrptController extends Controller
         }
     }
 
+    public function actionGetbyclick(){
+        $nick = Env::getQueryDefault("nick","");
+        $effect = Env::getQueryDefault("effect",15);
+        $rangeDate = ExtRangeDate::range(30);
+        $beginDate = Env::getQueryDefault("begin_date",$rangeDate->startDate);
+        $endDate = Env::getQueryDefault("end_date",$rangeDate->endDate);
+
+        $data = AdvertiserRpt::fetchByNick($nick,$beginDate,$endDate,"click",$effect);
+        $this->renderJson(array("isSuccess"=>true,"data"=>$data));
+
+    }
+
 }

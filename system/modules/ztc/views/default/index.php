@@ -1,3 +1,4 @@
+<?php $user = \cloud\core\utils\Env::getUser();?>
 <link rel="stylesheet" href="<?php echo STATICURL.'/main/css/index.css'; ?>">
 <script src='<?php echo STATICURL."/main/js/shop.js"; ?>'></script>
 
@@ -426,6 +427,7 @@
         $("body").delegate(".ztc-custdata-ctrl","click",function(){
             var parent = $(this).parents("[data-role=ztc_custdata]");
             var nick = parent.attr("data-nick");
+
             $.ajax({
                 url:"http://yj.da-mai.com/index.php?r=manmachine/adviser/refreshData",
                 type:"post",

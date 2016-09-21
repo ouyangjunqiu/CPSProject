@@ -638,6 +638,11 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-md-12">
+                            <a href="javascript:void(0)"  data-click="shoprpt" data-url="" data-has-ztcrpt-href="<?php echo Yii::app()->urlManager->createUrl('/ztc/custrpt/hasget',array("nick"=>$row["nick"]));?>" data-ztcrpt-href="http://yj.da-mai.com/index.php?r=milestone/adviser/custreport&nick=<?php echo $row["nick"];?>" data-post-ztcrpt-href="<?php echo Yii::app()->urlManager->createUrl('/ztc/custrpt/source',array("nick"=>$row["nick"]));?>"><small>4. 直钻报表..</small></a>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="babyinfor-interface">
                             <a href="javascript:void(0);" class="zuanshi quick_login_btn" extension="uninstall" login-type="zuanshi" data-nick="<?php echo $row["nick"];?>" data-password="<?php echo $row["login_password"];?>" data-username="<?php echo $row["login_nick"];?>">智·钻</a>
                             <a href="javascript:void(0);" class="shenyicanmou quick_login_btn" extension="uninstall" login-type="shenyicanmou" data-nick="<?php echo $row["nick"];?>" data-password="<?php echo $row["login_password"];?>" data-username="<?php echo $row["login_nick"];?>">生意参谋</a>

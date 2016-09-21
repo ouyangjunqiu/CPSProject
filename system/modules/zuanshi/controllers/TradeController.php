@@ -12,6 +12,7 @@ namespace application\modules\zuanshi\controllers;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
 use application\modules\zuanshi\model\ShopTradeRpt;
+use cloud\core\utils\ExtRangeDate;
 
 class TradeController extends Controller
 {
@@ -56,5 +57,19 @@ class TradeController extends Controller
         $hasget =  ShopTradeRpt::model()->exists("log_date=? AND shopname=?",array(date("Y-m-d",strtotime("-1 day")),$nick));
         $this->renderJson(array("isSuccess" => true,"hasget"=>$hasget>0?true:false));
     }
+
+    public function actionGetbynick(){
+
+        $nick = Env::getQueryDefault("nick","");
+        $rangeDate = ExtRangeDate::range(30);
+        $beginDate = Env::getQueryDefault("begin_date",$rangeDate->startDate);
+        $endDate = Env::getQueryDefault("end_date",$rangeDate->endDate);
+
+
+        $data = ShopTradeRpt::fetchAllByNickV2($beginDate,$endDate,$nick);
+        $this->renderJson(array("isSuccess"=>true,"data"=>$data));
+
+    }
+
 
 }
