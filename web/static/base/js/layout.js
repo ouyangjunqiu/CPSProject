@@ -423,9 +423,10 @@ $(document).ready(function(){
 
     var zoomFn = function(){
         var ratio = $.winZoom();
-        console.log(ratio);
         if( ratio < 100 || ratio > 100){
             $(".tips-wrapper").html('<p class="alert alert-warning">浏览器处于缩放模式,为了你更好的浏览体验，请使用ctrl+0进行重置.</p>').show();
+        }else{
+            $(".tips-wrapper").html("").hide();
         }
     };
 
