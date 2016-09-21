@@ -118,7 +118,7 @@
         </tbody>
 
         </table>
-        <p><small>*注：数据服务由大麦优驾提供 <a href="javascript:void(0);" class='shop-custdata-ctrl'>[更新]</a></small></p>
+        <p><small>*注：数据服务由大麦优驾提供 <a href="javascript:void(0);" class='ztc-custdata-ctrl'>[更新]</a></small></p>
 {{/if}}
 </script>
 
