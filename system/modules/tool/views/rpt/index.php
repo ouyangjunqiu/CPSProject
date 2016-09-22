@@ -22,7 +22,7 @@
         </tr>
         </thead>
         <tbody>
-        {{each(i) date_list}}
+        {{each(j,i) date_list}}
             <tr class="small">
             <td rowspan="2"><strong>${i}</strong></td>
             <td rowspan="2"><strong>
