@@ -12,6 +12,7 @@ use application\modules\ztc\model\CustRpt;
 use application\modules\ztc\model\CustRptSource;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
+use cloud\core\utils\ExtRangeDate;
 
 class CustrptController extends Controller
 {
@@ -61,6 +62,18 @@ class CustrptController extends Controller
         $nick = Env::getRequest("nick");
         $hasget = CustRptSource::model()->exists("log_date=? AND nick=?",array(date("Y-m-d"),$nick));
         $this->renderJson(array("isSuccess" => true,"hasget"=>$hasget));
+
+    }
+
+    public function actionGetbyclick(){
+        $nick = Env::getQueryDefault("nick","");
+        $effect = Env::getQueryDefault("effect",15);
+        $rangeDate = ExtRangeDate::range(30);
+        $beginDate = Env::getQueryDefault("begin_date",$rangeDate->startDate);
+        $endDate = Env::getQueryDefault("end_date",$rangeDate->endDate);
+
+        $data = CustRpt::fetchByNick($nick,$beginDate,$endDate,"click",$effect);
+        $this->renderJson(array("isSuccess"=>true,"data"=>$data));
 
     }
 

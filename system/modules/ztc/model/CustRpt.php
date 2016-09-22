@@ -53,25 +53,18 @@ class CustRpt extends Model
     public static function fetchByNick($nick,$begin_date,$end_date,$effectType="click",$effect = 7){
         $source = self::model()->fetchAll("logdate>=? AND logdate<=? AND nick=? AND effectType=? AND effect=?",array($begin_date,$end_date,$nick,$effectType,$effect));
         $total = array(
-            "adPv"=> 0,
-            "alipayInShopNum" => 0,
-            "alipayInshopAmt" => 0,
-            "avgAccessPageNum" => 0,
-            "avgAccessTime" => 0,
-            "cartNum" => 0,
-            "charge"=> 0,
+            "impressions"=> 0,
+            "paycount" => 0,
+            "pay" => 0,
+            "carttotal" => 0,
+            "cost"=> 0,
             "click" => 0,
             "ctr" => 0,
-            "cvr" => 0,
-            "deepInshopUv" => 0,
-            "dirShopColNum" => 0,
-            "ecpc" => 0,
-            "ecpm" => 0,
-            "gmvInshopAmt" => 0,
-            "gmvInshopNum" => 0,
-            "inshopItemColNum" => 0,
+            "ci" => 0,
+            "ppc" => 0,
+            "favcount" => 0,
             "roi" => 0,
-            "uv" => 0
+            "fi" => 0
         );
         $list = array();
         foreach($source as $r){
@@ -79,24 +72,22 @@ class CustRpt extends Model
             $row = \CJSON::decode($r["data"]);
             $list[$d] = $row;
 
-            $total["adPv"]+=$row["adPv"];
-            $total["alipayInShopNum"]+=$row["alipayInShopNum"];
-            $total["alipayInshopAmt"]+=$row["alipayInshopAmt"];
-            $total["cartNum"]+=$row["cartNum"];
-            $total["charge"]+=$row["charge"];
+            $total["impressions"]+=$row["impressions"];
+            $total["paycount"]+=$row["paycount"];
+            $total["pay"]+=$row["pay"];
+            $total["carttotal"]+=$row["carttotal"];
+            $total["cost"]+=$row["cost"];
             $total["click"]+=$row["click"];
-            $total["deepInshopUv"]+=$row["deepInshopUv"];
-            $total["dirShopColNum"]+=$row["dirShopColNum"];
-            $total["gmvInshopAmt"]+=$row["gmvInshopAmt"];
-            $total["gmvInshopNum"]+=$row["gmvInshopNum"];
-            $total["inshopItemColNum"]+=$row["inshopItemColNum"];
-            $total["uv"]+=$row["uv"];
+
+            $total["favcount"]+=$row["favcount"];
         }
 
-        $total["roi"] = empty($total["charge"])?"0":@round($total["alipayInshopAmt"]/$total["charge"],2);
-        $total["ctr"] = empty($total["adPv"])?"0":@round($total["click"]/$total["adPv"],4);
-        $total["ecpc"] = empty($total["click"])?"0":@round($total["charge"]/$total["click"],2);
-        $total["alipayInshopAmt"] = round($total["alipayInshopAmt"],2);
+        $total["roi"] = empty($total["cost"])?"0":@round($total["pay"]/$total["charge"],2);
+        $total["ctr"] = empty($total["impressions"])?"0":@round($total["click"]/$total["impressions"]*100,2);
+        $total["ppc"] = empty($total["click"])?"0":@round($total["cost"]/$total["click"],2);
+        $total["fi"] = empty($total["click"])?"0":@round($total["favcount"]/$total["click"]*100,2);
+        $total["ci"] = empty($total["click"])?"0":@round($total["paycount"]/$total["click"]*100,2);
+
         return array("list"=>$list,"total"=>$total);
 
     }
