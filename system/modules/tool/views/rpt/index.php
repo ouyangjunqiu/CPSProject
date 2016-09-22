@@ -30,7 +30,7 @@
             <tr class="small">
             <td rowspan="2"><strong>${i}</strong></td>
             <td rowspan="2"><strong>${c[i].payAmt}</strong></td>
-            <td>智钻</td>
+            <td><strong>智钻</strong></td>
             <td>${a[i].adPv}</td>
             <td>${a[i].click}</td>
             <td>
@@ -71,7 +71,7 @@
             </td>
             </tr>
             <tr class="small">
-            <td>直通车</td>
+            <td><strong>直通车</strong></td>
             <td>${b[i].impressions}</td>
             <td>${b[i].click}</td>
             <td>
@@ -120,7 +120,7 @@
 </script>
 
 <script type="text/javascript">
-    $(document).read(function(){
+    $(document).ready(function(){
         var $dateList = <?php echo CJavaScript::encode($query["date_list"]);?>;
         $.when($.ajax({
             url:'<?php echo $this->createUrl("/zz/advertiserrpt/getbyclick");?>',
