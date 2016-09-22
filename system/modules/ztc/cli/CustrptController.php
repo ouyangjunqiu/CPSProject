@@ -10,7 +10,7 @@ namespace application\modules\ztc\cli;
 
 use application\modules\main\model\Shop;
 use application\modules\ztc\model\CustRpt;
-use cloud\core\controllers\Controller;
+use cloud\core\cli\Controller;
 use cloud\core\utils\Curl;
 use cloud\core\utils\ExtRangeDate;
 
