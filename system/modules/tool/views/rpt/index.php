@@ -3,11 +3,7 @@
 </div>
 
 <script type="text/x-jquery-tmpl" id="shop-rpt-list-tmpl">
- {{if !isSuccess}}
-    <div>
-        <p class="text-danger">安装插件后，登录钻石展位即可同步展示！</p>
-    </div>
- {{else}}
+
     <table data-role="list" class="baby-frame-table" style="table-layout: fixed;">
         <thead>
         <tr class="small">
@@ -116,7 +112,6 @@
         </tbody>
 
     </table>
-{{/if}}
 </script>
 
 <script type="text/javascript">
