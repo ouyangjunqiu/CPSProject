@@ -30,7 +30,7 @@
 
 <script type="text/x-jquery-tmpl" id="shop-rpt-list-tmpl">
 
-    <table data-role="list" class="baby-frame-table" style="table-layout: fixed;">
+    <table data-role="list" id="table_fixed" class="baby-frame-table" style="table-layout: fixed;">
         <thead>
         <tr class="small">
             <th>日期</th>
@@ -306,6 +306,7 @@
             data.total.c = c[0].data.total;
 
             $("#shop-rpt-list").html($("#shop-rpt-list-tmpl").tmpl(data));
+            $("#table_fixed").freezeHeader();
         });
     });
 
