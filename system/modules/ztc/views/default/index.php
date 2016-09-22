@@ -425,6 +425,7 @@
         });
 
         $("body").delegate(".ztc-custdata-ctrl","click",function(){
+            var self = $(this);
             var parent = $(this).parents("[data-role=ztc_custdata]");
             var nick = parent.attr("data-nick");
 
@@ -434,7 +435,7 @@
                 data:{nick:nick},
                 dataType:"jsonp",
                 beforeSend:function(){
-                    $(this).html("加载中...")
+                    self.html("加载中...")
                 },
                 success:function(){
                     parent.iLoad();
