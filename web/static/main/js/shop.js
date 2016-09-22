@@ -189,6 +189,7 @@ $("a[data-click=stop]").click(function(){
     $("a[data-click=shoprpt]").click(function(){
         var source_url = $(this).attr("data-ztcrpt-href");
         var post_url = $(this).attr("data-post-ztcrpt-href");
+        var url = $(this).attr("data-url");
         $.ajax({
             url:source_url,
             dataType:"json",
@@ -204,7 +205,7 @@ $("a[data-click=stop]").click(function(){
                     },
                     type:"post",
                     success:function(){
-                        app.confirm("更新成功");
+                        window.location.href=url;
                     }
                 })
 

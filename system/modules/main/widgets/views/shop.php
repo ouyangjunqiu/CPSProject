@@ -639,7 +639,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <a href="javascript:void(0)"  data-click="shoprpt" data-url="" data-has-ztcrpt-href="<?php echo Yii::app()->urlManager->createUrl('/ztc/custrpt/hasget',array("nick"=>$row["nick"]));?>" data-ztcrpt-href="http://yj.da-mai.com/index.php?r=milestone/adviser/custreport&nick=<?php echo $row["nick"];?>" data-post-ztcrpt-href="<?php echo Yii::app()->urlManager->createUrl('/ztc/custrpt/source',array("nick"=>$row["nick"]));?>"><small>4. 直钻报表..</small></a>
+                            <a href="javascript:void(0)"  data-click="shoprpt" data-url="<?php echo Yii::app()->urlManager->createUrl('/tool/rpt/index',array("nick"=>$row["nick"]));?>" data-has-ztcrpt-href="<?php echo Yii::app()->urlManager->createUrl('/ztc/custrpt/hasget',array("nick"=>$row["nick"]));?>" data-ztcrpt-href="http://yj.da-mai.com/index.php?r=milestone/adviser/custreport&nick=<?php echo $row["nick"];?>" data-post-ztcrpt-href="<?php echo Yii::app()->urlManager->createUrl('/ztc/custrpt/source',array("nick"=>$row["nick"]));?>"><small>4. 直钻报表..</small></a>
                         </div>
                     </div>
                     <div class="row">
