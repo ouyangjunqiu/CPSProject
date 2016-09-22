@@ -331,7 +331,7 @@
                                     <small>收藏成本:</small>
                                 </div>
                                 <div class="col-md-2">
-                                    <small><strong><?php echo @round($ztc["total"]["cost"]/$rpt["total"]["favcount"],2);?></strong></small>
+                                    <small><strong><?php echo @round($ztc["total"]["cost"]/$ztc["total"]["favcount"],2);?></strong></small>
                                 </div>
                                 <div class="col-md-2">
                                 </div>
@@ -347,7 +347,7 @@
                                     <small>投资回报:</small>
                                 </div>
                                 <div class="col-md-2">
-                                    <small><strong><?php echo @round($ztc["total"]["roi"],2);?></strong></small>
+                                    <small><strong><?php echo @round($ztc["total"]["pay"]/$ztc["total"]["cost"],2);?></strong></small>
                                 </div>
                                 <div class="col-md-2">
                                 </div>
