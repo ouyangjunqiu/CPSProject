@@ -82,7 +82,7 @@ class CustRpt extends Model
             $total["favcount"]+=$row["favcount"];
         }
 
-        $total["roi"] = empty($total["cost"])?"0":@round($total["pay"]/$total["charge"],2);
+        $total["roi"] = empty($total["cost"])?"0":@round($total["pay"]/$total["cost"],2);
         $total["ctr"] = empty($total["impressions"])?"0":@round($total["click"]/$total["impressions"]*100,2);
         $total["ppc"] = empty($total["click"])?"0":@round($total["cost"]/$total["click"],2);
         $total["fi"] = empty($total["click"])?"0":@round($total["favcount"]/$total["click"]*100,2);
