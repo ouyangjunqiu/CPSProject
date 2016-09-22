@@ -437,7 +437,7 @@
                     parent.iLoad();
                 },
                 error:function(){
-                    app.alert("更新失败,请确认服务是否过期!");
+                    parent.iLoad();
                 }
             })
         });
