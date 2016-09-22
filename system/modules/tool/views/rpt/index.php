@@ -18,6 +18,8 @@
                 </div>
             </div>
         </div>
+        <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
+        </div>
     <div id="shop-rpt-list">
 
     </div>
