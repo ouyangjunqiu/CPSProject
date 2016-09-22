@@ -57,7 +57,7 @@ class CustrptController extends Controller
                CustRpt::model()->deleteAll("logdate=? AND nick=? AND effectType=? AND effect=?", array($logdate, $shop["nick"], "click", 15));
                $listModel = new CustRpt();
                $listModel->setAttributes(array(
-                   "logdate" => $rpt["date"],
+                   "logdate" => $logdate,
                    "nick" => $shop["nick"],
                    "effectType" => "click",
                    "effect" => 15,
