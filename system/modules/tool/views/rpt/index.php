@@ -13,7 +13,7 @@
 
                 <div class="col-md-1">
                     <div class="search-right">
-                        
+
                     </div>
                 </div>
             </div>
@@ -112,28 +112,16 @@
             <td>${b[i].impressions}</td>
             <td>${b[i].click}</td>
             <td>
-            {{if b[i].ctr>0}}
-                ${(b[i].ctr*100).toFixed(2)}
-            {{else}}
-                0
-            {{/if}}
+               ${b[i].ctr}
             </td>
             <td>${b[i].cost}</td>
             <td>
-            {{if b[i].ppc>0}}
-                ${b[i].ppc.toFixed(2)}
-            {{else}}
-                0
-            {{/if}}
+                ${b[i].ppc}
             </td>
             <td>${b[i].favcount}</td>
             <td>${b[i].paycount}</td>
             <td>
-            {{if b[i].roi>0}}
-                ${b[i].roi.toFixed(2)}
-            {{else}}
-                0
-            {{/if}}
+               ${b[i].roi}
             </td>
 
             <td>
