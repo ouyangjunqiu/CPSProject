@@ -195,19 +195,22 @@ $("a[data-click=stop]").click(function(){
             dataType:"json",
             success:function(resp){
 
-                $.ajax({
-                    url:post_url,
-                    dataType:"json",
-                    data:{
-                        effectType:"click",
-                        effect:15,
-                        data:JSON.stringify(resp.data.reports)
-                    },
-                    type:"post",
-                    success:function(){
-                        window.location.href=url;
-                    }
-                })
+                if(resp.isSuccess){
+
+                    $.ajax({
+                        url:post_url,
+                        dataType:"json",
+                        data:{
+                            effectType:"click",
+                            effect:15,
+                            data:JSON.stringify(resp.data)
+                        },
+                        type:"post",
+                        success:function(){
+                            window.location.href=url;
+                        }
+                    })
+                }
 
             }
         })
