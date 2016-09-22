@@ -1,5 +1,27 @@
-<div id="shop-rpt-list">
+<link rel="stylesheet" href="<?php echo STATICURL.'/main/css/index.css'; ?>">
+<div class="index-table-div">
 
+    <div class="search-box">
+        <div class="shop-list-cont">
+            <div class="row">
+                <div class="col-md-11">
+                    <div class="com-list-tit" style="display: block;">
+                        <span class="shop-list-icon"></span>
+                        <span class="shop-list-txt"><?php echo $query["nick"];?></span>
+                    </div>
+                </div>
+
+                <div class="col-md-1">
+                    <div class="search-right">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div id="shop-rpt-list">
+
+    </div>
+    </div>
 </div>
 
 <script type="text/x-jquery-tmpl" id="shop-rpt-list-tmpl">
@@ -146,6 +168,9 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
+        $(".top-ul>li").eq(3).addClass("top-li-hover");
+
+
         var $dateList = <?php echo CJavaScript::encode($query["date_list"]);?>;
         $.when($.ajax({
             url:'<?php echo $this->createUrl("/zz/advertiserrpt/getbyclick");?>',
@@ -183,7 +208,6 @@
             data.b = b[0].data.list;
             data.c = c[0].data.list;
             $("#shop-rpt-list").html($("#shop-rpt-list-tmpl").tmpl(data));
-            console.log(a,b,c)
         });
     });
 
