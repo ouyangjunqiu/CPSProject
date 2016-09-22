@@ -63,7 +63,7 @@
             {{if c[i]}}
                 {{if c[i].payAmt>0}}
                     {{if a[i] && b[i]}}
-                        ${((a[i].charge+b[i].cost)*100/c[i].payAmt).toFixed(2)}
+                        ${(a[i].charge+b[i].cost)*100/c[i].payAmt}
                     {{else}}
                         {{if a[i]}}
                             ${(a[i].charge/c[i].payAmt*100).toFixed(2)}
