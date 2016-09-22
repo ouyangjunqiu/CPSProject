@@ -121,7 +121,7 @@
 
 <script type="text/javascript">
     $(document).read(function(){
-        var $dateList = '<?php echo CJavaScript::encode($query["date_list"]);?>';
+        var $dateList = <?php echo CJavaScript::encode($query["date_list"]);?>;
         $.when($.ajax({
             url:'<?php echo $this->createUrl("/zz/advertiserrpt/getbyclick");?>',
             data:{
