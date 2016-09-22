@@ -299,7 +299,7 @@
                                     <small>转化成本:</small>
                                 </div>
                                 <div class="col-md-2">
-                                    <small><strong><?php echo @round($ztc["total"]["charge"]/$ztc["total"]["paycount"],2);?></strong></small>
+                                    <small><strong><?php echo @round($ztc["total"]["cost"]/$ztc["total"]["paycount"],2);?></strong></small>
                                 </div>
                                 <div class="col-md-2">
                                 </div>
@@ -315,7 +315,7 @@
                                     <small>加购成本:</small>
                                 </div>
                                 <div class="col-md-2">
-                                    <small><strong><?php echo @round($ztc["total"]["charge"]/$ztc["total"]["carttotal"],2);?></strong></small>
+                                    <small><strong><?php echo @round($ztc["total"]["cost"]/$ztc["total"]["carttotal"],2);?></strong></small>
                                 </div>
                                 <div class="col-md-2">
                                 </div>
