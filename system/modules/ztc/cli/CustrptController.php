@@ -10,6 +10,7 @@ namespace application\modules\ztc\cli;
 
 use application\modules\main\model\Shop;
 use application\modules\ztc\model\CustRpt;
+use application\modules\ztc\model\CustWeekRpt;
 use cloud\core\cli\Controller;
 use cloud\core\utils\Curl;
 use cloud\core\utils\ExtRangeDate;
@@ -88,10 +89,10 @@ class CustrptController extends Controller
             $shops = Shop::model()->fetchAll($criteria);
             foreach($shops as $shop){
                 $data =  CustRpt::fetchByNick($shop["nick"],$begindate,$enddate,'click',15);
-                if(empty($data) || empty($data["total"]) || $data["total"]["adPv"]<=0)
+                if(empty($data) || empty($data["total"]) || $data["total"]["impressions"]<=0)
                     continue;
-                CustRpt::model()->deleteAll("begindate=? AND enddate=? AND nick=?",array($begindate,$enddate,$shop["nick"]));
-                $model = new CustRpt();
+                CustWeekRpt::model()->deleteAll("begindate=? AND enddate=? AND nick=?",array($begindate,$enddate,$shop["nick"]));
+                $model = new CustWeekRpt();
                 $model->setAttributes(array(
                     "begindate"=>$begindate,
                     "enddate"=>$enddate,
