@@ -131,7 +131,7 @@
             <td>-</td>
             {{/if}}
             </tr>
-            <tr class="small">
+            <tr class="small" style="background: #efefef;">
             <td><strong>直通车</strong></td>
             {{if b[i]}}
             <td>${b[i].impressions}</td>
@@ -253,7 +253,7 @@
             <td>-</td>
             {{/if}}
             </tr>
-            <tr class="small">
+            <tr class="small" style="background: #efefef;">
             <td><strong>直通车</strong></td>
             {{if total.b}}
             <td>${total.b.impressions}</td>
