@@ -25,8 +25,15 @@
         {{each(i) date_list}}
             <tr class="small">
             <td rowspan="2"><strong>${i}</strong></td>
-            <td rowspan="2"><strong>${c[i].payAmt}</strong></td>
+            <td rowspan="2"><strong>
+            {{if c[i] && c[i].payAmt}}
+                ${c[i].payAmt}
+            {{else}}
+                -
+            {{/if}}
+            </strong></td>
             <td><strong>智钻</strong></td>
+            {{if a[i]}}
             <td>${a[i].adPv}</td>
             <td>${a[i].click}</td>
             <td>
@@ -55,7 +62,7 @@
             </td>
 
             <td>
-                {{if c[i].payAmt}}
+                {{if c[i] && c[i].payAmt}}
                     {{if c[i].payAmt>0}}
                         ${(a[i].charge/c[i].payAmt*100).toFixed(2)}
                     {{else}}
@@ -65,9 +72,21 @@
                     -
                 {{/if}}
             </td>
+            {{else}}
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            {{/if}}
             </tr>
             <tr class="small">
             <td><strong>直通车</strong></td>
+            {{if b[i]}}
             <td>${b[i].impressions}</td>
             <td>${b[i].click}</td>
             <td>
@@ -96,7 +115,7 @@
             </td>
 
             <td>
-                {{if c[i].payAmt}}
+                {{if c[i] && c[i].payAmt}}
                     {{if c[i].payAmt>0}}
                         ${(b[i].cost/c[i].payAmt*100).toFixed(2)}
                     {{else}}
@@ -106,6 +125,17 @@
                     -
                 {{/if}}
             </td>
+            {{else}}
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            {{/if}}
             </tr>
         {{/each}}
 
