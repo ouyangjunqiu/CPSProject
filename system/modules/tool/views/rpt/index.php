@@ -24,6 +24,8 @@
 
     </div>
     </div>
+    <div style="height: 50px;"></div>
+
 </div>
 
 <script type="text/x-jquery-tmpl" id="shop-rpt-list-tmpl">
@@ -150,7 +152,108 @@
             {{/if}}
             </tr>
         {{/each}}
+        <tr class="small">
+            <td rowspan="2"><strong>总计</strong></td>
+            <td rowspan="2"><strong>
+            {{if total.c && total.c.payAmt}}
+                ${total.c.payAmt}
+            {{else}}
+                -
+            {{/if}}
+            </strong></td>
+            <td><strong>智钻</strong></td>
+            {{if total.a}}
+            <td>${total.a.adPv}</td>
+            <td>${total.a.click}</td>
+            <td>
+            {{if total.a.ctr>0}}
+                ${(total.a.ctr*100).toFixed(2)}
+            {{else}}
+                0
+            {{/if}}
+            </td>
+            <td>${total.a.charge}</td>
+            <td>
+            {{if total.a.ecpc>0}}
+                ${total.a.ecpc.toFixed(2)}
+            {{else}}
+                0
+            {{/if}}
+            </td>
+            <td>${total.a.dirShopColNum+total.a.inshopItemColNum}</td>
+            <td>${total.a.alipayInShopNum}</td>
+            <td>
+            {{if total.a.roi>0}}
+                ${total.a.roi.toFixed(2)}
+            {{else}}
+                0
+            {{/if}}
+            </td>
 
+            <td>
+                {{if total.c && total.c.payAmt}}
+                    {{if total.c.payAmt>0}}
+                        ${(total.a.charge/total.c.payAmt*100).toFixed(2)}
+                    {{else}}
+                        0
+                    {{/if}}
+                {{else}}
+                    -
+                {{/if}}
+            </td>
+            {{else}}
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            {{/if}}
+            </tr>
+            <tr class="small">
+            <td><strong>直通车</strong></td>
+            {{if total.b}}
+            <td>${total.b.impressions}</td>
+            <td>${total.b.click}</td>
+            <td>
+               ${total.b.ctr}
+            </td>
+            <td>${total.b.cost}</td>
+            <td>
+                ${total.b.ppc}
+            </td>
+            <td>${total.b.favcount}</td>
+            <td>${total.b.paycount}</td>
+            <td>
+               ${total.b.roi}
+            </td>
+
+            <td>
+                 {{if total.c && total.c.payAmt}}
+                    {{if total.c.payAmt>0}}
+                        ${(total.b.cost/total.c.payAmt*100).toFixed(2)}
+                    {{else}}
+                        0
+                    {{/if}}
+                {{else}}
+                    -
+                {{/if}}
+            </td>
+            {{else}}
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            {{/if}}
+            </tr>
         </tbody>
 
     </table>
@@ -197,6 +300,11 @@
             data.a = a[0].data.list;
             data.b = b[0].data.list;
             data.c = c[0].data.list;
+            data.total = {};
+            data.total.a = a[0].data.total;
+            data.total.b = b[0].data.total;
+            data.total.c = c[0].data.total;
+
             $("#shop-rpt-list").html($("#shop-rpt-list-tmpl").tmpl(data));
         });
     });
