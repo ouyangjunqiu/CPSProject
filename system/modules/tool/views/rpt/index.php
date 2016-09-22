@@ -35,6 +35,7 @@
         <tr class="small">
             <th>日期</th>
             <th>营业额</th>
+            <th>消耗占比(%)</th>
             <th>来源</th>
             <th>展现</th>
             <th>点击</th>
@@ -58,6 +59,26 @@
                 -
             {{/if}}
             </strong></td>
+            <td rowspan="2"><strong>
+            {{if c[i]}}
+                {{if c[i].payAmt>0}}
+                    {{if a[i] && b[i]}}
+                        ${((a[i].charge+b[i].cost)/c[i].payAmt*100).toFixed(2)}
+                    {{else}}
+                        {{if a[i]}}
+                            ${((a[i].charge)/c[i].payAmt*100).toFixed(2)}
+                        {{else}}
+                            ${((b[i].cost)/c[i].payAmt*100).toFixed(2)}
+                        {{/if}}
+                    {{/if}}
+                {{else}}
+                        0
+                {{/if}}
+            {{else}}
+                -
+            {{/if}}
+            </strong></td>
+
             <td><strong>智钻</strong></td>
             {{if a[i]}}
             <td>${a[i].adPv}</td>
@@ -155,8 +176,27 @@
         <tr class="small">
             <td rowspan="2"><strong>总计</strong></td>
             <td rowspan="2"><strong>
-            {{if total.c && total.c.payAmt}}
+            {{if total.c}}
                 ${total.c.payAmt}
+            {{else}}
+                -
+            {{/if}}
+            </strong></td>
+            <td rowspan="2"><strong>
+            {{if total.c}}
+                {{if total.c.payAmt>0}}
+                    {{if total.a && total.b}}
+                        ${((total.a.charge+total.b.cost)/total.c.payAmt*100).toFixed(2)}
+                    {{else}}
+                        {{if a[i]}}
+                            ${((total.a.charge)/total.c.payAmt*100).toFixed(2)}
+                        {{else}}
+                            ${((total.b.cost)/total.c.payAmt*100).toFixed(2)}
+                        {{/if}}
+                    {{/if}}
+                {{else}}
+                        0
+                {{/if}}
             {{else}}
                 -
             {{/if}}
