@@ -16,7 +16,8 @@ use cloud\core\utils\ExtRangeDate;
 
 class CustrptController extends Controller
 {
-   public function actionIndex(){
+
+    public function actionIndex(){
 
        $rangeDate = ExtRangeDate::range(17);
 
@@ -72,4 +73,38 @@ class CustrptController extends Controller
        }
    }
 
+    public function actionWeek(){
+
+        for($i=2;$i>=1;$i--){
+            $date = date('Y-m-d');
+            $w  = date('w',strtotime($date));
+            $now_start = date('Y-m-d',strtotime("$date -".($w ? $w - 1 : 6).' days')); //获取本周开始日期，如果$w是0，则表示周日，减去 6 天
+
+            $begindate = date('Y-m-d',strtotime("$now_start - ".(7*$i)." days"));  //上周开始日期
+            $enddate = date('Y-m-d',strtotime("$begindate + 6 days"));  //上周结束日期
+
+            $criteria = new \CDbCriteria();
+            $criteria->addCondition("status='0'");
+            $shops = Shop::model()->fetchAll($criteria);
+            foreach($shops as $shop){
+                $data =  CustRpt::fetchByNick($shop["nick"],$begindate,$enddate,'click',15);
+                if(empty($data) || empty($data["total"]) || $data["total"]["adPv"]<=0)
+                    continue;
+                CustRpt::model()->deleteAll("begindate=? AND enddate=? AND nick=?",array($begindate,$enddate,$shop["nick"]));
+                $model = new CustRpt();
+                $model->setAttributes(array(
+                    "begindate"=>$begindate,
+                    "enddate"=>$enddate,
+                    "nick"=>$shop["nick"],
+                    "data"=>\CJSON::encode($data)
+                ));
+                if(!$model->save()){
+                    print_r($model->getErrors());
+                }
+
+
+            }
+        }
+
+    }
 }
