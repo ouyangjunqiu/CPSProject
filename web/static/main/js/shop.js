@@ -210,8 +210,13 @@ $("a[data-click=stop]").click(function(){
                             window.location.href=url;
                         }
                     })
+                }else{
+                    window.location.href=url;
                 }
 
+            },
+            error:function(){
+                window.location.href=url;
             }
         })
 
