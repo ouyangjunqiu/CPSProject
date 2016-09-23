@@ -86,10 +86,9 @@ class CustrptController extends Controller
             $logdate = date("Y-m-d",strtotime($k));
             $rpt = array_merge($row["base"],$row["effect"]);
             $rpt["cost"] = $rpt["cost"]/100;
-            $rpt["pay"] = $rpt["pay"]/100;
             $rpt["paycount"] = $rpt["directpaycount"]+$rpt["indirectpaycount"];
             $rpt["favcount"] = $rpt["favitemcount"]+$rpt["favshopcount"];
-            $rpt["pay"] = $rpt["directpay"]+$rpt["indirectpay"];
+            $rpt["pay"] = ($rpt["directpay"]+$rpt["indirectpay"])/100;
             $rpt["ppc"] = @round($rpt["charge"]/$rpt["click"],2);
             $rpt["roi"] = @round($rpt["pay"]/$rpt["cost"],2);
             $rpt["logdate"] = $logdate;
