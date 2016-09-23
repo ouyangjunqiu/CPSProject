@@ -8,7 +8,7 @@
 namespace application\modules\sycm\controllers;
 
 
-use application\modules\zuanshi\model\ShopUvRpt;
+use application\modules\sycm\model\ShopUvRpt;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
 
