@@ -89,7 +89,7 @@ class CustrptController extends Controller
             $rpt["paycount"] = $rpt["directpaycount"]+$rpt["indirectpaycount"];
             $rpt["favcount"] = $rpt["favitemcount"]+$rpt["favshopcount"];
             $rpt["pay"] = ($rpt["directpay"]+$rpt["indirectpay"])/100;
-            $rpt["ppc"] = @round($rpt["charge"]/$rpt["click"],2);
+            $rpt["ppc"] = @round($rpt["cost"]/$rpt["click"],2);
             $rpt["roi"] = @round($rpt["pay"]/$rpt["cost"],2);
             $rpt["logdate"] = $logdate;
             $source[] = $rpt;
