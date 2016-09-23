@@ -34,7 +34,7 @@ class CustrptController extends Controller
 
            $url = "http://cps.da-mai.com/ztc/custrpt/getbyapi.html";
            $curl = new Curl();
-           $resp = $curl->getJson($url,array("nick"=>$shop["nick"],"startDate"=>$rangeDate->startDate,"endDate"=>$rangeDate->endDate));
+           $resp = $curl->getJson($url,array("nick"=>$shop["nick"],"start_date"=>$rangeDate->startDate,"end_date"=>$rangeDate->endDate));
            if($curl->hasError()){
                print_r($curl->getError());
                continue;
