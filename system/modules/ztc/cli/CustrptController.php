@@ -50,6 +50,9 @@ class CustrptController extends Controller
            foreach($data as $k => $row){
                $logdate = date("Y-m-d",strtotime($k));
                $rpt = array_merge($row["base"],$row["effect"]);
+               $rpt["cost"] = $rpt["cost"]/100;
+               $rpt["pay"] = $rpt["pay"]/100;
+
                $rpt["paycount"] = $rpt["directpaycount"]+$rpt["indirectpaycount"];
                $rpt["favcount"] = $rpt["favitemcount"]+$rpt["favshopcount"];
                $rpt["pay"] = $rpt["directpay"]+$rpt["indirectpay"];

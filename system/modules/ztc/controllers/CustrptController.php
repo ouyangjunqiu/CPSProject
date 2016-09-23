@@ -61,7 +61,7 @@ class CustrptController extends Controller
 
     public function actionGetbyapi(){
         $nick = Env::getQueryDefault("nick","");
-        $rangeDate = ExtRangeDate::range(15);
+        $rangeDate = ExtRangeDate::range(30);
         $startDate = Env::getQueryDefault("start_date",$rangeDate->startDate);
         $endDate = Env::getQueryDefault("end_date",$rangeDate->endDate);
         $url = "http://yj.da-mai.com/index.php?r=api/getCustReport";
@@ -85,6 +85,8 @@ class CustrptController extends Controller
         foreach($data as $k => $row){
             $logdate = date("Y-m-d",strtotime($k));
             $rpt = array_merge($row["base"],$row["effect"]);
+            $rpt["cost"] = $rpt["cost"]/100;
+            $rpt["pay"] = $rpt["pay"]/100;
             $rpt["paycount"] = $rpt["directpaycount"]+$rpt["indirectpaycount"];
             $rpt["favcount"] = $rpt["favitemcount"]+$rpt["favshopcount"];
             $rpt["pay"] = $rpt["directpay"]+$rpt["indirectpay"];
