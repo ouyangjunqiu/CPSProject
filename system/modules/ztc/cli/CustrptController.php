@@ -10,6 +10,7 @@ namespace application\modules\ztc\cli;
 
 use application\modules\main\model\Shop;
 use application\modules\ztc\model\CustRpt;
+use application\modules\ztc\model\CustRptSource;
 use application\modules\ztc\model\CustWeekRpt;
 use cloud\core\cli\Controller;
 use cloud\core\utils\Curl;
@@ -20,14 +21,18 @@ class CustrptController extends Controller
 
     public function actionIndex(){
 
-       $rangeDate = ExtRangeDate::range(17);
+       $rangeDate = ExtRangeDate::range(30);
 
        $criteria = new \CDbCriteria();
        $criteria->addCondition("status='0'");
        $shops = Shop::model()->fetchAll($criteria);
        foreach($shops as $shop){
+           $nick = $shop["nick"];
 
-           $url = "http://yj.da-mai.com/index.php?r=api/getCustReport";
+           $hasget = CustRptSource::model()->exists("log_date=? AND nick=?",array(date("Y-m-d"),$nick));
+           if($hasget) continue;
+
+           $url = "http://cps.da-mai.com/ztc/custrpt/getbyapi.html";
            $curl = new Curl();
            $resp = $curl->getJson($url,array("nick"=>$shop["nick"],"startDate"=>$rangeDate->startDate,"endDate"=>$rangeDate->endDate));
            if($curl->hasError()){
@@ -35,7 +40,7 @@ class CustrptController extends Controller
                continue;
            }
 
-           if($resp["status"]!=1){
+           if(!isset($resp["isSuccess"]) || !$resp["isSuccess"]){
                print_r($resp);
                continue;
            }
@@ -46,32 +51,18 @@ class CustrptController extends Controller
                continue;
            }
 
+           $url2 = "http://cps.da-mai.com/ztc/custrpt/source.html";
+           $curl2 = new Curl();
+           $curl2->post($url2,array(
+               "nick"=>$nick,
+               "effectType"=>"click",
+               "effect"=>15,
+               "data"=>\CJSON::encode($data)
+           ));
 
-           foreach($data as $k => $row){
-               $logdate = date("Y-m-d",strtotime($k));
-               $rpt = array_merge($row["base"],$row["effect"]);
-               $rpt["cost"] = $rpt["cost"]/100;
-
-               $rpt["paycount"] = $rpt["directpaycount"]+$rpt["indirectpaycount"];
-               $rpt["favcount"] = $rpt["favitemcount"]+$rpt["favshopcount"];
-               $rpt["pay"] = ($rpt["directpay"]+$rpt["indirectpay"])/100;
-               $rpt["ppc"] = @round($rpt["charge"]/$rpt["click"],2);
-               $rpt["roi"] = @round($rpt["pay"]/$rpt["cost"],2);
-
-               CustRpt::model()->deleteAll("logdate=? AND nick=? AND effectType=? AND effect=?", array($logdate, $shop["nick"], "click", 15));
-               $listModel = new CustRpt();
-               $listModel->setAttributes(array(
-                   "logdate" => $logdate,
-                   "nick" => $shop["nick"],
-                   "effectType" => "click",
-                   "effect" => 15,
-                   "data" => \CJSON::encode($rpt)
-               ));
-               if(!$listModel->save()){
-                   print_r($listModel->getErrors());
-               }
+           if($curl2->hasError()){
+               print_r($curl2->getError());
            }
-
 
        }
    }
