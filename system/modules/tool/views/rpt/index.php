@@ -42,6 +42,7 @@
             <th>点击率</th>
             <th>消耗</th>
             <th>点击单价</th>
+            <th>加购数</th>
             <th>收藏数</th>
             <th>订单数</th>
             <th>回报率</th>
@@ -98,6 +99,7 @@
                 0
             {{/if}}
             </td>
+            <td>${a[i].cartNum}</td>
             <td>${a[i].dirShopColNum+a[i].inshopItemColNum}</td>
             <td>${a[i].alipayInShopNum}</td>
             <td>
@@ -143,6 +145,7 @@
             <td>
                 ${b[i].ppc}
             </td>
+            <td>${b[i].carttotal}</td>
             <td>${b[i].favcount}</td>
             <td>${b[i].paycount}</td>
             <td>
@@ -220,6 +223,7 @@
                 0
             {{/if}}
             </td>
+            <td>${total.a.cartNum}</td>
             <td>${total.a.dirShopColNum+total.a.inshopItemColNum}</td>
             <td>${total.a.alipayInShopNum}</td>
             <td>
@@ -265,6 +269,7 @@
             <td>
                 ${total.b.ppc}
             </td>
+            <td>${total.b.carttotal}</td>
             <td>${total.b.favcount}</td>
             <td>${total.b.paycount}</td>
             <td>
