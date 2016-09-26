@@ -81,10 +81,13 @@ class AdvertiserrptController extends Controller
                     continue;
                 AdvertiserWeekRpt::model()->deleteAll("begindate=? AND enddate=? AND nick=?",array($begindate,$enddate,$shop["nick"]));
 
-                $lastWeekRpt = AdvertiserWeekRpt::model()->fetch("begindate=? AND enddate=? AND nick=?",array($lastbegindate,$lastenddate,$shop["nick"]));
-                if(!empty($lastWeekRpt) && !empty($lastWeekRpt["total"]) && $lastWeekRpt["total"]["adPv"]>=0){
-                    $data["total"]["lastWeekCharge"] = $lastWeekRpt["total"]["charge"];
-                    $data["total"]["chargeRate"] = Math::growth($data["total"]["lastWeekCharge"],$data["total"]["charge"]);
+                $lastWeekSource = AdvertiserWeekRpt::model()->fetch("begindate=? AND enddate=? AND nick=?",array($lastbegindate,$lastenddate,$shop["nick"]));
+                if(!empty($lastWeekSource)){
+                    $lastWeekRpt = \CJSON::decode($lastWeekSource["data"]);
+                    if(!empty($lastWeekRpt) && !empty($lastWeekRpt["total"]) && $lastWeekRpt["total"]["adPv"]>=0){
+                        $data["total"]["lastWeekCharge"] = $lastWeekRpt["total"]["charge"];
+                        $data["total"]["chargeRate"] = Math::growth($data["total"]["lastWeekCharge"],$data["total"]["charge"]);
+                    }
                 }
                 $model = new AdvertiserWeekRpt();
                 $model->setAttributes(array(
