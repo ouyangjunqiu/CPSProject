@@ -131,7 +131,7 @@
 
            <div class="padding"><div class="col-md-6 col-lg-4 col-sm-6">
             <p class=" text-center">
-                <small>余额(<span class="glyphicon glyphicon-yen"></span>)</small>
+                <small>余额(元)</small>
             </p>
 
             <h3 class="text-center padding" {{if data.account.warning}}style="color: red"{{/if}}>${data.account.balance}</h3>
@@ -139,7 +139,7 @@
            </div>
            <div class="col-md-6 col-lg-4 col-sm-6">
              <p class=" text-center">
-               <small>今日预算(<span class="glyphicon glyphicon-yen"></span>)</small>
+               <small>今日预算(元)</small>
              </p>
                <h3 class="text-center padding">
                   {{if data.account.zuanshi_budget>0 && data.account.zuanshi_budget!=data.account.dayBudget}}
@@ -152,7 +152,7 @@
            </div>
            <div class="col-md-6 col-lg-4 col-sm-6">
              <p class=" text-center">
-               <small>昨日消耗(<span class="glyphicon glyphicon-yen"></span>)</small>
+               <small>昨日消耗(元)</small>
              </p>
              <h3 class="text-center padding">
                 ${data.account.yesterdayDeduct}
@@ -164,7 +164,7 @@
           <div class="col-md-6 col-lg-4 col-sm-6" style="background: aliceblue;">
              <div class="inner padding">
                 <p class=" text-center">
-                   <small>实时消耗(<span class="glyphicon glyphicon-yen"></span>)</small>
+                   <small>实时消耗(元)</small>
                 </p>
              <h3 class="text-center padding">
                 ${data.today.charge}
@@ -223,7 +223,7 @@
           <div class="inner padding">
 
           <p class=" text-center">
-          <small>点击单价(<span class="glyphicon glyphicon-yen"></span>)</small>
+          <small>点击单价(元)</small>
           </p>
           <h3 class="text-center padding">
                 ${data.today.ecpc}
