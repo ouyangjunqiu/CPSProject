@@ -264,6 +264,29 @@
                                 <div class="col-md-2">
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <small>点击单价:</small>
+                                </div>
+                                <div class="col-md-2">
+                                    <small><strong><?php echo $rpt["total"]["ecpc"];?></strong></small>
+                                </div>
+                                <div class="col-md-3">
+                                    <small>消耗增幅:</small>
+                                </div>
+                                <div class="col-md-2">
+                                    <?php if(!empty($rpt["total"]["chargeRate"])):?>
+                                        <?php if($rpt["total"]["chargeRate"]<30 && $rpt["total"]["chargeRate"]>-30):?>
+                                            <small><strong><?php echo $rpt["total"]["chargeRate"];?></strong></small>
+                                        <?php else:?>
+                                            <small style="color: red"><strong><?php echo $rpt["total"]["chargeRate"];?></strong></small>
+                                        <?php endif;?>
+                                    <?php endif;?>
+
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
                         <?php endif;?>
 
                         <?php if(!empty($ztc) && $ztc["total"]["cost"]>0):?>
