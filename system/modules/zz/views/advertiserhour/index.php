@@ -83,6 +83,17 @@
                             </div>
 
                             <div role="tabpanel" class="tab-pane" id="rpt_<?php echo $row["id"];?>">
+                                <div class="row">
+                                    <div class="col-md-11">
+
+                                    </div>
+                                    <div class="col-md-1">
+                                        <small>
+                                            <a class="label label-primary" href="<?php echo $this->createUrl("/zz/advertiserrpt/more",array("nick"=>$row["nick"]));?>">详情</a>
+                                        </small>
+                                    </div>
+                                </div>
+                                
                                 <div data-tmpl="zuanshi-advertiserrpt-list-tmpl" data-load="overlay" data-url="<?php echo $this->createUrl("/zz/advertiserrpt/getbynick",array("nick"=>$row["nick"],"shopname"=>$row["shopname"]));?>">
                                 </div>
 
