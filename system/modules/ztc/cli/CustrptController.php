@@ -29,7 +29,7 @@ class CustrptController extends Controller
        foreach($shops as $shop){
            $nick = $shop["nick"];
 
-           $hasget = CustRptSource::model()->exists("log_date=? AND nick=?",array(date("Y-m-d"),$nick));
+           $hasget = CustRptSource::model()->exists("logdate=? AND nick=?",array(date("Y-m-d"),$nick));
            if($hasget) continue;
 
            $url = "http://cps.da-mai.com/ztc/custrpt/getbyapi.html";
@@ -50,20 +50,19 @@ class CustrptController extends Controller
                print_r($resp);
                continue;
            }
-           print_r($data);
 
-//           $url2 = "http://cps.da-mai.com/ztc/custrpt/source.html";
-//           $curl2 = new Curl();
-//           $curl2->post($url2,array(
-//               "nick"=>$nick,
-//               "effectType"=>"click",
-//               "effect"=>15,
-//               "data"=>\CJSON::encode($data)
-//           ));
-//
-//           if($curl2->hasError()){
-//               print_r($curl2->getError());
-//           }
+           $url2 = "http://cps.da-mai.com/ztc/custrpt/source.html";
+           $curl2 = new Curl();
+           $curl2->post($url2,array(
+               "nick"=>$nick,
+               "effectType"=>"click",
+               "effect"=>15,
+               "data"=>\CJSON::encode($data)
+           ));
+
+           if($curl2->hasError()){
+               print_r($curl2->getError());
+           }
 
        }
    }
