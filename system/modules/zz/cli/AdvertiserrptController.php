@@ -26,7 +26,7 @@ class AdvertiserrptController extends Controller
             $criteria->addCondition("status='0'");
             $shops = Shop::model()->fetchAll($criteria);
             foreach($shops as $shop){
-                $data = AdvertiserRpt::fetchByNick($shop["nick"],$firstday,$lastday,"click",3);
+                $data = AdvertiserRpt::fetchByNick($shop["nick"],$firstday,$lastday,"click",15);
                 if(empty($data) || empty($data["total"]) || $data["total"]["adPv"]<=0)
                     continue;
 
@@ -71,7 +71,7 @@ class AdvertiserrptController extends Controller
             $criteria->addCondition("status='0'");
             $shops = Shop::model()->fetchAll($criteria);
             foreach($shops as $shop){
-                $data =  AdvertiserRpt::fetchByNick($shop["nick"],$begindate,$enddate,'click',3);
+                $data =  AdvertiserRpt::fetchByNick($shop["nick"],$begindate,$enddate,'click',15);
                 if(empty($data) || empty($data["total"]) || $data["total"]["adPv"]<=0)
                     continue;
                 AdvertiserWeekRpt::model()->deleteAll("begindate=? AND enddate=? AND nick=?",array($begindate,$enddate,$shop["nick"]));
