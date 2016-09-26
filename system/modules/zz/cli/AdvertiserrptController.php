@@ -12,6 +12,7 @@ use application\modules\zz\model\AdvertiserMonthRpt;
 use application\modules\zz\model\AdvertiserRpt;
 use application\modules\zz\model\AdvertiserWeekRpt;
 use cloud\core\cli\Controller;
+use cloud\core\utils\Math;
 
 class AdvertiserrptController extends Controller
 {
@@ -67,6 +68,10 @@ class AdvertiserrptController extends Controller
             $begindate = date('Y-m-d',strtotime("$now_start - ".(7*$i)." days"));  //上周开始日期
             $enddate = date('Y-m-d',strtotime("$begindate + 6 days"));  //上周结束日期
 
+            $lastbegindate = date('Y-m-d',strtotime("$now_start - ".(7*($i+1))." days"));
+            $lastenddate = date('Y-m-d',strtotime("$lastbegindate + 6 days"));  //上周结束日期
+
+
             $criteria = new \CDbCriteria();
             $criteria->addCondition("status='0'");
             $shops = Shop::model()->fetchAll($criteria);
@@ -75,6 +80,12 @@ class AdvertiserrptController extends Controller
                 if(empty($data) || empty($data["total"]) || $data["total"]["adPv"]<=0)
                     continue;
                 AdvertiserWeekRpt::model()->deleteAll("begindate=? AND enddate=? AND nick=?",array($begindate,$enddate,$shop["nick"]));
+
+                $lastWeekRpt = AdvertiserWeekRpt::model()->fetch("begindate=? AND enddate=? AND nick=?",array($lastbegindate,$lastenddate,$shop["nick"]));
+                if(!empty($lastWeekRpt) && !empty($lastWeekRpt["total"]) && $lastWeekRpt["total"]["adPv"]>=0){
+                    $data["total"]["lastWeekCharge"] = $lastWeekRpt["total"]["charge"];
+                    $data["total"]["chargeRate"] = Math::growth($data["total"]["lastWeekCharge"],$data["total"]["charge"]);
+                }
                 $model = new AdvertiserWeekRpt();
                 $model->setAttributes(array(
                     "begindate"=>$begindate,
