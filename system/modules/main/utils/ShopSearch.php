@@ -27,19 +27,12 @@ class ShopSearch {
         }
         if(!empty($q)) {
 
-            $a = \CJSON::encode(array("zuanshi"=>1));
-            $a = addslashes($a);
-            $b = \CJSON::encode(array("ztc"=>1));
-            $b = addslashes($b);
-            $c = \CJSON::encode(array("ztc"=>1,"zuanshi"=>1));
-            $c = addslashes($c);
-
             $q = StringUtil::tagFormat($q);
             $arr = explode(",",$q);
 
             foreach($arr as $o){
                 if(preg_match("/助理/",$o)){
-                    $condition = "(sub_pic LIKE '%{$a}%' OR sub_pic LIKE '%{$b}%' OR sub_pic LIKE '%{$c}%')";
+                    $condition = "(sub_pic LIKE '%1%')";
                 }else{
                     $condition = "(shopname LIKE '%{$o}%' OR shopcatname LIKE '%{$o}%' OR shoptype LIKE '%{$o}%' OR nick LIKE '%{$o}%' OR pic LIKE '%{$o}%' OR zuanshi_pic LIKE '%{$o}%' OR bigdata_pic LIKE '%{$o}%' OR ztc_pic  LIKE '%{$o}%')";
                 }
