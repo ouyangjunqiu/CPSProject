@@ -93,7 +93,7 @@
                                         </small>
                                     </div>
                                 </div>
-                                
+
                                 <div data-tmpl="zuanshi-advertiserrpt-list-tmpl" data-load="overlay" data-url="<?php echo $this->createUrl("/zz/advertiserrpt/getbynick",array("nick"=>$row["nick"],"shopname"=>$row["shopname"]));?>">
                                 </div>
 
