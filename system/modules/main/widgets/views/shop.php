@@ -277,9 +277,9 @@
                                 <div class="col-md-2">
                                     <?php if(!empty($rpt["total"]["chargeRate"])):?>
                                         <?php if($rpt["total"]["chargeRate"]<30 && $rpt["total"]["chargeRate"]>-30):?>
-                                            <small><strong><?php echo $rpt["total"]["chargeRate"];?></strong></small>
+                                            <small><strong><?php echo $rpt["total"]["chargeRate"];?>%</strong></small>
                                         <?php else:?>
-                                            <small style="color: red"><strong><?php echo $rpt["total"]["chargeRate"];?></strong></small>
+                                            <small><strong style="color: red"><?php echo $rpt["total"]["chargeRate"];?>%</strong></small>
                                         <?php endif;?>
                                     <?php endif;?>
 
