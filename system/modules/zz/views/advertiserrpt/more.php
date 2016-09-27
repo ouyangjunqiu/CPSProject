@@ -45,7 +45,7 @@
                     <div class="form-group">
                         <small>统计:</small>
                         <div class="input-group"  id="dateSetting">
-                            <span class="input-group-addon"> <i class="fa fa-calendar"></i> </span>
+                            <span class="input-group-addon"> <i class="glyphicon glyphicon-calendar"></i> </span>
                             <input type="text" class="form-control"  value="<?php echo $query['beginDate'];?> ~ <?php echo $query['endDate'];?>">
                             <span class="input-group-addon"><b class="caret"></b></span>
                         </div>
