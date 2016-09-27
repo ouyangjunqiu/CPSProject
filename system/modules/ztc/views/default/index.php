@@ -11,13 +11,13 @@
                 <span class="shop-list-icon"></span>
                 <span class="shop-list-txt">直通车:</span><small>
 
-                    <a href="<?php echo $this->createUrl("/zuanshi/ztc/index");?>"><span class="label label-info">全店报表</span></a>
+                    <a href="<?php echo $this->createUrl("/ztc/default/index");?>"><span class="label label-info">全店报表</span></a>
                     <a href="http://yj.da-mai.com/index.php?r=milestone/adviser/index" target="_blank"><span class="label label-default">大麦优驾</span></a>
                 </small>
 
             </div>
             <div class="search-right">
-                <?php $this->widget("application\\modules\\main\\widgets\\ShopSearchWidget",array("url"=>$this->createUrl("/zuanshi/rpt/index",array("page"=>1)),"query"=>$query));?>
+                <?php $this->widget("application\\modules\\main\\widgets\\ShopSearchWidget",array("url"=>$this->createUrl("/ztc/default/index",array("page"=>1)),"query"=>$query));?>
 
             </div>
         </div>
