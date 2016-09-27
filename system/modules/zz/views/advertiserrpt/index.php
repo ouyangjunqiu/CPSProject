@@ -747,14 +747,14 @@
                 ],
                 series: [
                     {
-                        type: 'areaspline',
+                        type: 'column',
                         name: '消耗',
                         yAxis: 1,
                         data: app.charts.formatData(data, 'charge'),
                         color: '#3499DC'
                     },
                     {
-                        type: 'areaspline',
+                        type: 'column',
                         name: '转化金额',
                         yAxis: 1,
                         data: app.charts.formatData(data, 'alipayInshopAmt'),
