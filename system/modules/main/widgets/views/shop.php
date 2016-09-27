@@ -720,7 +720,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <a href="javascript:void(0)" class="btn btn-primary"  data-click="stop" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo Yii::app()->urlManager->createUrl('/main/shop/stop');?>"><small>1. 服务流失..</small></a>
+                            <a href="javascript:void(0)" class="btn btn-primary"  data-click="stop" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo Yii::app()->urlManager->createUrl('/main/shop/stop');?>">服务流失</a>
                         </div>
                     </div>
 <!--                    <div class="row">-->
