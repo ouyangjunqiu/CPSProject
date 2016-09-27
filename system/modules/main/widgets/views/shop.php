@@ -395,11 +395,11 @@
                                     <small>消耗增幅:</small>
                                 </div>
                                 <div class="col-md-2">
-                                    <?php if(!empty($ztc["total"]["chargeRate"])):?>
-                                        <?php if($ztc["total"]["chargeRate"]<30 && $ztc["total"]["chargeRate"]>-30):?>
-                                            <small><strong><?php echo $ztc["total"]["chargeRate"];?>%</strong></small>
+                                    <?php if(!empty($ztc["total"]["costRate"])):?>
+                                        <?php if($ztc["total"]["costRate"]<30 && $ztc["total"]["costRate"]>-30):?>
+                                            <small><strong><?php echo $ztc["total"]["costRate"];?>%</strong></small>
                                         <?php else:?>
-                                            <small><strong style="color: red"><?php echo $ztc["total"]["chargeRate"];?>%</strong></small>
+                                            <small><strong style="color: red"><?php echo $ztc["total"]["costRate"];?>%</strong></small>
                                         <?php endif;?>
                                     <?php endif;?>
 
