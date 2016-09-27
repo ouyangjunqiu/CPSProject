@@ -272,14 +272,14 @@
                 ],
                 series: [
                     {
-                        type: 'areaspline',
+                        type: 'column',
                         name: '消耗',
                         yAxis: 1,
                         data: app.charts.formatData(data, 'cost'),
                         color: '#3499DC'
                     },
                     {
-                        type: 'areaspline',
+                        type: 'column',
                         name: '成交额',
                         yAxis: 1,
                         data: app.charts.formatData(data, 'pay'),
