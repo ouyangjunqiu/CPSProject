@@ -389,7 +389,7 @@
                                     <small>点击单价:</small>
                                 </div>
                                 <div class="col-md-2">
-                                    <small><strong><?php echo $ztc["total"]["ecpc"];?></strong></small>
+                                    <small><strong><?php echo $ztc["total"]["ppc"];?></strong></small>
                                 </div>
                                 <div class="col-md-3">
                                     <small>消耗增幅:</small>
