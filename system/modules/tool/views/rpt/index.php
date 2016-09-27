@@ -70,7 +70,7 @@
                             ${(a[i].charge/c[i].payAmt*100).toFixed(2)}
                         {{else}}
                             {{if b[i] && b[i].cost}}
-                            ${(parseFloat(b[i].cost)/c[i].payAmt*100).toFixed(2)}
+                            ${(100*(0+parseFloat(b[i].cost))/c[i].payAmt).toFixed(2)}
                             {{else}}
                                 0
                             {{/if}}
@@ -145,7 +145,13 @@
             <td>
                ${b[i].ctr}
             </td>
-            <td>${b[i].cost}</td>
+            <td>
+            {{if b[i] && b[i].cost}}
+                ${b[i].cost}
+            {{else}}
+                0
+            {{/if}}
+            </td>
             <td>
                 ${b[i].ppc}
             </td>
