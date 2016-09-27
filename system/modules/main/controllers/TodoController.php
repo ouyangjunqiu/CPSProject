@@ -144,7 +144,7 @@ class TodoController extends Controller
 
     public function actionMytips(){
         $pic = Env::getQuery("pic");
-        $startDate = date("Y-m-d",strtotime("-15 days"));
+        $startDate = date("Y-m-d",strtotime("-7 days"));
         $endDate =  date("Y-m-d");
         $count = ShopTodoList::model()->count("logdate>=? AND logdate<=? AND pic=? AND status=?",array($startDate,$endDate,$pic,0));
         $this->renderJson(array("isSuccess"=>true,"data"=>array(
