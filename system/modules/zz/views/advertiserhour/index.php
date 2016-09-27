@@ -89,7 +89,7 @@
                                     </div>
                                     <div class="col-md-1">
                                         <small>
-                                            <a class="label label-primary" href="<?php echo $this->createUrl("/zz/advertiserrpt/more",array("nick"=>$row["nick"]));?>">详情</a>
+                                            <a class="label label-primary" href="<?php echo $this->createUrl("/zz/advertiserrpt/more",array("nick"=>$row["nick"]));?>">更多..</a>
                                         </small>
                                     </div>
                                 </div>
@@ -103,7 +103,7 @@
                                     </div>
                                     <div class="col-md-1">
                                         <small>
-                                            <a class="label label-primary" href="<?php echo $this->createUrl("/zz/advertiserrpt/more",array("nick"=>$row["nick"]));?>">详情</a>
+                                            <a class="label label-primary" href="<?php echo $this->createUrl("/zz/advertiserrpt/more",array("nick"=>$row["nick"]));?>">更多..</a>
                                         </small>
                                     </div>
                                 </div>
