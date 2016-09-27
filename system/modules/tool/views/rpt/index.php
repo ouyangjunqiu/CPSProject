@@ -135,6 +135,7 @@
             <td>-</td>
             <td>-</td>
             <td>-</td>
+            <td>-</td>
             {{/if}}
             </tr>
             <tr class="small" style="background: #efefef;">
@@ -174,6 +175,7 @@
                 {{/if}}
             </td>
             {{else}}
+            <td>-</td>
             <td>-</td>
             <td>-</td>
             <td>-</td>
