@@ -19,7 +19,7 @@
                 </small>
             </div>
             <div class="search-right">
-                <?php $this->widget("application\\modules\\main\\widgets\\ShopSearchWidget",array("url"=>$this->createUrl("/main/default/beginglost",array("page"=>1)),"query"=>$query));?>
+                <?php $this->widget("application\\modules\\main\\widgets\\ShopSearchWidget",array("url"=>$this->createUrl("/main/default/beinglost",array("page"=>1)),"query"=>$query));?>
             </div>
         </div>
     </div>
@@ -47,7 +47,7 @@
 
 
         $(".c-pager").jPager({currentPage: <?php echo $pager["page"]-1;?>, total: <?php echo $pager["count"];?>, pageSize: <?php echo $pager["page_size"];?>,events: function(dp){
-            location.href = app.url("<?php echo $this->createUrl('/main/default/beginglost');?>",{page:dp.index+1})
+            location.href = app.url("<?php echo $this->createUrl('/main/default/beinglost');?>",{page:dp.index+1})
         }});
 
     });
