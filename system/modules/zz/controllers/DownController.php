@@ -126,7 +126,7 @@ class DownController extends Controller
                 "三天转化ROI",
                 "七天转化金额",
                 "七天转化ROI",
-                "营业额"
+                "全店营业额"
             )
         );
 

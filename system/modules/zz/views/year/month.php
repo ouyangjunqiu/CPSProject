@@ -260,7 +260,7 @@ for($i=1;$i<$month;$i++){
             series: [
                 {
                     type: 'spline',
-                    name: '营业额',
+                    name: '全店营业额',
                     yAxis: 0,
                     data: <?php echo CJavaScript::jsonEncode($y_trade);?>,
                     marker: {

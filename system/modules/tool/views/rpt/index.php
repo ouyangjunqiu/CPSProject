@@ -34,7 +34,7 @@
         <thead>
         <tr class="small">
             <th>日期</th>
-            <th>营业额</th>
+            <th>全店营业额</th>
             <th>消耗占比(%)</th>
             <th>来源</th>
             <th>展现</th>

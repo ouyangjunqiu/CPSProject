@@ -65,7 +65,7 @@
             <th class="b2">三天投资回报率</th>
             <th class="b2">七天转化金额</th>
             <th class="b2">七天投资回报率</th>
-            <th class="b2">营业额</th>
+            <th class="b2">全店营业额</th>
             <th class="b2">消耗占比(%)</th>
         </tr>
         </thead>
