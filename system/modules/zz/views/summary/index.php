@@ -72,7 +72,7 @@
             <th class="b2">三天转化ROI</th>
             <th class="b2">七天转化金额</th>
             <th class="b2">七天转化ROI</th>
-            <th class="b2">营业额</th>
+            <th class="b2">全店营业额</th>
         </tr>
         </thead>
         <tbody>
