@@ -657,10 +657,7 @@
                     },
                     column: {
                         dataLabels: {
-                            enabled: true,
-                            formatter: function () {
-                                return this.y + "";
-                            }
+                            enabled: false
                         },
                         enableMouseTracking: true
                     },
