@@ -384,6 +384,29 @@
                                 <div class="col-md-2">
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <small>点击单价:</small>
+                                </div>
+                                <div class="col-md-2">
+                                    <small><strong><?php echo $ztc["total"]["ecpc"];?></strong></small>
+                                </div>
+                                <div class="col-md-3">
+                                    <small>消耗增幅:</small>
+                                </div>
+                                <div class="col-md-2">
+                                    <?php if(!empty($ztc["total"]["chargeRate"])):?>
+                                        <?php if($ztc["total"]["chargeRate"]<30 && $ztc["total"]["chargeRate"]>-30):?>
+                                            <small><strong><?php echo $ztc["total"]["chargeRate"];?>%</strong></small>
+                                        <?php else:?>
+                                            <small><strong style="color: red"><?php echo $ztc["total"]["chargeRate"];?>%</strong></small>
+                                        <?php endif;?>
+                                    <?php endif;?>
+
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
                         <?php endif;?>
 
                     </div>
