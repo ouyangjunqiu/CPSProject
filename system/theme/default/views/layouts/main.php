@@ -165,7 +165,10 @@
     </div>
 </header>
 
-<!-- Content Wrapper. Contains page content -->
+    <?php $this->widget("application\\modules\\main\\widgets\\ShopTodoWidget");?>
+
+
+    <!-- Content Wrapper. Contains page content -->
 
 <div class="content-wrapper">
     <div class="tips-wrapper"></div>
@@ -176,7 +179,6 @@
 <!-- /.content-wrapper -->
 
 
-    <?php $this->widget("application\\modules\\main\\widgets\\ShopTodoWidget");?>
 
 
 

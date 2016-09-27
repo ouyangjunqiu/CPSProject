@@ -51,7 +51,9 @@
                     <div  class="list-group-item">
 
                         <a data-id="<?php echo $todo["id"];?>" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" data-content="<?php echo $todo["content"];?>">
-                            <small>[<?php echo $todo["priority"];?>] <?php echo $todo["creator"];?>说:</small><?php echo $todo["title"];?> <?php if(!empty($todo["pic"])):?><small>@<?php echo $todo["pic"];?></small><?php endif;?>
+                            <small>[<?php echo $todo["priority"];?>] <?php echo $todo["creator"];?>说:</small>
+                            <?php echo $todo["title"];?>
+                            <?php if(!empty($todo["pic"])):?><small>@<?php echo $todo["pic"];?></small><?php endif;?>
                         </a>
                         <?php if($todo["days"]<=0):?>
                             <span class="badge label label-danger"><i class="fa fa-clock-o"></i> <?php echo $todo["daysStr"];?></span>
@@ -63,7 +65,9 @@
                 <?php else:?>
                 <div  class="list-group-item list-group-item-success" >
                     <a data-id="<?php echo $todo["id"];?>" data-toggle="modal" data-target="#ShopTodoViewModal" data-backdrop="false" data-content="<?php echo $todo["content"];?>">
-                        <small>[<?php echo $todo["priority"];?>]  <?php echo $todo["creator"];?>说:</small><?php echo $todo["title"];?> <?php if(!empty($todo["pic"])):?><small>@<?php echo $todo["pic"];?></small><?php endif;?>
+                        <small>[<?php echo $todo["priority"];?>]  <?php echo $todo["creator"];?>说:</small>
+                        <?php echo $todo["title"];?>
+                        <?php if(!empty($todo["pic"])):?><small>@<?php echo $todo["pic"];?></small><?php endif;?>
                     </a>
                     <span class="badge label label-success"><i class="fa fa-clock-o"></i> <?php echo $todo["daysStr"];?></span>
                 </div>
