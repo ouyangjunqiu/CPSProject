@@ -82,8 +82,8 @@
                 <td><?php echo $row["zuanshi_pic"];?></td>
                 <td><?php echo $row["bigdata_pic"];?></td>
                 <!-- 近七天 -->
-                <td class="b2"><?php echo empty($row["rpt"]["total"])?"-":@$row["rpt"]["impressions"];?></td>
-                <td class="b2"><?php echo empty($row["rpt"]["total"])?"-":@$row["rpt"]["click"];?></td>
+                <td class="b2"><?php echo empty($row["rpt"]["total"])?"-":@$row["rpt"]["total"]["impressions"];?></td>
+                <td class="b2"><?php echo empty($row["rpt"]["total"])?"-":@$row["rpt"]["total"]["click"];?></td>
                 <td class="b2"><?php echo empty($row["rpt"]["total"])?"-":@\cloud\core\utils\String::nFormat($row["rpt"]["total"]["cost"]);?></td>
                 <td class="b2"><?php echo empty($row["rpt"]["total"])?"-":@\cloud\core\utils\String::nFormat($row["rpt"]["total"]["pay"]);?></td>
                 <td class="b2"><?php echo empty($row["rpt"]["total"])?"-":@$row["rpt"]["total"]["roi"];?></td>
