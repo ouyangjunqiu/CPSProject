@@ -105,7 +105,7 @@
     $(document).ready(function(){
         var self = $(this);
 
-        $(".top-ul>li").eq(1).addClass("top-li-hover");
+        $(".top-ul>li").eq(2).addClass("top-li-hover");
 
         $("#dateSetting").daterangepicker({
             "startDate": "<?php echo $query['startdate'];?>",
