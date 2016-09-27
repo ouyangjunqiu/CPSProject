@@ -287,7 +287,7 @@
                     },
                     {
                         type: 'spline',
-                        name: '3天订单数',
+                        name: '订单数',
                         yAxis: 4,
                         data: app.charts.formatData(data, 'paycount'),
                         marker: {
