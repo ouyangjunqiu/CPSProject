@@ -12,6 +12,8 @@
                 <span class="shop-list-txt">直通车:</span><small>
 
                     <a href="<?php echo $this->createUrl("/ztc/default/index");?>"><span class="label label-info">全店报表</span></a>
+                    <a href="<?php echo $this->createUrl("/ztc/summary/index");?>"><span class="label label-default">店铺统计报表</span></a>
+                    <a href="<?php echo $this->createUrl("/ztc/summary/pic");?>"><span class="label label-default">人员统计报表</span></a>
                     <a href="http://yj.da-mai.com/index.php?r=milestone/adviser/index" target="_blank"><span class="label label-default">大麦优驾</span></a>
                 </small>
 

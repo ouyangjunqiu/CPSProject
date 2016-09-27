@@ -16,7 +16,7 @@
             <div class="search-left com-list-tit" style="display: block;">
                 <span class="shop-list-icon"></span>
                 <span class="shop-list-txt">直通车</span><small>
-                    <a href="<?php echo $this->createUrl("/ztc/default/index");?>"><span class="label label-default">全店推广</span></a>
+                    <a href="<?php echo $this->createUrl("/ztc/default/index");?>"><span class="label label-default">全店报表</span></a>
 <!--                    <a href="--><?php //echo $this->createUrl("/zuanshi/rpt/index2");?><!--"><span class="label label-default">明星店铺报表</span></a>-->
                     <a href="<?php echo $this->createUrl("/ztc/summary/index");?>"><span class="label label-default">店铺统计报表</span></a>
                     <a href="<?php echo $this->createUrl("/ztc/summary/pic");?>"><span class="label label-info">人员统计报表</span></a>

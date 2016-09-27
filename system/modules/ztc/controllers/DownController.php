@@ -12,7 +12,6 @@ namespace application\modules\ztc\controllers;
 use application\modules\main\utils\ShopSearch;
 use application\modules\ztc\model\CustRpt;
 use application\modules\zuanshi\model\ShopTradeRpt;
-use application\modules\zz\model\AdvertiserRpt;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
 use cloud\core\utils\ExtRangeDate;
@@ -67,7 +66,7 @@ class DownController extends Controller
                 $row["bigdata_pic"],
                 empty($row["rpt"]["total"])?"-":@$row["rpt"]["total"]["impressions"],
                 empty($row["rpt"]["total"])?"-":@$row["rpt"]["total"]["click"],
-                empty($row["rpt"]["total"])?"-":@$row["rpt"]["total"]["charge"],
+                empty($row["rpt"]["total"])?"-":@$row["rpt"]["total"]["cost"],
                 empty($row["rpt"]["total"])?"-":@$row["rpt"]["total"]["pay"],
                 empty($row["rpt"]["total"])?"-":@$row["rpt"]["total"]["roi"],
                 $row["tradeRpt"]["total_pay_amt"]
