@@ -38,7 +38,7 @@
                 </div>
                 <div class="form-group">
                     <div class="input-group"  id="dateSetting">
-                        <span class="input-group-addon"> <i class="fa fa-calendar"></i> </span>
+                        <span class="input-group-addon"> <i class="glyphicon glyphicon-calendar"></i> </span>
                         <input type="text" class="form-control" value="<?php echo $query['startdate'];?> ~ <?php echo $query['enddate'];?>">
                         <span class="input-group-addon"><b class="caret"></b></span>
                     </div>
