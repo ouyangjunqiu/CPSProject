@@ -35,8 +35,8 @@ class DefaultController extends Controller
 	}
 
 	/**
-	 * 暂停的店铺列表
-	 */
+ * 暂停的店铺列表
+ */
 	public function actionStoplist(){
 		$page = Env::getSession("page",1,"main.default.index");
 		$pageSize = Env::getSession("page_size",PAGE_SIZE,"main.default.index");
@@ -73,6 +73,47 @@ class DefaultController extends Controller
 		$list = Shop::model()->fetchAll($criteria);
 
 		$this->render("stoplist",array("list"=>$list,"pager"=>array("count"=>$count,"page"=>$page,"page_size"=>$pageSize),"query"=>array("q"=>$q,"pic"=>$pic)));
+	}
+
+	/**
+	 * 暂停的店铺列表
+	 */
+	public function actionBeinglost(){
+		$page = Env::getSession("page",1,"main.default.index");
+		$pageSize = Env::getSession("page_size",PAGE_SIZE,"main.default.index");
+		$q = Env::getSession("q","","main.default.index");
+		$pic = Env::getSession("pic","","main.default.index");
+		$status = Env::getRequest("status");
+		$page = (int)$page;
+		$pageSize = (int)$pageSize;
+		$shoptype = Env::getRequest("shoptype");
+
+		$criteria = new \CDbCriteria();
+		if(!empty($status)){
+			$status = (int)$status;
+			$criteria->addCondition("status='{$status}'");
+		}else{
+			$criteria->addInCondition("status",array(1));
+		}
+
+		if(!empty($pic)) {
+			$criteria->addCondition("(pic LIKE '%{$pic}%' OR zuanshi_pic LIKE '%{$pic}%' OR bigdata_pic LIKE '%{$pic}%' OR ztc_pic  LIKE '%{$pic}%')");
+		}
+		if(!empty($q)) {
+			$criteria->addCondition("(shopcatname LIKE '%{$q}%' OR shoptype LIKE '%{$q}%' OR nick LIKE '%{$q}%' OR pic LIKE '%{$q}%' OR zuanshi_pic LIKE '%{$q}%' OR bigdata_pic LIKE '%{$q}%' OR ztc_pic  LIKE '%{$q}%')");
+		}
+		if(!empty($shoptype)) {
+			$criteria->addCondition("shoptype = '{$shoptype}'");
+		}
+
+		$count = Shop::model()->count($criteria);
+
+		$criteria->offset = ($page-1)*$pageSize;
+		$criteria->limit = $pageSize;
+
+		$list = Shop::model()->fetchAll($criteria);
+
+		$this->render("beginglost",array("list"=>$list,"pager"=>array("count"=>$count,"page"=>$page,"page_size"=>$pageSize),"query"=>array("q"=>$q,"pic"=>$pic)));
 	}
 
 
