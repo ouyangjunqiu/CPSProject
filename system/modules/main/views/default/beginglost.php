@@ -12,7 +12,7 @@
                 <small>
                     <a href="<?php echo $this->createUrl("/main/shop/index");?>"><span class="label label-default">新增店铺</span></a>
                     <a href="<?php echo $this->createUrl("/main/default/index");?>"><span class="label label-default">我的店铺</span></a>
-                    <a href="<?php echo $this->createUrl("/main/default/beginglost");?>"><span class="label label-info">当月流失店铺</span></a>
+                    <a href="<?php echo $this->createUrl("/main/default/beinglost");?>"><span class="label label-info">当月流失店铺</span></a>
                     <a href="<?php echo $this->createUrl("/main/default/stoplist");?>"><span class="label label-default">流失店铺</span></a>
                     <a href="<?php echo $this->createUrl("/main/dashboard/index");?>"><span class="label label-default">总览</span></a>
 
