@@ -113,7 +113,7 @@ class DefaultController extends Controller
 
 		$list = Shop::model()->fetchAll($criteria);
 
-		$this->render("beginglost",array("list"=>$list,"pager"=>array("count"=>$count,"page"=>$page,"page_size"=>$pageSize),"query"=>array("q"=>$q,"pic"=>$pic)));
+		$this->render("beinglost",array("list"=>$list,"pager"=>array("count"=>$count,"page"=>$page,"page_size"=>$pageSize),"query"=>array("q"=>$q,"pic"=>$pic)));
 	}
 
 

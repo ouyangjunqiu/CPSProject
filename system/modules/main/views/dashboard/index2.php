@@ -49,7 +49,7 @@
                     </p>
                 </div>
 
-                <a href="<?php echo $this->createUrl("/main/default/stoplist");?>" class="small-box-footer">
+                <a href="<?php echo $this->createUrl("/main/default/beinglost");?>" class="small-box-footer">
                     查看详细 <i class="fa fa-arrow-circle-right"></i>
                 </a>
             </div>
