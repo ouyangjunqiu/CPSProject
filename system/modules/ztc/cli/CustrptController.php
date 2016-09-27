@@ -15,6 +15,7 @@ use application\modules\ztc\model\CustWeekRpt;
 use cloud\core\cli\Controller;
 use cloud\core\utils\Curl;
 use cloud\core\utils\ExtRangeDate;
+use cloud\core\utils\Math;
 
 class CustrptController extends Controller
 {
@@ -77,6 +78,9 @@ class CustrptController extends Controller
             $begindate = date('Y-m-d',strtotime("$now_start - ".(7*$i)." days"));  //上周开始日期
             $enddate = date('Y-m-d',strtotime("$begindate + 6 days"));  //上周结束日期
 
+            $lastbegindate = date('Y-m-d',strtotime("$now_start - ".(7*($i+1))." days"));
+            $lastenddate = date('Y-m-d',strtotime("$lastbegindate + 6 days"));  //上周结束日期
+
             $criteria = new \CDbCriteria();
             $criteria->addCondition("status='0'");
             $shops = Shop::model()->fetchAll($criteria);
@@ -84,6 +88,15 @@ class CustrptController extends Controller
                 $data =  CustRpt::fetchByNick($shop["nick"],$begindate,$enddate,'click',15);
                 if(empty($data) || empty($data["total"]) || $data["total"]["impressions"]<=0)
                     continue;
+
+                $lastWeekSource = CustWeekRpt::model()->fetch("begindate=? AND enddate=? AND nick=?",array($lastbegindate,$lastenddate,$shop["nick"]));
+                if(!empty($lastWeekSource)){
+                    $lastWeekRpt = \CJSON::decode($lastWeekSource["data"]);
+                    if(!empty($lastWeekRpt) && !empty($lastWeekRpt["total"]) && $lastWeekRpt["total"]["impressions"]>0){
+                        $data["total"]["lastWeekCost"] = $lastWeekRpt["total"]["cost"];
+                        $data["total"]["costRate"] = Math::growth($data["total"]["lastWeekCost"],$data["total"]["cost"]);
+                    }
+                }
                 CustWeekRpt::model()->deleteAll("begindate=? AND enddate=? AND nick=?",array($begindate,$enddate,$shop["nick"]));
                 $model = new CustWeekRpt();
                 $model->setAttributes(array(
