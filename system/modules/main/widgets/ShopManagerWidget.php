@@ -2,6 +2,7 @@
 namespace application\modules\main\widgets;
 use application\modules\main\model\ShopBudget;
 use application\modules\main\model\ShopContact;
+use application\modules\main\model\ShopGrade;
 use application\modules\ztc\model\CustWeekRpt;
 use application\modules\zz\model\AdvertiserWeekRpt;
 use CWidget;
@@ -28,6 +29,7 @@ class ShopManagerWidget extends CWidget
             );
         }
         $row = array_merge($row,$budget);
+        $grade = ShopGrade::model()->fetch("nick=?",array($this->shop["nick"]));
 
         $date = date("Y-m-d");
         $w  = date('w',strtotime($date));
@@ -49,7 +51,7 @@ class ShopManagerWidget extends CWidget
         if(!empty($ztcSource) && isset($ztcSource["data"])){
             $ztc = \CJSON::decode($ztcSource["data"]);
         }
-        return $this->render("application.modules.main.widgets.views.shop",array("row"=>$row,"rpt"=>$rpt,"ztc"=>$ztc));
+        return $this->render("application.modules.main.widgets.views.shop",array("row"=>$row,"grade"=>$grade,"rpt"=>$rpt,"ztc"=>$ztc));
     }
 
 }

@@ -15,7 +15,10 @@
             <div role="tabpanel" class="tab-pane active" id="home_<?php echo $row["id"];?>" data-role="shop-base-info">
                 <form>
                     <input type="hidden" value="<?php echo $row["nick"];?>"  name="nick"/>
-                    <div class="container-fluid">
+                    <div class="container-fluid" style="position: relative;">
+                        <?php if(!empty($grade) && !empty($grade["grade"])):?>
+                            <div class="shop_grade_box"><?php echo $grade["grade"];?></div>
+                        <?php endif;?>
                         <div class="row">
                             <div class="col-md-12">
                                 <p class="babyinfor-frame-tit">

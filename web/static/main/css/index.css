@@ -177,4 +177,13 @@ textarea.s {
 .contact-qq {
     background-position: -8px -11px;
 }
+.shop_grade_box {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 30px;
+    opacity: 0.5;
+    color: tomato;
+    z-index: 1;
+}
 
