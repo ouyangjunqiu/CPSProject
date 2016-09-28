@@ -193,6 +193,9 @@ $("a[data-click=stop]").click(function(){
         $.ajax({
             url:source_url,
             dataType:"json",
+            beforeSend:function(){
+                $("body").showLoading();
+            },
             success:function(resp){
 
                 if(resp.isSuccess){
@@ -207,10 +210,16 @@ $("a[data-click=stop]").click(function(){
                         },
                         type:"post",
                         success:function(){
+                            $("body").hideLoading();
+                            window.location.href=url;
+                        },
+                        error:function(){
+                            $("body").hideLoading();
                             window.location.href=url;
                         }
                     })
                 }else{
+                    $("body").hideLoading();
                     window.location.href=url;
                 }
 
