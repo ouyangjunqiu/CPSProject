@@ -596,7 +596,9 @@
                     </div>
                 </div>
             </div>
-            <div class="container-fluid">
+
+        </div>
+        <div class="container-fluid">
             <?php if(!empty($rpt) && $rpt["total"]["charge"]>0):?>
                 <div class="row" style="margin-top: 10px;">
                     <div class="col-md-12">
@@ -818,7 +820,6 @@
                     </div>
                 </div>
             <?php endif;?>
-            </div>
         </div>
 
     </div>
