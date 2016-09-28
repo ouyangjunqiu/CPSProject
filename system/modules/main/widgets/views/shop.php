@@ -190,228 +190,6 @@
                             </div>
 
                         </div>
-                        <?php if(!empty($rpt) && $rpt["total"]["charge"]>0):?>
-                            <div class="row" style="margin-top: 10px;">
-                                <div class="col-md-12">
-                                    <small><strong>智钻上周状况</strong></small>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <small>消耗:</small>
-                                </div>
-                                <div class="col-md-2">
-                                    <small><strong><?php echo $rpt["total"]["charge"];?></strong></small>
-                                </div>
-                                <div class="col-md-3">
-                                    <small>日均消耗:</small>
-                                </div>
-                                <div class="col-md-2">
-                                    <small><strong><?php echo @round($rpt["total"]["charge"]/count($rpt["list"]),2);?></strong></small>
-                                </div>
-                                <div class="col-md-2">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <small>成交单数:</small>
-                                </div>
-                                <div class="col-md-2">
-                                    <small><strong><?php echo $rpt["total"]["alipayInShopNum"];?></strong></small>
-                                </div>
-                                <div class="col-md-3">
-                                    <small>转化成本:</small>
-                                </div>
-                                <div class="col-md-2">
-                                    <small><strong><?php echo @round($rpt["total"]["charge"]/$rpt["total"]["alipayInShopNum"],2);?></strong></small>
-                                </div>
-                                <div class="col-md-2">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <small>加购数:</small>
-                                </div>
-                                <div class="col-md-2">
-                                    <small><strong><?php echo $rpt["total"]["cartNum"];?></strong></small>
-                                </div>
-                                <div class="col-md-3">
-                                    <small>加购成本:</small>
-                                </div>
-                                <div class="col-md-2">
-                                    <small><strong><?php echo @round($rpt["total"]["charge"]/$rpt["total"]["cartNum"],2);?></strong></small>
-                                </div>
-                                <div class="col-md-2">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <small>收藏数:</small>
-                                </div>
-                                <div class="col-md-2">
-                                    <small><strong><?php echo ($rpt["total"]["dirShopColNum"]+$rpt["total"]["inshopItemColNum"]);?></strong></small>
-                                </div>
-                                <div class="col-md-3">
-                                    <small>收藏成本:</small>
-                                </div>
-                                <div class="col-md-2">
-                                    <small><strong><?php echo @round($rpt["total"]["charge"]/($rpt["total"]["dirShopColNum"]+$rpt["total"]["inshopItemColNum"]),2);?></strong></small>
-                                </div>
-                                <div class="col-md-2">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <small>转化金额:</small>
-                                </div>
-                                <div class="col-md-2">
-                                    <small><strong><?php echo $rpt["total"]["alipayInshopAmt"];?></strong></small>
-                                </div>
-                                <div class="col-md-3">
-                                    <small>投资回报:</small>
-                                </div>
-                                <div class="col-md-2">
-                                    <small><strong><?php echo @round($rpt["total"]["roi"],2);?></strong></small>
-                                </div>
-                                <div class="col-md-2">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <small>点击单价:</small>
-                                </div>
-                                <div class="col-md-2">
-                                    <small><strong><?php echo $rpt["total"]["ecpc"];?></strong></small>
-                                </div>
-                                <div class="col-md-3">
-                                    <small>消耗增幅:</small>
-                                </div>
-                                <div class="col-md-2">
-                                    <?php if(!empty($rpt["total"]["chargeRate"])):?>
-                                        <?php if($rpt["total"]["chargeRate"]<30 && $rpt["total"]["chargeRate"]>-30):?>
-                                            <small><strong><?php echo $rpt["total"]["chargeRate"];?>%</strong></small>
-                                        <?php else:?>
-                                            <small><strong style="color: red"><?php echo $rpt["total"]["chargeRate"];?>%</strong></small>
-                                        <?php endif;?>
-                                    <?php endif;?>
-
-                                </div>
-                                <div class="col-md-2">
-                                </div>
-                            </div>
-                        <?php endif;?>
-
-                        <?php if(!empty($ztc) && $ztc["total"]["cost"]>0):?>
-                            <div class="row" style="margin-top: 10px;">
-                                <div class="col-md-12">
-                                    <small><strong>直通车上周状况</strong></small>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <small>消耗:</small>
-                                </div>
-                                <div class="col-md-2">
-                                    <small><strong><?php echo $ztc["total"]["cost"];?></strong></small>
-                                </div>
-                                <div class="col-md-3">
-                                    <small>日均消耗:</small>
-                                </div>
-                                <div class="col-md-2">
-                                    <small><strong><?php echo @round($ztc["total"]["cost"]/count($ztc["list"]),2);?></strong></small>
-                                </div>
-                                <div class="col-md-2">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <small>成交单数:</small>
-                                </div>
-                                <div class="col-md-2">
-                                    <small><strong><?php echo $ztc["total"]["paycount"];?></strong></small>
-                                </div>
-                                <div class="col-md-3">
-                                    <small>转化成本:</small>
-                                </div>
-                                <div class="col-md-2">
-                                    <small><strong><?php echo @round($ztc["total"]["cost"]/$ztc["total"]["paycount"],2);?></strong></small>
-                                </div>
-                                <div class="col-md-2">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <small>加购数:</small>
-                                </div>
-                                <div class="col-md-2">
-                                    <small><strong><?php echo $ztc["total"]["carttotal"];?></strong></small>
-                                </div>
-                                <div class="col-md-3">
-                                    <small>加购成本:</small>
-                                </div>
-                                <div class="col-md-2">
-                                    <small><strong><?php echo @round($ztc["total"]["cost"]/$ztc["total"]["carttotal"],2);?></strong></small>
-                                </div>
-                                <div class="col-md-2">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <small>收藏数:</small>
-                                </div>
-                                <div class="col-md-2">
-                                    <small><strong><?php echo $ztc["total"]["favcount"];?></strong></small>
-                                </div>
-                                <div class="col-md-3">
-                                    <small>收藏成本:</small>
-                                </div>
-                                <div class="col-md-2">
-                                    <small><strong><?php echo @round($ztc["total"]["cost"]/$ztc["total"]["favcount"],2);?></strong></small>
-                                </div>
-                                <div class="col-md-2">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <small>转化金额:</small>
-                                </div>
-                                <div class="col-md-2">
-                                    <small><strong><?php echo $ztc["total"]["pay"];?></strong></small>
-                                </div>
-                                <div class="col-md-3">
-                                    <small>投资回报:</small>
-                                </div>
-                                <div class="col-md-2">
-                                    <small><strong><?php echo @round($ztc["total"]["pay"]/$ztc["total"]["cost"],2);?></strong></small>
-                                </div>
-                                <div class="col-md-2">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <small>点击单价:</small>
-                                </div>
-                                <div class="col-md-2">
-                                    <small><strong><?php echo $ztc["total"]["ppc"];?></strong></small>
-                                </div>
-                                <div class="col-md-3">
-                                    <small>消耗增幅:</small>
-                                </div>
-                                <div class="col-md-2">
-                                    <?php if(!empty($ztc["total"]["costRate"])):?>
-                                        <?php if($ztc["total"]["costRate"]<30 && $ztc["total"]["costRate"]>-30):?>
-                                            <small><strong><?php echo $ztc["total"]["costRate"];?>%</strong></small>
-                                        <?php else:?>
-                                            <small><strong style="color: red"><?php echo $ztc["total"]["costRate"];?>%</strong></small>
-                                        <?php endif;?>
-                                    <?php endif;?>
-
-                                </div>
-                                <div class="col-md-2">
-                                </div>
-                            </div>
-                        <?php endif;?>
-
                     </div>
                 </form>
             </div>
@@ -818,7 +596,229 @@
                     </div>
                 </div>
             </div>
+            <div class="container-fluid">
+            <?php if(!empty($rpt) && $rpt["total"]["charge"]>0):?>
+                <div class="row" style="margin-top: 10px;">
+                    <div class="col-md-12">
+                        <small><strong>智钻上周状况</strong></small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <small>消耗:</small>
+                    </div>
+                    <div class="col-md-2">
+                        <small><strong><?php echo $rpt["total"]["charge"];?></strong></small>
+                    </div>
+                    <div class="col-md-3">
+                        <small>日均消耗:</small>
+                    </div>
+                    <div class="col-md-2">
+                        <small><strong><?php echo @round($rpt["total"]["charge"]/count($rpt["list"]),2);?></strong></small>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <small>成交单数:</small>
+                    </div>
+                    <div class="col-md-2">
+                        <small><strong><?php echo $rpt["total"]["alipayInShopNum"];?></strong></small>
+                    </div>
+                    <div class="col-md-3">
+                        <small>转化成本:</small>
+                    </div>
+                    <div class="col-md-2">
+                        <small><strong><?php echo @round($rpt["total"]["charge"]/$rpt["total"]["alipayInShopNum"],2);?></strong></small>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <small>加购数:</small>
+                    </div>
+                    <div class="col-md-2">
+                        <small><strong><?php echo $rpt["total"]["cartNum"];?></strong></small>
+                    </div>
+                    <div class="col-md-3">
+                        <small>加购成本:</small>
+                    </div>
+                    <div class="col-md-2">
+                        <small><strong><?php echo @round($rpt["total"]["charge"]/$rpt["total"]["cartNum"],2);?></strong></small>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <small>收藏数:</small>
+                    </div>
+                    <div class="col-md-2">
+                        <small><strong><?php echo ($rpt["total"]["dirShopColNum"]+$rpt["total"]["inshopItemColNum"]);?></strong></small>
+                    </div>
+                    <div class="col-md-3">
+                        <small>收藏成本:</small>
+                    </div>
+                    <div class="col-md-2">
+                        <small><strong><?php echo @round($rpt["total"]["charge"]/($rpt["total"]["dirShopColNum"]+$rpt["total"]["inshopItemColNum"]),2);?></strong></small>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <small>转化金额:</small>
+                    </div>
+                    <div class="col-md-2">
+                        <small><strong><?php echo $rpt["total"]["alipayInshopAmt"];?></strong></small>
+                    </div>
+                    <div class="col-md-3">
+                        <small>投资回报:</small>
+                    </div>
+                    <div class="col-md-2">
+                        <small><strong><?php echo @round($rpt["total"]["roi"],2);?></strong></small>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <small>点击单价:</small>
+                    </div>
+                    <div class="col-md-2">
+                        <small><strong><?php echo $rpt["total"]["ecpc"];?></strong></small>
+                    </div>
+                    <div class="col-md-3">
+                        <small>消耗增幅:</small>
+                    </div>
+                    <div class="col-md-2">
+                        <?php if(!empty($rpt["total"]["chargeRate"])):?>
+                            <?php if($rpt["total"]["chargeRate"]<30 && $rpt["total"]["chargeRate"]>-30):?>
+                                <small><strong><?php echo $rpt["total"]["chargeRate"];?>%</strong></small>
+                            <?php else:?>
+                                <small><strong style="color: red"><?php echo $rpt["total"]["chargeRate"];?>%</strong></small>
+                            <?php endif;?>
+                        <?php endif;?>
 
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                </div>
+            <?php endif;?>
+
+            <?php if(!empty($ztc) && $ztc["total"]["cost"]>0):?>
+                <div class="row" style="margin-top: 10px;">
+                    <div class="col-md-12">
+                        <small><strong>直通车上周状况</strong></small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <small>消耗:</small>
+                    </div>
+                    <div class="col-md-2">
+                        <small><strong><?php echo $ztc["total"]["cost"];?></strong></small>
+                    </div>
+                    <div class="col-md-3">
+                        <small>日均消耗:</small>
+                    </div>
+                    <div class="col-md-2">
+                        <small><strong><?php echo @round($ztc["total"]["cost"]/count($ztc["list"]),2);?></strong></small>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <small>成交单数:</small>
+                    </div>
+                    <div class="col-md-2">
+                        <small><strong><?php echo $ztc["total"]["paycount"];?></strong></small>
+                    </div>
+                    <div class="col-md-3">
+                        <small>转化成本:</small>
+                    </div>
+                    <div class="col-md-2">
+                        <small><strong><?php echo @round($ztc["total"]["cost"]/$ztc["total"]["paycount"],2);?></strong></small>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <small>加购数:</small>
+                    </div>
+                    <div class="col-md-2">
+                        <small><strong><?php echo $ztc["total"]["carttotal"];?></strong></small>
+                    </div>
+                    <div class="col-md-3">
+                        <small>加购成本:</small>
+                    </div>
+                    <div class="col-md-2">
+                        <small><strong><?php echo @round($ztc["total"]["cost"]/$ztc["total"]["carttotal"],2);?></strong></small>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <small>收藏数:</small>
+                    </div>
+                    <div class="col-md-2">
+                        <small><strong><?php echo $ztc["total"]["favcount"];?></strong></small>
+                    </div>
+                    <div class="col-md-3">
+                        <small>收藏成本:</small>
+                    </div>
+                    <div class="col-md-2">
+                        <small><strong><?php echo @round($ztc["total"]["cost"]/$ztc["total"]["favcount"],2);?></strong></small>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <small>转化金额:</small>
+                    </div>
+                    <div class="col-md-2">
+                        <small><strong><?php echo $ztc["total"]["pay"];?></strong></small>
+                    </div>
+                    <div class="col-md-3">
+                        <small>投资回报:</small>
+                    </div>
+                    <div class="col-md-2">
+                        <small><strong><?php echo @round($ztc["total"]["pay"]/$ztc["total"]["cost"],2);?></strong></small>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <small>点击单价:</small>
+                    </div>
+                    <div class="col-md-2">
+                        <small><strong><?php echo $ztc["total"]["ppc"];?></strong></small>
+                    </div>
+                    <div class="col-md-3">
+                        <small>消耗增幅:</small>
+                    </div>
+                    <div class="col-md-2">
+                        <?php if(!empty($ztc["total"]["costRate"])):?>
+                            <?php if($ztc["total"]["costRate"]<30 && $ztc["total"]["costRate"]>-30):?>
+                                <small><strong><?php echo $ztc["total"]["costRate"];?>%</strong></small>
+                            <?php else:?>
+                                <small><strong style="color: red"><?php echo $ztc["total"]["costRate"];?>%</strong></small>
+                            <?php endif;?>
+                        <?php endif;?>
+
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                </div>
+            <?php endif;?>
+            </div>
         </div>
 
     </div>
