@@ -19,6 +19,22 @@
             </div>
         </div>
         <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
+            <div class="col-md-11">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <small>筛选:</small>
+                        <div class="input-group" id="dateSetting">
+                            <span class="input-group-addon"> <i class="glyphicon glyphicon-calendar"></i> </span>
+                            <input type="text" class="form-control"  value="<?php echo $query['begin_date'];?> ~ <?php echo $query['end_date'];?>">
+                            <span class="input-group-addon"><b class="caret"></b></span>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="col-md-1">
+            </div>
         </div>
     <div id="shop-rpt-list">
 
@@ -319,6 +335,20 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $(".top-ul>li").eq(3).addClass("top-li-hover");
+
+        $("#dateSetting").daterangepicker({
+            "startDate": "<?php echo $query['begin_date'];?>",
+            "endDate": "<?php echo $query['end_date'];?>",
+            "format":"YYYY-MM-DD"
+        },function (start,end){
+
+            location.href = app.url("<?php echo $this->createUrl('/tool/rpt/index');?>",{
+                nick:'<?php echo $query["nick"];?>',
+                begin_date:start.format('YYYY-MM-DD'),
+                end_date:end.format('YYYY-MM-DD')
+            })
+
+        });
 
 
         var $dateList = <?php echo CJavaScript::encode($query["date_list"]);?>;
