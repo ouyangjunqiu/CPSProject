@@ -65,7 +65,7 @@ class DownController extends Controller
                 $row["click"],
                 $row["ctr"]*100,
                 $row["charge"],
-                $row["ecpc"],
+                empty($row["ecpc"])?0:$row["ecpc"],
                 round($row["roi"],2),
                 round($click7rpt[$i]["roi"],2),
                 round($click15rpt[$i]["roi"],2),
