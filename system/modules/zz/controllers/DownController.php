@@ -11,6 +11,7 @@ namespace application\modules\zz\controllers;
 
 use application\modules\main\utils\ShopSearch;
 use application\modules\zuanshi\model\ShopTradeRpt;
+use application\modules\zz\model\AdvertiserHourRptSource;
 use application\modules\zz\model\AdvertiserRpt;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
@@ -150,6 +151,35 @@ class DownController extends Controller
         }
 
         File::exportExcel("钻展统计报表{$startdate}至{$enddate}",$data);
+    }
+
+    public function actionHour(){
+        $logdate = Env::getSession("logdate",date("Y-m-d"),"zuanshi.rpt.hour");
+        $source = AdvertiserHourRptSource::model()->fetchAll("logdate=?",array($logdate));
+
+        $data = array(
+            "店铺名",
+            "日期",
+            "时",
+            "余额",
+            "预算",
+            "昨日花费"
+        );
+
+        foreach($source as $v){
+            $row = empty($v["account_data"])?array():\CJSON::decode($v["account_data"]);
+            $data[] = array(
+                $v["nick"],
+                $v["logdate"],
+                $v["loghour"],
+                $row["balance"],
+                $row["dayBudget"],
+                $row["yesterdayDeduct"]
+
+            );
+        }
+
+        File::exportExcel("钻展实时报表{$logdate}",$data);
     }
 
 
