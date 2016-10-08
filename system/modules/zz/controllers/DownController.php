@@ -165,19 +165,21 @@ class DownController extends Controller
             "预算",
             "昨日花费"
         );
+        if(!empty($source)){
+            foreach($source as $v){
+                $row = empty($v["account_data"])?array():\CJSON::decode($v["account_data"]);
+                $data[] = array(
+                    $v["nick"],
+                    $v["logdate"],
+                    $v["loghour"],
+                    $row["balance"],
+                    $row["dayBudget"],
+                    $row["yesterdayDeduct"]
 
-        foreach($source as $v){
-            $row = empty($v["account_data"])?array():\CJSON::decode($v["account_data"]);
-            $data[] = array(
-                $v["nick"],
-                $v["logdate"],
-                $v["loghour"],
-                $row["balance"],
-                $row["dayBudget"],
-                $row["yesterdayDeduct"]
-
-            );
+                );
+            }
         }
+
 
         File::exportExcel("钻展实时报表{$logdate}",$data);
     }
