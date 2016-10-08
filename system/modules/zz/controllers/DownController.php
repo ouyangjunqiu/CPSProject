@@ -157,7 +157,7 @@ class DownController extends Controller
         $logdate = Env::getSession("logdate",date("Y-m-d"),"zuanshi.rpt.hour");
         $source = AdvertiserHourRptSource::model()->fetchAll("logdate=?",array($logdate));
 
-        $data = array(
+        $data[] = array(
             "店铺名",
             "日期",
             "时",
