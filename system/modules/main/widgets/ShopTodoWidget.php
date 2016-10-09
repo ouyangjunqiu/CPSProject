@@ -23,7 +23,7 @@ class ShopTodoWidget extends CWidget
 
         $this->render("application.modules.main.widgets.views.todo",array(
             "urls"=>array(
-                "todo_add_url"=>Cloud::app()->getUrlManager()->createUrl('/main/todo/add'),
+                "todo_add_url"=>Cloud::app()->getUrlManager()->createUrl('/main/todo/batchadd'),
                 "todo_done_url"=>Cloud::app()->getUrlManager()->createUrl('/main/todo/done'),
                 "todo_del_url"=>Cloud::app()->getUrlManager()->createUrl('/main/todo/del'),
             ),
