@@ -83,7 +83,10 @@
 
                             <div role="tabpanel" class="tab-pane container-fluid active" id="rpt_<?php echo $row["id"];?>">
                                 <div class="row">
-                                    <div class="col-md-11">
+                                    <div class="col-md-2">
+                                        <a href="javascript:void(0)" data-role="refresh"><i class="glyphicon glyphicon-refresh"></i> <small>更新</small></a>
+                                    </div>
+                                    <div class="col-md-9">
 
                                     </div>
                                     <div class="col-md-1">
@@ -91,7 +94,7 @@
                                         <a href="<?php echo $this->createUrl("/zz/advertiserrpt/more",array("nick"=>$row["nick"]));?>"> <small>更多..</small></a>
                                     </div>
                                 </div>
-                                <div class="row" data-tmpl="zuanshi-advertiserrpt-list-tmpl" data-load="overlay" data-url="<?php echo $this->createUrl("/zz/advertiserrpt/getbynick",array("nick"=>$row["nick"],"shopname"=>$row["shopname"]));?>">
+                                <div class="row" data-role="advertiserrpt" data-tmpl="zuanshi-advertiserrpt-list-tmpl" data-load="overlay" data-url="<?php echo $this->createUrl("/zz/advertiserrpt/getbynick",array("nick"=>$row["nick"],"shopname"=>$row["shopname"]));?>">
                                 </div>
 
                                 <div class="row">
@@ -895,7 +898,13 @@
                 self.tab('show');
             });
 
-        })
+        });
+
+
+        $("a[data-role=refresh]").click(function(){
+            var self = $(this);
+            self.parents(".tab-pane").find("[data-role=advertiserrpt]").iLoad();
+        });
 
 
     });
