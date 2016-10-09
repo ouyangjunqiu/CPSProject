@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="input-group">
-                        <select class="selectpicker" name="pic" data-placeholder="@" style="width: 100%"  multiple="multiple">
+                        <select class="selectpicker" data-role="pic" name="pic[]" data-placeholder="@" style="width: 100%"  multiple="multiple">
                             <option value=""></option>
                             <?php foreach($users as $u):?>
                                 <option value="<?php echo $u["text"];?>">@<?php echo $u["text"];?></option>
@@ -413,7 +413,7 @@
             self.find("input[name=nick]").val(nick);
             var pic = button.attr("data-pic");
             if(pic && pic.length>0){
-                self.find("select[name=pic]").val(pic);
+                self.find("select[data-role=pic]").val(pic);
             }
 
 
