@@ -87,9 +87,8 @@
 
                                     </div>
                                     <div class="col-md-1">
-                                        <small>
-                                            <a href="<?php echo $this->createUrl("/zz/advertiserrpt/more",array("nick"=>$row["nick"]));?>"><i class="ion-android-more-vertical"></i>更多..</a>
-                                        </small>
+
+                                        <a href="<?php echo $this->createUrl("/zz/advertiserrpt/more",array("nick"=>$row["nick"]));?>"> <small>更多..</small></a>
                                     </div>
                                 </div>
                                 <div class="row" data-tmpl="zuanshi-advertiserrpt-list-tmpl" data-load="overlay" data-url="<?php echo $this->createUrl("/zz/advertiserrpt/getbynick",array("nick"=>$row["nick"],"shopname"=>$row["shopname"]));?>">
@@ -100,9 +99,8 @@
 
                                     </div>
                                     <div class="col-md-1">
-                                        <small>
-                                            <a href="<?php echo $this->createUrl("/zz/advertiserrpt/more",array("nick"=>$row["nick"]));?>"><i class="ion-android-more-vertical"></i>更多..</a>
-                                        </small>
+
+                                        <a href="<?php echo $this->createUrl("/zz/advertiserrpt/more",array("nick"=>$row["nick"]));?>"> <small>更多..</small></a>
                                     </div>
                                 </div>
 
