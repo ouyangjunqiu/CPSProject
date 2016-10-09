@@ -81,18 +81,18 @@
 <!--                                </div>-->
                             </div>
 
-                            <div role="tabpanel" class="tab-pane active" id="rpt_<?php echo $row["id"];?>">
+                            <div role="tabpanel" class="tab-pane container-fluid active" id="rpt_<?php echo $row["id"];?>">
                                 <div class="row">
                                     <div class="col-md-11">
 
                                     </div>
                                     <div class="col-md-1">
                                         <small>
-                                            <a class="label label-primary" href="<?php echo $this->createUrl("/zz/advertiserrpt/more",array("nick"=>$row["nick"]));?>">更多..</a>
+                                            <a href="<?php echo $this->createUrl("/zz/advertiserrpt/more",array("nick"=>$row["nick"]));?>"><i class="ion-android-more-vertical"></i>更多..</a>
                                         </small>
                                     </div>
                                 </div>
-                                <div data-tmpl="zuanshi-advertiserrpt-list-tmpl" data-load="overlay" data-url="<?php echo $this->createUrl("/zz/advertiserrpt/getbynick",array("nick"=>$row["nick"],"shopname"=>$row["shopname"]));?>">
+                                <div class="row" data-tmpl="zuanshi-advertiserrpt-list-tmpl" data-load="overlay" data-url="<?php echo $this->createUrl("/zz/advertiserrpt/getbynick",array("nick"=>$row["nick"],"shopname"=>$row["shopname"]));?>">
                                 </div>
 
                                 <div class="row">
@@ -101,7 +101,7 @@
                                     </div>
                                     <div class="col-md-1">
                                         <small>
-                                            <a class="label label-primary" href="<?php echo $this->createUrl("/zz/advertiserrpt/more",array("nick"=>$row["nick"]));?>">更多..</a>
+                                            <a href="<?php echo $this->createUrl("/zz/advertiserrpt/more",array("nick"=>$row["nick"]));?>"><i class="ion-android-more-vertical"></i>更多..</a>
                                         </small>
                                     </div>
                                 </div>
