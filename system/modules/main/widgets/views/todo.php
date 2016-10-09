@@ -414,6 +414,7 @@
             var pic = button.attr("data-pic");
             if(pic && pic.length>0){
                 self.find("select[data-role=pic]").val(pic);
+                console.log(self.find("select[data-role=pic]"));
             }
 
 
