@@ -10,6 +10,7 @@ namespace application\modules\main\widgets;
 
 use application\modules\user\model\User;
 use application\modules\user\model\UserTodoWeekRpt;
+use CDbCriteria;
 use cloud\Cloud;
 use cloud\core\utils\Env;
 use CWidget;
@@ -19,7 +20,9 @@ class ShopTodoWidget extends CWidget
     public function run(){
 
         $users = array();
-        $list = UserTodoWeekRpt::model()->fetchAll();
+        $criteria = new CDbCriteria();
+        $criteria->order = " c DESC ";
+        $list = UserTodoWeekRpt::model()->fetchAll($criteria);
         foreach($list as $v){
             $users[] = array(
                 "id"=>$v["username"],
