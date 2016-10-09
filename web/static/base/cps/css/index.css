@@ -14,7 +14,7 @@
 .scroll-search .shop-list-cont{ width: 1440px; margin:0 auto; line-height: 50px; }
 .search-log img{ width: 170px;}
 .search-log{ display: none;  float: left;}
-.shop-list-cont{ width: 98%; margin: 0 auto; overflow: hidden; border-bottom: 1px solid #e3e3e3; padding: 10px 0 10px 0;}
+.shop-list-cont{ margin: 0 auto; overflow: hidden; border-bottom: 1px solid #e3e3e3; padding: 10px 0 10px 0;}
 .search-right select{ height: 31px;line-height: 31px;}
 .shop-list-icon{ padding: 10px 20px ;background: url('../image/milestone/adviser/icon.png') no-repeat -6px -314px;}
 .stopShop-a{ color: #017bc9; padding:0 5px; }
@@ -45,7 +45,7 @@
 .baby-label-a{font-size: 14px; padding-left: 20px; color: #017bc9;}
 
 
-.table-frame{ width: 98%; margin: 0 auto;}
+.table-frame{ margin: 0 auto;}
 .table-frame thead th{ border: none; background: none;}
 .table-frame tbody tr td{ border-bottom: 1px solid #e6e6e6;}
 /*.index-table-div .table-frame tbody tr:nth-child(even) td {  border-top:1px solid #ccc }*/
@@ -97,7 +97,6 @@ o.tit {background: #fa6e50;color: white;font-weight: bold;border-radius: 8px;pad
 .babyinfor-frame-stopul{ width: 100%; overflow: hidden;}
 .babyinfor-frame-stopul li{float: left; }
 .babyinfor-frame-stopul .babyinfor-interface{ padding: 0;}
-.babyinfor-frame-stop{ width: 98%;}
 .babyinfor-frame-stop .level-show{ bottom: 24px; left: 345px; top: -3px;}
 .stop-tr{ background: #f1f1f1;}
 .hide-baby-box{ display: none}
@@ -146,7 +145,7 @@ o.tit {background: #fa6e50;color: white;font-weight: bold;border-radius: 8px;pad
 .remind-div .remind-p-tit input{background: url('../image/milestone/adviser/icon.png') no-repeat -293px -68px;width: 10px;height: 10px; border:none; margin-left: 10px;}
 .remind-div .remind-p-tit .hideIcons{background-position: -293px -68px; }
 .remind-div .remind-p-tit .showIcons{ background-position: -279px -68px; }
-.remind-child-items{ padding:0 10px 0 20px; color: #989898; display: none; background: #f5f5f5; width: 98%; margin:0 auto; margin-left: 5px;}
+.remind-child-items{ padding:0 10px 0 20px; color: #989898; display: none; background: #f5f5f5; margin:0 auto; margin-left: 5px;}
 .remind-child-items li{ padding: 8px 0; position: relative; border-bottom: 1px dotted #ccc;}
 .error-items .remind-child-items li{ padding: 2px 0; }
 .baby-pic{ position: absolute;right: 10px; border: 1px solid #ccc;  background: #fff; top: 3px;cursor: pointer}
