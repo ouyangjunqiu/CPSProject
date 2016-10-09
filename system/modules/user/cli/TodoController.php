@@ -31,4 +31,8 @@ class TodoController extends Controller
 
     }
 
+    public function actionTest(){
+        echo "test";
+    }
+
 }
