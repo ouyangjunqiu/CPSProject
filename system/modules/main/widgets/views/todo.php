@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="input-group">
-                        <select class="selectpicker" name="pic" data-placeholder="@" style="width: 100%">
+                        <select class="selectpicker" name="pic" data-placeholder="@" style="width: 100%"  multiple="multiple">
                             <option value=""></option>
                             <?php foreach($users as $u):?>
                                 <option value="<?php echo $u["text"];?>">@<?php echo $u["text"];?></option>
