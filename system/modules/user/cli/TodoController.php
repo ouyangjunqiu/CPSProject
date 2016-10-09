@@ -18,9 +18,9 @@ class TodoController extends Controller
             $model->setAttributes(array(
                 "username"=>$user["name"],
                 "c"=>ShopTodoList::model()->count("logdate>=? AND logdate<=? AND pic=?",array($begindate,$enddate,$user["name"])),
-                "c0"=>ShopTodoList::model()->count("logdate>=? AND logdate<=? AND pic=? AND status=?",array($begindate,$enddate,0)),
-                "c1"=>ShopTodoList::model()->count("logdate>=? AND logdate<=? AND pic=? AND status=?",array($begindate,$enddate,1)),
-                "c2"=>ShopTodoList::model()->count("logdate>=? AND logdate<=? AND pic=? AND status=?",array($begindate,$enddate,2)),
+                "c0"=>ShopTodoList::model()->count("logdate>=? AND logdate<=? AND pic=? AND status=?",array($begindate,$enddate,$user["name"],0)),
+                "c1"=>ShopTodoList::model()->count("logdate>=? AND logdate<=? AND pic=? AND status=?",array($begindate,$enddate,$user["name"],1)),
+                "c2"=>ShopTodoList::model()->count("logdate>=? AND logdate<=? AND pic=? AND status=?",array($begindate,$enddate,$user["name"],2)),
             ));
 
             if(!$model->save()){
