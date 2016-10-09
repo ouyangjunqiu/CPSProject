@@ -45,6 +45,40 @@ class TodoController extends Controller
         }
     }
 
+    public function actionBatchadd(){
+        $logdate = Env::getRequest("logdate");
+        $nick = Env::getRequest("nick");
+        $content = Env::getRequest("content");
+        $priority = Env::getQueryDefault("priority","普通");
+        $pic = Env::getRequest("pic");
+        $creator = Env::getQueryDefault("creator","游客");
+        $create_time = date("Y-m-d H:i:s");
+        $status = 0;
+
+        if(!empty($pic) && count($pic)>=0){
+
+            foreach($pic as $v){
+
+                $model = new ShopTodoList();
+                $model->setAttributes(
+                    array(
+                        "logdate" => $logdate,
+                        "nick" => $nick,
+                        "pic" => $v,
+                        "content" => $content,
+                        "priority" => $priority,
+                        "status" => $status,
+                        "creator" => $creator,
+                        "create_time" => $create_time
+                    )
+                );
+
+                $model->save();
+            }
+        }
+        $this->renderJson(array("isSuccess"=>true));
+    }
+
     public function actionDone(){
         $id = Env::getQuery("id");
         $updator = Env::getQueryDefault("updator","游客");
