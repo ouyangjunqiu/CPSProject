@@ -269,7 +269,7 @@
 
     $(document).ready(function(){
 
-        $("select.selectpicker").select2({theme: "bootstrap", allowClear: true});
+        var picSelect = $("select.selectpicker").select2({theme: "bootstrap", allowClear: true});
 
 
         $('#ShopTodoAddModal').delegate("[data-click=save]","click",function(){
@@ -413,8 +413,7 @@
             self.find("input[name=nick]").val(nick);
             var pic = button.attr("data-pic");
             if(pic && pic.length>0){
-                self.find("select[data-role=pic]").val(pic);
-                console.log(self.find("select[data-role=pic]"));
+                picSelect.val(pic).trigger("change");
             }
 
 
