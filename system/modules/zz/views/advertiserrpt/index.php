@@ -84,7 +84,7 @@
                             <div role="tabpanel" class="tab-pane container-fluid active" id="rpt_<?php echo $row["id"];?>">
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <a href="javascript:void(0)" data-role="refresh"><i class="glyphicon glyphicon-refresh"></i> <small>更新</small></a>
+                                        <a href="javascript:void(0)" data-role="refresh"><small><i class="glyphicon glyphicon-refresh"></i> 更新</small></a>
                                     </div>
                                     <div class="col-md-9">
 
