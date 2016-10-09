@@ -34,9 +34,15 @@ class DefaultController extends Controller
 		$this->render("index",$data);
 	}
 
+	public function actionMy(){
+		$data = array();
+
+		$this->render("my",$data);
+	}
+
 	/**
- * 暂停的店铺列表
- */
+	 * 暂停的店铺列表
+ 	*/
 	public function actionStoplist(){
 		$page = Env::getSession("page",1,"main.default.index");
 		$pageSize = Env::getSession("page_size",PAGE_SIZE,"main.default.index");
