@@ -15,7 +15,7 @@ class UserTodoWeekRpt extends Model
     /**
      * Returns the static model of the specified AR class.
      * @param string $className active record class name.
-     * @return UserLoginShopLog the static model class
+     * @return UserTodoWeekRpt the static model class
      */
     public static function model($className=__CLASS__)
     {
