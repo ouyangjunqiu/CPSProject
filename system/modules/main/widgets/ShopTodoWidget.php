@@ -9,6 +9,7 @@ namespace application\modules\main\widgets;
 
 
 use application\modules\user\model\User;
+use application\modules\user\model\UserTodoWeekRpt;
 use cloud\Cloud;
 use cloud\core\utils\Env;
 use CWidget;
@@ -18,11 +19,11 @@ class ShopTodoWidget extends CWidget
     public function run(){
 
         $users = array();
-        $list = User::model()->fetchAll();
+        $list = UserTodoWeekRpt::model()->fetchAll();
         foreach($list as $v){
             $users[] = array(
-                "id"=>$v["name"],
-                "text"=>$v["name"]
+                "id"=>$v["username"],
+                "text"=>$v["username"]
             );
         }
 
