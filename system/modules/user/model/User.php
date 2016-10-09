@@ -43,4 +43,27 @@ class User extends Model
         );
     }
 
+
+    public static function fetchAllSortByAuto(){
+        $data = array();
+        $users = self::model()->fetchAll();
+        foreach($users as $user){
+            $rpt = UserTodoWeekRpt::model()->fetch("username=?",array($user["name"]));
+            $data[$user["name"]] = empty($rpt)?0:$rpt["c"];
+        }
+
+        arsort($data);
+
+        $ret = array();
+        foreach($data as $k=>$v){
+            $ret[] = array(
+                "id"=>$k,
+                "text"=>$k
+            );
+        }
+
+        return $ret;
+
+    }
+
 }
