@@ -55,7 +55,7 @@ class TodoController extends Controller
         $create_time = date("Y-m-d H:i:s");
         $status = 0;
 
-        if(!empty($pic) && count($pic)>=0){
+        if(!empty($pic) && count($pic)>0){
 
             foreach($pic as $v){
 
@@ -75,6 +75,22 @@ class TodoController extends Controller
 
                 $model->save();
             }
+        }else{
+            $model = new ShopTodoList();
+            $model->setAttributes(
+                array(
+                    "logdate" => $logdate,
+                    "nick" => $nick,
+                    "pic" => "",
+                    "content" => $content,
+                    "priority" => $priority,
+                    "status" => $status,
+                    "creator" => $creator,
+                    "create_time" => $create_time
+                )
+            );
+
+            $model->save();
         }
         $this->renderJson(array("isSuccess"=>true));
     }
