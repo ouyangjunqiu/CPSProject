@@ -14,7 +14,7 @@
 .scroll-search .shop-list-cont{ width: 1440px; margin:0 auto; line-height: 50px; }
 .search-log img{ width: 170px;}
 .search-log{ display: none;  float: left;}
-.shop-list-cont{ margin: 0 auto; overflow: hidden; border-bottom: 1px solid #e3e3e3; padding: 10px 0 10px 0;}
+.shop-list-cont{ height: 57px;margin: 0 auto; border-bottom: 1px solid #e3e3e3; padding: 10px 0 10px 0;}
 .search-right select{ height: 31px;line-height: 31px;}
 .shop-list-icon{ padding: 10px 20px ;background: url('../image/milestone/adviser/icon.png') no-repeat -6px -314px;}
 .stopShop-a{ color: #017bc9; padding:0 5px; }
