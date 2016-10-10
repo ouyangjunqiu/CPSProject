@@ -10,7 +10,7 @@ class TodoController extends Controller
     public function actionIndex(){
         $users = User::model()->fetchAll();
         $begindate = date("Y-m-d",strtotime("-7 days"));
-        $enddate = date("Y-m-d");
+        $enddate = date("Y-m-d",strtotime("7 days"));
         foreach($users as $user){
             UserTodoWeekRpt::model()->deleteAll("username=?",array($user["name"]));
 
