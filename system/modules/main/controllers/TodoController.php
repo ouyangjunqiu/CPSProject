@@ -59,6 +59,10 @@ class TodoController extends Controller
 
             foreach($pic as $v){
 
+                if(empty($v)){
+                    continue;
+                }
+
                 $model = new ShopTodoList();
                 $model->setAttributes(
                     array(
