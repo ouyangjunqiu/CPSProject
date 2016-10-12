@@ -1,22 +1,25 @@
 
 <form id="shop-search-form" action="<?php echo $url;?>" method="get" class="form-inline">
 
-    <div class="btn-group">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="border-color: white">
-            <span class="glyphicon glyphicon-filter" style="color: #428bca"></span>
-            <?php echo empty($query["pic"])?"所有":"@".$query["pic"];?>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-            <?php if(!empty($query["pic"])):?>
-                <li><a href="<?php echo $url."&page=1&pic=";?>">所有</a></li>
-            <?php else:?>
-                <li><a href="<?php echo $url."&page=1&pic=".$user["username"];?>">@<?php echo $user["username"];?></a></li>
-            <?php endif;?>
-        </ul>
+    <div class="input-group">
+        
+        <span class="input-group-addon">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="border-color: white">
+                    <span class="glyphicon glyphicon-filter" style="color: #428bca"></span>
+                    <?php echo empty($query["pic"])?"所有":"@".$query["pic"];?>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <?php if(!empty($query["pic"])):?>
+                        <li><a href="<?php echo $url."&page=1&pic=";?>">所有</a></li>
+                    <?php else:?>
+                        <li><a href="<?php echo $url."&page=1&pic=".$user["username"];?>">@<?php echo $user["username"];?></a></li>
+                    <?php endif;?>
+                </ul>
+            </div>
+        </span>
     </div>
     <div class="input-group">
-
-
 
         <span class="input-group-addon">
             <i class="glyphicon glyphicon-search"></i>
