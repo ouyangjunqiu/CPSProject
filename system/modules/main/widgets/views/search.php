@@ -5,7 +5,6 @@
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="border-color: white">
             <span class="glyphicon glyphicon-filter" style="color: #428bca"></span>
             <?php echo empty($query["pic"])?"所有":"@".$query["pic"];?>
-            <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
             <?php if(!empty($query["pic"])):?>
