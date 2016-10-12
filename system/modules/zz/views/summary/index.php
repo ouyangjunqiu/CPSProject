@@ -73,6 +73,7 @@
             <th class="b2">七天转化金额</th>
             <th class="b2">七天转化ROI</th>
             <th class="b2">全店营业额</th>
+            <th class="b2">消耗占比(%)</th>
         </tr>
         </thead>
         <tbody>
@@ -94,6 +95,7 @@
                 <td class="b2"><?php echo empty($row["rpt"]["click7"]["total"])?"-":@$row["rpt"]["click7"]["total"]["alipayInshopAmt"];?></td>
                 <td class="b2"><?php echo empty($row["rpt"]["click7"]["total"])?"-":@$row["rpt"]["click7"]["total"]["roi"];?></td>
                 <td class="b2"><?php echo \cloud\core\utils\String::nFormat($row["tradeRpt"]["total_pay_amt"]);?></td>
+                <td class="b2"><?php echo empty($row["tradeRpt"]["total_pay_amt"]) || empty($row["rpt"]["click3"]["total"])?"-":@round(100*($row["rpt"]["click3"]["total"]["charge"]/$row["tradeRpt"]["total_pay_amt"]),2);?></td>
             </tr>
 
         <?php endforeach;?>
