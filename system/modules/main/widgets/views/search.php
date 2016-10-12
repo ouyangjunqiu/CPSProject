@@ -9,7 +9,7 @@
         </button>
         <ul class="dropdown-menu" role="menu">
             <?php if(!empty($query["pic"])):?>
-                <li><a href="<?php echo $url;?>">所有</a></li>
+                <li><a href="<?php echo $url."&page=1&pic=";?>">所有</a></li>
             <?php else:?>
                 <li><a href="<?php echo $url."&page=1&pic=".$user["username"];?>">@<?php echo $user["username"];?></a></li>
             <?php endif;?>
@@ -42,6 +42,6 @@
             data.q = form.find("input[name=q]").val();
             location.href = app.url(form.attr("action"),data);
         });
-        
+
     })
 </script>
