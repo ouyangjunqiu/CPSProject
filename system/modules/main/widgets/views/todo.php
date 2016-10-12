@@ -122,7 +122,7 @@
                 <a href="<?php echo cloud\Cloud::app()->getUrlManager()->createUrl("/main/default/index");?>&q=${i}" data-nick="${i}" class="name" target="_blank">
                     ${i}
                 </a>
-                <ul class="list-group">
+                <ul class="">
                 {{each(j,v) r}}
                 <li class="list-group-item">
                     <small class="label label-danger badge"><i class="glyphicon glyphicon-time"></i> ${v.daysStr}</small>
@@ -131,7 +131,7 @@
                         <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}}
 
                     </a>
-                </div>
+                </li>
                {{/each}}
                </ul>
             </p>
