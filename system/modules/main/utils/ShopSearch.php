@@ -19,6 +19,7 @@ class ShopSearch {
         $q = Env::getSession("q","","main.default.index");
 
         $pic = Env::getSession("pic","","main.default.index");
+        $order = Env::getSession("order","","main.default.index");
 
         $criteria = new \CDbCriteria();
         $criteria->addCondition("status='0'");
@@ -42,6 +43,10 @@ class ShopSearch {
 
         $count = Shop::model()->count($criteria);
 
+        if(!empty($order)){
+            $criteria->order = " enddate DESC ";
+        }
+
         $criteria->offset = ($page-1)*$pageSize;
         $criteria->limit = $pageSize;
 
@@ -54,7 +59,7 @@ class ShopSearch {
                 "page"=>$page,
                 "page_size"=>$pageSize
             ),
-            "query"=>array("q"=>$q,"pic"=>$pic)
+            "query"=>array("q"=>$q,"pic"=>$pic,"order"=>$order)
         );
     }
 
