@@ -44,7 +44,7 @@ class ShopSearch {
         $count = Shop::model()->count($criteria);
 
         if(!empty($order)){
-            $criteria->order = " enddate DESC ";
+            $criteria->order = " enddate ASC ";
         }
 
         $criteria->offset = ($page-1)*$pageSize;
