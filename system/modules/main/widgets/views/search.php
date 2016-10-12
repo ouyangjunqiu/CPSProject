@@ -11,6 +11,18 @@
             <?php endif;?>
         </a>
     </div>
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-filter" style="color: #428bca"></span>
+            <?php echo empty($query["pic"])?"所有":"@".$query["pic"];?>
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">所有</a></li>
+            <li><a href="#">@<?php echo $user["username"];?></a></li>
+        </ul>
+    </div>
     <div class="input-group">
 
 
