@@ -4,9 +4,9 @@
     <div class="input-group">
         <div class="btn-group">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="border-color: white">
-                <span class="glyphicon glyphicon-filter" style="color: #428bca"></span>
+                <small class="glyphicon glyphicon-filter" style="color: #428bca"></small>
                 <small><?php echo empty($query["pic"])?"所有":"@".$query["pic"];?></small>
-                <span class="caret"></span>
+                <small class="caret"></small>
             </button>
             <ul class="dropdown-menu" role="menu">
                 <?php if(!empty($query["pic"])):?>
