@@ -158,6 +158,16 @@ class ShopTodoList extends Model
 
     }
 
+    public static function fetchGroupByCreator($pic){
+        $list = self::fetchListByCreator($pic);
+
+        $ret = array();
+        foreach($list as $row){
+            $ret[$row["nick"]][] = $row;
+        }
+        return $ret;
+    }
+
 
 
 }
