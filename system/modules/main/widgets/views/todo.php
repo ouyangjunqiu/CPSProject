@@ -94,7 +94,7 @@
             </ul>
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="mypictodo_list">
-                    <div data-role="my-todo" class="overlay-wrapper" data-tmpl="my-todo-list-tmpl" data-url="<?php echo \cloud\Cloud::app()->getUrlManager()->createUrl("/main/todo/my",array("pic"=>empty($user["username"])?"游客":$user["username"]));?>"></div>
+                    <div data-role="my-todo" class="overlay-wrapper" data-tmpl="my-todo-list-tmpl" data-url="<?php echo \cloud\Cloud::app()->getUrlManager()->createUrl("/main/todo/my2",array("pic"=>empty($user["username"])?"游客":$user["username"]));?>"></div>
                 </div>
 
                 <div role="tabpanel" class="tab-pane" id="my_create_todo_list">
@@ -116,17 +116,19 @@
 
 <script type="text/x-jquery-tmpl" id="my-todo-list-tmpl">
 
-        {{each(i,v) data.list}}
+        {{each(i,r) data.list}}
         <div class="item row">
             <p class="message">
-                <a href="<?php echo cloud\Cloud::app()->getUrlManager()->createUrl("/main/default/index");?>&q=${v.nick}" data-nick="${v.nick}" class="name" target="_blank">
-                    <small class="text-muted pull-right label label-success"><i class="glyphicon glyphicon-time"></i> ${v.daysStr}</small>
-                    ${v.nick}
+                <a href="<?php echo cloud\Cloud::app()->getUrlManager()->createUrl("/main/default/index");?>&q=${i}" data-nick="${i}" class="name" target="_blank">
+                    ${i}
                 </a>
+                {{each(j,v) r}}
                 <a data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" class="list-group-item" data-backdrop="false" data-content="${v.content}" data-trigger-target="todo_${v.md5}">
 
-                    <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}}
-               </a>
+                    <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}}  <small class="label label-danger"><i class="glyphicon glyphicon-time"></i> ${v.daysStr}</small>
+
+                </a>
+               {{/each}}
             </p>
 
         </div>

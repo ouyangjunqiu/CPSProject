@@ -183,6 +183,17 @@ class TodoController extends Controller
         ));
     }
 
+    public function actionMy2(){
+        $pic = Env::getQuery("pic");
+        $list = ShopTodoList::fetchGroupByPic($pic);
+        $this->renderJson(array(
+            "isSuccess"=>true,
+            "data"=>array(
+                "list"=>$list
+            ),
+        ));
+    }
+
     public function actionMycreate(){
         $pic = Env::getQuery("pic");
         $list = ShopTodoList::fetchListByCreator($pic);
