@@ -149,17 +149,25 @@
                 <a href="<?php echo cloud\Cloud::app()->getUrlManager()->createUrl("/main/default/index");?>&q=${i}" data-nick="${i}" class="name" target="_blank">
                     ${i}
                 </a>
+                <ul class="">
                 {{each(j,v) r}}
                 {{if v.status==1}}
-                    <a data-toggle="modal" data-target="#ShopTodoViewModal" data-backdrop="false" class="list-group-item list-group-item-success" data-content="${v.content}">
-                    <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}} <small class="label label-success badge"><i class="glyphicon glyphicon-time"></i> ${v.daysStr}</small>
+                <li class="list-group-item list-group-item-success">
+                    <small class="label label-success badge"><i class="glyphicon glyphicon-time"></i> ${v.daysStr}</small>
+                    <a data-toggle="modal" data-target="#ShopTodoViewModal" data-backdrop="false" data-content="${v.content}">
+                    <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
                     </a>
+                </li>
                 {{else}}
-                   <a data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" class="list-group-item list-group-item-danger" data-content="${v.content}" data-trigger-target="todo_${v.md5}">
-                    <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}} <small class="label label-danger badge"><i class="glyphicon glyphicon-time"></i> ${v.daysStr}</small>
+                <li  class="list-group-item list-group-item-danger">
+                   <small class="label label-danger badge"><i class="glyphicon glyphicon-time"></i> ${v.daysStr}</small>
+                   <a data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" data-content="${v.content}" data-trigger-target="todo_${v.md5}">
+                        <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
                    </a>
+                </li>
                 {{/if}}
                 {{/each}}
+                </ul>
             </p>
 
         </div>
