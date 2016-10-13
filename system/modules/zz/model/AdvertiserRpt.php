@@ -71,7 +71,9 @@ class AdvertiserRpt extends Model
             "gmvInshopNum" => 0,
             "inshopItemColNum" => 0,
             "roi" => 0,
-            "uv" => 0
+            "uv" => 0,
+            "avgCharge" => 0,
+            "days" => 0
         );
         $list = array();
         foreach($source as $r){
@@ -79,6 +81,7 @@ class AdvertiserRpt extends Model
             $row = \CJSON::decode($r["data"]);
             $list[$d] = $row;
 
+            $total["days"]+=1;
             $total["adPv"]+=$row["adPv"];
             $total["alipayInShopNum"]+=$row["alipayInShopNum"];
             $total["alipayInshopAmt"]+=$row["alipayInshopAmt"];
@@ -93,10 +96,11 @@ class AdvertiserRpt extends Model
             $total["uv"]+=$row["uv"];
         }
 
-        $total["roi"] = empty($total["charge"])?"0":@round($total["alipayInshopAmt"]/$total["charge"],2);
-        $total["ctr"] = empty($total["adPv"])?"0":@round($total["click"]/$total["adPv"],4);
-        $total["ecpc"] = empty($total["click"])?"0":@round($total["charge"]/$total["click"],2);
+        $total["roi"] = empty($total["charge"])?0:@round($total["alipayInshopAmt"]/$total["charge"],2);
+        $total["ctr"] = empty($total["adPv"])?0:@round($total["click"]/$total["adPv"],4);
+        $total["ecpc"] = empty($total["click"])?0:@round($total["charge"]/$total["click"],2);
         $total["alipayInshopAmt"] = round($total["alipayInshopAmt"],2);
+        $total["avgCharge"] = empty($total["days"])?0:@round($total["charge"]/$total["days"],2);
         return array("list"=>$list,"total"=>$total);
 
     }

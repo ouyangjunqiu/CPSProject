@@ -34,12 +34,7 @@ class AdvertiserrptController extends Controller
                 AdvertiserMonthRpt::model()->deleteAll("logyear=? AND nick=? AND logmonth=?",array($year,$shop["nick"],$month));
 
                 $total = $data["total"];
-                $attr = array(
-                    "adPv"=>$total["adPv"],
-                    "charge"=>$total["charge"],
-                    "click"=>$total["click"],
-                    "alipayInshopAmt"=>$total["alipayInshopAmt"],
-                );
+                $attr = $total;
                 $model = new AdvertiserMonthRpt();
                 $model->setAttributes(
                     array(
