@@ -279,7 +279,7 @@
                     },
                     {
                         type: 'column',
-                        name: '成交额',
+                        name: '转化金额',
                         yAxis: 1,
                         data: app.charts.formatData(data, 'pay'),
                         color: '#FA6E50'
