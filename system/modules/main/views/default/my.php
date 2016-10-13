@@ -16,7 +16,7 @@ $username = empty($user)?"游客":$user["username"];
                 <small>
                     <a href="<?php echo $this->createUrl("/main/shop/index");?>"><span class="label label-default">新增店铺</span></a>
                     <a href="<?php echo $this->createUrl("/main/default/index");?>"><span class="label label-info">我的店铺</span></a>
-                    <a href="<?php echo $this->createUrl("/main/default/beinglost");?>"><span class="label label-default">当月流失店铺</span></a>
+                    <a href="<?php echo $this->createUrl("/main/default/beinglost");?>"><span class="label label-default">流失店铺</span></a>
                     <a href="<?php echo $this->createUrl("/main/default/stoplist");?>"><span class="label label-default">流失店铺</span></a>
                     <a href="<?php echo $this->createUrl("/main/dashboard/index");?>"><span class="label label-default">总览</span></a>
 
@@ -37,7 +37,7 @@ $username = empty($user)?"游客":$user["username"];
                     </div>
 
                     <div class="panel-body">
-                        <div data-role="my-todo" class="" data-load="overlay" data-tmpl="my-todo-list-tmpl" data-url="<?php echo $this->createUrl("/main/todo/my",array("pic"=>$username));?>"></div>
+                        <div data-role="my-todo" class="" data-load="overlay" data-tmpl="my-todo-list-tmpl" data-url="<?php echo $this->createUrl("/main/todo/my2",array("pic"=>$username));?>"></div>
 
                     </div>
 
