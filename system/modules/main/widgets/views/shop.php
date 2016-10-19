@@ -170,11 +170,12 @@
                             </div>
                         </div>
 
+                        <?php  if(!empty($row["tags"])):?>
                         <div class="row">
                             <div class="col-md-12">
-                                <span class="label label-info"><?php echo $row["shoptype"];?></span>
+
                                <?php
-                                if(!empty($row["tags"])){
+
                                     $tags = explode(",",$row["tags"]);
                                     $i = 1;
                                     foreach($tags as $tag){
@@ -185,10 +186,11 @@
                                         }
                                         $i++;
                                     }
-                                }
+
                                 ?>
                             </div>
                         </div>
+                        <?php endif;?>
 
                         <div class="row">
                             <div class="babyinfor-interface">
