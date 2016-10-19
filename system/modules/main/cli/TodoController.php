@@ -28,7 +28,7 @@ class TodoController extends Controller
 
             $text = "";
             foreach($todos as $todo){
-                $text.=$todo["content"].".\n";
+                $text.=str_replace("<small>[链接]</small>","",$todo["title"]).".\n";
             }
 
             $so = scws_new();
@@ -37,7 +37,20 @@ class TodoController extends Controller
             $result = $so->get_tops(5);
             $so->close();
 
-            $attrs = array("nick"=>$shop["nick"],"logdate"=>$logdate,"data"=>\CJSON::encode($result));
+            $data = array();
+            $result = \CJSON::decode(\CJSON::encode($result),true);
+            foreach($result as $row){
+                if($row["times"]>=5){
+                    $data[] = $row;
+                }
+            }
+
+            if(count($data)<5){
+                continue;
+            }
+
+
+            $attrs = array("nick"=>$shop["nick"],"logdate"=>$logdate,"data"=>\CJSON::encode($data));
             ShopTodoToptic::model()->deleteAll("logdate=? AND nick=?",array($logdate,$shop["nick"]));
             $model = new ShopTodoToptic();
             $model->setAttributes($attrs);
