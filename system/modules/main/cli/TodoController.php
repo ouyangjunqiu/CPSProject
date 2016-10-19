@@ -17,7 +17,7 @@ class TodoController extends Controller
 {
     public function actionScws(){
         $criteria = new \CDbCriteria();
-        $criteria->addCondition("status='1'");
+        $criteria->addCondition("status='0'");
         $shops = Shop::model()->fetchAll($criteria);
         $logdate = date("Y-m-d");
         foreach($shops as $shop){
