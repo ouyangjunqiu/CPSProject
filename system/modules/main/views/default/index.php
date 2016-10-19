@@ -122,62 +122,6 @@ $username = empty($user)?"游客":$user["username"];
     </div>
 </div>
 
-<div class="modal fade" id="ShopPloyAddModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">营销推广规划</h4>
-            </div>
-            <div class="modal-body">
-                <form method="post" action="<?php echo $this->createUrl('/main/ploy/add');?>" class="form-horizontal">
-                    <input type="hidden" name="nick"/>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">起:</label>
-                        <div class="col-sm-3">
-                            <input class="form-control" type="text" name="begindate"  data-date-format="yyyy-mm-dd" value="<?php echo date("Y-m-d");?>"/>
-                        </div>
-                        <label class="col-sm-3 control-label">止:</label>
-                        <div class="col-sm-3">
-                            <input class="form-control" type="text" name="enddate" data-date-format="yyyy-mm-dd" value="<?php echo date("Y-m-d");?>"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">营销类型:</label>
-                        <div class="col-sm-9">
-                            <input class="form-control" type="text" name="name"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">预期营业额:</label>
-                        <div class="col-sm-3">
-                            <input class="form-control" type="text" name="sale_goal" value="0"/>
-                        </div>
-                        <label class="col-sm-3 control-label">推广预算:</label>
-                        <div class="col-sm-3">
-                            <input class="form-control" type="text" name="budget" value="0"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-12">
-                            <textarea class="form-control" rows="5" id="ploy-content-editor"></textarea>
-                            <input type="hidden" name="content">
-                        </div>
-                    </div>
-
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-click="save">确定</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 <script src='<?php echo STATICURL."/base/js/plugins/ajaxfileupload/ajaxfileupload.js"; ?>'></script>
 
 <script type="text/x-jquery-tmpl" id="shop-file-list-tmpl">
@@ -275,43 +219,6 @@ $username = empty($user)?"游客":$user["username"];
                 }
             });
         });
-
-
-//        tinymce.init({
-//            selector: '#ploy-content-editor',
-//            menubar: false
-//        });
-//        $("[data-provide=datepicker-inline]").datepicker();
-
-//        $('#ShopPloyAddModal').on('show.bs.modal', function (event) {
-//            var self = $(this);
-//            var button = $(event.relatedTarget); // Button that triggered the modal
-//            self.find("input[name=nick]").val(button.attr("data-nick"));
-//            self.find("[data-click=save]").attr("data-trigger-target",button.attr("data-trigger-target"));
-//        });
-
-//        $('#ShopPloyAddModal').delegate('[data-click=save]','click',function(){
-//
-//            var content = tinymce.get('ploy-content-editor').getContent({format: 'raw'});
-//            var target = $($(this).attr("data-trigger-target")).find("[data-load=overlay]");
-//            var form = $('#ShopPloyAddModal').find("form");
-//            form.find("[name=content]").val(content);
-//            $.ajax({
-//                url:"<?php //echo $this->createUrl('/main/ploy/add');?>//",
-//                type:"post",
-//                dataType:"json",
-//                data:form.serialize(),
-//                success:function(){
-//                    target.iLoad();
-//                },
-//                beforeSend:function(){
-//                    $("#ShopPloyAddModal").modal('hide');
-//                }
-//
-//            })
-//        });
-
-
 
     });
 

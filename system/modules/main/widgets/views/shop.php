@@ -144,9 +144,18 @@
                         <div class="row">
                             <div class="col-md-4"><small>推广工具:</small></div>
                             <div class="col-md-8">
-                                <?php echo empty($row["ztc_budget"])?"<span class=\"label label-disable\"><i class='glyphicon glyphicon-pause'></i> 直通车</span> ":"<span class=\"label label-info\"><i class='glyphicon glyphicon-ok'></i> 直通车</span> ";?>
+                                <small>
+                                    <?php
 
-                                <?php echo empty($row["zuanshi_budget"])?"<span class=\"label label-disable\"><i class='glyphicon glyphicon-pause'></i> 智钻</span> ":"<span class=\"label label-info\"><i class='glyphicon glyphicon-ok'></i> 智钻</span> ";?>
+                                    if(isset($row["ztc_budget"]) && $row["ztc_budget"]>0){
+                                        echo "<i class='glyphicon glyphicon-ok' style='color: #00a65a'></i> 直通车 ";
+                                    }
+                                    if(isset($row["zuanshi_budget"]) && $row["zuanshi_budget"]>0){
+                                        echo "<i class='glyphicon glyphicon-ok' style='color: #00a65a'></i> 智钻 ";
+                                    }
+
+                                    ?>
+                                </small>
                             </div>
                         </div>
 
