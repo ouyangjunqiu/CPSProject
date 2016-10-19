@@ -45,7 +45,7 @@ class TodoController extends Controller
                 }
             }
 
-            if(count($data)<5){
+            if(empty($data)){
                 continue;
             }
 
