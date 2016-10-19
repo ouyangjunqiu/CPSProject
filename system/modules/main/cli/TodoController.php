@@ -28,7 +28,7 @@ class TodoController extends Controller
 
             $text = "";
             foreach($todos as $todo){
-                $text.=$todo["content"];
+                $text.=$todo["content"].".\n";
             }
 
             $so = scws_new();
