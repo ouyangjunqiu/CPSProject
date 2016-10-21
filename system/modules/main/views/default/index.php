@@ -135,7 +135,7 @@ $username = empty($user)?"游客":$user["username"];
             <span class="tag">直通车预算${data.ztc_budget}元</span>
         {{/if}}
          {{if data.zuanshi_budget && data.zuanshi_budget>0}}
-            <span class="tag">直通车预算${data.zuanshi_budget}元</span>
+            <span class="tag">智钻预算${data.zuanshi_budget}元</span>
         {{/if}}
         {{if data.tag_list}}
             {{each(i,v) data.tag_list}}
