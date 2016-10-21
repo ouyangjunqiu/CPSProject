@@ -170,28 +170,6 @@
                             </div>
                         </div>
 
-                        <?php  if(!empty($row["tags"])):?>
-                        <div class="row">
-                            <div class="col-md-12">
-
-                               <?php
-
-                                    $tags = explode(",",$row["tags"]);
-                                    $i = 1;
-                                    foreach($tags as $tag){
-                                        if($i%2==0){
-                                            echo "<span class=\"label label-info\">{$tag}</span> ";
-                                        }else{
-                                            echo "<span class=\"label label-warning\">{$tag}</span> ";
-                                        }
-                                        $i++;
-                                    }
-
-                                ?>
-                            </div>
-                        </div>
-                        <?php endif;?>
-
                         <div class="row">
                             <div class="babyinfor-interface">
                                 <a href="javascript:void(0);" class="zuanshi quick_login_btn" extension="uninstall" login-type="zuanshi" data-nick="<?php echo $row["nick"];?>" data-password="<?php echo $row["login_password"];?>" data-username="<?php echo $row["login_nick"];?>">智·钻</a>

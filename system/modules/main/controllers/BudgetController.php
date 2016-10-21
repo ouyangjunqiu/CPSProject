@@ -58,7 +58,13 @@ class BudgetController extends Controller
     public function actionGetbynick(){
         $nick = Env::getRequest("nick");
 
-        $plan = ShopBudget::model()->fetch("nick=?",array($nick));
-        $this->renderJson(array("isSuccess"=>true,"data"=>array("plan"=>$plan)));
+        $budget = ShopBudget::model()->fetch("nick=?",array($nick));
+        if(empty($budget)){
+            $this->renderJson(array("isSuccess"=>true,"data"=>$budget));
+        }else{
+
+            $budget["tag_list"] = empty($budget["tags"])?array():explode(",",$budget["tags"]);
+            $this->renderJson(array("isSuccess"=>true,"data"=>$budget));
+        }
     }
 }
