@@ -9,6 +9,7 @@ namespace application\modules\main\controllers;
 
 
 use application\modules\main\model\ShopBudget;
+use application\modules\main\model\ShopTodoToptic;
 use application\modules\main\utils\StringUtil;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
@@ -59,12 +60,17 @@ class BudgetController extends Controller
         $nick = Env::getRequest("nick");
 
         $budget = ShopBudget::model()->fetch("nick=?",array($nick));
-        if(empty($budget)){
-            $this->renderJson(array("isSuccess"=>true,"data"=>$budget));
-        }else{
-
+        $toptic = ShopTodoToptic::model()->fetch("logdate=? AND nick=?",array(date("Y-m-d",strtotime("-1 days")),$nick));
+        if(!empty($budget)){
             $budget["tag_list"] = empty($budget["tags"])?array():explode(",",$budget["tags"]);
-            $this->renderJson(array("isSuccess"=>true,"data"=>$budget));
         }
+        if(!empty($toptic)){
+            $data = \CJSON::decode($toptic["data"]);
+            foreach($data as $row){
+                $budget["tag_list"][] = $row["word"];
+            }
+        }
+        $this->renderJson(array("isSuccess"=>true,"data"=>$budget));
+
     }
 }
