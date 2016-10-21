@@ -130,14 +130,14 @@ $username = empty($user)?"游客":$user["username"];
 <script type="text/x-jquery-tmpl" id="shop-tips-tmpl">
     <div class="row">
         <small>注意：</small>
-        {{if ztc_budget && ztc_budget>0}}
-            <span class="tag">直通车预算${ztc_budget}元</span>
+        {{if data.ztc_budget && data.ztc_budget>0}}
+            <span class="tag">直通车预算${data.ztc_budget}元</span>
         {{/if}}
-         {{if zuanshi_budget && zuanshi_budget>0}}
-            <span class="tag">直通车预算${zuanshi_budget}元</span>
+         {{if data.zuanshi_budget && data.zuanshi_budget>0}}
+            <span class="tag">直通车预算${data.zuanshi_budget}元</span>
         {{/if}}
-        {{if tag_list}}
-            {{each(i,v) tag_list}}
+        {{if data.tag_list}}
+            {{each(i,v) data.tag_list}}
                 <span class="tag">${v}</span>
             {{/each}}
        {{/if}}
