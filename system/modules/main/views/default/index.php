@@ -129,6 +129,7 @@ $username = empty($user)?"游客":$user["username"];
 </script>
 <script type="text/x-jquery-tmpl" id="shop-tips-tmpl">
     <div class="row">
+    <div class="col-md-12">
         <small>注意：</small>
         {{if data.ztc_budget && data.ztc_budget>0}}
             <span class="tag">直通车预算${data.ztc_budget}元</span>
@@ -141,6 +142,7 @@ $username = empty($user)?"游客":$user["username"];
                 <span class="tag">${v}</span>
             {{/each}}
        {{/if}}
+    </div>
    </div>
 </script>
 <script type="application/javascript">
