@@ -46,14 +46,14 @@ $username = empty($user)?"游客":$user["username"];
                             <li role="presentation"><a href="#file_<?php echo md5($row["nick"]);?>" data-type="file" title="云共享" aria-controls="file_<?php echo md5($row["nick"]);?>" role="tab" data-toggle="tab" aria-expanded="true">
                                     <i class="glyphicon glyphicon-cloud"></i><span>云共享</span></a>
                             </li>
-<!--                            <li role="presentation"><a href="#ploy_--><?php //echo md5($row["nick"]);?><!--" title="营销推广规划" aria-controls="ploy_--><?php //echo md5($row["nick"]);?><!--" role="tab" data-toggle="tab" aria-expanded="true">-->
-<!--                                    <i class="glyphicon glyphicon-record"></i><span>营销推广规划</span></a>-->
-<!--                            </li>-->
                         </ul>
 
                         <div class="tab-content">
 
                             <div role="tabpanel" class="tab-pane active" id="todo_<?php echo md5($row["nick"]);?>">
+                                <div data-load="overlay" data-tmpl="shop-tips-tmpl" data-url="<?php echo $this->createUrl("/main/budget/getbynick",array("nick"=>$row["nick"]));?>" style="margin-bottom: 10px">
+
+                                </div>
 
                                 <div class="overlay-wrapper" data-load="overlay" data-tmpl="shop-todo-list-tmpl" data-role="shop-todo-list" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo $this->createUrl("/main/todo/getbynick",array("nick"=>$row["nick"]));?>">
                                 </div>
@@ -80,15 +80,6 @@ $username = empty($user)?"游客":$user["username"];
                                     <i class="glyphicon glyphicon-cloud-upload"></i> 上传文件...
                                 </a>
                             </div>
-
-<!--                            <div role="tabpanel" class="tab-pane" id="ploy_--><?php //echo md5($row["nick"]);?><!--">-->
-<!--                                <div class="overlay-wrapper" data-load="overlay" data-tmpl="shop-ploy-list-tmpl" data-role="shop-ploy-list" data-nick="--><?php //echo $row["nick"];?><!--" data-url="--><?php //echo $this->createUrl("/main/ploy/getbynick",array("nick"=>$row["nick"]));?><!--">-->
-<!--                                </div>-->
-<!---->
-<!--                                <a data-toggle="modal" data-target="#ShopPloyAddModal" data-backdrop="false" data-logdate-index="1" data-nick="--><?php //echo $row["nick"];?><!--" data-trigger-target="#ploy_--><?php //echo md5($row["nick"]);?><!--">-->
-<!--                                    <i class="fa fa-plus"></i> 新建营销推广规划...-->
-<!--                                </a>-->
-<!--                            </div>-->
                         </div>
                     </div>
                 </td>
@@ -136,30 +127,22 @@ $username = empty($user)?"游客":$user["username"];
        {{/each}}
    </div>
 </script>
-
-<script type="text/x-jquery-tmpl" id="shop-ploy-list-tmpl">
-    <table data-role="list" class="baby-frame-table" style="table-layout: fixed;">
-      <thead>
-        <tr class="small">
-         <th>营销类型</th>
-         <th>营销期限</th>
-         <th>预期营业额<small>(元)</small></th>
-         <th>推广预算<small>(占比)</small></th>
-         <th>规划</th>
-        </tr>
-      </thead>
-      {{each(i,v) data.list}}
-        <tr class="small">
-            <td>${v.name}</td>
-            <td>${v.begindate}~${v.enddate}</td>
-            <td>${v.sale_goal}</td>
-            <td>${v.budget}<small>(${v.budget_rate})</small></td>
-            <td>{{html v.content}}</td>
-        </tr>
-      {{/each}}
-    </table>
+<script type="text/x-jquery-tmpl" id="shop-tips-tmpl">
+    <div class="row">
+        <small>注意：</small>
+        {{if ztc_budget && ztc_budget>0}}
+            <span class="tag">直通车预算${ztc_budget}元</span>
+        {{/if}}
+         {{if zuanshi_budget && zuanshi_budget>0}}
+            <span class="tag">直通车预算${zuanshi_budget}元</span>
+        {{/if}}
+        {{if tag_list}}
+            {{each(i,v) tag_list}}
+                <span class="tag">${v}</span>
+            {{/each}}
+       {{/if}}
+   </div>
 </script>
-
 <script type="application/javascript">
 
     $(document).ready(function(){

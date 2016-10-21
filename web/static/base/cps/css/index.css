@@ -197,6 +197,12 @@ small.danger{
     color: #e25f36!important;
 }
 
+span.tag{
+    font-size: 12px;
+    padding: 10px;
+    color: #428bca;
+}
+
 #my-todo-wrap{
     position: absolute;
     top: 45px;
