@@ -171,6 +171,10 @@ class VieController extends Controller
 
         foreach($shops as $shop){
 
+            if(empty($shop["shopnick"])){
+                continue;
+            }
+
             $model = ShopVie::model()->find("log_date>=? AND nick=? AND shopnick=? AND keyword=?", array($rangeDate->startDate,$shop["nick"], $shop["shopnick"],$shop["keyword"]));
             if ($model == null) {
                 $model = new ShopVie();
