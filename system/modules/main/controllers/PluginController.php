@@ -61,11 +61,13 @@ class PluginController extends Controller
         $version = Plugin::fetchVersion();
         $url = $this->createUrl("/file/default/down",array("md5"=>$version["file_md5"]));
 
+        $url = urlencode($url);
+
         $xml = <<<EOT
 <?xml version='1.0' encoding='UTF-8'?>
 <gupdate xmlns='http://www.google.com/update2/response' protocol='2.0'>
   <app appid='chdimiojgajacjlbfndcbigklbhjbbja'>
-    <updatecheck codebase='<![CDATA[{$url}]]>' version='{$version["version"]}' />
+    <updatecheck codebase='{$url}' version='{$version["version"]}' />
   </app>
 </gupdate>
 EOT;
