@@ -154,7 +154,7 @@
 
         setInterval(function(){
             $("[data-role=task-detail]").iLoad();
-        },1000);
+        },5000);
 
     });
 </script>
