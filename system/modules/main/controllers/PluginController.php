@@ -12,6 +12,7 @@ use application\modules\main\model\Plugin;
 use application\modules\main\model\PluginInstallLog;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
+use cloud\core\utils\File;
 
 class PluginController extends Controller
 {
@@ -54,6 +55,23 @@ class PluginController extends Controller
 
     public function actionUpload(){
        $this->render("upload");
+    }
+
+    public function actionVersion(){
+        $version = Plugin::fetchVersion();
+        $url = $this->createUrl("/file/default/down",array("md5"=>$version["file_md5"]));
+
+        $xml = <<<EOT
+<?xml version='1.0' encoding='UTF-8'?>
+<gupdate xmlns='http://www.google.com/update2/response' protocol='2.0'>
+  <app appid='aamblfgkhmoomflaicmkhilajamjhmin'>
+    <updatecheck codebase='{$url}' version='{$version["version"]}' />
+  </app>
+</gupdate>
+EOT;
+        header("Content-type: text/xml;charset=UTF-8");
+        echo $xml;
+
     }
 
 }
