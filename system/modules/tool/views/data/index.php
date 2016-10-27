@@ -44,8 +44,8 @@
                         <input type="text" class="form-control" data-role="dateview" value="<?php echo $query['beginDate'];?> ~ <?php echo $query['endDate'];?>">
                         <span class="input-group-addon"><b class="caret"></b></span>
                     </div>
-                    <input type="hidden" name="begin_time">
-                    <input type="hidden" name="end_time">
+                    <input type="hidden" name="begin_time" value="<?php echo $query['beginDate'];?>">
+                    <input type="hidden" name="end_time" value="<?php echo $query['endDate'];?>">
                 </div>
                 <div class="form-group">
                     <small>主营行业:</small>
@@ -137,10 +137,11 @@
                 type:"post",
                 dataType:"json",
                 success:function(resp){
-                    if(resp.Status == "Success"){
-                        console.log(resp);
-                        window.location.href=app.url("<?php echo $this->createUrl("/tool/data/getfile");?>",{file:resp.Back_message.FileAddress});
-                    }
+                    $("body").hideLoading();
+                },
+                error:function(){
+                    $("body").hideLoading();
+                    app.alert("创建任务失败，请重试！");
                 }
             });
 
