@@ -50,7 +50,7 @@ class DataController extends Controller
     }
 
     public function actionDown(){
-        $param["TableType"] = Env::getRequest("dataType");
+        $param["TableType"] = Env::getRequest("datatype");
         $param["Begin_Time"] = Env::getRequest("begin_time");
         $param["End_Time"] = Env::getRequest("end_time");
         $categoryname = Env::getRequest("categoryname");

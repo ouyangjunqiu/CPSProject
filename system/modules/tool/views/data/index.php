@@ -32,7 +32,7 @@
 
         </div>
         <div class="col-md-8">
-            <form action="<?php echo $this->createUrl("/tool/data/task");?>" role="form" id="data-task-request-form">
+            <form action="<?php echo $this->createUrl("/tool/data/down");?>" role="form" id="data-task-request-form">
                 <div class="form-group">
                     <small>报表类型:</small>
                     <?php echo \CHtml::dropDownList("datatype","",$query["dataType"],array("class"=>"form-control"));?>
@@ -128,7 +128,7 @@
             $("#data-task-request-form input[name=end_time]").val(end.format('YYYY-MM-DD'));
         });
 
-        $("button[data-click=save]").click(function(){
+        $("#data-task-request-form [data-click=save]").click(function(){
             $("#data-task-request-form").trigger("click");
         });
 
