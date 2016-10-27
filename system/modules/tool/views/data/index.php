@@ -79,7 +79,7 @@
 {{each(i,v) data.list}}
     <div class="row">
       <div class="col-xs-6 col-md-3">
-        {{each(j,p) v.params}}
+        {{each(j,p) v.params_obj}}
             <p><strong>${p.TableTypeName}</strong></p>
             <p><small>${p.Begin_Time} ~ ${p.End_Time}</small></p>
         {{/each}}
