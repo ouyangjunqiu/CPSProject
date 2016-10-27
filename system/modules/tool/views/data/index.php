@@ -65,15 +65,18 @@
         </div>
     </div>
 
-    <div class="panel" id="item-detail-panel" style="display: none">
+    <div class="panel" id="task-detail-panel" style="display: none">
         <div class="panel-body">
+            <div data-load="overlay" data-tmpl="task-detail-tmpl" data-role="task-detail-tmpl" data-url="<?php echo $this->createUrl("/tool/data/getlist");?>">
+            </div>
 
         </div>
     </div>
 </div>
 
-<script type="text/x-jquery-tmpl" id="item-detail-tmpl">
+<script type="text/x-jquery-tmpl" id="task-detail-tmpl">
 {{if isSuccess}}
+{{each(i,v) data.list}}
     <div class="row">
       <div class="col-xs-6 col-md-3">
         <a href="${data.detail_url}" class="thumbnail">
@@ -85,24 +88,8 @@
         <p><small>价格:</small>${data.price}</p>
       </div>
     </div>
+{{/each}}
 
-    <table class="table">
-        <thead>
-            <tr class="small"><td>类目</td><td>属性</td><td>值</td></tr>
-
-        </thead>
-        <tbody>
-             {{each(i,v) data.props}}
-                 <tr>
-                    <td>${data.category_tree}</td>
-                    <td>${v[2]}</td>
-                    <td>${v[3]}</td>
-                 </tr>
-
-            {{/each}}
-        </tbody>
-
-    </table>
 {{else}}
     <p>${msg}</p>
 {{/if}}
