@@ -46,7 +46,7 @@ class DataController extends Controller
         );
 
 
-        $this->render("index",array("query"=>array("dataType"=>$dataType)));
+        $this->render("index",array("query"=>array("beginDate"=>date("Y-m-d",strtotime("-18 days")),"endDate"=>date("Y-m-d",strtotime("-3 days")),"dataType"=>$dataType)));
     }
 
     public function actionDown(){
