@@ -59,7 +59,7 @@ class PluginController extends Controller
 
     public function actionVersion(){
         $version = Plugin::fetchVersion();
-        $url = $this->createUrl("/file/default/down",array("md5"=>$version["file_md5"]));
+        $url = $this->createAbsoluteUrl("/file/default/down",array("md5"=>$version["file_md5"]));
 
         $url = urlencode($url);
 
