@@ -11,7 +11,7 @@
                         <span class="shop-list-txt">常用工具:</span>
                         <small>
                             <a href="<?php echo $this->createUrl("/tool/default/index");?>"><span class="label label-default">宝贝详情</span></a>
-                            <a href="<?php echo $this->createUrl("/tool/data/index");?>"><span class="label label-default">报表下载</span></a>
+                            <a href="<?php echo $this->createUrl("/tool/data/index");?>"><span class="label label-info">报表下载</span></a>
                             <a href="<?php echo $this->createUrl("/main/plugin/upload");?>"><span class="label label-default">插件管理</span></a>
 
                             <a href="http://run.da-mai.com" target="_blank"><span class="label label-default">运维系统</span></a>
