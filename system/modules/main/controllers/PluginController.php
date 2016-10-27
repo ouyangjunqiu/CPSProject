@@ -65,7 +65,7 @@ class PluginController extends Controller
 <?xml version='1.0' encoding='UTF-8'?>
 <gupdate xmlns='http://www.google.com/update2/response' protocol='2.0'>
   <app appid='chdimiojgajacjlbfndcbigklbhjbbja'>
-    <updatecheck codebase='{$url}' version='{$version["version"]}' />
+    <updatecheck codebase='<![CDATA[{$url}]]>' version='{$version["version"]}' />
   </app>
 </gupdate>
 EOT;
