@@ -9,6 +9,7 @@ namespace application\modules\tool\controllers;
 
 
 use application\modules\main\utils\StringUtil;
+use application\modules\tool\model\DataRptTask;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
 use cloud\core\utils\ExtRangeDate;
@@ -65,14 +66,39 @@ class DataController extends Controller
 
         $param["TaskId"] = time().rand(1,999999);
 
+        $pakage[] = $param;
+
+        $model = new DataRptTask();
+        $model->setAttributes(array(
+            "logdate"=>date("Y-m-d"),
+            "taskid"=>$param["TaskId"],
+            "params"=>json_encode($pakage),
+            "code"=>0,
+            "result"=>""
+        ));
+
+        if(!$model->save()){
+            $this->renderJson(array("isSuccess"=>false,"msg"=>$model->getErrors()));
+        }
+
         $client = new \swoole_client(SWOOLE_SOCK_TCP);
         if (!$client->connect('127.0.0.100', 55555, -1))
         {
             $this->renderJson(array("msg"=>"connect failed. Error: {$client->errCode}\n"));
         }
-        $client->send(json_encode($param));
-        echo $client->recv();
+
+        $client->send(json_encode($pakage));
+
+        sleep(4);
+
+        $model->result = $client->recv();
+
         $client->close();
+        if(!$model->save()){
+            $this->renderJson(array("isSuccess"=>false,"msg"=>$model->getErrors()));
+        }else{
+            $this->renderJson(array("isSuccess"=>true));
+        }
 
     }
 
