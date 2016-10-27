@@ -32,10 +32,10 @@
 
         </div>
         <div class="col-md-8">
-            <form action="<?php echo $this->createUrl("/tool/data/task");?>" class="form-inline" id="data-task-request-form">
+            <form action="<?php echo $this->createUrl("/tool/data/task");?>" role="form" id="data-task-request-form">
                 <div class="form-group">
                     <small>报表类型:</small>
-                    <?php echo CHtml::dropDownList("datatype",$query["dataType"],array("class"=>"form-control"));?>
+                    <?php echo \CHtml::dropDownList("datatype","",$query["dataType"],array("class"=>"form-control"));?>
                 </div>
                 <div class="form-group">
                     <small>日期:</small>
