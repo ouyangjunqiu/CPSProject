@@ -65,9 +65,9 @@
         </div>
     </div>
 
-    <div class="panel" id="task-detail-panel" style="display: none">
+    <div class="panel">
         <div class="panel-body">
-            <div data-load="overlay" data-tmpl="task-detail-tmpl" data-role="task-detail-tmpl" data-url="<?php echo $this->createUrl("/tool/data/getlist");?>">
+            <div data-load="overlay" data-tmpl="task-detail-tmpl" data-role="task-detail" data-url="<?php echo $this->createUrl("/tool/data/getlist");?>">
             </div>
 
         </div>
@@ -79,19 +79,26 @@
 {{each(i,v) data.list}}
     <div class="row">
       <div class="col-xs-6 col-md-3">
-        <a href="${data.detail_url}" class="thumbnail">
-          <img data-src="${data.pic_url}" src="${data.pic_url}" alt="${data.title}" style="width:120px;height:120px"/>
-        </a>
+        {{each(j,p) v.params}}
+            <p><strong>${p.TableTypeName}</strong></p>
+            <p><small>${p.Begin_Time} ~ ${p.End_Time}</small></p>
+        {{/each}}
       </div>
       <div class="col-md-9">
-        <p><small>标题:</small>${data.title}</p>
-        <p><small>价格:</small>${data.price}</p>
+      {{if v.code>0}}
+        <p class="text-primary">下载文件</p>
+      {{else}}
+        {{if v.code<0}}
+            <p class="text-danger">下载失败</p>
+        {{else}}
+            <p class="text-muted">任务运行中...</p>
+        {{/if}}
+
+      {{/if}}
       </div>
     </div>
 {{/each}}
 
-{{else}}
-    <p>${msg}</p>
 {{/if}}
 </script>
 
@@ -125,6 +132,7 @@
                 dataType:"json",
                 success:function(resp){
                     $("body").hideLoading();
+                    $("[data-role=task-detail]").iLoad();
                 },
                 error:function(){
                     $("body").hideLoading();
@@ -143,6 +151,10 @@
 
             }
         });
+
+        setInterval(function(){
+            $("[data-role=task-detail]").iLoad();
+        },1000);
 
     });
 </script>
