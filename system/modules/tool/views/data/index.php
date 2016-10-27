@@ -39,9 +39,9 @@
                 </div>
                 <div class="form-group">
                     <small>日期:</small>
-                    <div class="input-group" id="dateSetting">
+                    <div class="input-group" data-role="dateSetting">
                         <span class="input-group-addon"> <i class="glyphicon glyphicon-calendar"></i> </span>
-                        <input type="text" class="form-control" value="">
+                        <input type="text" class="form-control" data-role="dateview" value="">
                         <span class="input-group-addon"><b class="caret"></b></span>
                     </div>
                     <input type="hidden" name="begin_time">
@@ -117,14 +117,15 @@
 
         $(".top-ul>li").eq(3).addClass("top-li-hover");
 
-        $("#dateSetting").daterangepicker({
+        $("#data-task-request-form [data-role=dateSetting]").daterangepicker({
             "startDate": "<?php echo $query['beginDate'];?>",
             "endDate": "<?php echo $query['endDate'];?>",
             "format":"YYYY-MM-DD"
         },function (start,end){
+            $("#data-task-request-form input[data-role=dateview]").val(start.format('YYYY-MM-DD')+"~"+end.format('YYYY-MM-DD'));
 
-            $("input[name=begin_time]").val(start.format('YYYY-MM-DD'));
-            $("input[name=end_time]").val(end.format('YYYY-MM-DD'));
+            $("#data-task-request-form input[name=begin_time]").val(start.format('YYYY-MM-DD'));
+            $("#data-task-request-form input[name=end_time]").val(end.format('YYYY-MM-DD'));
         });
 
         $("button[data-click=save]").click(function(){
