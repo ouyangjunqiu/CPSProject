@@ -54,10 +54,14 @@ class DataController extends Controller
         $categoryname = Env::getRequest("categoryname");
         if(!empty($categoryname)){
             $param["Categoryname"] = explode(",",$categoryname);
+        }else{
+            $param["Categoryname"] = array();
         }
         $shopname = Env::getRequest("Shopname");
         if(!empty($shopname)) {
             $param["Shopname"] = explode(",",$shopname);
+        }else{
+            $param["Shopname"] = array();
         }
 
         $param["TaskId"] = time().rand(1,999999);
