@@ -64,7 +64,7 @@ class DataController extends Controller
 
         $param["TaskId"] = time().rand(1,999999);
 
-        $client = new swoole_client(SWOOLE_SOCK_TCP);
+        $client = new \swoole_client(SWOOLE_SOCK_TCP);
         if (!$client->connect('127.0.0.1', 55555, -1))
         {
             $this->renderJson(array("msg"=>"connect failed. Error: {$client->errCode}\n"));

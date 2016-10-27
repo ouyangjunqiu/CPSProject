@@ -41,7 +41,7 @@
                     <small>日期:</small>
                     <div class="input-group" data-role="dateSetting">
                         <span class="input-group-addon"> <i class="glyphicon glyphicon-calendar"></i> </span>
-                        <input type="text" class="form-control" data-role="dateview" value="">
+                        <input type="text" class="form-control" data-role="dateview" value="<?php echo $query['beginDate'];?> ~ <?php echo $query['endDate'];?>">
                         <span class="input-group-addon"><b class="caret"></b></span>
                     </div>
                     <input type="hidden" name="begin_time">
@@ -122,31 +122,33 @@
             "endDate": "<?php echo $query['endDate'];?>",
             "format":"YYYY-MM-DD"
         },function (start,end){
-            $("#data-task-request-form input[data-role=dateview]").val(start.format('YYYY-MM-DD')+"~"+end.format('YYYY-MM-DD'));
+            $("#data-task-request-form input[data-role=dateview]").val(start.format('YYYY-MM-DD')+" ~ "+end.format('YYYY-MM-DD'));
 
             $("#data-task-request-form input[name=begin_time]").val(start.format('YYYY-MM-DD'));
             $("#data-task-request-form input[name=end_time]").val(end.format('YYYY-MM-DD'));
         });
 
         $("#data-task-request-form [data-click=save]").click(function(){
-            $("#data-task-request-form").trigger("click");
+            var self = $("#data-task-request-form");
+            $.ajax({
+                url: self.attr("action"),
+                data: self.serialize(),
+                type:"post",
+                dataType:"json",
+                success:function(resp){
+                    if(resp.Status == "Success"){
+                        console.log(resp);
+                    }
+                }
+            });
+
         });
 
 
         $("#data-task-request-form").keydown(function(event){
-            var self = $(this);
-            if(event.which == 13){
-                $.ajax({
-                    url: self.attr("action"),
-                    data: self.serialize(),
-                    type:"post",
-                    dataType:"json",
-                    success:function(resp){
-                        $("#item-detail-panel").show();
 
-                        $("#item-detail-panel .panel-body").html($("#item-detail-tmpl").tmpl(resp));
-                    }
-                });
+            if(event.which == 13){
+                $("#data-task-request-form [data-click=save]").trigger("click");
                 return false;
 
             }
