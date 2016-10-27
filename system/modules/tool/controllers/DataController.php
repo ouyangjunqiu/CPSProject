@@ -12,6 +12,7 @@ use application\modules\main\utils\StringUtil;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
 use cloud\core\utils\ExtRangeDate;
+use cloud\core\utils\File;
 
 class DataController extends Controller
 {
@@ -72,6 +73,19 @@ class DataController extends Controller
         $client->send(json_encode($param));
         echo $client->recv();
         $client->close();
+
+    }
+
+    public function actionGetfile(){
+        $target = Env::getRequest("file");
+        $file = file_get_contents($target);
+        header("Content-Type: application/octet-stream");//告诉浏览器输出内容类型，必须
+        header('Content-Encoding: none');//内容不加密，gzip等，可选
+        header("Content-Transfer-Encoding: binary" );//文件传输方式是二进制，可选
+
+        header('Content-Disposition: attachment; filename="' . date("Ymd") . '.xlsx"');
+        echo $file;
+
 
     }
 

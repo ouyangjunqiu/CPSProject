@@ -129,6 +129,7 @@
         });
 
         $("#data-task-request-form [data-click=save]").click(function(){
+            $("body").showLoading();
             var self = $("#data-task-request-form");
             $.ajax({
                 url: self.attr("action"),
@@ -138,6 +139,7 @@
                 success:function(resp){
                     if(resp.Status == "Success"){
                         console.log(resp);
+                        window.location.href=app.url("<?php echo $this->createUrl("/tool/data/getfile");?>",{file:resp.Back_message.FileAddress});
                     }
                 }
             });
