@@ -104,12 +104,12 @@
       </td>
       <td>
       {{if v.code>0}}
-        <p class="text-primary">下载文件</p>
+        <p class="text-primary"><a href="<?php echo $this->createUrl("/tool/data/getfile");?>&id=${v.id}" target="_blank"><i class="glyphicon glyphicon-save"></i> 下载文件</a></p>
       {{else}}
         {{if v.code<0}}
-            <p class="text-danger">下载失败</p>
+            <p class="text-danger"><i class="glyphicon glyphicon-remove-circle"><i> 任务失败</p>
         {{else}}
-            <p class="text-muted">任务运行中...</p>
+            <p class="text-muted"><i class="lyphicon glyphicon-time"></i> 任务运行中...</p>
         {{/if}}
 
       {{/if}}
