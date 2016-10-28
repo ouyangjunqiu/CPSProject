@@ -63,10 +63,10 @@ class DataRptTask extends Model
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('logdate,taskid,params,result,code', 'safe'),
+            array('logdate,taskid,params,result,code,createtime,runtime', 'safe'),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('logdate,taskid,params,result,code', 'safe', 'on' => 'search'),
+            array('logdate,taskid,params,result,code,createtime,runtime', 'safe', 'on' => 'search'),
         );
     }
 

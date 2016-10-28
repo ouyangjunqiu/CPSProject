@@ -46,7 +46,8 @@ class DataController extends Controller
             "taskid"=>$param["TaskId"],
             "params"=>json_encode($pakage),
             "code"=>0,
-            "result"=>""
+            "result"=>"",
+            "createtime"=>date("Y-m-d H:i:s")
         ));
 
         if(!$model->save()){
@@ -58,21 +59,28 @@ class DataController extends Controller
     }
 
     public function actionGetfile(){
-        $target = Env::getRequest("file");
-        $file = file_get_contents($target);
-        header("Content-Type: application/octet-stream");//告诉浏览器输出内容类型，必须
-        header('Content-Encoding: none');//内容不加密，gzip等，可选
-        header("Content-Transfer-Encoding: binary" );//文件传输方式是二进制，可选
+        $id = Env::getRequest("id");
+        $task = DataRptTask::model()->fetchByPk($id);
+        if(!empty($task)){
+            $result = \CJSON::decode($task["result"]);
+            $file = file_get_contents($result["Back_message"]["FileAddress"]);
+            header("Content-Type: application/octet-stream");//告诉浏览器输出内容类型，必须
+            header('Content-Encoding: none');//内容不加密，gzip等，可选
+            header("Content-Transfer-Encoding: binary" );//文件传输方式是二进制，可选
 
-        header('Content-Disposition: attachment; filename="' . date("Ymd") . '.xlsx"');
-        echo $file;
+            header('Content-Disposition: attachment; filename="' . $task["taskid"] . '.xlsx"');
+            echo $file;
+        }
+
+
 
 
     }
 
     public function actionGetlist(){
-        $logdate = date("Y-m-d",strtotime("-7 days"));
-        $list = DataRptTask::model()->fetchAll("logdate>=? ORDER BY id DESC",array($logdate));
+
+        $logdate = date("Y-m-d",strtotime("-2 days"));
+        $list = DataRptTask::model()->fetchAll("logdate>=? ORDER BY id DESC LIMIT 0,20",array($logdate));
         foreach($list as &$row){
             $row["params_obj"] = \CJSON::decode($row["params"]);
             $row["result_obj"] = \CJSON::decode($row["result"]);
