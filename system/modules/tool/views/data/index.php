@@ -72,7 +72,7 @@
         <div class="col-md-8">
             <div class="panel panel-info ">
                 <div class="panel-heading">下载任务</div>
-                <div class="panel-body">
+                <div class="panel-body" style="min-height: 500px">
                     <div data-load="overlay" data-tmpl="task-detail-tmpl" data-role="task-detail" data-url="<?php echo $this->createUrl("/tool/data/getlist");?>">
                     </div>
 
