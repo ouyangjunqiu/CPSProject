@@ -65,26 +65,44 @@
         </div>
     </div>
 
-    <div class="panel">
-        <div class="panel-body">
-            <div data-load="overlay" data-tmpl="task-detail-tmpl" data-role="task-detail" data-url="<?php echo $this->createUrl("/tool/data/getlist");?>">
+    <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-8">
+            <div class="panel panel-info ">
+                <div class="panel-heading">下载任务</div>
+                <div class="panel-body">
+                    <div data-load="overlay" data-tmpl="task-detail-tmpl" data-role="task-detail" data-url="<?php echo $this->createUrl("/tool/data/getlist");?>">
+                    </div>
+
+                </div>
             </div>
+        </div>
+        <div class="col-md-2">
 
         </div>
     </div>
 </div>
 
 <script type="text/x-jquery-tmpl" id="task-detail-tmpl">
-{{if isSuccess}}
+<table class="table">
+    <thead>
+        <tr>
+            <td>报表需求</td>
+            <td>进度</td>
+        </tr>
+    </thead>
+    <tbody>
 {{each(i,v) data.list}}
-    <div class="row">
-      <div class="col-xs-6 col-md-3">
+    <tr>
+        <td>
         {{each(j,p) v.params_obj}}
             <p><strong>${p.TableTypeName}</strong></p>
             <p><small>${p.Begin_Time} ~ ${p.End_Time}</small></p>
         {{/each}}
-      </div>
-      <div class="col-md-9">
+      </td>
+      <td>
       {{if v.code>0}}
         <p class="text-primary">下载文件</p>
       {{else}}
@@ -95,11 +113,11 @@
         {{/if}}
 
       {{/if}}
-      </div>
-    </div>
+      </td>
+    </tr>
 {{/each}}
-
-{{/if}}
+    </tbody>
+ </table>
 </script>
 
 
@@ -154,7 +172,7 @@
 
         setInterval(function(){
             $("[data-role=task-detail]").iLoad();
-        },5000);
+        },15000);
 
     });
 </script>
