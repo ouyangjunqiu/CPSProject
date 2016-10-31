@@ -63,10 +63,31 @@ class DataController extends Controller
         $task = DataRptTask::model()->fetchByPk($id);
         if(!empty($task)){
             $result = \CJSON::decode($task["result"]);
-            $file = file_get_contents($result["Back_message"]["FileAddress"]);
+            if(empty($result) || $result["Status"] !== "Success"){
+                $this->showMessage("你请求的文件不存在，请重新请求！",$this->createUrl("/tool/data/index"));
+                return;
+            }
+
+            if(empty($result["Back_message"]) || empty($result["Back_message"]["FileAddress"])){
+                $this->showMessage("你请求的文件不存在，请重新请求！",$this->createUrl("/tool/data/index"));
+                return;
+            }
+
+            $filename = $result["Back_message"]["FileAddress"];
+
+            if(empty($filename) || !is_file($filename)){
+                $this->showMessage("你请求的文件不存在，请重新请求！",$this->createUrl("/tool/data/index"));
+                return;
+            }
+
+            $size = filesize($filename);
+
+            $file = file_get_contents($filename);
             header("Content-Type: application/octet-stream");//告诉浏览器输出内容类型，必须
             header('Content-Encoding: none');//内容不加密，gzip等，可选
             header("Content-Transfer-Encoding: binary" );//文件传输方式是二进制，可选
+            header("Content-Length: ".$size);//告诉浏览器文件大小，可选
+
 
             header('Content-Disposition: attachment; filename="' . $task["taskid"] . '.xlsx"');
             echo $file;
