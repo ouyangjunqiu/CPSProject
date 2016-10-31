@@ -64,19 +64,19 @@ class DataController extends Controller
         if(!empty($task)){
             $result = \CJSON::decode($task["result"]);
             if(empty($result) || $result["Status"] !== "Success"){
-                $this->showMessage("你请求的文件不存在，请重新请求！",$this->createUrl("/tool/data/index"));
+                $this->error("你请求的文件不存在，请重新请求！",$this->createUrl("/tool/data/index"));
                 return;
             }
 
             if(empty($result["Back_message"]) || empty($result["Back_message"]["FileAddress"])){
-                $this->showMessage("你请求的文件不存在，请重新请求！",$this->createUrl("/tool/data/index"));
+                $this->error("你请求的文件不存在，请重新请求！",$this->createUrl("/tool/data/index"));
                 return;
             }
 
             $filename = $result["Back_message"]["FileAddress"];
 
             if(empty($filename) || !is_file($filename)){
-                $this->showMessage("你请求的文件不存在，请重新请求！",$this->createUrl("/tool/data/index"));
+                $this->error("你请求的文件不存在，请重新请求！",$this->createUrl("/tool/data/index"));
                 return;
             }
 
