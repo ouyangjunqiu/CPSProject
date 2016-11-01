@@ -80,6 +80,8 @@ class DataController extends Controller
                 return;
             }
 
+            $outputname = empty($result["Back_message"]["FileOutputName"])?$task["taskid"] . '.xlsx':$result["Back_message"]["FileOutputName"];
+
             $size = filesize($filename);
 
             $file = file_get_contents($filename);
@@ -89,7 +91,7 @@ class DataController extends Controller
             header("Content-Length: ".$size);//告诉浏览器文件大小，可选
 
 
-            header('Content-Disposition: attachment; filename="' . $task["taskid"] . '.xlsx"');
+            header('Content-Disposition: attachment; filename="' . $outputname . '"');
             echo $file;
         }
 
