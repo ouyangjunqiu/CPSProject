@@ -214,7 +214,7 @@
     <div class="row">
         <div class="col-md-4">
           <div class="list-group">
-              <a class="list-group-item disabled">
+              <a class="list-group-item active">
                 以往 <span class="badge">近7天</span>
               </a>
 
@@ -255,7 +255,7 @@
         </div>
         <div class="col-md-4">
             <div class="list-group">
-              <a class="list-group-item disabled">
+              <a class="list-group-item active">
                 计划
               </a>
               {{each(i,v) data.list[1]}}
