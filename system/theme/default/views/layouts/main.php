@@ -24,7 +24,6 @@
     <link rel="stylesheet" href="<?php echo STATICURL.'/base/font-awesome/css/font-awesome.min.css'; ?>" />
     <link rel="stylesheet" href="<?php echo STATICURL.'/base/ionicons/css/ionicons.min.css'; ?>" />
 
-    <link rel="stylesheet" href="<?php echo STATICURL.'/base/cps/css/common.css'; ?>">
     <link rel="stylesheet" href="<?php echo STATICURL.'/base/cps/css/style.css'; ?>">
     <link rel="stylesheet" href="<?php echo STATICURL.'/base/cps/css/layout.css'; ?>">
 
