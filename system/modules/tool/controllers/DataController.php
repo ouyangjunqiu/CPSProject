@@ -28,7 +28,7 @@ class DataController extends Controller
         }else{
             $param["Categoryname"] = array();
         }
-        $shopname = Env::getRequest("Shopname");
+        $shopname = Env::getRequest("shopname");
         if(!empty($shopname)) {
             $param["Shopname"] = explode(",",$shopname);
         }else{
