@@ -241,6 +241,7 @@ body {
 .top-ul li a:hover {
     opacity: 0.7;
     zoom: 1.05;
+    text-decoration: none;
 }
 
 .top-li-hover .top-speline {
