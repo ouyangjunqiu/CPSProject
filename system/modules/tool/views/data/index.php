@@ -49,11 +49,21 @@
                 </div>
                 <div class="form-group">
                     <small>主营行业:</small>
-                    <input type="text" class="form-control" name="categoryname">
+                    <select class="selectpicker" data-role="categoryname" name="categoryname[]" data-placeholder="" style="width: 100%"  multiple="multiple">
+                        <option value=""></option>
+                        <?php foreach($catgorynames as $k=>$r):?>
+                            <option value="<?php echo $r;?>"><?php echo $r;?></option>
+                        <?php endforeach;?>
+                    </select>
                 </div>
                 <div class="form-group">
                     <small>店铺:</small>
-                    <input type="text" class="form-control" name="shopname">
+                    <select class="selectpicker" data-role="shopname" name="shopname[]" data-placeholder="" style="width: 100%"  multiple="multiple">
+                        <option value=""></option>
+                        <?php foreach($shopnames as $k=>$r):?>
+                            <option value="<?php echo $r;?>"><?php echo $r;?></option>
+                        <?php endforeach;?>
+                    </select>
                 </div>
                 <div class="form-group">
                     <button type="button" class="btn btn-primary" data-click="save">创建下载任务</button>
@@ -139,6 +149,8 @@
             $("#data-task-request-form input[name=begin_time]").val(start.format('YYYY-MM-DD'));
             $("#data-task-request-form input[name=end_time]").val(end.format('YYYY-MM-DD'));
         });
+
+        $("select.selectpicker").select2({theme: "bootstrap", allowClear: true});
 
         $("#data-task-request-form [data-click=save]").click(function(){
             $("body").showLoading();

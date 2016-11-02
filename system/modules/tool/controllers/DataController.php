@@ -7,6 +7,7 @@
 
 namespace application\modules\tool\controllers;
 
+use application\modules\main\model\Shop;
 use application\modules\tool\model\DataRptTask;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
@@ -14,8 +15,25 @@ use cloud\core\utils\Env;
 class DataController extends Controller
 {
     public function actionIndex(){
+        $shopnames = array();
+        $catgorynames = array();
+        $shops = Shop::model()->fetchAll("status=?",array(0));
+        foreach($shops as $row){
+            $shopnames[$row["nick"]] = $row["nick"];
+            if(!empty($row["shopcatname"])) {
+                $catgorynames[$row["shopcatname"]] = $row["shopcatname"];
+            }
+        }
 
-        $this->render("index",array("query"=>array("beginDate"=>date("Y-m-d",strtotime("-18 days")),"endDate"=>date("Y-m-d",strtotime("-3 days")),"dataType"=>DataRptTask::$dataType)));
+        $this->render("index",array(
+            "query"=>array(
+                "beginDate"=>date("Y-m-d",strtotime("-18 days")),
+                "endDate"=>date("Y-m-d",strtotime("-3 days")),
+                "dataType"=>DataRptTask::$dataType
+            ),
+            'shopnames'=>$shopnames,
+            'catgorynames'=>$catgorynames
+        ));
     }
 
     public function actionDown(){
@@ -23,14 +41,14 @@ class DataController extends Controller
         $param["Begin_Time"] = Env::getRequest("begin_time");
         $param["End_Time"] = Env::getRequest("end_time");
         $categoryname = Env::getRequest("categoryname");
-        if(!empty($categoryname)){
-            $param["Categoryname"] = explode(",",$categoryname);
+        if(!empty($categoryname) && is_array($categoryname) && count($categoryname)>0){
+            $param["Categoryname"] = $categoryname;
         }else{
             $param["Categoryname"] = array();
         }
         $shopname = Env::getRequest("shopname");
-        if(!empty($shopname)) {
-            $param["Shopname"] = explode(",",$shopname);
+        if(!empty($shopname) && is_array($shopname) && count($shopname)>0) {
+            $param["Shopname"] = $shopname;
         }else{
             $param["Shopname"] = array();
         }
