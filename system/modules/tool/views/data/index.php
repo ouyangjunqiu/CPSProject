@@ -120,7 +120,7 @@
         <a href="<?php echo $this->createUrl("/tool/data/getfile");?>&id=${v.id}" target="_blank" class="text-primary"><i class="glyphicon glyphicon-save"></i> 下载文件</a>
       {{else}}
         {{if v.code<0}}
-            <span class="text-danger"><i class="glyphicon glyphicon-remove-circle"><i> 任务失败</span>
+            <span class="text-danger"><i class="glyphicon glyphicon-remove-circle"></i> 任务失败</span>
         {{else}}
             <span class="text-muted"><i class="glyphicon glyphicon-time"></i> 任务运行中...</span>
         {{/if}}
