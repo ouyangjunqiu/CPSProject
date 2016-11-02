@@ -42,9 +42,9 @@
                         <span class="input-group-addon"><b class="caret"></b></span>
                     </div>
                 </div>
-                <div class="form-group">
-                    <small><a href="<?php echo $this->createUrl("/zuanshi/summary/pic");?>">*2016年7月前的数据点击这里</a></small>
-                </div>
+<!--                <div class="form-group">-->
+<!--                    <small><a href="--><?php //echo $this->createUrl("/zuanshi/summary/pic");?><!--">*2016年7月前的数据点击这里</a></small>-->
+<!--                </div>-->
 
             </form>
 
@@ -106,7 +106,8 @@
         $("#dateSetting").daterangepicker({
             "startDate": "<?php echo $query['startdate'];?>",
             "endDate": "<?php echo $query['enddate'];?>",
-            "format":"YYYY-MM-DD"
+            "format":"YYYY-MM-DD",
+            "minDate":"2016-08-01"
         },function (start,end){
 
             location.href = app.url("<?php echo $this->createUrl('/zz/summary/pic');?>",{startdate:start.format('YYYY-MM-DD'),enddate:end.format('YYYY-MM-DD')})

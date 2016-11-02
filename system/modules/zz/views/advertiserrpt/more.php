@@ -49,7 +49,7 @@
                             <input type="text" class="form-control"  value="<?php echo $query['beginDate'];?> ~ <?php echo $query['endDate'];?>">
                             <span class="input-group-addon"><b class="caret"></b></span>
                         </div>
-                        <small><a href="<?php echo $this->createUrl("/zuanshi/rpt/more",array("nick"=>$query["nick"]));?>">*2016年7月前的数据点击这里</a></small>
+<!--                        <small><a href="--><?php //echo $this->createUrl("/zuanshi/rpt/more",array("nick"=>$query["nick"]));?><!--">*2016年7月前的数据点击这里</a></small>-->
                     </div>
 
                 </form>
@@ -201,7 +201,8 @@
             $("#dateSetting").daterangepicker({
                 "startDate": "<?php echo $query['beginDate'];?>",
                 "endDate": "<?php echo $query['endDate'];?>",
-                "format":"YYYY-MM-DD"
+                "format":"YYYY-MM-DD",
+                "minDate":"2016-08-01"
             },function (start,end){
 
                 location.href = app.url("<?php echo $this->createUrl('/zz/advertiserrpt/more');?>",{
