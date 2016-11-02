@@ -108,7 +108,7 @@
     <tr>
         <td>
         {{each(j,p) v.params_obj}}
-            <p>#{v.taskid}. <strong>${p.TableTypeName}</strong></p>
+            <p>#${v.taskid}. <strong>${p.TableTypeName}</strong></p>
             <p><small>${p.Begin_Time} ~ ${p.End_Time}</small></p>
         {{/each}}
       </td>
