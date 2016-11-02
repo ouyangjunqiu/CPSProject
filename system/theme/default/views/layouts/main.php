@@ -89,7 +89,7 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <li class="dropdown rpt">
-                    <a href="<?php echo $this->createUrl("/tool/data/index");?>"><i class="glyphicon glyphicon-align-justify"></i> 下载报表
+                    <a href="<?php echo $this->createUrl("/tool/data/index");?>"><i class="glyphicon glyphicon-align-justify"></i> 报表下载
                         <span class="label label-danger">new</span>
                     </a>
                 </li>
