@@ -88,6 +88,11 @@
 
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
+                <li class="dropdown rpt">
+                    <a href="javascript:void(0)"><i class="glyphicon glyphicon-align-justify"></i> 下载报表
+                        <span class="label label-danger">new</span>
+                    </a>
+                </li>
                 <li class="dropdown my-todo">
                     <a href="javascript:void(0)"><i class="ion-chatbubbles"></i> 我的待办
                     <span class="label label-danger">0</span>
