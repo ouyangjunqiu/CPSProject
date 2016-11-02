@@ -164,8 +164,8 @@
                 type:"post",
                 dataType:"json",
                 success:function(resp){
+                    $("body").hideLoading();
                     if(resp.isSuccess){
-                        $("body").hideLoading();
                         $("[data-role=task-detail]").iLoad();
                     }else{
                         app.alert(resp.msg);
