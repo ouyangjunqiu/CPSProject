@@ -53,6 +53,11 @@ class DataController extends Controller
             $param["Shopname"] = array();
         }
 
+        if(empty($param["Shopname"]) && empty($param["Categoryname"])){
+            $this->renderJson(array("isSuccess"=>false,"msg"=>"主营类目、店铺必须选择一个！"));
+            return;
+        }
+
         $param["TaskId"] = time().rand(1,999999);
         $param["TableTypeName"] = DataRptTask::$dataType[$param["TableType"]];
 

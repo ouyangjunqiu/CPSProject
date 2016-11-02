@@ -164,8 +164,12 @@
                 type:"post",
                 dataType:"json",
                 success:function(resp){
-                    $("body").hideLoading();
-                    $("[data-role=task-detail]").iLoad();
+                    if(resp.isSuccess){
+                        $("body").hideLoading();
+                        $("[data-role=task-detail]").iLoad();
+                    }else{
+                        app.alert(resp.msg);
+                    }
                 },
                 error:function(){
                     $("body").hideLoading();
