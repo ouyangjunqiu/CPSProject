@@ -108,8 +108,11 @@
     <tr>
         <td>
         {{each(j,p) v.params_obj}}
-            <p><strong>${p.TableTypeName}</strong><small>[${p.Begin_Time} ~ ${p.End_Time}]</small></p>
-            <p><small>主营类目：${p["Categoryname"].join(",")}</small> <small>店铺：${p["Shopname"].join(",")}</small></p>
+            <p><strong>${p.TableTypeName}</strong> <small>[${p.Begin_Time} ~ ${p.End_Time}]</small></p>
+            <p>
+            {{if p["Categoryname"].length>0}}<small style="margin-right:5px">主营行业：${p["Categoryname"].join(",")}</small>{{/if}}
+            {{if p["Shopname"].length>0}}<small>店铺：${p["Shopname"].join(",")}</small>{{/if}}
+            </p>
         {{/each}}
       </td>
       <td>
