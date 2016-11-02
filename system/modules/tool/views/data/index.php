@@ -109,7 +109,7 @@
         <td>
         {{each(j,p) v.params_obj}}
             <p><strong>${p.TableTypeName}</strong><small>[${p.Begin_Time} ~ ${p.End_Time}]</small></p>
-            <p><small>主营类目：${p.Categoryname.join(",")}</small> <small>店铺：${p.Shopname.join(",")</small></p>
+            <p><small>主营类目：${p["Categoryname"].join(",")}</small> <small>店铺：${p["Shopname"].join(",")}</small></p>
         {{/each}}
       </td>
       <td>
