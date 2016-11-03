@@ -60,7 +60,7 @@ $username = empty($user)?"游客":$user["username"];
                                 <div class="row">
 
                                     <div class="col-md-4">
-                                        <a data-toggle="modal" data-target="#ShopTodoAddModal" data-backdrop="false" data-trigger-target="todo_<?php echo md5($row["nick"]);?>" data-nick="<?php echo $row["nick"];?>"><i class="glyphicon glyphicon-plus"></i>新建待办事项...</a>
+                                        <a href="javascript:void(0)" data-toggle="modal" data-target="#ShopTodoAddModal" data-backdrop="false" data-trigger-target="todo_<?php echo md5($row["nick"]);?>" data-nick="<?php echo $row["nick"];?>"><i class="glyphicon glyphicon-plus"></i>新建待办事项...</a>
 
                                     </div>
                                     <div class="col-md-7">
@@ -76,7 +76,7 @@ $username = empty($user)?"游客":$user["username"];
                                 <div class="overlay-wrapper" data-tmpl="shop-file-list-tmpl" data-role="shop-file-list" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo $this->createUrl("/main/file/getbynick",array("nick"=>$row["nick"]));?>">
                                 </div>
 
-                                <a data-toggle="modal" data-target="#ShopFileUploadModal" data-backdrop="false" data-logdate-index="1" data-nick="<?php echo $row["nick"];?>" data-creator="<?php echo $username;?>" data-trigger-target="#file_<?php echo md5($row["nick"]);?>">
+                                <a href="javascript:void(0)" data-toggle="modal" data-target="#ShopFileUploadModal" data-backdrop="false" data-logdate-index="1" data-nick="<?php echo $row["nick"];?>" data-creator="<?php echo $username;?>" data-trigger-target="#file_<?php echo md5($row["nick"]);?>">
                                     <i class="glyphicon glyphicon-cloud-upload"></i> 上传文件...
                                 </a>
                             </div>
