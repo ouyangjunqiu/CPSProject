@@ -126,7 +126,7 @@
                 {{each(j,v) r}}
                 <li class="list-group-item">
                     <small class="label label-danger badge"><i class="glyphicon glyphicon-time"></i> ${v.daysStr}</small>
-                    <a href="javascript:void(0)" data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal"  data-backdrop="false" data-content="${v.content}" data-trigger-target="todo_${v.md5}">
+                    <a href="#ShopTodoOpModal" data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal"  data-backdrop="false" data-content="${v.content}" data-trigger-target="todo_${v.md5}">
 
                         <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}}
 
@@ -154,14 +154,14 @@
                 {{if v.status==1}}
                 <li class="list-group-item list-group-item-success">
                     <small class="label label-success badge"><i class="glyphicon glyphicon-time"></i> ${v.daysStr}</small>
-                    <a href="javascript:void(0)" data-toggle="modal" data-target="#ShopTodoViewModal" data-backdrop="false" data-content="${v.content}">
+                    <a href="#ShopTodoViewModal" data-toggle="modal" data-target="#ShopTodoViewModal" data-backdrop="false" data-content="${v.content}">
                     <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
                     </a>
                 </li>
                 {{else}}
                 <li  class="list-group-item list-group-item-danger">
                    <small class="label label-danger badge"><i class="glyphicon glyphicon-time"></i> ${v.daysStr}</small>
-                   <a href="javascript:void(0)" data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" data-content="${v.content}" data-trigger-target="todo_${v.md5}">
+                   <a href="#ShopTodoOpModal" data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" data-content="${v.content}" data-trigger-target="todo_${v.md5}">
                         <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
                    </a>
                 </li>
@@ -220,12 +220,12 @@
 
               {{each(i,v) data.history}}
                 {{if v.status==1}}
-                    <a href="javascript:void(0)" data-toggle="modal" data-target="#ShopTodoViewModal" data-backdrop="false" class="list-group-item list-group-item-success" data-content="${v.content}">
+                    <a href="#ShopTodoViewModal" data-toggle="modal" data-target="#ShopTodoViewModal" data-backdrop="false" class="list-group-item list-group-item-success" data-content="${v.content}">
                     <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
                     <small class="label label-success"><i class="glyphicon glyphicon-time"></i> ${v.daysStr}</small>
                     </a>
                 {{else}}
-                   <a href="javascript:void(0)" data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" class="list-group-item list-group-item-danger" data-content="${v.content}" data-trigger-target="todo_${v.md5}">
+                   <a href="#ShopTodoOpModal" data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" class="list-group-item list-group-item-danger" data-content="${v.content}" data-trigger-target="todo_${v.md5}">
                     <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
                     <small class="label label-danger"><i class="glyphicon glyphicon-time"></i> ${v.daysStr}</small>
                    </a>
@@ -242,11 +242,11 @@
               </a>
               {{each(i,v) data.list[0]}}
                 {{if v.status==1}}
-                    <a href="javascript:void(0)" data-toggle="modal" data-target="#ShopTodoViewModal" data-backdrop="false" class="list-group-item list-group-item-success" data-content="${v.content}">
+                    <a href="#ShopTodoViewModal" data-toggle="modal" data-target="#ShopTodoViewModal" data-backdrop="false" class="list-group-item list-group-item-success" data-content="${v.content}">
                     <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
                     </a>
                 {{else}}
-                   <a href="javascript:void(0)" data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" class="list-group-item" data-content="${v.content}"  data-trigger-target="todo_${v.md5}">
+                   <a href="#ShopTodoOpModal" data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" class="list-group-item" data-content="${v.content}"  data-trigger-target="todo_${v.md5}">
                     <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
                    </a>
                 {{/if}}
@@ -260,12 +260,12 @@
               </a>
               {{each(i,v) data.list[1]}}
                {{if v.status==1}}
-                    <a href="javascript:void(0)" data-toggle="modal" data-target="#ShopTodoViewModal" data-backdrop="false" class="list-group-item list-group-item-success" data-content="${v.content}">
+                    <a href="#ShopTodoViewModal" data-toggle="modal" data-target="#ShopTodoViewModal" data-backdrop="false" class="list-group-item list-group-item-success" data-content="${v.content}">
                     <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
                      <small class="label label-success"><i class="glyphicon glyphicon-time"></i> ${v.daysStr}</small>
                     </a>
                 {{else}}
-                   <a href="javascript:void(0)" data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" class="list-group-item" data-content="${v.content}"  data-trigger-target="todo_${v.md5}">
+                   <a href="#ShopTodoOpModal" data-id="${v.id}" data-toggle="modal" data-target="#ShopTodoOpModal" data-backdrop="false" class="list-group-item" data-content="${v.content}"  data-trigger-target="todo_${v.md5}">
                     <small {{if v.priority=="紧急"}}class="danger"{{/if}}>[${v.priority}] ${v.creator}说:</small>{{html v.title}} {{if v.pic}}<small>@${v.pic}</small>{{/if}}
                     <small class="label label-success"><i class="glyphicon glyphicon-time"></i> ${v.daysStr}</small>
                    </a>
