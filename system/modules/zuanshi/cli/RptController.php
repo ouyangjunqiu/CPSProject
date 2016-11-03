@@ -79,14 +79,17 @@ class RptController  extends Controller
                 foreach ($fields3 as $f => $t) {
                     $rpt3[$f] = empty($rpt[$t])?0:$rpt[$t];
                 }
+                $rpt3["alipayInshopAmt"] = round($rpt3["charge"]*$rpt3["roi"],2);
 
                 foreach ($fields7 as $f => $t) {
                     $rpt7[$f] = empty($rpt[$t])?0:$rpt[$t];
                 }
+                $rpt7["alipayInshopAmt"] = round($rpt7["charge"]*$rpt7["roi"],2);
 
                 foreach ($fields15 as $f => $t) {
                     $rpt15[$f] = empty($rpt[$t])?0:$rpt[$t];
                 }
+                $rpt15["alipayInshopAmt"] = round($rpt15["charge"]*$rpt15["roi"],2);
 
                 AdvertiserRpt::model()->deleteAll("logdate=? AND nick=?", array($row["log_date"], $row["nick"]));
                 $m = new AdvertiserRpt();
