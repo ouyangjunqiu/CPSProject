@@ -77,15 +77,15 @@ class RptController  extends Controller
 
                 $rpt3 = $rpt7 = $rpt15 = array();
                 foreach ($fields3 as $f => $t) {
-                    $rpt3[$f] = $rpt[$t];
+                    $rpt3[$f] = empty($rpt[$t])?0:$rpt[$t];
                 }
 
                 foreach ($fields7 as $f => $t) {
-                    $rpt7[$f] = $rpt[$t];
+                    $rpt7[$f] = empty($rpt[$t])?0:$rpt[$t];
                 }
 
                 foreach ($fields15 as $f => $t) {
-                    $rpt15[$f] = $rpt[$t];
+                    $rpt15[$f] = empty($rpt[$t])?0:$rpt[$t];
                 }
 
                 AdvertiserRpt::model()->deleteAll("logdate=? AND nick=?", array($row["log_date"], $row["nick"]));
