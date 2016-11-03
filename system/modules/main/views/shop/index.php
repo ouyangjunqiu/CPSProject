@@ -30,7 +30,7 @@
             <table class="table-frame">
                 <tbody id="babyInforTb">
                     <tr><td>卖家昵称：</td><td> <input type="text" class="form-control" name="nick"></td><td><span style="color: red">* 淘宝卖家的登录主账户名称(也称旺旺名)</span></td></tr>
-                    <tr><td>店铺名：</td><td> <input type="text" class="form-control" name="shopname"></td><td><span style="color: red">* 淘宝卖家的店铺名称</span></td></tr>
+<!--                    <tr><td>店铺名：</td><td> <input type="text" class="form-control" name="shopname"></td><td><span style="color: red">* 淘宝卖家的店铺名称</span></td></tr>-->
                     <tr><td>店铺地址：</td><td> <input type="text" class="form-control" name="shopurl"></td><td></td></tr>
                     <tr><td>淘宝登录账户：</td><td> <input type="text" class="form-control" name="login_nick"></td><td></td></tr>
                     <tr><td>淘宝登录密码：</td><td> <input type="text" class="form-control" name="login_password"></td><td></td></tr>

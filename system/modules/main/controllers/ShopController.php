@@ -281,8 +281,13 @@ class ShopController extends Controller
     public function actionAdd(){
         $nick = Env::getRequest("nick");
         $shopname = Env::getRequest("shopname");
-        if(empty($nick) || empty($shopname))
-            $this->renderJson(array("isSuccess"=>false,"msg"=>"店铺名不能为空!"));
+        if(empty($nick)){
+            $this->renderJson(array("isSuccess"=>false,"msg"=>"卖家名不能为空!"));
+            return;
+        }
+        if(empty($shopname)){
+            $shopname = $nick;
+        }
         $nick = trim($nick);
         $shopname = trim($shopname);
         $shopurl = Env::getRequest("shopurl");
