@@ -14,6 +14,10 @@ use application\modules\main\utils\StringUtil;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
 
+/**
+ * Class BudgetController
+ * @package application\modules\main\controllers
+ */
 class BudgetController extends Controller
 {
 
@@ -56,6 +60,9 @@ class BudgetController extends Controller
     }
 
 
+    /**
+     *
+     */
     public function actionGetbynick(){
         $nick = Env::getRequest("nick");
 

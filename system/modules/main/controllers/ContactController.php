@@ -12,8 +12,15 @@ use application\modules\main\model\ShopContact;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
 
+/**
+ * Class ContactController
+ * @package application\modules\main\controllers
+ */
 class ContactController extends Controller
 {
+    /**
+     *
+     */
     public function actionSet(){
         $nick = Env::getRequest("nick");
         $qq = Env::getRequest("qq");
