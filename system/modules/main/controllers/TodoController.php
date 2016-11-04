@@ -158,7 +158,7 @@ class TodoController extends Controller
                     "list"=>$list
                 ),
                 "query"=>array(
-                    "nick"=>mb_convert_encoding($nick,"utf-8","auto"),
+                    "nick"=>\CHtml::encode($nick),
                     "md5"=>md5($nick)
                 )
             ));

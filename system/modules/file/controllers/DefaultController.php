@@ -58,7 +58,8 @@ class DefaultController extends Controller
             header('Content-Disposition: attachment; filename="' . $attach["name"] . '"');
             echo $file;
         }else{
-            $this->showMessage("你访问的文件不存在!");
+            $this->error("你访问的文件不存在!",$this->createUrl("/main/default/index"));
+            return;
         }
     }
 
