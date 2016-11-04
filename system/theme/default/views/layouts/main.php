@@ -189,7 +189,7 @@
 
 <!-- Main Footer -->
 <footer class="main-footer">
-    <script language="javascript" type="text/javascript" src="<?php echo STATICURL.'/main/js/51la.js'; ?>"></script>
+<!--    <script language="javascript" type="text/javascript" src="--><?php //echo STATICURL.'/main/js/51la.js'; ?><!--"></script>-->
 </footer>
 
 </div>
