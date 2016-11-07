@@ -100,8 +100,8 @@
             "dateLimit": {
                 "days": 31
             },
-            "startDate": "<?php echo date("m/d/Y",strtotime($query['beginDate']));?>",
-            "endDate": "<?php echo date("m/d/Y",strtotime($query['endDate']));?>",
+            "startDate": "<?php echo date("m/d/Y",strtotime($query['startdate']));?>",
+            "endDate": "<?php echo date("m/d/Y",strtotime($query['enddate']));?>",
             "minDate":"09/01/2016",
             "maxDate":"<?php echo date("m/d/Y",strtotime("-1 days"));?>"
         },function (start,end){

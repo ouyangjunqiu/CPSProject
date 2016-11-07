@@ -115,8 +115,8 @@
         $(".top-ul>li").eq(1).addClass("top-li-hover");
 
         $("#dateSetting").daterangepicker({
-            "startDate": "<?php echo date("m/d/Y",strtotime($query['beginDate']));?>",
-            "endDate": "<?php echo date("m/d/Y",strtotime($query['endDate']));?>",
+            "startDate": "<?php echo date("m/d/Y",strtotime($query['startdate']));?>",
+            "endDate": "<?php echo date("m/d/Y",strtotime($query['enddate']));?>",
             "minDate":"08/01/2016",
             "maxDate":"<?php echo date("m/d/Y",strtotime("-1 days"));?>"
         },function (start,end){
