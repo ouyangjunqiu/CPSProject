@@ -107,7 +107,8 @@
             "startDate": "<?php echo $query['startdate'];?>",
             "endDate": "<?php echo $query['enddate'];?>",
             "format":"YYYY-MM-DD",
-            "minDate":"2016-08-01"
+            "minDate":"2016-08-01",
+            "maxDate":"<?php echo date("Y-m-d",strtotime("-1 days"));?>"
         },function (start,end){
 
             location.href = app.url("<?php echo $this->createUrl('/zz/summary/pic');?>",{startdate:start.format('YYYY-MM-DD'),enddate:end.format('YYYY-MM-DD')})
@@ -115,12 +116,7 @@
         });
 
 
-
         $("#table-fixed").freezeHeader();
-
-//        $("#down-excel").click(function(){
-//            location.href = "<?php //echo $this->createUrl('/zuanshi/rpt/summarydown');?>//"
-//        });
 
     });
 </script>

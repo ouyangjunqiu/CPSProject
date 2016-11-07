@@ -202,7 +202,8 @@
                 "startDate": "<?php echo $query['beginDate'];?>",
                 "endDate": "<?php echo $query['endDate'];?>",
                 "format":"YYYY-MM-DD",
-                "minDate":"2016-08-01"
+                "minDate":"2016-08-01",
+                "maxDate":"<?php echo date("Y-m-d",strtotime("-1 days"));?>"
             },function (start,end){
 
                 location.href = app.url("<?php echo $this->createUrl('/zz/advertiserrpt/more');?>",{
