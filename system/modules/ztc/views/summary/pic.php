@@ -97,6 +97,9 @@
         $(".top-ul>li").eq(2).addClass("top-li-hover");
 
         $("#dateSetting").daterangepicker({
+            "dateLimit": {
+                "days": 7
+            },
             "startDate": "<?php echo $query['startdate'];?>",
             "endDate": "<?php echo $query['enddate'];?>",
             "format":"YYYY-MM-DD",

@@ -36,8 +36,7 @@
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="<?php echo STATICURL.'/base/js/plugins/select2/select2.min.css'; ?>">
     <link rel="stylesheet" href="<?php echo STATICURL.'/base/js/plugins/select2/select2-bootstrap.min.css'; ?>">
-    <link rel="stylesheet" href="<?php echo STATICURL.'/base/js/plugins/datepicker/datepicker3.css'; ?>">
-    <link rel="stylesheet" href="<?php echo STATICURL.'/base/js/plugins/daterangepicker/daterangepicker-bs3.css';?>">
+    <link rel="stylesheet" href="<?php echo STATICURL.'/base/bootstrap-daterangepicker/daterangepicker.css';?>">
 
     <link rel="stylesheet" href="<?php echo STATICURL.'/base/js/plugins/jquery-artDialog/artDialog-simple.css'; ?>">
     <link rel="stylesheet" href="<?php echo STATICURL.'/base/js/plugins/jquery-showLoading/showLoading.css'; ?>">
@@ -210,11 +209,9 @@
 <script src='<?php echo STATICURL."/base/js/plugins/jquery-showLoading/jquery.showLoading.min.js"; ?>'></script>
 <script src='<?php echo STATICURL."/base/js/plugins/highcharts.js"; ?>'></script>
 <script src='<?php echo STATICURL."/base/js/plugins/select2/select2.min.js"; ?>'></script>
-<script src='<?php echo STATICURL."/base/js/plugins/datepicker/bootstrap-datepicker.js"; ?>'></script>
-<script src='<?php echo STATICURL."/base/js/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js"; ?>'></script>
 
-    <script src='<?php echo STATICURL."/base/js/plugins/daterangepicker/moment.min.js"; ?>'></script>
-    <script src='<?php echo STATICURL."/base/js/plugins/daterangepicker/daterangepicker.js"; ?>'></script>
+    <script src='<?php echo STATICURL."/base/bootstrap-daterangepicker/moment.min.js"; ?>'></script>
+    <script src='<?php echo STATICURL."/base/bootstrap-daterangepicker/daterangepicker.js"; ?>'></script>
 
 <script src='<?php echo STATICURL."/base/js/plugins/datatables/jquery.dataTables.min.js"; ?>'></script>
 <script src='<?php echo STATICURL."/base/js/plugins/datatables/dataTables.bootstrap.min.js"; ?>'></script>
