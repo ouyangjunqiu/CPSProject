@@ -94,9 +94,8 @@ $username = (!empty($user) && isset($user["username"]))?$user["username"]:"æ¸¸å®
             });
 
             $("#dateSetting").daterangepicker({
-                "startDate": "<?php echo $query['beginDate'];?>",
-                "endDate": "<?php echo $query['endDate'];?>",
-                "format":"YYYY-MM-DD"
+                "startDate": "<?php echo date("m/d/Y",strtotime($query['beginDate']));?>",
+                "endDate": "<?php echo date("m/d/Y",strtotime($query['endDate']));?>"
             },function (start,end){
 
                 location.href = app.url("<?php echo $this->createUrl('/main/todo/more');?>",{

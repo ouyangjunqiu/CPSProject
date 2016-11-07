@@ -143,9 +143,9 @@
         $(".top-ul>li").eq(3).addClass("top-li-hover");
 
         $("#data-task-request-form [data-role=dateSetting]").daterangepicker({
-            "startDate": "<?php echo $query['beginDate'];?>",
-            "endDate": "<?php echo $query['endDate'];?>",
-            "format":"YYYY-MM-DD"
+            "startDate": "<?php echo date("m/d/Y",strtotime($query['beginDate']));?>",
+            "endDate": "<?php echo date("m/d/Y",strtotime($query['endDate']));?>",
+            "maxDate":"<?php echo date("m/d/Y",strtotime("-1 days"));?>"
         },function (start,end){
             $("#data-task-request-form input[data-role=dateview]").val(start.format('YYYY-MM-DD')+" ~ "+end.format('YYYY-MM-DD'));
 

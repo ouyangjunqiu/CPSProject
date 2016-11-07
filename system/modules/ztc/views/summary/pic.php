@@ -98,13 +98,12 @@
 
         $("#dateSetting").daterangepicker({
             "dateLimit": {
-                "days": 7
+                "days": 31
             },
-            "startDate": "<?php echo $query['startdate'];?>",
-            "endDate": "<?php echo $query['enddate'];?>",
-            "format":"YYYY-MM-DD",
-            "minDate":"2016-09-01",
-            "maxDate":"<?php echo date("Y-m-d",strtotime("-1 days"));?>"
+            "startDate": "<?php echo date("m/d/Y",strtotime($query['beginDate']));?>",
+            "endDate": "<?php echo date("m/d/Y",strtotime($query['endDate']));?>",
+            "minDate":"09/01/2016",
+            "maxDate":"<?php echo date("m/d/Y",strtotime("-1 days"));?>"
         },function (start,end){
 
             location.href = app.url("<?php echo $this->createUrl('/ztc/summary/pic');?>",{startdate:start.format('YYYY-MM-DD'),enddate:end.format('YYYY-MM-DD')})
