@@ -101,9 +101,10 @@
         $(".top-ul>li").eq(1).addClass("top-li-hover");
 
         $("#dateSetting").daterangepicker({
-            "startDate": "<?php echo $query['startdate'];?>",
-            "endDate": "<?php echo $query['enddate'];?>",
-            "format":"YYYY-MM-DD"
+            locale: $.locale,
+            "startDate": "<?php echo date("m/d/Y",strtotime($query['startdate']));?>",
+            "endDate": "<?php echo date("m/d/Y",strtotime($query['enddate']));?>",
+            "maxDate":"08/01/2016"
         },function (start,end){
 
             location.href = app.url("<?php echo $this->createUrl('/zuanshi/summary/pic');?>",{startdate:start.format('YYYY-MM-DD'),enddate:end.format('YYYY-MM-DD')})

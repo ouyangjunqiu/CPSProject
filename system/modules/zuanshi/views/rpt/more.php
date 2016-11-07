@@ -223,9 +223,10 @@
             });
 
             $("#dateSetting").daterangepicker({
-                "startDate": "<?php echo $query['beginDate'];?>",
-                "endDate": "<?php echo $query['endDate'];?>",
-                "format":"YYYY-MM-DD"
+                locale: $.locale,
+                "startDate": "<?php echo date("m/d/Y",strtotime($query['beginDate']));?>",
+                "endDate": "<?php echo date("m/d/Y",strtotime($query['endDate']));?>",
+                "maxDate":"08/01/2016"
             },function (start,end){
 
                 location.href = app.url("<?php echo $this->createUrl('/zuanshi/rpt/more');?>",{
