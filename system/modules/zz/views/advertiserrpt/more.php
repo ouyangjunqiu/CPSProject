@@ -199,6 +199,7 @@
             });
 
             $("#dateSetting").daterangepicker({
+                locale:$.locale,
                 "startDate": "<?php echo date("m/d/Y",strtotime($query['beginDate']));?>",
                 "endDate": "<?php echo date("m/d/Y",strtotime($query['endDate']));?>",
                 "minDate":"08/01/2016",

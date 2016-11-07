@@ -115,6 +115,7 @@
         $(".top-ul>li").eq(1).addClass("top-li-hover");
 
         $("#dateSetting").daterangepicker({
+            locale:$.locale,
             "startDate": "<?php echo date("m/d/Y",strtotime($query['startdate']));?>",
             "endDate": "<?php echo date("m/d/Y",strtotime($query['enddate']));?>",
             "minDate":"08/01/2016",

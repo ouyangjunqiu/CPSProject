@@ -143,6 +143,7 @@
         $(".top-ul>li").eq(3).addClass("top-li-hover");
 
         $("#data-task-request-form [data-role=dateSetting]").daterangepicker({
+            locale:$.locale,
             "startDate": "<?php echo date("m/d/Y",strtotime($query['beginDate']));?>",
             "endDate": "<?php echo date("m/d/Y",strtotime($query['endDate']));?>",
             "maxDate":"<?php echo date("m/d/Y",strtotime("-1 days"));?>"

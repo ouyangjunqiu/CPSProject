@@ -94,6 +94,7 @@ $username = (!empty($user) && isset($user["username"]))?$user["username"]:"æ¸¸å®
             });
 
             $("#dateSetting").daterangepicker({
+                locale:$.locale,
                 "startDate": "<?php echo date("m/d/Y",strtotime($query['beginDate']));?>",
                 "endDate": "<?php echo date("m/d/Y",strtotime($query['endDate']));?>"
             },function (start,end){
