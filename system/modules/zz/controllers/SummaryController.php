@@ -37,8 +37,8 @@ class SummaryController extends Controller
     public function actionPic(){
         $defaultDate = ExtRangeDate::range(7);
 
-        $startdate = Env::getSession("startdate",$defaultDate->startDate,"zuanshi.rpt.summary");
-        $enddate = Env::getSession("enddate",$defaultDate->endDate,"zuanshi.rpt.summary");
+        $startdate = Env::getSession("startdate",$defaultDate->startDate,"zuanshi.summary.pic");
+        $enddate = Env::getSession("enddate",$defaultDate->endDate,"zuanshi.summary.pic");
 
         $criteria = new \CDbCriteria();
         $criteria->addCondition("status='0'");

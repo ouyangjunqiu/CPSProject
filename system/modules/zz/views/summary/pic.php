@@ -105,6 +105,9 @@
 
         $("#dateSetting").daterangepicker({
             locale:$.locale,
+            "dateLimit": {
+                "days": 31
+            },
             "startDate": "<?php echo date("m/d/Y",strtotime($query['startdate']));?>",
             "endDate": "<?php echo date("m/d/Y",strtotime($query['enddate']));?>",
             "minDate":"08/01/2016",
