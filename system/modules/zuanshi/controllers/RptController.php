@@ -152,15 +152,11 @@ class RptController extends Controller
         $rangeDate = ExtRangeDate::range(30);
         $beginDate = Env::getSession("begin_date",$rangeDate->startDate,"zuanshi.rpt.index");
         $endDate = Env::getSession("end_date",$rangeDate->endDate,"zuanshi.rpt.index");
-        $view = Env::getRequest("view");
 
         if(empty($nick)){
 
-            if(strtolower($view) == "json") {
-                $this->renderJson(array("data"=>array("list"=>array(),"query"=>array("nick"=>$nick,"beginDate"=>$beginDate,"endDate"=>$endDate))));
-            }else{
-                $this->render("more",array("list"=>array(),"query"=>array("nick"=>$nick,"beginDate"=>$beginDate,"endDate"=>$endDate)));
-            }
+            $this->error("请提供正确的卖家名称",$this->createUrl("/main/default/index"));
+            return;
         }
 
         $list = AccountRpt::model()->fetchAll("log_date>=? AND log_date<=? AND nick=?",array($beginDate,$endDate,$nick));
@@ -175,11 +171,9 @@ class RptController extends Controller
         }
 
 
-        if(strtolower($view) == "json") {
-            $this->renderJson(array("data"=>array("list"=>$list,"query"=>array("nick"=>$nick,"beginDate"=>$beginDate,"endDate"=>$endDate))));
-        }else{
-            $this->render("more",array("list"=>$list,"query"=>array("nick"=>$nick,"beginDate"=>$beginDate,"endDate"=>$endDate)));
-        }
+
+        $this->render("more",array("list"=>$list,"query"=>array("nick"=>\CHtml::encode($nick),"beginDate"=>$beginDate,"endDate"=>$endDate)));
+
     }
 
     public function actionHasget(){
