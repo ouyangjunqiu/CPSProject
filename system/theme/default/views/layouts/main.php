@@ -232,7 +232,7 @@ $username = (!empty($user) && isset($user["username"]))?$user["username"]:"游�
 ?>
     <script type="text/javascript">
         $.locale = {
-            "format": 'YYYY-MM-DD',
+            "format": 'MM/DD/YYYY',
             "separator": " -222 ",
             "applyLabel": "确定",
             "cancelLabel": "取消",
