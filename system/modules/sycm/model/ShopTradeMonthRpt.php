@@ -6,7 +6,7 @@
  * Time: 17:20
  */
 
-namespace application\modules\zuanshi\model;
+namespace application\modules\sycm\model;
 
 
 use cloud\core\model\Model;

@@ -8,7 +8,7 @@ use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
 use cloud\core\utils\ExtRangeDate;
 use application\modules\main\model\Shop;
-use application\modules\zuanshi\model\ShopTradeRpt;
+use application\modules\sycm\model\ShopTradeRpt;
 
 class SummaryController extends Controller
 {

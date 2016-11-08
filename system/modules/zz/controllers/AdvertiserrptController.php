@@ -10,7 +10,7 @@ namespace application\modules\zz\controllers;
 use application\modules\main\utils\ShopSearch;
 use application\modules\zz\model\AdvertiserRpt;
 use application\modules\zz\model\AdvertiserRptSource;
-use application\modules\zuanshi\model\ShopTradeRpt;
+use application\modules\sycm\model\ShopTradeRpt;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
 use cloud\core\utils\ExtRangeDate;

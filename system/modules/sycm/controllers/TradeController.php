@@ -6,7 +6,7 @@
  * Time: 17:23
  */
 
-namespace application\modules\zuanshi\controllers;
+namespace application\modules\sycm\controllers;
 
 
 use cloud\core\controllers\Controller;

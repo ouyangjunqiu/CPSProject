@@ -11,7 +11,7 @@ namespace application\modules\ztc\controllers;
 
 use application\modules\main\utils\ShopSearch;
 use application\modules\ztc\model\CustRpt;
-use application\modules\zuanshi\model\ShopTradeRpt;
+use application\modules\sycm\model\ShopTradeRpt;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
 use cloud\core\utils\ExtRangeDate;

@@ -2,8 +2,8 @@
 namespace application\modules\zuanshi\cli;
 
 use application\modules\main\model\Shop;
-use application\modules\zuanshi\model\ShopTradeMonthRpt;
-use application\modules\zuanshi\model\ShopTradeRpt;
+use application\modules\sycm\model\ShopTradeMonthRpt;
+use application\modules\sycm\model\ShopTradeRpt;
 use cloud\core\cli\Controller;
 
 class TradeController extends Controller

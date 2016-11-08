@@ -8,7 +8,7 @@
 namespace application\modules\zz\controllers;
 
 
-use application\modules\zuanshi\model\ShopTradeMonthRpt;
+use application\modules\sycm\model\ShopTradeMonthRpt;
 use application\modules\zz\model\AdvertiserMonthRpt;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;

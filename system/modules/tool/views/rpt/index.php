@@ -372,7 +372,7 @@
             dataType:"json"
         }), $.ajax({
 
-            url:'<?php echo $this->createUrl("/zuanshi/trade/getbynick");?>',
+            url:'<?php echo $this->createUrl("/sycm/trade/getbynick");?>',
             data:{
                 nick:'<?php echo $query["nick"];?>',
                 effect:15,

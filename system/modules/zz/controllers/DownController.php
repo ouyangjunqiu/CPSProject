@@ -10,7 +10,7 @@ namespace application\modules\zz\controllers;
 
 
 use application\modules\main\utils\ShopSearch;
-use application\modules\zuanshi\model\ShopTradeRpt;
+use application\modules\sycm\model\ShopTradeRpt;
 use application\modules\zz\model\AdvertiserHourRptSource;
 use application\modules\zz\model\AdvertiserRpt;
 use cloud\core\controllers\Controller;
