@@ -16,6 +16,8 @@ class AdvertiserRpt extends Model
         return parent::model($className);
     }
 
+
+
     /**
      * @return string the associated database table name
      */
@@ -50,8 +52,12 @@ class AdvertiserRpt extends Model
         return array();
     }
 
-    public static function fetchByNick($nick,$begin_date,$end_date,$effectType="click",$effect = 7){
-        $source = self::model()->fetchAll("logdate>=? AND logdate<=? AND nick=? AND effectType=? AND effect=?",array($begin_date,$end_date,$nick,$effectType,$effect));
+    /**
+     * @param $values
+     * @return array
+     */
+    private static function format($values)
+    {
         $total = array(
             "adPv"=> 0,
             "alipayInShopNum" => 0,
@@ -76,7 +82,7 @@ class AdvertiserRpt extends Model
             "days" => 0
         );
         $list = array();
-        foreach($source as $r){
+        foreach($values as $r){
             $d = date("Ymd",strtotime($r["logdate"]));
             $row = \CJSON::decode($r["data"]);
             $list[$d] = $row;
@@ -102,16 +108,32 @@ class AdvertiserRpt extends Model
         $total["alipayInshopAmt"] = round($total["alipayInshopAmt"],2);
         $total["avgCharge"] = empty($total["days"])?0:@round($total["charge"]/$total["days"],2);
         return array("list"=>$list,"total"=>$total);
+    }
 
+    public static function fetchByNick($nick,$begin_date,$end_date,$effectType="click",$effect = 7){
+        $source = self::model()->fetchAll("logdate>=? AND logdate<=? AND nick=? AND effectType=? AND effect=?",array($begin_date,$end_date,$nick,$effectType,$effect));
+        return self::format($source);
     }
 
     public static function fetchAllByNick($nick,$begin_date,$end_date,$effectType = "click"){
 
-        $result = array();
-        $e = [3,7,15];
-        foreach($e as $effect){
-            $result[$effectType.$effect] = self::fetchByNick($nick,$begin_date,$end_date,$effectType,$effect);
+        $source = self::model()->fetchAll("logdate>=? AND logdate<=? AND nick=? AND effectType=?",array($begin_date,$end_date,$nick,$effectType));
+        $data = array();
+        foreach($source as $row){
+            $data[$effectType.$row["effect"]][] = $row;
         }
+
+        $result = array();
+        foreach($data as $k=>$values){
+            $result[$k] = self::format($values);
+        }
+
+//
+//        $result = array();
+//        $e = [3,7,15];
+//        foreach($e as $effect){
+//            $result[$effectType.$effect] = self::fetchByNick($nick,$begin_date,$end_date,$effectType,$effect);
+//        }
 
         return $result;
     }
