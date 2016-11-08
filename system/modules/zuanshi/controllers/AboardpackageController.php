@@ -39,7 +39,7 @@ class AboardpackageController extends Controller
             }
         }
 
-        return $this->renderJson(array("isSuccess"=>true));
+        $this->renderJson(array("isSuccess"=>true));
 
     }
 

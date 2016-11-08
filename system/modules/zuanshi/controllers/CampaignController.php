@@ -53,4 +53,18 @@ class CampaignController extends Controller
         $this->renderJson(array("isSuccess"=>true,"data"=>$rpt));
     }
 
+    public function actionGetbudgetwarning(){
+        $nick = Env::getQueryDefault("nick","");
+
+        $rpt = CampaignHourRptSource::fetchBudgetWarningCount($nick);
+
+        if(empty($rpt)){
+            $this->renderJson(array("isSuccess"=>false,"data"=>array("list"=>array())));
+            return;
+        }
+
+        $this->renderJson(array("isSuccess"=>true,"data"=>$rpt));
+        return;
+    }
+
 }

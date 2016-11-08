@@ -66,7 +66,7 @@
 
                                 </div>
 
-                                <div class="row padding" data-tmpl="shop-campaign-budget-warning-tmpl" data-role="shop-campaign-budget-warning" data-url="<?php echo $this->createUrl("/zuanshi/dashboard/getcampaignbudgetwarning",array("nick"=>$row["nick"]));?>">
+                                <div class="row padding" data-tmpl="shop-campaign-budget-warning-tmpl" data-role="shop-campaign-budget-warning" data-url="<?php echo $this->createUrl("/zuanshi/campaign/getbudgetwarning",array("nick"=>$row["nick"]));?>">
 
                                 </div>
 <!--                                <div class="row">-->
