@@ -72,11 +72,11 @@ class SummaryController extends Controller
             );
             foreach($rpts as $rpt){
                 $summary["shopcount"] ++ ;
-                $summary["ad_pv"] += $rpt["rpt"]["click3"]["total"]["adPv"];
-                $summary["click"] += $rpt["rpt"]["click3"]["total"]["click"];
-                $summary["charge"] += $rpt["rpt"]["click3"]["total"]["charge"];
-                $summary["pay"] += $rpt["rpt"]["click3"]["total"]["alipayInshopAmt"];
-                $summary["pay7"] += $rpt["rpt"]["click7"]["total"]["alipayInshopAmt"];
+                $summary["ad_pv"] += empty($rpt["rpt"]["click3"])?0:$rpt["rpt"]["click3"]["total"]["adPv"];
+                $summary["click"] += empty($rpt["rpt"]["click3"])?0:$rpt["rpt"]["click3"]["total"]["click"];
+                $summary["charge"] += empty($rpt["rpt"]["click3"])?0:$rpt["rpt"]["click3"]["total"]["charge"];
+                $summary["pay"] += empty($rpt["rpt"]["click3"])?0:$rpt["rpt"]["click3"]["total"]["alipayInshopAmt"];
+                $summary["pay7"] += empty($rpt["rpt"]["click7"])?0:$rpt["rpt"]["click7"]["total"]["alipayInshopAmt"];
                 $summary["tradeRpt"] += $rpt["tradeRpt"]["total_pay_amt"];
             }
 
