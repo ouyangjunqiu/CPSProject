@@ -135,7 +135,7 @@
 
         $(document).ready(function(){
 
-
+            $(".top-ul>li").eq(1).addClass("top-li-hover");
 
             $("select[name=days]").change(function(){
 

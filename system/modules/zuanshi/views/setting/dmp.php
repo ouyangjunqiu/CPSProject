@@ -104,6 +104,8 @@
 
     $(document).ready(function(){
 
+        $(".top-ul>li").eq(1).addClass("top-li-hover");
+
         $("#searchBtn").click(function(){
             $(this).parents("form").submit();
         });

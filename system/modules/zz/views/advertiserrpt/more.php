@@ -99,17 +99,17 @@
             <tbody>
             <?php
 
-            $click3list = $list["click3"]["list"];
-            $click7list = $list["click7"]["list"];
-            $click15list = $list["click15"]["list"];
+            $click3list = empty($list["click3"])?array():$list["click3"]["list"];
+            $click7list = empty($list["click7"])?array():$list["click7"]["list"];
+            $click15list = empty($list["click15"])?array():$list["click15"]["list"];
 
-            $click3total = $list["click3"]["total"];
-            $click7total = $list["click7"]["total"];
-            $click15total = $list["click15"]["total"];
+            $click3total = empty($list["click3"])?array():$list["click3"]["total"];
+            $click7total = empty($list["click7"])?array():$list["click7"]["total"];
+            $click15total = empty($list["click15"])?array():$list["click15"]["total"];
 
 
             ?>
-            <?php foreach($list["click3"]["list"] as $i=>$rpt):?>
+            <?php foreach($click3list as $i=>$rpt):?>
                 <tr class="small">
                     <td><strong><?php echo @$rpt["logDate"];?></strong></td>
                     <td><?php echo @$rpt["adPv"];?></td>

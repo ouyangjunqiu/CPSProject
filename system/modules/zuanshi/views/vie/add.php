@@ -38,6 +38,9 @@
 <script type="text/javascript">
 
     $(document).ready(function() {
+
+        $(".top-ul>li").eq(1).addClass("top-li-hover");
+
         var s = function(){
             var a = $("#shops-area-control").val().split("\n");
             var shops = [];

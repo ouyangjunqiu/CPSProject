@@ -38,7 +38,7 @@
 
     $(document).ready(function() {
 
-        $(".top-ul>li").eq(0).addClass("top-li-hover");
+        $(".top-ul>li").eq(1).addClass("top-li-hover");
 
         $("#searchBtn").click(function () {
             window.location.href = '<?php echo $this->createUrl("/main/default/index");?>';

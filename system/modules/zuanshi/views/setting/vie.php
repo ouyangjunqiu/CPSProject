@@ -141,6 +141,9 @@
 
     $(document).ready(function(){
 
+        $(".top-ul>li").eq(1).addClass("top-li-hover");
+
+
         $("select[name=days]").change(function(){
 
             $("#shop-vie-search-form").find("input[name=days]").val($(this).val());

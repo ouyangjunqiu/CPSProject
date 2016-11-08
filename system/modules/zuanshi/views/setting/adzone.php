@@ -129,6 +129,8 @@
 
     $(document).ready(function(){
 
+        $(".top-ul>li").eq(1).addClass("top-li-hover");
+
         $("#backBtn").click(function(){
             window.location.href='<?php echo $this->createUrl("/zuanshi/setting/index2",array("nick"=>$query["nick"]));?>';
         });
