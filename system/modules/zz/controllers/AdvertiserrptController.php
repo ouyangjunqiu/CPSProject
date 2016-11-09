@@ -118,4 +118,29 @@ class AdvertiserrptController extends Controller
 
     }
 
+    public function actionGetbylist(){
+        $nick = Env::getRequest("nick");
+        $logdate = Env::getRequest("logdate");
+        $effect = Env::getQueryDefault("effect",15);
+        if(empty($nick) || empty($logdate) || !is_array($nick) || count($nick)>200){
+            $this->renderJson(array("isSuccess"=>false,"msg"=>"请提供正确的参数！"));
+            return;
+        }
+
+        $c = new \CDbCriteria();
+        $c->addCondition("logdate='{$logdate}'");
+        $c->addInCondition("nick",$nick);
+        $c->addCondition("effectType='click'");
+        $c->addCondition("effect='{$effect}'");
+        $source = AdvertiserRpt::model()->fetchAll($c);
+        $result = array();
+        foreach($source as $row){
+            $rpt = \CJSON::decode($row["data"]);
+            $rpt["nick"] = $row["nick"];
+            $result[] = $rpt;
+        }
+        $this->renderJson(array("isSuccess"=>true,"data"=>$result));
+        return;
+    }
+
 }
