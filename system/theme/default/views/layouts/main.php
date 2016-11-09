@@ -11,12 +11,6 @@
 	<meta name="copyright" content="" />
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-    <?php
-    /** @var \CClientScript $cs */
-   // $cs = Yii::app()->clientScript;
-   // $cs->registerCoreScript("jquery");
-    ?>
-
 	<!-- load css -->
 	<link rel="stylesheet" href="<?php echo STATICURL.'/base/bootstrap/css/bootstrap.min.css'; ?>" />
     <link rel="stylesheet" href="<?php echo STATICURL.'/base/js/plugins/datatables/dataTables.bootstrap.css'; ?>" />
@@ -67,8 +61,6 @@
         </script>
 
     <?php endif;?>
-    <!-- AdminLTE App -->
-    <!--    <script src="dist/js/app.min.js"></script>-->
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -194,37 +186,21 @@
 </div>
 
     <div class="scroll-top-box" style="display: none;">  </div>
-<!-- REQUIRED JS SCRIPTS -->
 
-
-
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
-<script src='<?php echo STATICURL."/base//bootstrap/js/bootstrap.min.js?v3"; ?>'></script>
-<script src='<?php echo STATICURL."/base/js/plugins/tmpl/jquery.tmpl.min.js"; ?>'></script>
-<script src='<?php echo STATICURL."/base/js/plugins/draggable/jquery-ui-1.10.4.custom.min.js"; ?>'></script>
-<script src='<?php echo STATICURL."/base/js/plugins/jquery-artDialog/jquery.artDialog.js"; ?>'></script>
-<script src='<?php echo STATICURL."/base/js/plugins/jquery-showLoading/jquery.showLoading.min.js"; ?>'></script>
-<script src='<?php echo STATICURL."/base/js/plugins/highcharts.js"; ?>'></script>
-<script src='<?php echo STATICURL."/base/js/plugins/select2/select2.min.js"; ?>'></script>
-
+    <script src='<?php echo STATICURL."/base//bootstrap/js/bootstrap.min.js?v3"; ?>'></script>
+    <script src='<?php echo STATICURL."/base/js/plugins/tmpl/jquery.tmpl.min.js"; ?>'></script>
+    <script src='<?php echo STATICURL."/base/js/plugins/draggable/jquery-ui-1.10.4.custom.min.js"; ?>'></script>
+    <script src='<?php echo STATICURL."/base/js/plugins/jquery-artDialog/jquery.artDialog.js"; ?>'></script>
+    <script src='<?php echo STATICURL."/base/js/plugins/jquery-showLoading/jquery.showLoading.min.js"; ?>'></script>
+    <script src='<?php echo STATICURL."/base/js/plugins/highcharts.js"; ?>'></script>
+    <script src='<?php echo STATICURL."/base/js/plugins/select2/select2.min.js"; ?>'></script>
     <script src='<?php echo STATICURL."/base/bootstrap-daterangepicker/moment.min.js"; ?>'></script>
     <script src='<?php echo STATICURL."/base/bootstrap-daterangepicker/daterangepicker.js"; ?>'></script>
 
-<script src='<?php echo STATICURL."/base/js/plugins/datatables/jquery.dataTables.min.js"; ?>'></script>
-<script src='<?php echo STATICURL."/base/js/plugins/datatables/dataTables.bootstrap.min.js"; ?>'></script>
     <script src='<?php echo STATICURL."/base/js/plugins/jquery-shiftcheckbox/jquery.shiftcheckbox.js"; ?>'></script>
-
-<script src='<?php echo STATICURL."/base/js/plugins/freezeheader/jquery.freezeheader.js"; ?>'></script>
-
+    <script src='<?php echo STATICURL."/base/js/plugins/freezeheader/jquery.freezeheader.js"; ?>'></script>
     <script src='<?php echo STATICURL."/base/js/plugins/dropify/js/dropify.min.js"; ?>'></script>
-
-<!--    <script src='--><?php //echo STATICURL."/base/js/plugins/tinymce/tinymce.min.js"; ?><!--'></script>-->
-
     <script src='<?php echo STATICURL."/base/js/layout.js"; ?>'></script>
-    <script src='<?php echo STATICURL."/base/js/score.js"; ?>'></script>
 
 <?php
 $user = \cloud\core\utils\Env::getUser();
@@ -321,7 +297,6 @@ $username = (!empty($user) && isset($user["username"]))?$user["username"]:"æ¸¸å®
             $(".nav li.my-todo a").click(function(){
                 $("#my-todo-wrap").show();
 
-                //$("#my-todo-wrap [data-role=my-todo]").css("height",$(window).height()+"px");
                 $("#my-todo-wrap [data-role=my-todo]").iLoad();
 
             });

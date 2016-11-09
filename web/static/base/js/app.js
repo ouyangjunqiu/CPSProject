@@ -1,5 +1,3 @@
-
-
 var CPS = {};
 var app = {};
 (function($) {
