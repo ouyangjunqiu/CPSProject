@@ -42,6 +42,9 @@ class TodoController extends Controller
                     "creator"=>"小蜜",
                     "create_time"=>date("Y-m-d H:i:s")
                 ));
+                if(!$model->save()){
+                    print_r($model->getErrors());
+                }
             }
 
 
@@ -78,6 +81,9 @@ class TodoController extends Controller
                     "creator"=>"小蜜",
                     "create_time"=>date("Y-m-d H:i:s")
                 ));
+                if(!$model->save()){
+                    print_r($model->getErrors());
+                }
             }
 
 
