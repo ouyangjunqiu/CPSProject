@@ -33,12 +33,12 @@ class TradeController extends Controller
 
         foreach($trades as $trade){
             $logdate = date("Y-m-d",strtotime("-{$i} day"));
-            if($i>=7){
+            if($i>=3){
                 $exits = ShopTradeRpt::model()->exists("log_date=? AND shopname=?",array($logdate,$shopname));
                 if($exits)
                     continue;
             }
-            
+
             ShopTradeRpt::model()->deleteAll("log_date=? AND shopname=?",array($logdate,$shopname));
             $model = new ShopTradeRpt();
             $model->setAttributes(array(
@@ -66,7 +66,7 @@ class TradeController extends Controller
             $this->renderJson(array("isSuccess" => true,"hasget"=>false));
         }else{
             $createtime = strtotime($rpt["create_date"]);
-            if(time() - $createtime >= 3600){
+            if((time() - $createtime) >= 3600){
                 $this->renderJson(array("isSuccess" => true,"hasget"=>false));
             }else{
                 $this->renderJson(array("isSuccess" => true,"hasget"=>true));
