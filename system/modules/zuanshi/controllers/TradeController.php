@@ -33,11 +33,11 @@ class TradeController extends Controller
 
         foreach($trades as $trade){
             $logdate = date("Y-m-d",strtotime("-{$i} day"));
-            if($i>=3){
-                $exits = ShopTradeRpt::model()->exists("log_date=? AND shopname=?",array($logdate,$shopname));
-                if($exits)
-                    continue;
-            }
+//            if($i>=3){
+//                $exits = ShopTradeRpt::model()->exists("log_date=? AND shopname=?",array($logdate,$shopname));
+//                if($exits)
+//                    continue;
+//            }
 
             ShopTradeRpt::model()->deleteAll("log_date=? AND shopname=?",array($logdate,$shopname));
             $model = new ShopTradeRpt();
