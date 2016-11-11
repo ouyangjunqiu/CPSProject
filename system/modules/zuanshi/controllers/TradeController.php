@@ -33,6 +33,12 @@ class TradeController extends Controller
 
         foreach($trades as $trade){
             $logdate = date("Y-m-d",strtotime("-{$i} day"));
+            if($i>=3){
+                $exits = ShopTradeRpt::model()->exists("log_date=? AND shopname=?",array($logdate,$shopname));
+                if($exits)
+                    continue;
+            }
+
             ShopTradeRpt::model()->deleteAll("log_date=? AND shopname=?",array($logdate,$shopname));
             $model = new ShopTradeRpt();
             $model->setAttributes(array(
@@ -46,6 +52,7 @@ class TradeController extends Controller
                 "create_date" => date("Y-m-d H:i:s")
             ));
             $model->save();
+
             $i++;
         }
 
@@ -54,8 +61,18 @@ class TradeController extends Controller
 
     public function actionHasget(){
         $nick = Env::getRequest("nick");
-        $hasget =  ShopTradeRpt::model()->exists("log_date=? AND shopname=?",array(date("Y-m-d",strtotime("-1 day")),$nick));
-        $this->renderJson(array("isSuccess" => true,"hasget"=>$hasget>0?true:false));
+        $rpt =  ShopTradeRpt::model()->fetch("log_date=? AND shopname=?",array(date("Y-m-d",strtotime("-1 day")),$nick));
+        if(empty($rpt)){
+            $this->renderJson(array("isSuccess" => true,"hasget"=>false));
+        }else{
+            $createtime = strtotime($rpt["create_date"]);
+            if((time() - $createtime) >= 3600){
+                $this->renderJson(array("isSuccess" => true,"hasget"=>false));
+            }else{
+                $this->renderJson(array("isSuccess" => true,"hasget"=>true));
+            }
+        }
+
     }
 
     public function actionGetbynick(){
