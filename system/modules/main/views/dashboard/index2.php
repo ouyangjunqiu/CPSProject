@@ -90,76 +90,76 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-lg-3 col-xs-6">
-
-            <div class="small-box bg-blue">
-                <div class="inner">
-                    <h3>
-                        <?php echo $summary["ztc_zuanshi_total"];?>
-                    </h3>
-                    <p>
-                        直钻业务
-                    </p>
-
-                </div>
-                <a href="<?php echo $this->createUrl("/main/default/index",array("q"=>"直钻业务","pic"=>"","page"=>1));?>" class="small-box-footer">
-                    查看详细 <i class="fa fa-arrow-circle-right"></i>
-                </a>
-            </div>
-        </div>
-        <div class="col-lg-3 col-xs-6">
-
-            <div class="small-box bg-purple">
-                <div class="inner">
-                    <h3>
-                        <?php echo $summary["ztc_total"];?>
-                    </h3>
-                    <p>
-                        直通车业务
-                    </p>
-                </div>
-
-                <a href="<?php echo $this->createUrl("/main/default/index",array("q"=>"直通车业务","pic"=>"","page"=>1));?>" class="small-box-footer">
-                    查看详细 <i class="fa fa-arrow-circle-right"></i>
-                </a>
-            </div>
-        </div>
-        <div class="col-lg-3 col-xs-6">
-
-            <div class="small-box bg-teal">
-                <div class="inner">
-                    <h3>
-                        <?php echo $summary["zuanshi_total"];?>
-                    </h3>
-                    <p>
-                        钻展业务
-                    </p>
-                </div>
-
-                <a href="<?php echo $this->createUrl("/main/default/index",array("q"=>"钻展业务","pic"=>"","page"=>1));?>" class="small-box-footer">
-                    查看详细 <i class="fa fa-arrow-circle-right"></i>
-                </a>
-            </div>
-        </div>
-        <div class="col-lg-3 col-xs-6">
-
-            <div class="small-box bg-maroon">
-                <div class="inner">
-                    <h3>
-                        <?php echo $summary["opentotal"]-$summary["ztc_zuanshi_total"]-$summary["zuanshi_total"]-$summary["ztc_total"];?>
-                    </h3>
-                    <p>
-                        其它业务
-                    </p>
-
-                </div>
-                <a href="<?php echo $this->createUrl("/main/default/index",array("q"=>"其它业务","pic"=>"","page"=>1));?>" class="small-box-footer">
-                    查看详细 <i class="fa fa-arrow-circle-right"></i>
-                </a>
-            </div>
-        </div>
-    </div>
+<!--    <div class="row">-->
+<!--        <div class="col-lg-3 col-xs-6">-->
+<!---->
+<!--            <div class="small-box bg-blue">-->
+<!--                <div class="inner">-->
+<!--                    <h3>-->
+<!--                        --><?php //echo $summary["ztc_zuanshi_total"];?>
+<!--                    </h3>-->
+<!--                    <p>-->
+<!--                        直钻业务-->
+<!--                    </p>-->
+<!---->
+<!--                </div>-->
+<!--                <a href="--><?php //echo $this->createUrl("/main/default/index",array("q"=>"直钻业务","pic"=>"","page"=>1));?><!--" class="small-box-footer">-->
+<!--                    查看详细 <i class="fa fa-arrow-circle-right"></i>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col-lg-3 col-xs-6">-->
+<!---->
+<!--            <div class="small-box bg-purple">-->
+<!--                <div class="inner">-->
+<!--                    <h3>-->
+<!--                        --><?php //echo $summary["ztc_total"];?>
+<!--                    </h3>-->
+<!--                    <p>-->
+<!--                        直通车业务-->
+<!--                    </p>-->
+<!--                </div>-->
+<!---->
+<!--                <a href="--><?php //echo $this->createUrl("/main/default/index",array("q"=>"直通车业务","pic"=>"","page"=>1));?><!--" class="small-box-footer">-->
+<!--                    查看详细 <i class="fa fa-arrow-circle-right"></i>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col-lg-3 col-xs-6">-->
+<!---->
+<!--            <div class="small-box bg-teal">-->
+<!--                <div class="inner">-->
+<!--                    <h3>-->
+<!--                        --><?php //echo $summary["zuanshi_total"];?>
+<!--                    </h3>-->
+<!--                    <p>-->
+<!--                        钻展业务-->
+<!--                    </p>-->
+<!--                </div>-->
+<!---->
+<!--                <a href="--><?php //echo $this->createUrl("/main/default/index",array("q"=>"钻展业务","pic"=>"","page"=>1));?><!--" class="small-box-footer">-->
+<!--                    查看详细 <i class="fa fa-arrow-circle-right"></i>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col-lg-3 col-xs-6">-->
+<!---->
+<!--            <div class="small-box bg-maroon">-->
+<!--                <div class="inner">-->
+<!--                    <h3>-->
+<!--                        --><?php //echo $summary["opentotal"]-$summary["ztc_zuanshi_total"]-$summary["zuanshi_total"]-$summary["ztc_total"];?>
+<!--                    </h3>-->
+<!--                    <p>-->
+<!--                        其它业务-->
+<!--                    </p>-->
+<!---->
+<!--                </div>-->
+<!--                <a href="--><?php //echo $this->createUrl("/main/default/index",array("q"=>"其它业务","pic"=>"","page"=>1));?><!--" class="small-box-footer">-->
+<!--                    查看详细 <i class="fa fa-arrow-circle-right"></i>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
     <div class="row">
         <div class="col-lg-6">
             <div class="panel panel-info">

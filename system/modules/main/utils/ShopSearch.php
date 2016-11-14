@@ -35,7 +35,7 @@ class ShopSearch {
                 if(preg_match("/助理/",$o)){
                     $condition = "(sub_pic LIKE '%1%')";
                 }else{
-                    $condition = "(shopname LIKE '%{$o}%' OR shopcatname LIKE '%{$o}%' OR shoptype LIKE '%{$o}%' OR nick LIKE '%{$o}%' OR pic LIKE '%{$o}%' OR zuanshi_pic LIKE '%{$o}%' OR bigdata_pic LIKE '%{$o}%' OR ztc_pic  LIKE '%{$o}%')";
+                    $condition = "(shopname LIKE '%{$o}%' OR shopcatname LIKE '%{$o}%' OR nick LIKE '%{$o}%' OR pic LIKE '%{$o}%' OR zuanshi_pic LIKE '%{$o}%' OR bigdata_pic LIKE '%{$o}%' OR ztc_pic  LIKE '%{$o}%')";
                 }
                 $criteria->addCondition($condition);
             }
@@ -79,7 +79,7 @@ class ShopSearch {
             $arr = explode(",",$q);
 
             foreach($arr as $o){
-                $condition = "(shopname LIKE '%{$o}%' OR shopcatname LIKE '%{$o}%' OR shoptype LIKE '%{$o}%' OR nick LIKE '%{$o}%' OR pic LIKE '%{$o}%' OR zuanshi_pic LIKE '%{$o}%' OR bigdata_pic LIKE '%{$o}%' OR ztc_pic  LIKE '%{$o}%')";
+                $condition = "(shopname LIKE '%{$o}%' OR shopcatname LIKE '%{$o}%' OR nick LIKE '%{$o}%' OR pic LIKE '%{$o}%' OR zuanshi_pic LIKE '%{$o}%' OR bigdata_pic LIKE '%{$o}%' OR ztc_pic  LIKE '%{$o}%')";
                 $criteria->addCondition($condition);
             }
         }

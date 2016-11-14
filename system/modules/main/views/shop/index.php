@@ -38,9 +38,9 @@
                     <tr><td>智钻顾问:</td><td> <input type="text" class="form-control" name="zuanshi_pic"></td><td></td></tr>
                     <tr><td>直通车顾问:</td><td> <input type="text" class="form-control" name="ztc_pic"></td><td></td></tr>
                     <tr><td>数据顾问:</td><td> <input type="text" class="form-control" name="bigdata_pic"></td><td></td></tr>
-                    <tr><td>合作业务：</td><td>
-                            <?php echo CHtml::dropDownList("shoptype","直钻业务",\application\modules\main\model\Shop::$saleTypes,array("class"=>"form-control"));?>
-                          </td><td></td></tr>
+<!--                    <tr><td>合作业务：</td><td>-->
+<!--                            --><?php //echo CHtml::dropDownList("shoptype","直钻业务",\application\modules\main\model\Shop::$saleTypes,array("class"=>"form-control"));?>
+<!--                          </td><td></td></tr>-->
 <!--                    <tr><td>竞争店铺:</td><td> <input type="text" class="form-control" name="jingzheng"></td><td></td></tr>-->
                     <tr><td><button type="button" class="btn btn-primary" data-click="shopbtn">保存</button></td><td></td><td></td></tr>
                 </tbody>

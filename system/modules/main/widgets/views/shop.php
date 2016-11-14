@@ -189,8 +189,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <p class="babyinfor-frame-tit"><a href="<?php echo $row["shopurl"];?>" target="_blank"><?php echo $row["nick"];?> </a>
-                                    <?php if(!empty($row["shoptype"])):?>
-                                        <o class="tit"><?php echo $row["shoptype"];?></o>
+                                    <?php if(!empty($row["shopcatname"])):?>
+                                        <o class="tit"><?php echo $row["shopcatname"];?></o>
                                     <?php endif;?>
                                 </p>
                             </div>
@@ -247,20 +247,6 @@
                                 </span>
                                 <span class="pic_input form_writer" style="display: none">
                                     <input type="text" value="<?php echo $row["login_password"];?>" name="login_password"/>
-                                </span>
-                            </div>
-                            <div class="col-md-2">
-
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3"><small>合作业务:</small></div>
-                            <div class="col-md-7">
-                                <span class="pic_read">
-                                    <strong><?php echo $row["shoptype"];?></strong>
-                                </span>
-                                <span class="pic_input" style="display: none">
-                                    <?php echo CHtml::dropDownList("shoptype", $row["shoptype"],\application\modules\main\model\Shop::$saleTypes);?>
                                 </span>
                             </div>
                             <div class="col-md-2">
