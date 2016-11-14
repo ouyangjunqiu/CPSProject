@@ -27,7 +27,6 @@ class BudgetController extends Controller
     public function actionSet(){
         $nick = Env::getRequest("nick");
         $attr["nick"] = trim($nick);
-        $attr["planid"] = md5($nick);
         $ztc_budget = Env::getRequest("ztc_budget");
         if(isset($ztc_budget) && $ztc_budget>=0){
             $attr["ztc_budget"] = $ztc_budget;
