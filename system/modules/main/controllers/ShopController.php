@@ -41,7 +41,7 @@ class ShopController extends Controller
         $bigdata_pic = Env::getRequest("bigdata_pic");
         $bigdata_pic = StringUtil::tagFormat($bigdata_pic);
         $sub_pic = Env::getRequest("sub_pic");
-        $sub_pic = \CJSON::encode($sub_pic);
+        $sub_pic = StringUtil::tagFormat($sub_pic);
 
         $model = Shop::model()->find("nick=?", array($nick));
         if (empty($model)) {

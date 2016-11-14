@@ -89,32 +89,13 @@
                             </div>
                         </div>
                         <div class="row">
-                            <?php $subPic = \CJSON::decode($row["sub_pic"]);?>
                             <div class="col-md-4"><small>推广助理:</small></div>
                             <div class="col-md-6">
                                 <span class="pic_read">
-                                    <small>
-                                    <?php
-
-                                        if(isset($subPic["ztc"]) && $subPic["ztc"]){
-                                            echo "<i class='glyphicon glyphicon-ok' style='color: #00a65a'></i> 直通车 ";
-                                        }
-                                        if(isset($subPic["zuanshi"]) && $subPic["zuanshi"]){
-                                            echo "<i class='glyphicon glyphicon-ok' style='color: #00a65a'></i> 智钻 ";
-                                        }
-
-                                        ?>
-                                    </small>
+                                    <strong><?php echo $row["sub_pic"];?></strong>
                                 </span>
                                 <span class="pic_input" style="display: none">
-                                 <div class="checkbox">
-                                     <label>
-                                         <input type="checkbox" name="sub_pic[ztc]" value="1" <?php if(isset($subPic["ztc"]) && $subPic["ztc"]):?>checked<?php endif;?>> 直通车
-                                     </label>
-                                     <label>
-                                         <input type="checkbox" name="sub_pic[zuanshi]" value="1" <?php if(isset($subPic["zuanshi"]) && $subPic["zuanshi"]):?>checked<?php endif;?>> 智钻
-                                     </label>
-                                 </div>
+                                    <input type="text" value="<?php echo $row["sub_pic"];?>" name="sub_pic"/>
                                 </span>
                             </div>
                             <div class="col-md-2">
