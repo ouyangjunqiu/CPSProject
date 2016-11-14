@@ -94,7 +94,7 @@
                                 <span class="pic_read">
                                     <strong><?php echo $row["sub_pic"];?></strong>
                                 </span>
-                                <span class="pic_input" style="display: none">
+                                <span class="pic_input form_writer" style="display: none">
                                     <input type="text" value="<?php echo $row["sub_pic"];?>" name="sub_pic"/>
                                 </span>
                             </div>
