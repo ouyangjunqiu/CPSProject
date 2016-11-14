@@ -24,7 +24,7 @@ class ShopSearch {
         $criteria = new \CDbCriteria();
         $criteria->addCondition("status='0'");
         if(!empty($pic)) {
-            $criteria->addCondition("(pic LIKE '%{$pic}%' OR zuanshi_pic LIKE '%{$pic}%' OR bigdata_pic LIKE '%{$pic}%' OR ztc_pic  LIKE '%{$pic}%')");
+            $criteria->addCondition("(pic LIKE '%{$pic}%' OR zuanshi_pic LIKE '%{$pic}%' OR bigdata_pic LIKE '%{$pic}%' OR ztc_pic  LIKE '%{$pic}%' OR sub_pic  LIKE '%{$pic}%')");
         }
         if(!empty($q)) {
 
@@ -32,11 +32,8 @@ class ShopSearch {
             $arr = explode(",",$q);
 
             foreach($arr as $o){
-                if(preg_match("/助理/",$o)){
-                    $condition = "(sub_pic LIKE '%1%')";
-                }else{
-                    $condition = "(shopname LIKE '%{$o}%' OR shopcatname LIKE '%{$o}%' OR nick LIKE '%{$o}%' OR pic LIKE '%{$o}%' OR zuanshi_pic LIKE '%{$o}%' OR bigdata_pic LIKE '%{$o}%' OR ztc_pic  LIKE '%{$o}%')";
-                }
+
+                $condition = "(shopname LIKE '%{$o}%' OR shopcatname LIKE '%{$o}%' OR nick LIKE '%{$o}%' OR pic LIKE '%{$o}%' OR zuanshi_pic LIKE '%{$o}%' OR bigdata_pic LIKE '%{$o}%' OR ztc_pic  LIKE '%{$o}%' OR sub_pic  LIKE '%{$o}%')";
                 $criteria->addCondition($condition);
             }
         }
@@ -72,14 +69,14 @@ class ShopSearch {
         $criteria = new \CDbCriteria();
         $criteria->addCondition("status='0'");
         if(!empty($pic)) {
-            $criteria->addCondition("(pic LIKE '%{$pic}%' OR zuanshi_pic LIKE '%{$pic}%' OR bigdata_pic LIKE '%{$pic}%' OR ztc_pic  LIKE '%{$pic}%')");
+            $criteria->addCondition("(pic LIKE '%{$pic}%' OR zuanshi_pic LIKE '%{$pic}%' OR bigdata_pic LIKE '%{$pic}%' OR ztc_pic  LIKE '%{$pic}%' OR sub_pic  LIKE '%{$pic}%')");
         }
         if(!empty($q)) {
             $q = StringUtil::tagFormat($q);
             $arr = explode(",",$q);
 
             foreach($arr as $o){
-                $condition = "(shopname LIKE '%{$o}%' OR shopcatname LIKE '%{$o}%' OR nick LIKE '%{$o}%' OR pic LIKE '%{$o}%' OR zuanshi_pic LIKE '%{$o}%' OR bigdata_pic LIKE '%{$o}%' OR ztc_pic  LIKE '%{$o}%')";
+                $condition = "(shopname LIKE '%{$o}%' OR shopcatname LIKE '%{$o}%' OR nick LIKE '%{$o}%' OR pic LIKE '%{$o}%' OR zuanshi_pic LIKE '%{$o}%' OR bigdata_pic LIKE '%{$o}%' OR ztc_pic  LIKE '%{$o}%' OR sub_pic  LIKE '%{$o}%')";
                 $criteria->addCondition($condition);
             }
         }
