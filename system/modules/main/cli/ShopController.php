@@ -43,6 +43,8 @@ class ShopController extends Controller
             if(!$shop->save()){
                 print_r($shop);
             }
+
+            ShopBudget::model()->deleteAll("nick=?",array($shop->nick));
         }
     }
 

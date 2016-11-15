@@ -38,10 +38,10 @@ class ShopBudgetLog extends Model {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('logdate,nick,budget,ztc_budget,zuanshi_budget,tags', 'safe'),
+            array('logdate,nick,ztc_budget,zuanshi_budget,tags', 'safe'),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('nick, budget,ztc_budget,zuanshi_budget,tags', 'safe', 'on'=>'search'),
+            array('nick,ztc_budget,zuanshi_budget,tags', 'safe', 'on'=>'search'),
         );
     }
 
