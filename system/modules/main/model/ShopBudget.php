@@ -40,10 +40,10 @@ class ShopBudget extends Model {
         return array(
             array('nick','unique'),
 
-            array('budget,ztc_budget,zuanshi_budget,tags', 'safe'),
+            array('ztc_budget,zuanshi_budget,tags', 'safe'),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('nick, budget,ztc_budget,zuanshi_budget,tags', 'safe', 'on'=>'search'),
+            array('nick,ztc_budget,zuanshi_budget,tags', 'safe', 'on'=>'search'),
         );
     }
 
