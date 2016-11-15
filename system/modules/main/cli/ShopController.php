@@ -8,6 +8,8 @@
 namespace application\modules\main\cli;
 
 use application\modules\main\model\Shop;
+use application\modules\main\model\ShopBudget;
+use application\modules\main\model\ShopBudgetLog;
 use application\modules\main\model\ShopLog;
 use cloud\core\cli\Controller;
 
@@ -40,6 +42,24 @@ class ShopController extends Controller
 
             if(!$shop->save()){
                 print_r($shop);
+            }
+        }
+    }
+
+    public function actionBudgetlog(){
+        $source = ShopBudget::model()->fetchAll();
+        foreach($source as $row)
+        {
+            unset($row["id"]);
+            $row["logdate"] = date("Y-m-d");
+
+            ShopBudgetLog::model()->deleteAll("logdate=? AND nick=?",array($row["logdate"],$row["nick"]));
+
+            $model = new ShopBudgetLog();
+            $model->setIsNewRecord(true);
+            $model->setAttributes($row);
+            if(!$model->save()){
+                print_r($model);
             }
         }
     }
