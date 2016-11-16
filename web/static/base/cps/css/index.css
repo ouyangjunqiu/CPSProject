@@ -50,7 +50,7 @@
 .table-frame tbody tr td{ border-bottom: 1px solid #e6e6e6;}
 /*.index-table-div .table-frame tbody tr:nth-child(even) td {  border-top:1px solid #ccc }*/
 /*.index-table-div .table-frame tbody tr:nth-child(odd) { border-bottom:1px solid #ccc}*/
-.index-table-div{padding: 15px 50px 50px 50px; position: relative; background: #fff; min-height: 680px;min-width: 1024px;}
+.index-table-div{padding: 15px 50px 50px 50px; position: relative; background: #fff; min-height: 680px;min-width: 1200px;}
 .babyinfor-frame-img .baby-img{ width: 190px;}
 .babyinfor-frame-text .babyinfor-mode-tit{ font-weight: bold;font-size: 14px;}
 .babyinfor-mode-span{ background:#fb6e50;  color: #fff; font-size: 14px;  text-align: center; padding: 3px 8px 3px 8px;}
