@@ -32,43 +32,82 @@
 
         </div>
         <div class="col-md-8">
-            <form action="<?php echo $this->createUrl("/tool/data/down");?>" role="form" id="data-task-request-form">
-                <div class="form-group">
-                    <small>报表类型:</small>
-                    <?php echo \CHtml::dropDownList("datatype","",$query["dataType"],array("class"=>"form-control"));?>
+
+            <ul class="nav nav-tabs shop-nav" role="tablist">
+                <li role="presentation" class="active"><a href="#category_task_request_panel" title="类目报表" aria-controls="category_task_request_panel" role="tab" data-toggle="tab" aria-expanded="true">
+                        类目报表</a>
+                </li>
+                <li role="presentation"><a href="#shop_task_request_panel" data-type="file" title="店铺报表" aria-controls="shop_task_request_panel" role="tab" data-toggle="tab" aria-expanded="true">
+                        店铺报表</a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+
+                <div role="tabpanel" class="tab-pane active" id="category_task_request_panel">
+                    <form action="<?php echo $this->createUrl("/tool/data/down");?>" role="form" id="data-category-task-request-form">
+                        <div class="form-group">
+                            <small>报表类型:</small>
+                            <?php echo \CHtml::dropDownList("datatype","",$query["categoryTaskType"],array("class"=>"form-control"));?>
+                        </div>
+                        <div class="form-group">
+                            <small>日期:</small>
+                            <div class="input-group" data-role="dateSetting">
+                                <span class="input-group-addon"> <i class="glyphicon glyphicon-calendar"></i> </span>
+                                <input type="text" class="form-control" data-role="dateview" value="<?php echo $query['beginDate'];?> ~ <?php echo $query['endDate'];?>">
+                                <span class="input-group-addon"><b class="caret"></b></span>
+                            </div>
+                            <input type="hidden" name="begin_time" value="<?php echo $query['beginDate'];?>">
+                            <input type="hidden" name="end_time" value="<?php echo $query['endDate'];?>">
+                        </div>
+                        <div class="form-group">
+                            <small>主营行业:</small>
+                            <select class="selectpicker" data-role="categoryname" name="categoryname[]" data-placeholder="" style="width: 100%"  multiple="multiple">
+                                <option value=""></option>
+                                <?php foreach($catgorynames as $k=>$r):?>
+                                    <option value="<?php echo $r;?>"><?php echo $r;?></option>
+                                <?php endforeach;?>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary" data-click="save">创建下载任务</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <small>日期:</small>
-                    <div class="input-group" data-role="dateSetting">
-                        <span class="input-group-addon"> <i class="glyphicon glyphicon-calendar"></i> </span>
-                        <input type="text" class="form-control" data-role="dateview" value="<?php echo $query['beginDate'];?> ~ <?php echo $query['endDate'];?>">
-                        <span class="input-group-addon"><b class="caret"></b></span>
-                    </div>
-                    <input type="hidden" name="begin_time" value="<?php echo $query['beginDate'];?>">
-                    <input type="hidden" name="end_time" value="<?php echo $query['endDate'];?>">
+                <div role="tabpanel" class="tab-pane" id="shop_task_request_panel">
+                    <form action="<?php echo $this->createUrl("/tool/data/down");?>" role="form" id="data-shop-task-request-form">
+                        <div class="form-group">
+                            <small>报表类型:</small>
+                            <?php echo \CHtml::dropDownList("datatype","",$query["shopTaskType"],array("class"=>"form-control"));?>
+                        </div>
+                        <div class="form-group">
+                            <small>日期:</small>
+                            <div class="input-group" data-role="dateSetting">
+                                <span class="input-group-addon"> <i class="glyphicon glyphicon-calendar"></i> </span>
+                                <input type="text" class="form-control" data-role="dateview" value="<?php echo $query['beginDate'];?> ~ <?php echo $query['endDate'];?>">
+                                <span class="input-group-addon"><b class="caret"></b></span>
+                            </div>
+                            <input type="hidden" name="begin_time" value="<?php echo $query['beginDate'];?>">
+                            <input type="hidden" name="end_time" value="<?php echo $query['endDate'];?>">
+                        </div>
+
+                        <div class="form-group">
+                            <small>店铺:</small>
+                            <select class="selectpicker" data-role="shopname" name="shopname[]" data-placeholder="" style="width: 100%"  multiple="multiple">
+                                <option value=""></option>
+                                <?php foreach($shopnames as $k=>$r):?>
+                                    <option value="<?php echo $r;?>"><?php echo $r;?></option>
+                                <?php endforeach;?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary" data-click="save">创建下载任务</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <small>主营行业:</small>
-                    <select class="selectpicker" data-role="categoryname" name="categoryname[]" data-placeholder="" style="width: 100%"  multiple="multiple">
-                        <option value=""></option>
-                        <?php foreach($catgorynames as $k=>$r):?>
-                            <option value="<?php echo $r;?>"><?php echo $r;?></option>
-                        <?php endforeach;?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <small>店铺:</small>
-                    <select class="selectpicker" data-role="shopname" name="shopname[]" data-placeholder="" style="width: 100%"  multiple="multiple">
-                        <option value=""></option>
-                        <?php foreach($shopnames as $k=>$r):?>
-                            <option value="<?php echo $r;?>"><?php echo $r;?></option>
-                        <?php endforeach;?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <button type="button" class="btn btn-primary" data-click="save">创建下载任务</button>
-                </div>
-            </form>
+            </div>
+
         </div>
         <div class="col-md-2">
 
@@ -142,23 +181,23 @@
 
         $(".top-ul>li").eq(3).addClass("top-li-hover");
 
-        $("#data-task-request-form [data-role=dateSetting]").daterangepicker({
+        $("#data-category-task-request-form [data-role=dateSetting]").daterangepicker({
             locale:$.locale,
             "startDate": "<?php echo date("m/d/Y",strtotime($query['beginDate']));?>",
             "endDate": "<?php echo date("m/d/Y",strtotime($query['endDate']));?>",
             "maxDate":"<?php echo date("m/d/Y",strtotime("-1 days"));?>"
         },function (start,end){
-            $("#data-task-request-form input[data-role=dateview]").val(start.format('YYYY-MM-DD')+" ~ "+end.format('YYYY-MM-DD'));
+            $("#data-category-task-request-form input[data-role=dateview]").val(start.format('YYYY-MM-DD')+" ~ "+end.format('YYYY-MM-DD'));
 
-            $("#data-task-request-form input[name=begin_time]").val(start.format('YYYY-MM-DD'));
-            $("#data-task-request-form input[name=end_time]").val(end.format('YYYY-MM-DD'));
+            $("#data-category-task-request-form input[name=begin_time]").val(start.format('YYYY-MM-DD'));
+            $("#data-category-task-request-form input[name=end_time]").val(end.format('YYYY-MM-DD'));
         });
 
         $("select.selectpicker").select2({theme: "bootstrap", allowClear: true});
 
-        $("#data-task-request-form [data-click=save]").click(function(){
+        $("#data-category-task-request-form [data-click=save]").click(function(){
             $("body").showLoading();
-            var self = $("#data-task-request-form");
+            var self = $("#data-category-task-request-form");
             $.ajax({
                 url: self.attr("action"),
                 data: self.serialize(),
@@ -181,10 +220,57 @@
         });
 
 
-        $("#data-task-request-form").keydown(function(event){
+        $("#data-category-task-request-form").keydown(function(event){
 
             if(event.which == 13){
-                $("#data-task-request-form [data-click=save]").trigger("click");
+                $("#data-category-task-request-form [data-click=save]").trigger("click");
+                return false;
+
+            }
+        });
+
+
+        $("#data-shop-task-request-form [data-role=dateSetting]").daterangepicker({
+            locale:$.locale,
+            "startDate": "<?php echo date("m/d/Y",strtotime($query['beginDate']));?>",
+            "endDate": "<?php echo date("m/d/Y",strtotime($query['endDate']));?>",
+            "maxDate":"<?php echo date("m/d/Y",strtotime("-1 days"));?>"
+        },function (start,end){
+            $("#data-shop-task-request-form input[data-role=dateview]").val(start.format('YYYY-MM-DD')+" ~ "+end.format('YYYY-MM-DD'));
+
+            $("#data-shop-task-request-form input[name=begin_time]").val(start.format('YYYY-MM-DD'));
+            $("#data-shop-task-request-form input[name=end_time]").val(end.format('YYYY-MM-DD'));
+        });
+
+        $("#data-shop-task-request-form [data-click=save]").click(function(){
+            $("body").showLoading();
+            var self = $("#data-shop-task-request-form");
+            $.ajax({
+                url: self.attr("action"),
+                data: self.serialize(),
+                type:"post",
+                dataType:"json",
+                success:function(resp){
+                    $("body").hideLoading();
+                    if(resp.isSuccess){
+                        $("[data-role=task-detail]").iLoad();
+                    }else{
+                        app.alert(resp.msg);
+                    }
+                },
+                error:function(){
+                    $("body").hideLoading();
+                    app.alert("创建任务失败，请重试！");
+                }
+            });
+
+        });
+
+
+        $("#data-shop-task-request-form").keydown(function(event){
+
+            if(event.which == 13){
+                $("#data-shop-task-request-form [data-click=save]").trigger("click");
                 return false;
 
             }

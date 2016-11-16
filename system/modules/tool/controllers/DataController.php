@@ -29,7 +29,8 @@ class DataController extends Controller
             "query"=>array(
                 "beginDate"=>date("Y-m-d",strtotime("-18 days")),
                 "endDate"=>date("Y-m-d",strtotime("-3 days")),
-                "dataType"=>DataRptTask::$dataType
+                "categoryTaskType"=>DataRptTask::$categoryTaskType,
+                "shopTaskType"=>DataRptTask::$shopTaskType
             ),
             'shopnames'=>$shopnames,
             'catgorynames'=>$catgorynames
