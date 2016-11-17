@@ -237,14 +237,7 @@ class DataRptTask extends Model
      */
     public function attributeLabels()
     {
-        return array(
-            'cid' => 'Cid',
-            'parent_cid' => 'Parent Cid',
-            'name' => 'Name',
-            'is_parent' => 'Is Parent',
-            'status' => 'Status',
-            'sort_order' => 'Sort Order',
-        );
+        return array();
     }
 
 }
