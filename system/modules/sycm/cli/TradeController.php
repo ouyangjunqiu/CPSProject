@@ -1,5 +1,5 @@
 <?php
-namespace application\modules\zuanshi\cli;
+namespace application\modules\sycm\cli;
 
 use application\modules\main\model\Shop;
 use application\modules\sycm\model\ShopTradeMonthRpt;
