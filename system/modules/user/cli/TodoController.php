@@ -14,10 +14,15 @@ class TodoController extends Controller
         foreach($users as $user){
             UserTodoWeekRpt::model()->deleteAll("username=?",array($user["name"]));
 
+            $c = ShopTodoList::model()->count("logdate>=? AND logdate<=? AND pic=?",array($begindate,$enddate,$user["name"]));
+            if($c<=0){
+                continue;
+            }
+
             $model = new UserTodoWeekRpt();
             $model->setAttributes(array(
                 "username"=>$user["name"],
-                "c"=>ShopTodoList::model()->count("logdate>=? AND logdate<=? AND pic=?",array($begindate,$enddate,$user["name"])),
+                "c"=>$c,
                 "c0"=>ShopTodoList::model()->count("logdate>=? AND logdate<=? AND pic=? AND status=?",array($begindate,$enddate,$user["name"],0)),
                 "c1"=>ShopTodoList::model()->count("logdate>=? AND logdate<=? AND pic=? AND status=?",array($begindate,$enddate,$user["name"],1)),
                 "c2"=>ShopTodoList::model()->count("logdate>=? AND logdate<=? AND pic=? AND status=?",array($begindate,$enddate,$user["name"],2)),
@@ -29,10 +34,6 @@ class TodoController extends Controller
 
         }
 
-    }
-
-    public function actionTest(){
-        echo "test";
     }
 
 }
