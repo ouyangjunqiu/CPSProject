@@ -66,7 +66,7 @@ class TradeController extends Controller
             $this->renderJson(array("isSuccess" => true,"hasget"=>false));
         }else{
             $createtime = strtotime($rpt["create_date"]);
-            if((time() - $createtime) >= 3600){
+            if((time() - $createtime) >= 7200){
                 $this->renderJson(array("isSuccess" => true,"hasget"=>false));
             }else{
                 $this->renderJson(array("isSuccess" => true,"hasget"=>true));

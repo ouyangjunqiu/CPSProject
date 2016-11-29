@@ -74,19 +74,7 @@
                             <div class="col-md-3"><small>快速交谈:</small></div>
                             <div class="col-md-9">
                                 <a href="http://www.taobao.com/webww/ww.php?ver=3&touid=<?php echo $row["nick"];?>&siteid=cntaobao&status=1&charset=u8" target="_blank"><i class="contact contact-wangwang"></i></a>
-                                <?php if(!empty($row["qq"])):?><a href="tencent://message/?uin=<?php echo $row["qq"];?>&Site=QQ交谈&Menu=yes"><i class="contact contact-qq"></i></a><?php endif;?>
-                                <?php if(!empty($row["email"])):?><a href="mailto:<?php echo $row["email"];?>"><i class="contact contact-email"></i></a><?php endif;?>
-
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="babyinfor-interface">
-                                <a href="javascript:void(0);" class="zuanshi quick_login_btn" extension="uninstall" login-type="zuanshi" data-nick="<?php echo $row["nick"];?>" data-password="<?php echo $row["login_password"];?>" data-username="<?php echo $row["login_nick"];?>">智·钻</a>
-                                <a href="javascript:void(0);" class="shenyicanmou quick_login_btn" extension="uninstall" login-type="shenyicanmou" data-nick="<?php echo $row["nick"];?>" data-password="<?php echo $row["login_password"];?>" data-username="<?php echo $row["login_nick"];?>">生意参谋</a>
-                                <a href="javascript:void(0);" class="zhitongche quick_login_btn" extension="uninstall" login-type="zhitongche" data-nick="<?php echo $row["nick"];?>" data-password="<?php echo $row["login_password"];?>" data-username="<?php echo $row["login_nick"];?>">直通车</a>
-                                <a href="javascript:void(0);" class="dmp quick_login_btn" extension="uninstall" login-type="dmp" data-nick="<?php echo $row["nick"];?>" data-password="<?php echo $row["login_password"];?>" data-username="<?php echo $row["login_nick"];?>">达摩盘</a>
-                            </div>
-
                         </div>
 
                     </div>
@@ -98,6 +86,9 @@
                         <div class="col-md-12">
                             <p class="babyinfor-frame-tit">
                                 <a href="<?php echo $row["shopurl"];?>" target="_blank"><?php echo $row["nick"];?> </a>
+                                <?php if(!empty($row["shopcatname"])):?>
+                                    <o class="tit"><?php echo $row["shopcatname"];?></o>
+                                <?php endif;?>
                             </p>
                         </div>
                     </div>
@@ -111,39 +102,7 @@
                             <a href="javascript:void(0)"  data-click="restart" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo Yii::app()->urlManager->createUrl('/main/shop/restart');?>"><small>1. 恢复服务..</small></a>
                         </div>
                     </div>
-<!--                    <div class="row">-->
-<!--                        <div class="col-md-12">-->
-<!--                            <a href="javascript:void(0)" data-click="off" data-nick="--><?php //echo $row["nick"];?><!--" data-url="--><?php //echo Yii::app()->urlManager->createUrl('/main/shop/off');?><!--"><small>2. 终止合作..</small></a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <small><strong>推广相关</strong></small>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <a href="<?php echo Yii::app()->urlManager->createUrl('/zuanshi/vie/index',array("nick"=>$row["nick"]));?>" target="_blank"><small>1. 查看竞品店铺..</small></a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <a href="<?php echo Yii::app()->urlManager->createUrl('/zuanshi/setting/index2',array("nick"=>$row["nick"]));?>" target="_blank"><small>2. 智·钻低价推广设置..</small></a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <a href="http://yj.da-mai.com/index.php?r=milestone/campaign/campaign&nick=<?php echo $row["nick"];?>" target="_blank"><small>3. 大麦优驾推广设置..</small></a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="babyinfor-interface">
-                            <a href="javascript:void(0);" class="zuanshi quick_login_btn" extension="uninstall" login-type="zuanshi" data-nick="<?php echo $row["nick"];?>" data-password="<?php echo $row["login_password"];?>" data-username="<?php echo $row["login_nick"];?>">智·钻</a>
-                            <a href="javascript:void(0);" class="shenyicanmou quick_login_btn" extension="uninstall" login-type="shenyicanmou" data-nick="<?php echo $row["nick"];?>" data-password="<?php echo $row["login_password"];?>" data-username="<?php echo $row["login_nick"];?>">生意参谋</a>
-                            <a href="javascript:void(0);" class="zhitongche quick_login_btn" extension="uninstall" login-type="zhitongche" data-nick="<?php echo $row["nick"];?>" data-password="<?php echo $row["login_password"];?>" data-username="<?php echo $row["login_nick"];?>">直通车</a>
-                            <a href="javascript:void(0);" class="dmp quick_login_btn" extension="uninstall" login-type="dmp" data-nick="<?php echo $row["nick"];?>" data-password="<?php echo $row["login_password"];?>" data-username="<?php echo $row["login_nick"];?>">达摩盘</a>
-                        </div>
-                    </div>
+
                 </div>
             </div>
 
