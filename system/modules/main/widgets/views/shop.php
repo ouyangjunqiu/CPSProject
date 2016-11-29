@@ -542,6 +542,8 @@
                         <div class="babyinfor-interface">
                             <a href="javascript:void(0);" class="branding quick_login_btn" extension="uninstall" login-type="branding" data-nick="<?php echo $row["nick"];?>" data-password="<?php echo $row["login_password"];?>" data-username="<?php echo $row["login_nick"];?>">品销宝</a>
                             <a href="javascript:void(0);" class="tbk quick_login_btn" extension="uninstall" login-type="tbk" data-nick="<?php echo $row["nick"];?>" data-password="<?php echo $row["login_password"];?>" data-username="<?php echo $row["login_nick"];?>">淘宝客</a>
+                            <a href="javascript:void(0);" class="dianpugenjin quick_login_btn" extension="uninstall" login-type="myseller" data-nick="<?php echo $row["nick"];?>" data-password="<?php echo $row["login_password"];?>" data-username="<?php echo $row["login_nick"];?>">卖家中心</a>
+
                         </div>
                     </div>
                 </div>
