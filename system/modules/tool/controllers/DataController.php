@@ -60,7 +60,7 @@ class DataController extends Controller
         }
 
         $param["TaskId"] = time().rand(1,999999);
-        $param["TableTypeName"] = DataRptTask::$dataType[$param["TableType"]];
+        $param["TableTypeName"] = DataRptTask::getTaskTypeString($param["TableType"]);
 
         $pakage[] = $param;
 
