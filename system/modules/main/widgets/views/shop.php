@@ -494,12 +494,12 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-8">
                             <a href="javascript:void(0)" class="btn btn-danger"  data-click="stop" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo Yii::app()->urlManager->createUrl('/main/shop/stop');?>">服务流失</a>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                         </div>
                     </div>
                     <div class="row">
