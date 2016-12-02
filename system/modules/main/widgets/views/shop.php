@@ -493,7 +493,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row" style="padding:10px 0px">
                         <div class="col-md-2">
                         </div>
                         <div class="col-md-8">
