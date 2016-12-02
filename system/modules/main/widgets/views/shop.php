@@ -469,21 +469,6 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <small> <strong>店铺相关</strong></small>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <a href="javascript:void(0)" class="btn btn-primary"  data-click="stop" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo Yii::app()->urlManager->createUrl('/main/shop/stop');?>">服务流失</a>
-                        </div>
-                    </div>
-<!--                    <div class="row">-->
-<!--                        <div class="col-md-12">-->
-<!--                            <a href="javascript:void(0)" data-click="off" data-nick="--><?php //echo $row["nick"];?><!--" data-url="--><?php //echo Yii::app()->urlManager->createUrl('/main/shop/off');?><!--"><small>2. 终止合作..</small></a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-                    <div class="row">
-                        <div class="col-md-12">
                             <small><strong>推广相关</strong></small>
                         </div>
                     </div>
@@ -505,6 +490,16 @@
                     <div class="row">
                         <div class="col-md-12">
                             <a href="javascript:void(0)"  data-click="shoprpt" data-url="<?php echo Yii::app()->urlManager->createUrl('/tool/rpt/index',array("nick"=>$row["nick"]));?>" data-has-ztcrpt-href="<?php echo Yii::app()->urlManager->createUrl('/ztc/custrpt/hasget',array("nick"=>$row["nick"]));?>" data-ztcrpt-href="http://yj.da-mai.com/index.php?r=milestone/adviser/custreport&nick=<?php echo $row["nick"];?>" data-post-ztcrpt-href="<?php echo Yii::app()->urlManager->createUrl('/ztc/custrpt/source',array("nick"=>$row["nick"]));?>"><small>4. 直钻报表..</small></a>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-4">
+                            <a href="javascript:void(0)" class="btn btn-danger"  data-click="stop" data-nick="<?php echo $row["nick"];?>" data-url="<?php echo Yii::app()->urlManager->createUrl('/main/shop/stop');?>">服务流失</a>
+                        </div>
+                        <div class="col-md-4">
                         </div>
                     </div>
                     <div class="row">
