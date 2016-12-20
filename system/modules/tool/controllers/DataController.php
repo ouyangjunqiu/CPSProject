@@ -17,7 +17,7 @@ class DataController extends Controller
     public function actionIndex(){
         $shopnames = array();
         $catgorynames = array();
-        $shops = Shop::model()->fetchAll("status=?",array(0));
+        $shops = Shop::model()->fetchAll();
         foreach($shops as $row){
             $shopnames[$row["nick"]] = $row["nick"];
             if(!empty($row["shopcatname"])) {
