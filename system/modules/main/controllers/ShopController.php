@@ -8,6 +8,7 @@
  */
 namespace application\modules\main\controllers;
 
+use application\modules\main\utils\ShopSearch;
 use application\modules\main\utils\StringUtil;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
@@ -391,6 +392,12 @@ class ShopController extends Controller
         }
 
 
+    }
+
+    public function actionOpenlist(){
+        $data = ShopSearch::openlist();
+
+        $this->renderJson(array("isSuccess" => true,"data" => $data));
     }
 
 }
