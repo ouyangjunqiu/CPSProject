@@ -21,7 +21,13 @@ class PluginController extends Controller
 
     public function actionLog(){
         $username = Env::getRequest('username');
+
         $version = Env::getRequest('version');
+        if(empty($username) || empty($version)){
+            $this->renderJson(array("isSuccess"=>false));
+            return;
+        }
+
         $logdate = date("Y-m-d");
 
         PluginInstallLog::model()->deleteAll("logdate<=? AND username=?",array($logdate,$username));
