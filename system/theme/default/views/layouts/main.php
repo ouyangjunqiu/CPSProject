@@ -228,7 +228,7 @@ $username = (!empty($user) && isset($user["username"]))?$user["username"]:"游�
                 if(!t || Date.now()>t) {
                     var date = new Date();
                     date.setTime(date.getTime() + 8*3600 * 1000);
-                    $.cookie("cpstools.install.log.time", date.getTime());
+                    $.cookie("cpstools.install.log.time", date.getTime(), {expires: 1,path: '/'});
                     $.ajax({
                         url: '<?php echo $this->createUrl("/main/plugin/log");?>',
                         type: 'post',
@@ -281,7 +281,7 @@ $username = (!empty($user) && isset($user["username"]))?$user["username"]:"游�
                             if(!t || Date.now()>t){
                                 var date = new Date();
                                 date.setTime(date.getTime() +  30* 60 * 1000);
-                                $.cookie("todo.alert.time",date.getTime());
+                                $.cookie("todo.alert.time",date.getTime(),{expires: 1,path: '/'});
                                 window.postMessage({type:'alertMessage',title:"待办提醒",message:"你有"+resp.data.count+"件待办事项未完成!"},'*');
                             }
                         }else{
