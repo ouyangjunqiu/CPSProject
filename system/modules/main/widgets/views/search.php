@@ -1,23 +1,23 @@
 
 <form id="shop-search-form" action="<?php echo $url;?>" method="get" class="form-inline">
 
-    <div class="input-group">
-        <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="border-color: white">
-                <small class="glyphicon glyphicon-sort-by-alphabet-alt" style="color: #428bca"></small>
-                <small><?php echo empty($query["order"])?"综合排序":"服务周期";?></small>
-                <small class="caret"></small>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <?php if(!empty($query["order"])):?>
-                    <li><a href="<?php echo $url."&page=1&order=";?>">综合排序</a></li>
-                <?php else:?>
-                    <li><a href="<?php echo $url."&page=1&order=enddate";?>">服务周期</a></li>
-                <?php endif;?>
-            </ul>
-        </div>
-    </div>
-
+<!--    <div class="input-group">-->
+<!--        <div class="btn-group">-->
+<!--            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="border-color: white">-->
+<!--                <small class="glyphicon glyphicon-sort-by-alphabet-alt" style="color: #428bca"></small>-->
+<!--                <small>--><?php //echo empty($query["order"])?"综合排序":"服务周期";?><!--</small>-->
+<!--                <small class="caret"></small>-->
+<!--            </button>-->
+<!--            <ul class="dropdown-menu" role="menu">-->
+<!--                --><?php //if(!empty($query["order"])):?>
+<!--                    <li><a href="--><?php //echo $url."&page=1&order=";?><!--">综合排序</a></li>-->
+<!--                --><?php //else:?>
+<!--                    <li><a href="--><?php //echo $url."&page=1&order=enddate";?><!--">服务周期</a></li>-->
+<!--                --><?php //endif;?>
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!---->
 
     <div class="input-group">
         <div class="btn-group">
