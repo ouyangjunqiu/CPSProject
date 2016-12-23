@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">待办事项</h4>
+                <h4 class="modal-title">待办事项</h4>
             </div>
             <div class="modal-body">
                 <form>
@@ -67,7 +67,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">待办事项</h4>
+                <h4 class="modal-title">待办事项</h4>
             </div>
             <div class="modal-body">
 
@@ -82,13 +82,13 @@
         <div class="box-body chat">
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active">
-                    <a href="#mypictodo_list" title="待办事项" aria-controls="mytodo_list" role="tab" data-toggle="tab" aria-expanded="true">
+                    <a href="#mypictodo_list" title="@我的事项" aria-controls="mytodo_list" role="tab" data-toggle="tab" aria-expanded="true">
                         <span>@我的事项</span>
                     </a>
                 </li>
                 <li role="presentation">
-                    <a href="#my_create_todo_list" title="待办事项" aria-controls="my_create_todo_list" role="tab" data-toggle="tab" aria-expanded="true">
-                        <span>我发布的事项</span>
+                    <a href="#my_create_todo_list" title="我关注的事项" aria-controls="my_create_todo_list" role="tab" data-toggle="tab" aria-expanded="true">
+                        <span>我关注的事项</span>
                     </a>
                 </li>
             </ul>
@@ -181,7 +181,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">待办事项</h4>
+                <h4 class="modal-title">待办事项</h4>
             </div>
             <div class="modal-body">
 
