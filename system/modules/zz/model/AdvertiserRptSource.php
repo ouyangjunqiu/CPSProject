@@ -79,21 +79,23 @@ class AdvertiserRptSource extends Model
             "uv" => 0
         );
         $list = array();
-        foreach($source as $row){
-            $d = date("Ymd",strtotime($row["logDate"]));
-            $list[$d] = $row;
-            $total["adPv"]+=$row["adPv"];
-            $total["alipayInShopNum"]+=$row["alipayInShopNum"];
-            $total["alipayInshopAmt"]+=$row["alipayInshopAmt"];
-            $total["cartNum"]+=$row["cartNum"];
-            $total["charge"]+=$row["charge"];
-            $total["click"]+=$row["click"];
-            $total["deepInshopUv"]+=$row["deepInshopUv"];
-            $total["dirShopColNum"]+=$row["dirShopColNum"];
-            $total["gmvInshopAmt"]+=$row["gmvInshopAmt"];
-            $total["gmvInshopNum"]+=$row["gmvInshopNum"];
-            $total["inshopItemColNum"]+=$row["inshopItemColNum"];
-            $total["uv"]+=$row["uv"];
+        if(is_array($source)){
+            foreach($source as $row){
+                $d = date("Ymd",strtotime($row["logDate"]));
+                $list[$d] = $row;
+                $total["adPv"]+=$row["adPv"];
+                $total["alipayInShopNum"]+=$row["alipayInShopNum"];
+                $total["alipayInshopAmt"]+=$row["alipayInshopAmt"];
+                $total["cartNum"]+=$row["cartNum"];
+                $total["charge"]+=$row["charge"];
+                $total["click"]+=$row["click"];
+                $total["deepInshopUv"]+=$row["deepInshopUv"];
+                $total["dirShopColNum"]+=$row["dirShopColNum"];
+                $total["gmvInshopAmt"]+=$row["gmvInshopAmt"];
+                $total["gmvInshopNum"]+=$row["gmvInshopNum"];
+                $total["inshopItemColNum"]+=$row["inshopItemColNum"];
+                $total["uv"]+=$row["uv"];
+            }
         }
 
         $total["roi"] = empty($total["charge"])?0:round(@$total["alipayInshopAmt"]/$total["charge"],2);
