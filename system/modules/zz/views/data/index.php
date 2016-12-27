@@ -10,8 +10,7 @@
                         <span class="shop-list-icon"></span>
                         <span class="shop-list-txt">智·钻</span>
                         <small>
-                            <a href="<?php echo $this->createUrl("/zz/advertiserhour/index");?>"><span class="label label-default">全店推广<small>(实时报表)</small></span></a>
-                            <a href="<?php echo $this->createUrl("/zz/advertiserrpt/index");?>"><span class="label label-default">全店推广<small>(近期报表)</small></span></a>
+                            <a href="<?php echo $this->createUrl("/zz/advertiserrpt/index");?>"><span class="label label-default">全店推广</span></a>
                             <a href="<?php echo $this->createUrl("/zz/summary/index");?>"><span class="label label-default">店铺统计报表</span></a>
                             <a href="<?php echo $this->createUrl("/zz/summary/pic");?>"><span class="label label-default">人员统计报表</span></a>
                             <a href="<?php echo $this->createUrl("/zz/data/index");?>"><span class="label label-info">报表下载</span></a>
@@ -154,7 +153,7 @@
       </td>
       <td>
       {{if v.code>0}}
-        <a href="<?php echo $this->createUrl("/tool/data/getfile");?>&id=${v.id}" target="_blank" class="text-primary"><i class="glyphicon glyphicon-save"></i> 下载文件</a>
+        <a href="<?php echo $this->createUrl("/zz/data/getfile");?>&id=${v.id}" target="_blank" class="text-primary"><i class="glyphicon glyphicon-save"></i> 下载文件</a>
       {{else}}
         {{if v.code<0}}
             <span class="text-danger"><i class="glyphicon glyphicon-remove-circle"></i> 任务失败</span>
