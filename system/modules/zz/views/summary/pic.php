@@ -15,11 +15,14 @@
             <div class="search-log" style="display: none;"> </div>
             <div class="search-left com-list-tit" style="display: block;">
                 <span class="shop-list-icon"></span>
-                <span class="shop-list-txt">智·钻</span><small>
+                <span class="shop-list-txt">智·钻</span>
+                <small>
                     <a href="<?php echo $this->createUrl("/zz/advertiserrpt/index");?>"><span class="label label-default">全店推广</span></a>
 <!--                    <a href="--><?php //echo $this->createUrl("/zuanshi/rpt/index2");?><!--"><span class="label label-default">明星店铺报表</span></a>-->
                     <a href="<?php echo $this->createUrl("/zz/summary/index");?>"><span class="label label-default">店铺统计报表</span></a>
                     <a href="<?php echo $this->createUrl("/zz/summary/pic");?>"><span class="label label-info">人员统计报表</span></a>
+                    <a href="<?php echo $this->createUrl("/zz/data/index");?>"><span class="label label-default">报表下载</span></a>
+
                 </small>
 
             </div>
