@@ -130,7 +130,7 @@ class DataRptTask extends Model
 
         ),
 
-        "26店铺直通车数据" => array(
+        "26、店铺直通车数据" => array(
 
             "2601" =>"2601、店铺-直通车日报"
 
