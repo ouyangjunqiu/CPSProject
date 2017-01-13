@@ -114,7 +114,16 @@ class AdvertiserrptController extends Controller
         $endDate = Env::getQueryDefault("end_date",$rangeDate->endDate);
 
         $data = AdvertiserRpt::fetchByNick($nick,$beginDate,$endDate,"click",$effect);
-        $this->renderJson(array("isSuccess"=>true,"data"=>$data));
+        $this->renderJson(array(
+            "isSuccess"=>true,
+            "data"=>$data,
+            "query"=>array(
+                "nick"=>$nick,
+                "begin_date"=>$beginDate,
+                "end_date"=>$endDate,
+                "effect"=>$effect
+            )
+        ));
 
     }
 
