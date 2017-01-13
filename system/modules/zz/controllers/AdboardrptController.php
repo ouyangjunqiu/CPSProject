@@ -10,6 +10,7 @@ namespace application\modules\zz\controllers;
 
 
 use application\modules\zuanshi\model\AboardPackage;
+use application\modules\zz\model\AdboardRptHistory;
 use application\modules\zz\model\AdboardWeekRpt;
 use cloud\core\controllers\Controller;
 use cloud\core\utils\Env;
@@ -17,6 +18,30 @@ use cloud\core\utils\Sorter;
 
 class AdboardrptController extends Controller
 {
+    public function actionGetbynick(){
+        $nick = Env::getRequest("nick");
+
+        if(empty($nick)){
+            return $this->renderJson(array("isSuccess"=>false,));
+        }
+
+        $logdate = Env::getQueryDefault("logdate",date("Y-m-d",strtotime("-1 days")));
+        $effect = Env::getQueryDefault("effect",7);
+
+        $data = AdboardRptHistory::fetchAllByNick($logdate,$logdate,$nick,"click",$effect);
+
+        $this->renderJson(array(
+            "isSuccess"=>true,
+            "data"=>$data,
+            "query"=>array(
+                "nick"=>$nick,
+                "logdate"=>$logdate,
+                "effect"=>$effect
+            )
+        ));
+
+    }
+
     public function actionWeek(){
         $nick = Env::getRequest("nick");
         $orderby = Env::getQueryDefault("orderby","charge");

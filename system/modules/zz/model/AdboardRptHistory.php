@@ -63,14 +63,15 @@ class AdboardRptHistory extends Model
      * @param int $effect
      * @return array
      */
-    public static function fetchAllSummaryByNick($begindate,$enddate,$nick,$effectType = "click",$effect = 3){
+    public static function fetchAllSummaryByNick($begindate, $enddate, $nick, $effectType = "click", $effect = 3)
+    {
 
-        $sources = self::model()->fetchAll("logdate>=? AND logdate<=? AND nick=? AND effectType=? AND effect=?",array($begindate,$enddate,$nick,$effectType,$effect));
+        $sources = self::model()->fetchAll("logdate>=? AND logdate<=? AND nick=? AND effectType=? AND effect=?", array($begindate, $enddate, $nick, $effectType, $effect));
         $list = array();
-        foreach($sources as $row) {
-            $rpts = json_decode($row["data"],true);
+        foreach ($sources as $row) {
+            $rpts = json_decode($row["data"], true);
 
-            if(isset($rpts["result"])) {
+            if (isset($rpts["result"])) {
                 foreach ($rpts["result"] as $rpt) {
                     $list[$rpt["adboardId"]][] = $rpt;
                 }
@@ -78,21 +79,20 @@ class AdboardRptHistory extends Model
         }
 
 
-
         $data = array();
-        foreach($list as $adboardId => $rpts){
+        foreach ($list as $adboardId => $rpts) {
             $summary = array(
                 "charge" => 0,
                 "click" => 0,
                 "adPv" => 0,
                 "uv" => 0,
-                "cartNum" =>0,
+                "cartNum" => 0,
                 "dirShopColNum" => 0,
                 "inshopItemColNum" => 0,
-                "alipayInshopAmt"=>0,
+                "alipayInshopAmt" => 0,
                 "alipayInShopNum" => 0
             );
-            foreach($rpts as $rpt){
+            foreach ($rpts as $rpt) {
                 $summary["adboardId"] = $rpt["adboardId"];
                 $summary["adboardName"] = $rpt["adboardName"];
                 $summary["charge"] += $rpt["charge"];
@@ -106,12 +106,12 @@ class AdboardRptHistory extends Model
                 $summary["cartNum"] += $rpt["cartNum"];
 
             }
-            if($summary["adPv"]>0 && $summary["click"]>0 && $summary["charge"]>0){
-                $data[] = array_merge($summary,array(
-                    "ctr" => round(@($summary["click"]/$summary["adPv"]),4)*100,
-                    "ecpc" => round(@($summary["charge"]/$summary["click"]),2),
-                    "roi" => round(@($summary["alipayInshopAmt"]/$summary["charge"]),2),
-                    "ecpm" => round(@($summary["charge"]/$summary["adPv"]*1000),2)
+            if ($summary["adPv"] > 0 && $summary["click"] > 0 && $summary["charge"] > 0) {
+                $data[] = array_merge($summary, array(
+                    "ctr" => round(@($summary["click"] / $summary["adPv"]), 4) * 100,
+                    "ecpc" => round(@($summary["charge"] / $summary["click"]), 2),
+                    "roi" => round(@($summary["alipayInshopAmt"] / $summary["charge"]), 2),
+                    "ecpm" => round(@($summary["charge"] / $summary["adPv"] * 1000), 2)
                 ));
             }
 
@@ -119,4 +119,20 @@ class AdboardRptHistory extends Model
         return $data;
     }
 
+    public static function fetchAllByNick($begindate, $enddate, $nick, $effectType = "click", $effect = 3)
+    {
+        $sources = self::model()->fetchAll("logdate>=? AND logdate<=? AND nick=? AND effectType=? AND effect=?", array($begindate, $enddate, $nick, $effectType, $effect));
+        $list = array();
+        foreach ($sources as $row) {
+            $rpts = json_decode($row["data"], true);
+
+            if (isset($rpts["result"]) && count($rpts["result"])>0) {
+                foreach ($rpts["result"] as $rpt) {
+                    $list[] = $rpt;
+                }
+            }
+        }
+        return $list;
+
+    }
 }
