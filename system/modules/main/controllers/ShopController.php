@@ -81,6 +81,7 @@ class ShopController extends Controller
         $shopcatname = Env::getRequest("shopcatname");
         $startdate = Env::getRequest("startdate");
         $enddate = Env::getRequest("enddate");
+        $ishide = Env::getRequest("ishide");
         $model = Shop::model()->find("nick=?", array($nick));
         if (empty($model)) {
             $this->renderJson(array("isSuccess" => false));
@@ -95,7 +96,8 @@ class ShopController extends Controller
                 "login_password" => $loginPassword,
                 "shopurl" => $shopurl,
                 "startdate" => $startdate,
-                "enddate" => $enddate
+                "enddate" => $enddate,
+                "ishide" => $ishide
             )
         );
 
@@ -399,5 +401,7 @@ class ShopController extends Controller
 
         $this->renderJson(array("isSuccess" => true,"data" => $data));
     }
+
+
 
 }

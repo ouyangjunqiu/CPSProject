@@ -114,5 +114,11 @@ class DefaultController extends Controller
 		$this->render("beinglost",array("list"=>$list,"pager"=>array("count"=>$count,"page"=>$page,"page_size"=>$pageSize),"query"=>array("q"=>$q,"pic"=>$pic)));
 	}
 
+	public function actionHide(){
+		$data = ShopSearch::hidelist();
+
+		$this->render("hide",$data);
+	}
+
 
 }

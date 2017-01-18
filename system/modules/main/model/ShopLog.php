@@ -55,10 +55,10 @@ class ShopLog extends Model {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('logdate,userid,nick,usernumid,shopid,shopname,shopcatname,shopurl,login_nick, login_password,pic,zuanshi_pic,bigdata_pic,ztc_pic,status,shoptype,create_date,open_date,stop_date,off_date', 'safe'),
+            array('logdate,userid,nick,usernumid,shopid,shopname,shopcatname,shopurl,login_nick, login_password,pic,zuanshi_pic,bigdata_pic,ztc_pic,status,create_date,open_date,stop_date,off_date', 'safe'),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('logdate,userid,nick,usernumid,shopid,shopname,shopcatname,shopurl,login_nick, login_password,pic,zuanshi_pic,bigdata_pic,ztc_pic,status,shoptype,create_date,open_date,stop_date,off_date', 'safe', 'on'=>'search'),
+            array('logdate,userid,nick,usernumid,shopid,shopname,shopcatname,shopurl,login_nick, login_password,pic,zuanshi_pic,bigdata_pic,ztc_pic,status,create_date,open_date,stop_date,off_date', 'safe', 'on'=>'search'),
         );
     }
 

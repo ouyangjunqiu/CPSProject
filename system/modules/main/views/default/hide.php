@@ -16,15 +16,15 @@ $username = empty($user)?"游客":$user["username"];
                 <span class="shop-list-txt">我的店铺</span>
                 <small>
                     <a href="<?php echo $this->createUrl("/main/shop/index");?>"><span class="label label-default">新增店铺</span></a>
-                    <a href="<?php echo $this->createUrl("/main/default/index");?>"><span class="label label-info">我的店铺</span></a>
-                    <a href="<?php echo $this->createUrl("/main/default/hide");?>"><span class="label label-default">值班店铺</span></a>
+                    <a href="<?php echo $this->createUrl("/main/default/index");?>"><span class="label label-default">我的店铺</span></a>
+                    <a href="<?php echo $this->createUrl("/main/default/hide");?>"><span class="label label-info">值班店铺</span></a>
                     <a href="<?php echo $this->createUrl("/main/default/beinglost");?>"><span class="label label-default">流失店铺</span></a>
                     <a href="<?php echo $this->createUrl("/main/dashboard/index");?>"><span class="label label-default">总览</span></a>
 
                 </small>
             </div>
             <div class="search-right">
-                <?php $this->widget("application\\modules\\main\\widgets\\ShopSearchWidget",array("url"=>$this->createUrl("/main/default/index",array("page"=>1)),"query"=>$query));?>
+                <?php $this->widget("application\\modules\\main\\widgets\\ShopSearchWidget",array("url"=>$this->createUrl("/main/default/hide",array("page"=>1)),"query"=>$query));?>
 
             </div>
         </div>
@@ -154,7 +154,7 @@ $username = empty($user)?"游客":$user["username"];
 
 
         $(".c-pager").jPager({currentPage: <?php echo $pager["page"]-1;?>, total: <?php echo $pager["count"];?>, pageSize: <?php echo $pager["page_size"];?>,events: function(dp){
-            location.href = app.url("<?php echo $this->createUrl('/main/default/index');?>",{page:dp.index+1})
+            location.href = app.url("<?php echo $this->createUrl('/main/default/hide');?>",{page:dp.index+1})
         }});
 
         $('.dropify').dropify();

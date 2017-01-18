@@ -43,7 +43,7 @@ class Shop extends Model {
         return array(
 
             array('userid,nick,usernumid','unique'),
-            array('shopid,shopname,shopcatname,shopurl,login_nick, login_password,pic,zuanshi_pic,bigdata_pic,ztc_pic,sub_pic,status,create_date,open_date,stop_date,off_date,startdate,enddate', 'safe'),
+            array('shopid,shopname,shopcatname,shopurl,login_nick, login_password,pic,zuanshi_pic,bigdata_pic,ztc_pic,sub_pic,ishide,status,create_date,open_date,stop_date,off_date,startdate,enddate', 'safe'),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
             array('userid,nick,usernumid,shopid,shopname,shopcatname,shopurl,login_nick, login_password,pic,zuanshi_pic,bigdata_pic,ztc_pic,sub_pic,status,create_date,open_date,stop_date,off_date,startdate,enddate', 'safe', 'on'=>'search'),

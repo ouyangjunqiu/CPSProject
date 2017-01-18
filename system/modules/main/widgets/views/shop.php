@@ -234,34 +234,49 @@
 
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-3"><small>服务周期(起):</small></div>
-                            <div class="col-md-7">
-                                <span class="pic_read">
-                                    <strong><?php echo $row["startdate"];?></strong>
-                                </span>
-                                <span class="pic_input form_writer" style="display: none">
-                                    <input type="text" value="<?php echo $row["startdate"];?>" name="startdate"/>
-                                </span>
-                            </div>
-                            <div class="col-md-2">
+<!--                        <div class="row">-->
+<!--                            <div class="col-md-3"><small>服务周期(起):</small></div>-->
+<!--                            <div class="col-md-7">-->
+<!--                                <span class="pic_read">-->
+<!--                                    <strong>--><?php //echo $row["startdate"];?><!--</strong>-->
+<!--                                </span>-->
+<!--                                <span class="pic_input form_writer" style="display: none">-->
+<!--                                    <input type="text" value="--><?php //echo $row["startdate"];?><!--" name="startdate"/>-->
+<!--                                </span>-->
+<!--                            </div>-->
+<!--                            <div class="col-md-2">-->
+<!---->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-md-3"><small>服务周期(止):</small></div>-->
+<!--                            <div class="col-md-7">-->
+<!--                                <span class="pic_read">-->
+<!--                                    <strong>--><?php //echo $row["enddate"];?><!--</strong>-->
+<!--                                </span>-->
+<!--                                <span class="pic_input form_writer" style="display: none">-->
+<!--                                    <input type="text" value="--><?php //echo $row["enddate"];?><!--" name="enddate"/>-->
+<!--                                </span>-->
+<!--                            </div>-->
+<!--                            <div class="col-md-2">-->
+<!---->
+<!--                            </div>-->
+<!--                        </div>-->
+                                                <div class="row">
+                                                    <div class="col-md-3"><small>周末值班:</small></div>
+                                                    <div class="col-md-7">
+                                                        <span class="pic_read">
 
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3"><small>服务周期(止):</small></div>
-                            <div class="col-md-7">
-                                <span class="pic_read">
-                                    <strong><?php echo $row["enddate"];?></strong>
-                                </span>
-                                <span class="pic_input form_writer" style="display: none">
-                                    <input type="text" value="<?php echo $row["enddate"];?>" name="enddate"/>
-                                </span>
-                            </div>
-                            <div class="col-md-2">
+                                                            <strong><?php echo $row["ishide"] == 1?"是":"否";?></strong>
+                                                        </span>
+                                                        <span class="pic_input form_writer" style="display: none">
+                                                            <input type="checkbox" value="1" name="ishide" <?php echo $row["ishide"] == 1?"checked":"";?>/>
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-md-2">
 
-                            </div>
-                        </div>
+                                                    </div>
+                                                </div>
                         <div class="row">
                             <div class="col-md-3"><small>店铺地址:</small></div>
                             <div class="col-md-7">
