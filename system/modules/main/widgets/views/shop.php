@@ -263,7 +263,7 @@
 <!--                            </div>-->
 <!--                        </div>-->
                                                 <div class="row">
-                                                    <div class="col-md-3"><small>周末值班:</small></div>
+                                                    <div class="col-md-3"><small>春节值班:</small></div>
                                                     <div class="col-md-7">
                                                         <span class="pic_read">
 
