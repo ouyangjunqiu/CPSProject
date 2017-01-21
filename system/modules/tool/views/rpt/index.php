@@ -337,8 +337,9 @@
         $(".top-ul>li").eq(3).addClass("top-li-hover");
 
         $("#dateSetting").daterangepicker({
-            "startDate": "<?php echo $query['begin_date'];?>",
-            "endDate": "<?php echo $query['end_date'];?>",
+            locale:$.locale,
+            "startDate": "<?php echo date("m/d/Y",strtotime($query['begin_date']));?>",
+            "endDate": "<?php echo date("m/d/Y",strtotime($query['end_date']));?>",
             "format":"YYYY-MM-DD"
         },function (start,end){
 
